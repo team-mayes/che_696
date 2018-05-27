@@ -1,0 +1,1 @@
+Search.setIndex({docnames:["index"],envversion:53,filenames:["index.rst"],objects:{},objnames:{},objtypes:{},terms:{index:0,modul:0,page:0,search:0},titles:["Welcome to CHE 696: Data Science for Chemical Engineers\u2019s documentation!"],titleterms:{che:0,chemic:0,data:0,document:0,engin:0,indic:0,scienc:0,tabl:0,welcom:0}})
