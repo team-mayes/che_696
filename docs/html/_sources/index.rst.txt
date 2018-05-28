@@ -11,6 +11,7 @@ CHE 696: Data Science for Chemical Engineers
    :caption: Contents:
 
    extensions.rst
+   ipython_directive.rst
    lectures/lecture01.rst
    lectures/lecture02.rst
 
