@@ -69,8 +69,8 @@ restore these files:
 
     $ git checkout docs/.nojekyll docs/index.html
 
-The first file tells the `GitHub Pages publisher <https://pages.github.com/>` to skip the
-`Jekyll <https://jekyllrb.com/>` interpretation step, which allows directories that start with ``_`` to be copied
+The first file tells the `GitHub Pages publisher <https://pages.github.com/>`_ to skip the
+`Jekyll <https://jekyllrb.com/>`_ interpretation step, which allows directories that start with ``_`` to be copied
 unchanged to the published site.  Since Sphinx makes use of the ``_`` convention extensively, this is an important
 flag.  If you notice that your stylesheets, images, etc., are missing from the published site, it may be that the
 ``docs/.jekyll`` file is missing.  Note that the file itself is empty, so just creating an empty file suffices.
