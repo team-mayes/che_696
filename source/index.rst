@@ -10,6 +10,7 @@ CHE 696: Data Science for Chemical Engineers
    :maxdepth: 2
    :caption: Contents:
 
+   extensions.rst
    lectures/lecture01.rst
    lectures/lecture02.rst
 
