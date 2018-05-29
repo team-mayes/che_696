@@ -27,6 +27,21 @@ installation on my Linux machine.
 
     $ sudo pip3 install -r source/requirements.txt
 
+Mac OSX
++++++++
+
+If the above directions did not allow a successful build (next step), this alternate install may work. First,
+install Xcode (via the App Store). Then, in the terminal:
+
+    $ xcode-select --install
+
+If problems remain with ipython, it may help to load:
+
+    $ brew install ipython
+
+Linux
++++++
+
 Note that you will also need the ``make`` command installed on your machine.  For Debian-based Linux distributions,
 this will work:
 
