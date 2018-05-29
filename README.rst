@@ -63,6 +63,8 @@ Deploy
 In order to deploy your changes to the `published site <https://team-mayes.github.io/che_696/>`_, check in your work
 and push it to the ``master`` branch of the project.
 
+::
+
     $ git add .
     $ git commit -m "Website changes"
     $ git push
