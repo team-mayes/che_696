@@ -1,11 +1,11 @@
 .. _syllabus:
 
-===========================================================
-SYLLABUS FOR On-Ramp to Data Science for Chemical Engineers
-===========================================================
+========
+Syllabus
+========
 
-Fall 2018, Prof. Heather Mayes
-MW 10-11:30am in 3150 Dow
+Fall 2018, Prof. Heather Mayes,
+MW 10-11:30 am, 3150 Dow
 
 Course description
 ------------------
@@ -16,10 +16,10 @@ Topics
 ------
 
 - One week intro to Bash/Python/vim/IDE (main ideas, then practice the rest of the semester)
-- Get students comfortable with pycharm and jupyter notebooks (they can proceed with either)
-- Enough of a foundation to be able to immediately use in the next week
-- Introduce libraries, including numpy, and numpy arrays
-- Installing and updating libraries (conda, pip)
+    - Get students comfortable with pycharm and jupyter notebooks (they can proceed with either)
+    - Enough of a foundation to be able to immediately use in the next week
+    - Introduce libraries, including numpy, and numpy arrays
+    - Installing and updating libraries (conda, pip)
 - Two weeks on data structures (continuing intro python)
 - Basic data types (integers, floats, lists, tuples, arrays, dictionaries)
 - Tree, graphs (network X)
@@ -27,33 +27,26 @@ Topics
 - Debugging
 - Timing (libraries versus writing own functions)
 - Three weeks on basics of linear algebra/numerical methods
+- Show how to solve by hand and using numpy libraries
+- Matrix algebra
+- Linear determinants
+- Basic eigenvalue/eigenvector problems
+- Two weeks on programming practices
+- Versioning (git)
+- Testing
+- Modular programming
+- Documentation
+- Three weeks on algorithms (e.g. key topics from http://algs4.cs.princeton.edu/home/)
+- Terminology: Big O notation, NP hard, etc.
+- Sorting (as example)
+- Searching/matching
+- Graph processing
+- String searching and manipulation
+- Optimization methods
+- Three weeks on probability and statistics
+- Basics (terminology, notation, basic laws)
+- Conditional probabilities and Bayesian statistics
+- Discrete and continuous probability distributions
+- Hypothesis testing (t-tests, p-values and their controversial use, chi-squared tests)
+-
 
-Show how to solve by hand and using numpy libraries
-Matrix algebra
-Linear determinants
-Basic eigenvalue/eigenvector problems
-Two weeks on programming practices
-Versioning (git)
-Testing
-Modular programming
-Documentation
-Three weeks on algorithms (e.g. key topics from http://algs4.cs.princeton.edu/home/)
-Terminology: Big O notation, NP hard, etc.
-Sorting (as example)
-Searching/matching
-Graph processing
-String searching and manipulation
-Optimization methods
-Three weeks on probability and statistics
-Basics (terminology, notation, basic laws)
-Conditional probabilities and Bayesian statistics
-Discrete and continuous probability distributions
-Hypothesis testing (t-tests, p-values and their controversial use, chi-squared tests)
-
-
-.. _syllabus-literal:
-
-This file
-=========
-
-.. literalinclude:: syllabus.rst
