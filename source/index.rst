@@ -13,8 +13,6 @@ CHE 696: Data Science for Chemical Engineers
    syllabus.rst
    lectures/lecture01.rst
    lectures/lecture02.rst
-
-   :caption: About sphinx:
    extensions.rst
    ipython_directive.rst
 
