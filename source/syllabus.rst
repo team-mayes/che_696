@@ -21,33 +21,34 @@ Topics
     - Introduce libraries, including numpy, and numpy arrays
     - Installing and updating libraries (conda, pip)
 - Two weeks on data structures (continuing intro python)
-- Basic data types (integers, floats, lists, tuples, arrays, dictionaries)
-- Tree, graphs (network X)
-- Tie together how data structures are composed of other data structures (trees for sorted lists, keys on dicts, etc.)
-- Debugging
-- Timing (libraries versus writing own functions)
+    - Basic data types (integers, floats, lists, tuples, arrays, dictionaries)
+    - Tree, graphs (network X)
+    - Tie together how data structures are composed of other data structures (trees for sorted lists, keys on dicts, etc.)
+    - Debugging
+    - Timing (libraries versus writing own functions)
 - Three weeks on basics of linear algebra/numerical methods
-- Show how to solve by hand and using numpy libraries
-- Matrix algebra
-- Linear determinants
-- Basic eigenvalue/eigenvector problems
+    - Show how to solve by hand and using numpy libraries
+    - Matrix algebra
+    - Linear determinants
+    - Basic eigenvalue/eigenvector problems
 - Two weeks on programming practices
-- Versioning (git)
-- Testing
-- Modular programming
-- Documentation
+    - Versioning (git)
+    - Testing
+    - Modular programming
+    - Documentation
 - Three weeks on algorithms (e.g. key topics from http://algs4.cs.princeton.edu/home/)
-- Terminology: Big O notation, NP hard, etc.
-- Sorting (as example)
-- Searching/matching
-- Graph processing
-- String searching and manipulation
-- Optimization methods
+    - Terminology: Big O notation, NP hard, etc.
+    - Sorting (as example)
+    - Searching/matching
+    - Graph processing
+    - String searching and manipulation
+    - Optimization methods
 - Three weeks on probability and statistics
-- Basics (terminology, notation, basic laws)
-- Conditional probabilities and Bayesian statistics
-- Discrete and continuous probability distributions
-- Hypothesis testing (t-tests, p-values and their controversial use, chi-squared tests)
+    - Basics (terminology, notation, basic laws)
+    - Conditional probabilities and Bayesian statistics
+    - Discrete and continuous probability distributions
+    - Hypothesis testing (t-tests, p-values and their controversial use, chi-squared tests)
+
 
 ..
     Program Core for UMich UG in DS
