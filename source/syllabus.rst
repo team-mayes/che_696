@@ -20,12 +20,17 @@ Topics
     - Enough of a foundation to be able to immediately use in the next week
     - Introduce libraries, including numpy, and numpy arrays
     - Installing and updating libraries (conda, pip)
+    - Chapter 1 of http://www.crcnetbase.com/isbn/978-1-4987-4506-2
+    - https://jakevdp.github.io/WhirlwindTourOfPython/
 - Two weeks on data structures (continuing intro python)
     - Basic data types (integers, floats, lists, tuples, arrays, dictionaries)
     - Tree, graphs (network X)
     - Tie together how data structures are composed of other data structures (trees for sorted lists, keys on dicts, etc.)
     - Debugging
     - Timing (libraries versus writing own functions)
+    - http://opendatastructures.org/
+    - http://interactivepython.org/courselib/static/pythonds/index.html
+    -
 - Three weeks on basics of linear algebra/numerical methods
     - Show how to solve by hand and using numpy libraries
     - Matrix algebra
@@ -49,6 +54,15 @@ Topics
     - Discrete and continuous probability distributions
     - Hypothesis testing (t-tests, p-values and their controversial use, chi-squared tests)
 
+
+Texts
+-----
+
+Willmore, F. T.; Eric, J.; Coray, C. Introduction to Scientific and Technical Computing; Willmore, F. T., Eric, J., Coray, C., Eds.; Taylor & Francis Group: Boca Raton, FL, 2017. Note: PDF can be downloaded for free when on the Michigan campus or logged on to the VPN, http://www.crcnetbase.com/isbn/978-1-4987-4506-2
+
+Python Data Science Handbook by Jake VanderPlas, https://jakevdp.github.io/PythonDataScienceHandbook/
+
+https://jakevdp.github.io/WhirlwindTourOfPython/
 
 ..
     Program Core for UMich UG in DS
