@@ -17,8 +17,6 @@
     <script type="text/javascript" src="_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="IPython Directive" href="ipython_directive.html" />
-    <link rel="prev" title="CHE 696: Data Science for Chemical Engineers" href="index.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
@@ -30,23 +28,11 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="ipython_directive.html" title="IPython Directive"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="index.html" title="CHE 696: Data Science for Chemical Engineers"
-             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">CHE 696: Data Science for Chemical Engineers 0.1 documentation</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">CHE 696: Data Science for Chemical Engineers</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="ipython_directive.html"
-                        title="next chapter">IPython Directive</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <div class="searchformwrapper">
@@ -256,7 +242,24 @@ providing a list of class or module names to the
 </pre></div>
 </div>
 <p>produces:</p>
-<img src="_images/inheritance-9b9f0ab18aee8e265d88f8c102de49defb25c694.png" alt="Inheritance diagram of codecs" class="inheritance"/>
+digraph inheritance7e56675552 {
+rankdir=LR;
+size=&quot;8.0, 12.0&quot;;
+  &quot;codecs.BufferedIncrementalDecoder&quot; [fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5)&quot;,tooltip=&quot;This subclass of IncrementalDecoder can be used as the baseclass for an&quot;];
+  &quot;codecs.IncrementalDecoder&quot; -&gt; &quot;codecs.BufferedIncrementalDecoder&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;codecs.BufferedIncrementalEncoder&quot; [fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5)&quot;,tooltip=&quot;This subclass of IncrementalEncoder can be used as the baseclass for an&quot;];
+  &quot;codecs.IncrementalEncoder&quot; -&gt; &quot;codecs.BufferedIncrementalEncoder&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;codecs.Codec&quot; [fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5)&quot;,tooltip=&quot;Defines the interface for stateless encoders/decoders.&quot;];
+  &quot;codecs.CodecInfo&quot; [fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5)&quot;,tooltip=&quot;Codec details when looking up the codec registry&quot;];
+  &quot;codecs.IncrementalDecoder&quot; [fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5)&quot;,tooltip=&quot;An IncrementalDecoder decodes an input in multiple steps. The input can&quot;];
+  &quot;codecs.IncrementalEncoder&quot; [fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5)&quot;,tooltip=&quot;An IncrementalEncoder encodes an input in multiple steps. The input can&quot;];
+  &quot;codecs.StreamReader&quot; [fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;codecs.Codec&quot; -&gt; &quot;codecs.StreamReader&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;codecs.StreamReaderWriter&quot; [fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5)&quot;,tooltip=&quot;StreamReaderWriter instances allow wrapping streams which&quot;];
+  &quot;codecs.StreamRecoder&quot; [fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5)&quot;,tooltip=&quot;StreamRecoder instances translate data from one encoding to another.&quot;];
+  &quot;codecs.StreamWriter&quot; [fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;codecs.Codec&quot; -&gt; &quot;codecs.StreamWriter&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+}
 <p>See the <a class="reference internal" href="ipython_directive.html#ipython-directive"><span class="std std-ref">IPython Directive</span></a> for a tutorial on embedding stateful,
 matplotlib aware ipython sessions into your rest docs with multiline
 and doctest support.</p>
@@ -503,12 +506,6 @@ This file
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="right" >
-          <a href="ipython_directive.html" title="IPython Directive"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="index.html" title="CHE 696: Data Science for Chemical Engineers"
-             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">CHE 696: Data Science for Chemical Engineers 0.1 documentation</a> &#187;</li> 
       </ul>
     </div>
