@@ -11,11 +11,9 @@ CHE 696: Data Science for Chemical Engineers
    :caption: Contents:
 
    syllabus.rst
-   lectures/lecture01.ipynb
+..   lectures/lecture01.ipynb
 ..   lectures/lecture02.rst
 
-.. toctree::
-   :maxdepth: 2
    :caption: About Sphinx:
 
    extensions.rst
