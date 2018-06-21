@@ -1,8 +1,10 @@
-=========
-Lecture 1
-=========
+=========================
+How to Learn Data Science
+=========================
 
-First lecture: Motivation and path forward
+Notes from National academies reports:
+https://www.nap.edu/catalog/24886/envisioning-the-data-science-discipline-the-undergraduate-perspective-interim-report
+https://www.nap.edu/catalog/25104/data-science-for-undergraduates-opportunities-and-options
 
 Introduction
 ------------
@@ -22,7 +24,7 @@ Mathematical foundations
 - Numerical methods (e.g., approximation and interpolation)
 
 Computational Foundations
-++++++++++++++++++++++++
++++++++++++++++++++++++++
 
 - Basic abstractions
 - Algorithmic thinking

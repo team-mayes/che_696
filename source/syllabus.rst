@@ -21,26 +21,32 @@ Topics
     - Introduce libraries, including numpy, and numpy arrays
     - Installing and updating libraries (conda, pip)
     - Chapter 1 of http://www.crcnetbase.com/isbn/978-1-4987-4506-2
-    - https://jakevdp.github.io/WhirlwindTourOfPython/
+    - Python intro to quickly get started: https://jakevdp.github.io/WhirlwindTourOfPython/  Getting it done
+    - Python intro with more comp sci content: http://interactivepython.org/courselib/static/pythonds/index.html
+    - Intro to Jupyter Notebooks: http://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Notebook%20Basics.html
 - Two weeks on data structures (continuing intro python)
     - Basic data types (integers, floats, lists, tuples, arrays, dictionaries)
     - Tree, graphs (network X)
     - Tie together how data structures are composed of other data structures (trees for sorted lists, keys on dicts, etc.)
     - Debugging
     - Timing (libraries versus writing own functions)
-    - http://opendatastructures.org/
-    - http://interactivepython.org/courselib/static/pythonds/index.html
+    -
+
     -
 - Three weeks on basics of linear algebra/numerical methods
     - Show how to solve by hand and using numpy libraries
     - Matrix algebra
     - Linear determinants
     - Basic eigenvalue/eigenvector problems
+    -
+
 - Two weeks on programming practices
     - Versioning (git)
     - Testing
     - Modular programming
     - Documentation
+    -
+
 - Three weeks on algorithms (e.g. key topics from http://algs4.cs.princeton.edu/home/)
     - Terminology: Big O notation, NP hard, etc.
     - Sorting (as example)
@@ -53,6 +59,7 @@ Topics
     - Conditional probabilities and Bayesian statistics
     - Discrete and continuous probability distributions
     - Hypothesis testing (t-tests, p-values and their controversial use, chi-squared tests)
+
 
 
 Texts
