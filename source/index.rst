@@ -14,8 +14,9 @@ CHE 696: Data Science for Chemical Engineers
    lectures/lecture01.ipynb
 ..   lectures/lecture02.rst
 
-About Sphynix
-=============
+.. toctree::
+   :maxdepth: 2
+   :caption: About Sphinx:
 
    extensions.rst
    ipython_directive.rst
