@@ -65,11 +65,16 @@ Topics
 Texts
 -----
 
-Willmore, F. T.; Eric, J.; Coray, C. Introduction to Scientific and Technical Computing; Willmore, F. T., Eric, J., Coray, C., Eds.; Taylor & Francis Group: Boca Raton, FL, 2017. Note: PDF can be downloaded for free when on the Michigan campus or logged on to the VPN, http://www.crcnetbase.com/isbn/978-1-4987-4506-2
+### Free online resources
 
-Python Data Science Handbook by Jake VanderPlas, https://jakevdp.github.io/PythonDataScienceHandbook/
+- *Whirlwind Tour of Python* by Jake VanderPlas, https://jakevdp.github.io/WhirlwindTourOfPython/
+- *Python Data Science Handbook* by Jake VanderPlas, https://jakevdp.github.io/PythonDataScienceHandbook/
 
-https://jakevdp.github.io/WhirlwindTourOfPython/
+### Free through the University of Michigan: Download while on campus or VPN
+
+Willmore, F. T.; Eric, J.; Coray, C. *Introduction to Scientific and Technical Computing*; Willmore, F. T., Eric, J., Coray, C., Eds.; Taylor & Francis Group: Boca Raton, FL, 2017. http://www.crcnetbase.com/isbn/978-1-4987-4506-2
+
+
 
 ..
     Program Core for UMich UG in DS

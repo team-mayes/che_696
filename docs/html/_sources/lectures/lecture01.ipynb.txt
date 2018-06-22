@@ -1,0 +1,192 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Welcome to ChE 696, On-Ramp to Data Science!\n",
+    "\n",
+    "## Topics for today:\n",
+    "- Motivation for this class\n",
+    "- What is data science?\n",
+    "- What we will cover in this class\n",
+    "- Get started with terminals and jupyter notebooks\n",
+    "\n",
+    "This and all other lectures will be available here: https://team-mayes.github.io/che_696/html/index.html\n",
+    "\n",
+    "They are jupyter (ipython) notebooks (more about these soon)."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Some of the many reasons to learn Data Science (DS)\n",
+    "\n",
+    "Many motivations--you each likely have them. My and the departments reasons include:\n",
+    "- We all have greater and greater amounts of data, and thus would benefit from skills to extract meaning and advance our work\n",
+    "- Practical consideration: there are not enough well trained people to fill the demand for jobs\n",
+    "- We want to make learning data science accessible to engineers by condensing multiple prerequisites into one semester\n",
+    "\n",
+    "From https://www.nytimes.com/2017/11/01/education/edlife/stem-jobs-industry-careers.html:\n",
+    "![Jobs](images/lect01_NYTJobs.png)\n",
+    "From https://www.nytimes.com/2017/11/03/education/edlife/choosing-a-college-major.html:\n",
+    "![LifetimeEarnings](images/lect01_NYTEarnings.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": true
+   },
+   "source": [
+    "Specific demand for ChE's with Data science training, as noted in the following paper, authored by employees at the Dow Chemical Company:\n",
+    "> 88% of chemical industry executives acknowledge that data analytics will be crucial for retaining the competitive advantage in five years\n",
+    "\n",
+    ">>Chiang, L.; Lu, B.; Castillo, I. Big Data Analytics in Chemical Engineering. *Annu. Rev. Chem. Biomol. Eng.* **2017**, *8*, 63–85 DOI: 10.1146/annurev-chembioeng-060816-101555.\n",
+    "\n",
+    "The National Academies of Sciences, Engineering, and Medicine are actively calling for more data science training:\n",
+    "> https://www.nap.edu/catalog/24886/envisioning-the-data-science-discipline-the-undergraduate-perspective-interim-report\n",
+    "> https://www.nap.edu/catalog/25104/data-science-for-undergraduates-opportunities-and-options\n",
+    "\n",
+    "Favorite metaphor from the reports: \n",
+    "![watershed](images/watershed.png)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# What is Data Science?\n",
+    "\n",
+    "Definitions vary; Big Data often defined by four \"V\"s (initially 3; Veracity is the newcomer)\n",
+    "https://www.michigandaily.com/section/research/big-data-how-university-michigan-navigates-ethics-unpredictability-data-science\n",
+    "![DSVs](images/lect01_michigan_big_data.jpg)\n",
+    "\n",
+    "Data science as a multidisciplinary set of skills:\n",
+    "http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram\n",
+    "![DSVenn](images/Data_Science_VD.png)\n",
+    "\n",
+    "Data science as a process:\n",
+    "https://medium.com/the-mission/deconstructing-data-science-breaking-the-complex-craft-into-its-simplest-parts-15b15420df21\n",
+    "![DSProcess](images/DataSciDecontruct.jpg)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# What is the path to \"Data Acumen\"?\n",
+    "\n",
+    "NAS reports inform this course and the following in the sequence. They suggest that DS curricula focus on:\n",
+    "- Strong analytical basis\n",
+    "- Oral and written communication\n",
+    "- Use real, \"messy\" data\n",
+    "- Show applications with broad impact\n",
+    "* Discuss ethical implications, such as unreliable and/or biased outcomes\n",
+    "    * https://www.nature.com/news/there-is-a-blind-spot-in-ai-research-1.20805\n",
+    "    * https://www.nature.com/articles/d41586-018-05469-3\n",
+    "\n",
+    "More specifically, that they provide training in:\n",
+    "- Mathematical foundations\n",
+    "- Computational thinking\n",
+    "- Statistical thinking\n",
+    "- Data management\n",
+    "- Data description and curation\n",
+    "- Data modeling\n",
+    "- Ethical problem solving\n",
+    "- Communication and reproducibility\n",
+    "- Domain-specific considerations"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# What resources are available at Michigan?\n",
+    "This course complements excellent computational and DS resources at Michigan. Under the umbrella of Advanced Research Computing (ARC, http://arc.umich.edu/). Sign up for the newsletter (form at bottom of the page) to find out about upcoming events.\n",
+    "* Michigan Institute for Computational Discovery and Engineering (MICDE), http://micde.umich.edu/\n",
+    "     * Offers both a certificate and PhD that can be earned in parallel to your primary grad degree, http://micde.umich.edu/academic-programs/\n",
+    "     * Seminar series, symposia, ...\n",
+    "- CSCAR (http://cscar.research.umich.edu/) provides consulting services and training opportunities in data science, statistics, and advanced research computation.\n",
+    "- Michigan Institute for Data Science (MIDAS, http://midas.umich.edu/)\n",
+    "    - Hosts training and activities, including a Data Science Team\n",
+    "    - Offers a Certificate in DS\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Why did we add this course and what will we cover?\n",
+    "\n",
+    "This course aims to create a new tributary in data science. Most engineering core curricula (aside from CS) do not include the following topics that are prereqs for DS and ML learning courses, including:\n",
+    "\n",
+    "- Coding skills\n",
+    "    - Example: at UMich, Matlab is taught to freshman, but many students do not continue to use it and thus do not become confident programmers. Additionally, Matlab is not generally used in industry. Python is widely used in academia and industry, and continues in grow in importance.\n",
+    "    - Coding in python will be central to this course\n",
+    "- Linear algebra\n",
+    "    - We will not (cannot) go over all the material that would be taught in a pure linear algebra class\n",
+    "    - We will focus on how computers use linear algebra to solve problems. We will include key terms and numerical implementation.\n",
+    "- Probability and statistics\n",
+    "    - The focus will not be theory but implementation and how they form the foundation for many DS techniques\n",
+    "   \n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Course logistics\n",
+    "\n",
+    "- This is meant to be a practical class to provide skills to improve your productivity in future endeavors\n",
+    "- Please bring a laptop to each class. If you do not have one, please find a buddy with a laptop to work with\n",
+    "- We will be using a variety of resources, primarily free to the public or free to you via the Michigan library\n",
+    "- HW will be assigned approximately every week, highlighting key concepts\n",
+    "- Grading will be 20% class engagement (in-class and/or piazza), 40% HW (approx 10 assignements), and 40% quizes (approx. 4). Final grades will be based on a demonstration of mastery of the material (A = formed an excellent foundation; B = good foundation with gaps in a few areas; C = some understanding with significant gaps)\n",
+    "- All questions should be posted to Piazza, unless they truly only relate to you (e.g. illness, conflict...) so everyone can benefit from the discussion. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Next up....\n",
+    "\n",
+    "Intro to terminal, bash, and jupyter notebooks!"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    ""
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3.0
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.1"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 0
+}

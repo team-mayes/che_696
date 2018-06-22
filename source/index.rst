@@ -11,13 +11,13 @@ CHE 696: Data Science for Chemical Engineers
    :caption: Contents:
 
    syllabus.rst
-..   lectures/lecture01.ipynb
-..   lectures/lecture02.rst
-
-   :caption: About Sphinx:
-
+   lectures/nas_data_sci_path.rst
    extensions.rst
    ipython_directive.rst
+
+..   lectures/lecture01.ipynb
+..   lectures/lecture02.rst
+..   .. :caption: About Sphinx:
 
 
 Indices and tables
