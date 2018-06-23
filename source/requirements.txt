@@ -2,3 +2,4 @@
 matplotlib
 ipython
 numpydoc
+nbsphinx

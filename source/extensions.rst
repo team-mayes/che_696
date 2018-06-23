@@ -94,7 +94,7 @@ Using math
 ==========
 
 In sphinx you can include inline math :math:`x\leftarrow y\ x\forall
-y\ x-y` or display math
+        y\ x-y` or display math
 
 .. math::
 
@@ -158,12 +158,12 @@ original source code, a high-resolution PNG and a PDF.  In the PDF
 version of the document, the plot is included as a scalable PDF.
 
 .. plot:: pyplots/ellipses.py
-   :include-source:
+:include-source:
 
 
-You can also inline code for plots directly, and the code will be
-executed at documentation build time and the figure inserted into your
-docs; the following code::
+    You can also inline code for plots directly, and the code will be
+    executed at documentation build time and the figure inserted into your
+    docs; the following code::
 
    .. plot::
 

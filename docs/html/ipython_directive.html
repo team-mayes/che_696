@@ -4,12 +4,20 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>IPython Directive &#8212; CHE 696: Data Science for Chemical Engineers 0.1 documentation</title>
     <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
@@ -17,32 +25,38 @@
     <script type="text/javascript" src="_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Sphinx extensions for embedded plots, math and more" href="extensions.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
-  </head><body>
+  </head>
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="extensions.html" title="Sphinx extensions for embedded plots, math and more"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">CHE 696: Data Science for Chemical Engineers 0.1 documentation</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="extensions.html"
+                        title="previous chapter">Sphinx extensions for embedded plots, math and more</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -59,10 +73,10 @@
 <p>The IPython directive is a stateful IPython shell for embedding in
 Sphinx documents.  It knows about standard IPython prompts, and
 extracts the input and output lines.  These prompts will be renumbered
-starting at <code class="docutils literal notranslate"><span class="pre">1</span></code>.  The inputs will be fed to an embedded IPython
+starting at <code class="docutils literal"><span class="pre">1</span></code>.  The inputs will be fed to an embedded IPython
 interpreter and the outputs from that interpreter will be inserted as
 well.  For example, code blocks like the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">ipython</span><span class="p">::</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">ipython</span><span class="p">::</span>
 
    <span class="n">In</span> <span class="p">[</span><span class="mi">136</span><span class="p">]:</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
 
@@ -101,11 +115,11 @@ if you are doctesting random output you will get an error.  Here we
 suppress the seed line so it doesn’t show up in the rendered output</p>
 <p>Another demonstration of multi-line input and output</p>
 <p>Most of the “pseudo-decorators” can be used as options to IPython
-mode.  For example, to setup <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> but suppress the output,
+mode.  For example, to setup <code class="docutils literal"><span class="pre">matplotlib</span></code> but suppress the output,
 you can do.  This will not show up in the rendered docs, but the commands
 will be executed in the embedded interpreter and subsequent line numbers
 will be incremented to reflect the inputs:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">ipython</span><span class="p">::</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">ipython</span><span class="p">::</span>
    <span class="p">:</span><span class="n">suppress</span><span class="p">:</span>
 
    <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -113,31 +127,31 @@ will be incremented to reflect the inputs:</p>
    <span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Likewise, you can set the <code class="docutils literal notranslate"><span class="pre">:doctest:</span></code> or <code class="docutils literal notranslate"><span class="pre">:verbatim:</span></code> Sphinx options to
+<p>Likewise, you can set the <code class="docutils literal"><span class="pre">:doctest:</span></code> or <code class="docutils literal"><span class="pre">:verbatim:</span></code> Sphinx options to
 apply these settings to the entire block.  For example,</p>
 <p>You can create one or more plots and insert them with the
-<code class="docutils literal notranslate"><span class="pre">&#64;savefig</span></code> decorator.</p>
+<code class="docutils literal"><span class="pre">&#64;savefig</span></code> decorator.</p>
 <p>In a subsequent session, we can update the current figure with some
 text, and then resave</p>
 <div class="section" id="pseudo-decorators">
 <h2>Pseudo-Decorators<a class="headerlink" href="#pseudo-decorators" title="Permalink to this headline">¶</a></h2>
 <p>Here are the supported decorators, and any optional arguments they
 take.  Some of the decorators can be used as options to the entire
-block (eg <code class="docutils literal notranslate"><span class="pre">verbatim</span></code> and <code class="docutils literal notranslate"><span class="pre">suppress</span></code>), and some only apply to the
-line just below them (eg <code class="docutils literal notranslate"><span class="pre">savefig</span></code>).</p>
-<p><code class="docutils literal notranslate"><span class="pre">&#64;suppress</span></code></p>
+block (eg <code class="docutils literal"><span class="pre">verbatim</span></code> and <code class="docutils literal"><span class="pre">suppress</span></code>), and some only apply to the
+line just below them (eg <code class="docutils literal"><span class="pre">savefig</span></code>).</p>
+<p><code class="docutils literal"><span class="pre">&#64;suppress</span></code></p>
 <blockquote>
 <div>execute the IPython input block, but suppress the input and output
 block from the rendered output.  Also, can be applied to the entire
-<code class="docutils literal notranslate"><span class="pre">..ipython</span></code> block as a directive option with <code class="docutils literal notranslate"><span class="pre">:suppress:</span></code>.</div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">&#64;verbatim</span></code></p>
+<code class="docutils literal"><span class="pre">..ipython</span></code> block as a directive option with <code class="docutils literal"><span class="pre">:suppress:</span></code>.</div></blockquote>
+<p><code class="docutils literal"><span class="pre">&#64;verbatim</span></code></p>
 <blockquote>
 <div>insert the input and output block in verbatim, but auto-increment
 the line numbers. Internally, the interpreter will be fed an empty
 string, so it is a no-op that keeps line numbering consistent.
-Also, can be applied to the entire <code class="docutils literal notranslate"><span class="pre">..ipython</span></code> block as a
-directive option with <code class="docutils literal notranslate"><span class="pre">:verbatim:</span></code>.</div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">&#64;savefig</span> <span class="pre">OUTFILE</span> <span class="pre">[IMAGE_OPTIONS]</span></code></p>
+Also, can be applied to the entire <code class="docutils literal"><span class="pre">..ipython</span></code> block as a
+directive option with <code class="docutils literal"><span class="pre">:verbatim:</span></code>.</div></blockquote>
+<p><code class="docutils literal"><span class="pre">&#64;savefig</span> <span class="pre">OUTFILE</span> <span class="pre">[IMAGE_OPTIONS]</span></code></p>
 <blockquote>
 <div>save the figure to the static directory and insert it into the
 document, possibly binding it into a minipage and/or putting
@@ -145,19 +159,19 @@ code/figure label/references to associate the code and the
 figure. Takes args to pass to the image directive (<em>scale</em>,
 <em>width</em>, etc can be kwargs); see <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/directives.html#image">image options</a>
 for details.</div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">&#64;doctest</span></code></p>
+<p><code class="docutils literal"><span class="pre">&#64;doctest</span></code></p>
 <blockquote>
 <div>Compare the pasted in output in the IPython block with the output
 generated at doc build time, and raise errors if they don’t
-match. Also, can be applied to the entire <code class="docutils literal notranslate"><span class="pre">..ipython</span></code> block as a
-directive option with <code class="docutils literal notranslate"><span class="pre">:doctest:</span></code>.</div></blockquote>
+match. Also, can be applied to the entire <code class="docutils literal"><span class="pre">..ipython</span></code> block as a
+directive option with <code class="docutils literal"><span class="pre">:doctest:</span></code>.</div></blockquote>
 </div>
 <div class="section" id="enabling-ipython-directive">
 <h2>Enabling IPython Directive<a class="headerlink" href="#enabling-ipython-directive" title="Permalink to this headline">¶</a></h2>
 <p>To enable the IPython directive(s) in your Sphinx documentation,
-you’ll need to have <code class="docutils literal notranslate"><span class="pre">IPython</span></code> installed and include the following
-in your Sphinx configuration (<code class="docutils literal notranslate"><span class="pre">conf.py</span></code>):</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+you’ll need to have <code class="docutils literal"><span class="pre">IPython</span></code> installed and include the following
+in your Sphinx configuration (<code class="docutils literal"><span class="pre">conf.py</span></code>):</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;IPython.sphinxext.ipython_directive&#39;</span><span class="p">,</span>
     <span class="s1">&#39;IPython.sphinxext.ipython_console_highlighting&#39;</span><span class="p">,</span>
     <span class="o">...</span>
@@ -167,7 +181,7 @@ in your Sphinx configuration (<code class="docutils literal notranslate"><span c
 </div>
 <div class="section" id="sphinx-source-for-this-tutorial">
 <span id="ipython-literal"></span><h2>Sphinx source for this tutorial<a class="headerlink" href="#sphinx-source-for-this-tutorial" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.. _ipython_directive:
+<div class="highlight-default"><div class="highlight"><pre><span></span>.. _ipython_directive:
 
 =================
 IPython Directive
@@ -453,12 +467,15 @@ Sphinx source for this tutorial
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="extensions.html" title="Sphinx extensions for embedded plots, math and more"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">CHE 696: Data Science for Chemical Engineers 0.1 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Heather Mayes.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
     </div>
   </body>
 </html>
