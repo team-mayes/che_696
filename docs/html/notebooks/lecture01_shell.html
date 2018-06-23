@@ -1,0 +1,135 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Intro to basic text-based computer interfaces &#8212; CHE 696: Data Science for Chemical Engineers 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: Data Science for Chemical Engineers 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="Intro-to-basic-text-based-computer-interfaces">
+<h1>Intro to basic text-based computer interfaces<a class="headerlink" href="#Intro-to-basic-text-based-computer-interfaces" title="Permalink to this headline">¶</a></h1>
+<p><em>Related text</em>: Chapter 1 of <a class="reference external" href="http://www.crcnetbase.com/isbn/978-1-4987-4506-2">Introduction to Scientific and Technical
+Computing</a></p>
+<p>Before we get into programming with python, we’ll cover interacting with
+computers using bash, a convient and fast route to file handing and much
+more.</p>
+</div>
+<div class="section" id="Shell-overview">
+<h1>Shell overview<a class="headerlink" href="#Shell-overview" title="Permalink to this headline">¶</a></h1>
+<p>Many of the programs we use have GUIs: Graphical User Interfaces. Direct
+text input can often save quite a bit of time and allow additional
+functionality. While the tasks in this class will be able to be
+completed on a laptop or desktop (in any operating system), scientific
+computing generally requires larger, remote resources that are typically
+Unix or Unix-like systems. In those systems, the primary mode of user
+iteraction with the operating system is via text-based <strong>shell</strong>
+processes.</p>
+<p>There are several different types of shells, including csh/tcsh,
+sh/Bash, ksh, and zsh. The most common type, and the only one we will
+discuss is <strong>bash</strong>, the Bourne-again shell. The associated reeading
+gives more detail on why bash is the way to go. <em>FYI:</em> if you are given
+an account on a Unix-based computer, the default shell assigned is
+usually bash, but this is an option you can change. Look to resources
+like <a class="reference external" href="https://stackoverflow.com/">https://stackoverflow.com/</a> will give you instructions to implement
+that.</p>
+<p>Mac OSX is built on a Unix platform and has a built-in program,
+<em>terminal</em>, that provides shell. The default type is bash. The
+preferences will allow you to change to another type. For this class,
+we’ll stick with bash as it the one that will likely serve you best.
+<em>FYI:</em> bash on OSX is mostly the same as bash on a Linux machine, but
+there are a few differences (e.g., see
+<a class="reference external" href="https://unix.stackexchange.com/questions/82244/bash-in-linux-v-s-mac-os">https://unix.stackexchange.com/questions/82244/bash-in-linux-v-s-mac-os</a>).
+This is good to remember if you see different behavior for the same
+command on these two types of machines.</p>
+<p>Windows computers do not have a built-in Unix-like shell, but have shell
+emulators. There are many options, including <a class="reference external" href="https://www.putty.org/">https://www.putty.org/</a>.
+Windows 10 now allows you to install Linux (see, for example,
+<a class="reference external" href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">https://docs.microsoft.com/en-us/windows/wsl/install-win10</a>) which is
+another route to get you to a bash shell.</p>
+<p>For the first homework, you will need to write and run bash commands.</p>
+<p>You will find bash scripts and commands useful throughout this course.
+They can even be invoked from within a python program.</p>
+</div>
+<div class="section" id="Some-basic,-extremely-useful-bash-commands">
+<h1>Some basic, extremely useful bash commands<a class="headerlink" href="#Some-basic,-extremely-useful-bash-commands" title="Permalink to this headline">¶</a></h1>
+<p>First, open a bash session (e.g. launch terminal on your mac).</p>
+<p>Type <code class="docutils literal"><span class="pre">pwd</span></code>. What do you see?</p>
+def f(x):
+    """a docstring"""
+    return x**2</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: Data Science for Chemical Engineers 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Heather Mayes.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
+    </div>
+  </body>
+</html>
