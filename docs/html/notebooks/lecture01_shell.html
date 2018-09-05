@@ -9,7 +9,7 @@
     <title>Intro to basic text-based computer interfaces: bash and vim &#8212; CHE 696: Data Science for Chemical Engineers 0.1 documentation</title>
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -110,7 +110,7 @@ how cryptic its commands and operation can be.</li>
 </ul>
 <div class="section" id="Some-basic,-extremely-useful-bash-commands">
 <h3>Some basic, extremely useful bash commands<a class="headerlink" href="#Some-basic,-extremely-useful-bash-commands" title="Permalink to this headline">¶</a></h3>
-<p>First, open a bash session (e.g.&nbsp;launch terminal on your mac).</p>
+<p>First, open a bash session (e.g. launch terminal on your mac).</p>
 <p>Enter the following commands (one at a time), and note what you see:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pwd</span>
 <span class="n">ls</span>
@@ -140,9 +140,9 @@ another directory. Now, explore what happens when you: - enter only
 </pre></div>
 </div>
 <p>There are multiple ways to learn what they do, including reading the
-related text, using <code class="docutils literal notranslate"><span class="pre">man</span></code>’, and, of course, asking the internet.
-There are great tutorials for those interested in learning more (see
-link at the beginning of this notebook), which will pay off if you are a
+related text, using <code class="docutils literal notranslate"><span class="pre">man</span></code>’, and, of course, asking the internet. There
+are great tutorials for those interested in learning more (see link at
+the beginning of this notebook), which will pay off if you are a
 computational researcher. For this course, make sure you learn some
 basics, which we will go over today and practice on HW01.</p>
 <p>Quick note on directories: to copy or delete a directory, you’ll need to
@@ -166,7 +166,7 @@ through your history</li>
 </div>
 <div class="section" id="Customizing-bash">
 <h3>Customizing bash<a class="headerlink" href="#Customizing-bash" title="Permalink to this headline">¶</a></h3>
-<p>In your home directory (e.g.&nbsp;type <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">$HOME</span></code>), you may have both a
+<p>In your home directory (e.g. type <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">$HOME</span></code>), you may have both a
 <code class="docutils literal notranslate"><span class="pre">.bash_profile</span></code> and <code class="docutils literal notranslate"><span class="pre">.bash_rc</span></code>. It can be confusing why there are
 two places you can customize bash, and where to put what, as described
 in multiple places such as:
@@ -183,7 +183,7 @@ sure this is run by adding the following to your <code class="docutils literal n
 <span class="n">export</span> <span class="n">LS_COLORS</span><span class="o">=</span><span class="s1">&#39;di=1;35&#39;</span>
 </pre></div>
 </div>
-<p>The first line turns on color coding (e.g.&nbsp;use different colored text
+<p>The first line turns on color coding (e.g. use different colored text
 for files and directories), and the second defines colors to use. There
 are many options for defining colors, and many suggestions. This happens
 to the be choice I use. An internet search will provide many alternate
@@ -228,8 +228,8 @@ option provides helping coloring of key words.</p>
 <code class="docutils literal notranslate"><span class="pre">.vimrc</span></code>. See <a class="reference external" href="https://danielmiessler.com/study/vim/#null">https://danielmiessler.com/study/vim/#null</a> for several
 suggestions, if you are interested.</p>
 </div>
-<div class="section" id="‘Normal’-and-‘insert’-modes">
-<h2>‘Normal’ and ‘insert’ modes<a class="headerlink" href="#‘Normal’-and-‘insert’-modes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="'Normal'-and-'insert'-modes">
+<h2>‘Normal’ and ‘insert’ modes<a class="headerlink" href="#'Normal'-and-'insert'-modes" title="Permalink to this headline">¶</a></h2>
 <p>Some basics: When you first open a file with vim, you will be in
 ‘normal’ mode. To enter text, you need to be in ‘insert’ mode. Type
 <code class="docutils literal notranslate"><span class="pre">i</span></code> to enter insert mode. When you are done typing (or pasting from
@@ -263,7 +263,7 @@ beginning</li>
 occurance, and <code class="docutils literal notranslate"><span class="pre">N</span></code> to the previous occurance.</li>
 </ul>
 <p><em>FYI</em>: tutorials and ‘cheatsheets’ will show you may more time-saving
-navigation tricks, e.g.&nbsp;skipping to the next word, etc.</p>
+navigation tricks, e.g. skipping to the next word, etc.</p>
 </div>
 <div class="section" id="Copy-and-Paste">
 <h2>Copy and Paste<a class="headerlink" href="#Copy-and-Paste" title="Permalink to this headline">¶</a></h2>
@@ -380,7 +380,7 @@ contents:</p>
 <h2><code class="docutils literal notranslate"><span class="pre">grep</span></code><a class="headerlink" href="#grep" title="Permalink to this headline">¶</a></h2>
 <p>This utility searches for strings in files. It has many functions. It
 can search in one or many files. By default, it returns the line with
-the matching word, but that can be adjusted (e.g.&nbsp;return lines before or
+the matching word, but that can be adjusted (e.g. return lines before or
 after).</p>
 <p>In the directory with the files <code class="docutils literal notranslate"><span class="pre">stp.txt</span></code>, enter the command:
 <code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">tree</span> <span class="pre">stp.txt</span></code>. What do you see?</p>
@@ -478,7 +478,7 @@ is: <a class="reference external" href="https://www.gnu.org/software/sed/manual/
 <h2>awk for text processing and extraction<a class="headerlink" href="#awk-for-text-processing-and-extraction" title="Permalink to this headline">¶</a></h2>
 <p>We will not spend much time on this powerful utility. Hereis one example
 of its functionality. There are many resources to learn more, should you
-be interested (e.g.&nbsp;<a class="reference external" href="https://likegeeks.com/awk-command/">https://likegeeks.com/awk-command/</a>;
+be interested (e.g. <a class="reference external" href="https://likegeeks.com/awk-command/">https://likegeeks.com/awk-command/</a>;
 <a class="reference external" href="https://www.gnu.org/software/gawk/manual/gawk.html#toc-Getting-Started-with-awk">https://www.gnu.org/software/gawk/manual/gawk.html#toc-Getting-Started-with-awk</a>
 for a whole book on it).</p>
 <p>I often use awk to print a column from a file. Key variables available
@@ -491,7 +491,7 @@ include: * <code class="docutils literal notranslate"><span class="pre">$0</span
 <span class="n">awk</span> <span class="s1">&#39;{print $1,$3}&#39;</span> <span class="n">all_bananas</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
-<p>This can be used in conjunction with other commands, (e.g.&nbsp;using <code class="docutils literal notranslate"><span class="pre">|</span></code>)
+<p>This can be used in conjunction with other commands, (e.g. using <code class="docutils literal notranslate"><span class="pre">|</span></code>)
 to, for example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tail</span> <span class="o">-</span><span class="mi">2</span><span class="n">n</span> <span class="n">all_bananas</span><span class="o">.</span><span class="n">txt</span> <span class="o">|</span> <span class="n">awk</span> <span class="s1">&#39;{print $1,$3}&#39;</span>
 </pre></div>
@@ -523,7 +523,7 @@ our efficiency. It is not a main focus.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Heather Mayes.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.8.
     </div>
   </body>
 </html>
