@@ -1,4 +1,0 @@
-banana_2.txt:May I have 2 bananas?
-banana_4.txt:May I have 4 bananas?
-banana_6.txt:May I have 6 bananas?
-banana_8.txt:May I have 8 bananas?

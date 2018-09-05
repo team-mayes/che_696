@@ -41,9 +41,7 @@
   {
    "cell_type": "raw",
    "metadata": {},
-   "source": [
-    "$ mkdir hw01prob01"
-   ]
+   "source": []
   },
   {
    "cell_type": "markdown",
@@ -61,13 +59,7 @@
   {
    "cell_type": "raw",
    "metadata": {},
-   "source": [
-    "$ cd hw01prob01\n",
-    "$ vim hopper_quotes.txt\n",
-    "i\n",
-    "(copied text above and pasted from my computer's copy buffer)\n",
-    ":wq"
-   ]
+   "source": []
   },
   {
    "cell_type": "markdown",
@@ -79,9 +71,7 @@
   {
    "cell_type": "raw",
    "metadata": {},
-   "source": [
-    "$ tail -1 hopper_quotes.txt "
-   ]
+   "source": []
   },
   {
    "cell_type": "markdown",
@@ -93,10 +83,7 @@
   {
    "cell_type": "raw",
    "metadata": {},
-   "source": [
-    "$ sed \"s/ is / remains /g\" <  hopper_quotes.txt > hopper_edited.txt\n",
-    "$ cat hopper_edited.txt"
-   ]
+   "source": []
   },
   {
    "cell_type": "markdown",
@@ -109,10 +96,7 @@
   {
    "cell_type": "raw",
    "metadata": {},
-   "source": [
-    "$ cat hopper_quotes.txt hopper_edited.txt > combined.txt\n",
-    "$ wc -l combined.txt"
-   ]
+   "source": []
   },
   {
    "cell_type": "markdown",
@@ -124,9 +108,7 @@
   {
    "cell_type": "raw",
    "metadata": {},
-   "source": [
-    "$ ls -lhtr"
-   ]
+   "source": []
   },
   {
    "cell_type": "markdown",
@@ -138,12 +120,7 @@
   {
    "cell_type": "raw",
    "metadata": {},
-   "source": [
-    "$ cd ..\n",
-    "$ cp -r hw01prob01 hw01prob01_complete\n",
-    "$ diff hw01prob01 hw01prob01_complete\n",
-    "$ rm -r hw01prob01"
-   ]
+   "source": []
   },
   {
    "cell_type": "markdown",
@@ -155,14 +132,7 @@
   {
    "cell_type": "raw",
    "metadata": {},
-   "source": [
-    "$ cd\n",
-    "$ ls -lha\n",
-    "-rw-r--r--    1 hbmayes  staff   592B Jun 27 14:09 .bash_profile\n",
-    "-rw-r--r--    1 hbmayes  staff   118B Jul  4  2017 .bashrc\n",
-    "-rw-------    1 hbmayes  staff    21B Jun 26  2017 .vimrc\n",
-    "-rw-------    1 hbmayes  staff   101K Jul 23  2017 .vmdrc"
-   ]
+   "source": []
   },
   {
    "cell_type": "markdown",
@@ -194,9 +164,7 @@
   {
    "cell_type": "raw",
    "metadata": {},
-   "source": [
-    "agile_manifesto.txt"
-   ]
+   "source": []
   },
   {
    "cell_type": "markdown",
@@ -208,9 +176,7 @@
   {
    "cell_type": "raw",
    "metadata": {},
-   "source": [
-    "awk '{print $2,$4}' agile_manifesto.txt "
-   ]
+   "source": []
   },
   {
    "cell_type": "markdown",
@@ -222,9 +188,7 @@
   {
    "cell_type": "raw",
    "metadata": {},
-   "source": [
-    "grep 'we' agile_manifesto.txt "
-   ]
+   "source": []
   },
   {
    "cell_type": "markdown",
@@ -238,10 +202,7 @@
   {
    "cell_type": "raw",
    "metadata": {},
-   "source": [
-    "/item\n",
-    "n"
-   ]
+   "source": []
   },
   {
    "cell_type": "markdown",
@@ -253,10 +214,7 @@
   {
    "cell_type": "raw",
    "metadata": {},
-   "source": [
-    ":0\n",
-    "$"
-   ]
+   "source": []
   },
   {
    "cell_type": "markdown",
@@ -268,10 +226,7 @@
   {
    "cell_type": "raw",
    "metadata": {},
-   "source": [
-    ":5\n",
-    "dd"
-   ]
+   "source": []
   },
   {
    "cell_type": "markdown",
@@ -283,10 +238,7 @@
   {
    "cell_type": "raw",
    "metadata": {},
-   "source": [
-    "GG\n",
-    "5p"
-   ]
+   "source": []
   },
   {
    "cell_type": "markdown",
@@ -298,11 +250,7 @@
   {
    "cell_type": "raw",
    "metadata": {},
-   "source": [
-    ":%s/we/I/gc \n",
-    ":%s/We are/I am/gc\n",
-    ":wq"
-   ]
+   "source": []
   }
  ],
  "metadata": {

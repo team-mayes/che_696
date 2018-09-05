@@ -9,7 +9,7 @@
     <title>HW1, practicing bash and vim &#8212; CHE 696: Data Science for Chemical Engineers 0.1 documentation</title>
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -80,73 +80,62 @@ such as:</p>
 <ol class="lowerroman simple">
 <li>Create a directory named ‘hw01prob01’</li>
 </ol>
-$ mkdir hw01prob01<ol class="lowerroman" start="2">
-<li><p class="first">In that directory create a file named ‘hopper_quotes.txt’
-containing the following text (okay to use vim in this part):</p>
-<p>To me programming is more than an important practical art. It is
-also a gigantic undertaking in the foundations of knowledge.</p>
-<p>No computer is ever going to ask a new, reasonable question. It
-takes trained people to do that.</p>
-<p>We’re flooding people with information. We need to feed it through a
+<ol class="lowerroman simple" start="2">
+<li>In that directory create a file named ‘hopper_quotes.txt’ containing
+the following text (okay to use vim in this part):</li>
+</ol>
+<blockquote>
+<div><p>To me programming is more than an important practical art. It is also
+a gigantic undertaking in the foundations of knowledge.</p>
+<p>No computer is ever going to ask a new, reasonable question. It takes
+trained people to do that.</p>
+</div></blockquote>
+<blockquote>
+<div>We’re flooding people with information. We need to feed it through a
 processor. A human must turn information into intelligence or
 knowledge. We’ve tended to forget that no computer will ever ask a
-new question.</p>
-</li>
-</ol>
-$ cd hw01prob01
-$ vim hopper_quotes.txt
-i
-(copied text above and pasted from my computer's copy buffer)
-:wq<ol class="lowerroman simple" start="3">
+new question.</div></blockquote>
+<ol class="lowerroman simple" start="3">
 <li>From the command line, display (on your terminal) the last line of
 the file.</li>
 </ol>
-$ tail -1 hopper_quotes.txt<ol class="lowerroman simple" start="4">
+<ol class="lowerroman simple" start="4">
 <li>In one line of bash commands: make a copy of that file, naming it
-‘hopper_edited.txt’, while changing <em>every</em> instance of ‘ is ‘ to ‘
-remains ‘ (spaces added so that only the whole word is replaced,
+‘hopper_edited.txt’, while changing <em>every</em> instance of ’ is ’ to ’
+remains ’ (spaces added so that only the whole word is replaced,
 rather than parts of words, like accidentally changing ‘this’ to
 ‘thremains’). Display the full contents of this edited file.</li>
 </ol>
-$ sed "s/ is / remains /g" <  hopper_quotes.txt > hopper_edited.txt
-$ cat hopper_edited.txt<ol class="loweralpha simple" start="22">
+<ol class="loweralpha simple" start="22">
 <li>Make a new file ‘combined.txt’ with all the contents of
 ‘hopper_quotes.txt’ followed by ‘hopper_edited.txt’. Display the
 total number of lines of this new file.</li>
 </ol>
-$ cat hopper_quotes.txt hopper_edited.txt > combined.txt
-$ wc -l combined.txt<ol class="lowerroman simple" start="6">
+<ol class="lowerroman simple" start="6">
 <li>Display the contents of the directory ‘hw01prob01’ including the
 permission on each file (additional information may be printed if
 desired).</li>
 </ol>
-$ ls -lhtr<ol class="lowerroman simple" start="7">
+<ol class="lowerroman simple" start="7">
 <li>Copy the whole directory ‘hw01prob01’ to a new one named
 ‘’hw01prob01_complete’. Compare these directories. Then delete
 ‘hw01prob01’ and all its contents.</li>
 </ol>
-$ cd ..
-$ cp -r hw01prob01 hw01prob01_complete
-$ diff hw01prob01 hw01prob01_complete
-$ rm -r hw01prob01<ol class="lowerroman simple" start="8">
+<ol class="lowerroman simple" start="8">
 <li>Using a shortcut, navigate to your home directory. List all the
 hidden files. In addition to reporting the commands for these two
 actions, report (some of) the hidden files that you have in your
 home directory which change preferences for particular programs.</li>
 </ol>
-$ cd
-$ ls -lha
--rw-r--r--    1 hbmayes  staff   592B Jun 27 14:09 .bash_profile
--rw-r--r--    1 hbmayes  staff   118B Jul  4  2017 .bashrc
--rw-------    1 hbmayes  staff    21B Jun 26  2017 .vimrc
--rw-------    1 hbmayes  staff   101K Jul 23  2017 .vmdrc</div>
+</div>
 <div class="section" id="2.-Type-the-vim-commands-needed-to-perform-the-following-tasks.">
 <h2>2. Type the vim commands needed to perform the following tasks.<a class="headerlink" href="#2.-Type-the-vim-commands-needed-to-perform-the-following-tasks." title="Permalink to this headline">¶</a></h2>
 <p>First, make a file with the following text (you do not need to report
 how you created this file).</p>
 <blockquote>
-<div><p>Manifesto for Agile Software Development</p>
-<p>We are uncovering better ways of developing software by doing it and
+<div>Manifesto for Agile Software Development</div></blockquote>
+<blockquote>
+<div><p>We are uncovering better ways of developing software by doing it and
 helping others do it. Through this work we have come to value:</p>
 <ul class="simple">
 <li><em>Individuals and interactions</em> over processes and tools</li>
@@ -154,55 +143,51 @@ helping others do it. Through this work we have come to value:</p>
 <li><em>Customer collaboration</em> over contract negotiation</li>
 <li><em>Responding to change</em> over following a plan</li>
 </ul>
-<p>That is, while there is value in the items on the right, we value
-the items on the left more.</p>
-<p>Signed: Kent Beck, Mike Beedle, Arie van Bennekum, Alistair
-Cockburn, Ward Cunningham, Martin Fowler, James Grenning, Jim
-Highsmith, Andrew Hunt, Ron Jeffries, Jon Kern, Brian Marick, Robert
-C. Martin, Steve Mellor, Ken Schwaber, Jeff Sutherland, Dave Thomas</p>
+</div></blockquote>
+<blockquote>
+<div><p>That is, while there is value in the items on the right, we value the
+items on the left more.</p>
+<p>Signed: Kent Beck, Mike Beedle, Arie van Bennekum, Alistair Cockburn,
+Ward Cunningham, Martin Fowler, James Grenning, Jim Highsmith, Andrew
+Hunt, Ron Jeffries, Jon Kern, Brian Marick, Robert C. Martin, Steve
+Mellor, Ken Schwaber, Jeff Sutherland, Dave Thomas</p>
 </div></blockquote>
 <ol class="lowerroman simple">
 <li>Report the name you used for the file. The name should follow
 guidelines discussed in class (which still leaves many valid
 options).</li>
 </ol>
-agile_manifesto.txt<ol class="lowerroman simple" start="2">
+<ol class="lowerroman simple" start="2">
 <li>In your bash terminal, type the command to print the second word and
 forth word (one after the other) of every line. Verify that the
 first line of output is “for Software”.</li>
 </ol>
-awk '{print $2,$4}' agile_manifesto.txt<ol class="lowerroman simple" start="3">
+<ol class="lowerroman simple" start="3">
 <li>In your bash terminal, type the command to print every line that
 contains the word ‘we’.</li>
 </ol>
-grep 'we' agile_manifesto.txt<p>All remaining parts of this problem will be completed in vim. Report the
+<p>All remaining parts of this problem will be completed in vim. Report the
 vim commands to:</p>
 <ol class="lowerroman simple" start="4">
 <li>Find the first instance of the word ‘item’ or ‘items’. Then skip to
 the next occurence.</li>
 </ol>
-/item
-n<ol class="loweralpha simple" start="22">
+<ol class="loweralpha simple" start="22">
 <li>Return to the first line using a shortcut. Then use a shortcut to
 move the cursor to the end of the line.</li>
 </ol>
-:0
-$<ol class="lowerroman simple" start="6">
+<ol class="lowerroman simple" start="6">
 <li>Move to line 5. Cut/delete it.</li>
 </ol>
-:5
-dd<ol class="lowerroman simple" start="7">
+<ol class="lowerroman simple" start="7">
 <li>Move to the end of the file. Paste the deleted line so it will
 appear five times.</li>
 </ol>
-GG
-5p<ol class="lowerroman simple" start="8">
+<ol class="lowerroman simple" start="8">
 <li>Replace all instances of the word ‘we’ with the word ‘I’. Also
 replace ‘We are’ with ‘I am’. Save and close the file.</li>
 </ol>
-:%s/we/I/gc
-:%s/We are/I am/gc
-:wq</div>
+</div>
 </div>
 
 
@@ -222,7 +207,7 @@ replace ‘We are’ with ‘I am’. Save and close the file.</li>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Heather Mayes.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.8.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
     </div>
   </body>
 </html>
