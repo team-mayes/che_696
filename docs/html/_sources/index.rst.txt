@@ -11,8 +11,6 @@ CHE 696: Data Science for Chemical Engineers
    :caption: Contents:
 
    syllabus.rst
-   extensions.rst
-   ipython_directive.rst
 
    lectures/nas_data_sci_path.rst
    notebooks/lecture01.ipynb
