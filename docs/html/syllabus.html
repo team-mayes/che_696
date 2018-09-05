@@ -4,20 +4,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Syllabus &#8212; CHE 696: Data Science for Chemical Engineers 0.1 documentation</title>
     <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
@@ -25,14 +17,13 @@
     <script type="text/javascript" src="_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="How to Learn Data Science" href="lectures/nas_data_sci_path.html" />
+    <link rel="next" title="Sphinx extensions for embedded plots, math and more" href="extensions.html" />
     <link rel="prev" title="CHE 696: Data Science for Chemical Engineers" href="index.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
-  </head>
-  <body>
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -40,7 +31,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="lectures/nas_data_sci_path.html" title="How to Learn Data Science"
+          <a href="extensions.html" title="Sphinx extensions for embedded plots, math and more"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="index.html" title="CHE 696: Data Science for Chemical Engineers"
@@ -54,16 +45,18 @@
   <p class="topless"><a href="index.html"
                         title="previous chapter">CHE 696: Data Science for Chemical Engineers</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="lectures/nas_data_sci_path.html"
-                        title="next chapter">How to Learn Data Science</a></p>
+  <p class="topless"><a href="extensions.html"
+                        title="next chapter">Sphinx extensions for embedded plots, math and more</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -86,7 +79,7 @@ MW 10-11:30 am, 3150 Dow</p>
 <h2>Topics<a class="headerlink" href="#topics" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><dl class="first docutils">
-<dt>One week intro to Bash/Python/vim/IDE (main ideas, then practice the rest of the semester)</dt>
+<dt>Intro to Bash/Python/vim/IDE (main ideas, then practice the rest of the semester)</dt>
 <dd><ul class="first last">
 <li>Get students comfortable with pycharm and jupyter notebooks (they can proceed with either)</li>
 <li>Enough of a foundation to be able to immediately use in the next week</li>
@@ -101,45 +94,41 @@ MW 10-11:30 am, 3150 Dow</p>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>Two weeks on data structures (continuing intro python)</dt>
+<dt>Programming practices</dt>
+<dd><ul class="first last">
+<li>Versioning (git)</li>
+<li>Testing</li>
+<li>Modular programming</li>
+<li>Documentation</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Data structures (continuing intro python)</dt>
 <dd><ul class="first last">
 <li>Basic data types (integers, floats, lists, tuples, arrays, dictionaries)</li>
 <li>Tree, graphs (network X)</li>
 <li>Tie together how data structures are composed of other data structures (trees for sorted lists, keys on dicts, etc.)</li>
 <li>Debugging</li>
 <li>Timing (libraries versus writing own functions)</li>
-<li></li>
-<li></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>Three weeks on basics of linear algebra/numerical methods</dt>
+<dt>Basics of linear algebra/numerical methods</dt>
 <dd><ul class="first last">
 <li>Show how to solve by hand and using numpy libraries</li>
 <li>Matrix algebra</li>
 <li>Linear determinants</li>
 <li>Basic eigenvalue/eigenvector problems</li>
-<li></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>Two weeks on programming practices</dt>
-<dd><ul class="first last">
-<li>Versioning (git)</li>
-<li>Testing</li>
-<li>Modular programming</li>
-<li>Documentation</li>
-<li></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Three weeks on algorithms (e.g. key topics from <a class="reference external" href="http://algs4.cs.princeton.edu/home/">http://algs4.cs.princeton.edu/home/</a>)</dt>
+<dt>Algorithms (e.g. key topics from <a class="reference external" href="http://algs4.cs.princeton.edu/home/">http://algs4.cs.princeton.edu/home/</a>)</dt>
 <dd><ul class="first last">
 <li>Terminology: Big O notation, NP hard, etc.</li>
 <li>Sorting (as example)</li>
@@ -152,7 +141,7 @@ MW 10-11:30 am, 3150 Dow</p>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>Three weeks on probability and statistics</dt>
+<dt>Probability and statistics</dt>
 <dd><ul class="first last">
 <li>Basics (terminology, notation, basic laws)</li>
 <li>Conditional probabilities and Bayesian statistics</li>
@@ -166,12 +155,12 @@ MW 10-11:30 am, 3150 Dow</p>
 </div>
 <div class="section" id="texts">
 <h2>Texts<a class="headerlink" href="#texts" title="Permalink to this headline">¶</a></h2>
-<p>### Free online resources</p>
+<p>## Free online resources</p>
 <ul class="simple">
 <li><em>Whirlwind Tour of Python</em> by Jake VanderPlas, <a class="reference external" href="https://jakevdp.github.io/WhirlwindTourOfPython/">https://jakevdp.github.io/WhirlwindTourOfPython/</a></li>
 <li><em>Python Data Science Handbook</em> by Jake VanderPlas, <a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/">https://jakevdp.github.io/PythonDataScienceHandbook/</a></li>
 </ul>
-<p>### Free through the University of Michigan: Download while on campus or VPN</p>
+<p>## Free through the University of Michigan: Download while on campus or VPN</p>
 <p>Willmore, F. T.; Eric, J.; Coray, C. <em>Introduction to Scientific and Technical Computing</em>; Willmore, F. T., Eric, J., Coray, C., Eds.; Taylor &amp; Francis Group: Boca Raton, FL, 2017. <a class="reference external" href="http://www.crcnetbase.com/isbn/978-1-4987-4506-2">http://www.crcnetbase.com/isbn/978-1-4987-4506-2</a></p>
 </div>
 </div>
@@ -189,7 +178,7 @@ MW 10-11:30 am, 3150 Dow</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="lectures/nas_data_sci_path.html" title="How to Learn Data Science"
+          <a href="extensions.html" title="Sphinx extensions for embedded plots, math and more"
              >next</a> |</li>
         <li class="right" >
           <a href="index.html" title="CHE 696: Data Science for Chemical Engineers"
@@ -199,7 +188,7 @@ MW 10-11:30 am, 3150 Dow</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Heather Mayes.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
     </div>
   </body>
 </html>

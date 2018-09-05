@@ -4,20 +4,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Intro to basic text-based computer interfaces &#8212; CHE 696: Data Science for Chemical Engineers 0.1 documentation</title>
+    <title>Intro to basic text-based computer interfaces: bash and vim &#8212; CHE 696: Data Science for Chemical Engineers 0.1 documentation</title>
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -25,38 +17,32 @@
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Welcome to ChE 696, On-Ramp to Data Science!" href="lecture01.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
-  </head>
-  <body>
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="lecture01.html" title="Welcome to ChE 696, On-Ramp to Data Science!"
-             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: Data Science for Chemical Engineers 0.1 documentation</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="lecture01.html"
-                        title="previous chapter">Welcome to ChE 696, On-Ramp to Data Science!</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -67,13 +53,14 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="Intro-to-basic-text-based-computer-interfaces">
-<h1>Intro to basic text-based computer interfaces<a class="headerlink" href="#Intro-to-basic-text-based-computer-interfaces" title="Permalink to this headline">¶</a></h1>
-<p><em>Related text</em>: Chapter 1 of <a class="reference external" href="http://www.crcnetbase.com/isbn/978-1-4987-4506-2">Introduction to Scientific and Technical
-Computing</a></p>
+  <div class="section" id="Intro-to-basic-text-based-computer-interfaces:-bash-and-vim">
+<h1>Intro to basic text-based computer interfaces: bash and vim<a class="headerlink" href="#Intro-to-basic-text-based-computer-interfaces:-bash-and-vim" title="Permalink to this headline">¶</a></h1>
 <p>Before we get into programming with python, we’ll cover interacting with
 computers using bash, a convient and fast route to file handing and much
 more.</p>
+<p><em>Related text</em>: Chapter 1 of <a class="reference external" href="http://www.crcnetbase.com/isbn/978-1-4987-4506-2">Introduction to Scientific and Technical
+Computing</a></p>
+<p><em>Optional related tutorial:</em> <a class="reference external" href="http://swcarpentry.github.io/shell-novice/">http://swcarpentry.github.io/shell-novice/</a></p>
 </div>
 <div class="section" id="Shell-overview">
 <h1>Shell overview<a class="headerlink" href="#Shell-overview" title="Permalink to this headline">¶</a></h1>
@@ -110,14 +97,414 @@ another route to get you to a bash shell.</p>
 <p>For the first homework, you will need to write and run bash commands.</p>
 <p>You will find bash scripts and commands useful throughout this course.
 They can even be invoked from within a python program.</p>
-</div>
+<div class="section" id="Some-key-points-from-the-Software-carpentry-module-on-bash:">
+<h2>Some key points from the Software carpentry module on bash:<a class="headerlink" href="#Some-key-points-from-the-Software-carpentry-module-on-bash:" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>A shell is a program whose primary purpose is to read commands and
+run other programs.</li>
+<li>The shell’s main advantages are its high action-to-keystroke ratio,
+its support for automating repetitive tasks, and its capacity to
+access networked machines.</li>
+<li>The shell’s main disadvantages are its primarily textual nature and
+how cryptic its commands and operation can be.</li>
+</ul>
 <div class="section" id="Some-basic,-extremely-useful-bash-commands">
-<h1>Some basic, extremely useful bash commands<a class="headerlink" href="#Some-basic,-extremely-useful-bash-commands" title="Permalink to this headline">¶</a></h1>
-<p>First, open a bash session (e.g. launch terminal on your mac).</p>
-<p>Type <code class="docutils literal"><span class="pre">pwd</span></code>. What do you see?</p>
-def f(x):
-    """a docstring"""
-    return x**2</div>
+<h3>Some basic, extremely useful bash commands<a class="headerlink" href="#Some-basic,-extremely-useful-bash-commands" title="Permalink to this headline">¶</a></h3>
+<p>First, open a bash session (e.g.&nbsp;launch terminal on your mac).</p>
+<p>Enter the following commands (one at a time), and note what you see:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pwd</span>
+<span class="n">ls</span>
+<span class="n">ls</span> <span class="o">-</span><span class="n">F</span>
+<span class="n">ls</span> <span class="o">-</span><span class="n">a</span>
+<span class="n">ls</span> <span class="o">-</span><span class="n">lhatr</span>
+<span class="n">man</span> <span class="n">ls</span>
+<span class="n">which</span> <span class="n">ls</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">cd</span></code> to navigate to a different directory. Then <code class="docutils literal notranslate"><span class="pre">cd</span></code> to yet
+another directory. Now, explore what happens when you: - enter only
+<code class="docutils literal notranslate"><span class="pre">cd</span></code> - then enter <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">-</span></code> - enter <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">..</span></code> - enter <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">.</span></code> - enter
+<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">../..</span></code></p>
+<p>Other common, useful commands include:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span>
+<span class="n">rm</span>
+<span class="n">mv</span>
+<span class="n">mkdir</span>
+<span class="n">cat</span>
+<span class="n">tail</span>
+<span class="n">head</span>
+<span class="n">wget</span>
+<span class="n">diff</span>
+<span class="n">wc</span>
+<span class="n">find</span>
+</pre></div>
+</div>
+<p>There are multiple ways to learn what they do, including reading the
+related text, using <code class="docutils literal notranslate"><span class="pre">man</span></code>’, and, of course, asking the internet.
+There are great tutorials for those interested in learning more (see
+link at the beginning of this notebook), which will pay off if you are a
+computational researcher. For this course, make sure you learn some
+basics, which we will go over today and practice on HW01.</p>
+<p>Quick note on directories: to copy or delete a directory, you’ll need to
+add the flag <code class="docutils literal notranslate"><span class="pre">-r</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">test_dir</span></code>. However, be very, very
+careful with this. <code class="docutils literal notranslate"><span class="pre">rm</span></code> is forever.</p>
+<p><code class="docutils literal notranslate"><span class="pre">*</span></code> is wild. It can be very helpful! e.g. <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">*.dat</span></code> will display
+all the files in the current folder that have the <code class="docutils literal notranslate"><span class="pre">.dat</span></code> extention.</p>
+</div>
+<div class="section" id="Some-of-my-favorite-bash-time-saving-tips">
+<h3>Some of my favorite bash time-saving tips<a class="headerlink" href="#Some-of-my-favorite-bash-time-saving-tips" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>When you change your mind about what you want to type, <code class="docutils literal notranslate"><span class="pre">ctrl-u</span></code>
+clears the line. This is especially helpful when you are typing a
+password and may have made a typo; this lets you quickly start again</li>
+<li>Want to run a command again? The up arrow will allow you to look back
+through your history. You can also use <code class="docutils literal notranslate"><span class="pre">ctrl-r</span></code> to reverse search
+through your history</li>
+<li><code class="docutils literal notranslate"><span class="pre">ctrl-a</span></code> moves the cursor to beginning of the line</li>
+<li><code class="docutils literal notranslate"><span class="pre">ctrl-e</span></code> moves the cursor to the end of the line</li>
+</ul>
+</div>
+<div class="section" id="Customizing-bash">
+<h3>Customizing bash<a class="headerlink" href="#Customizing-bash" title="Permalink to this headline">¶</a></h3>
+<p>In your home directory (e.g.&nbsp;type <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">$HOME</span></code>), you may have both a
+<code class="docutils literal notranslate"><span class="pre">.bash_profile</span></code> and <code class="docutils literal notranslate"><span class="pre">.bash_rc</span></code>. It can be confusing why there are
+two places you can customize bash, and where to put what, as described
+in multiple places such as:
+<a class="reference external" href="http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html">http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html</a></p>
+<p>This and other source recommend editing <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> only, and making
+sure this is run by adding the following to your <code class="docutils literal notranslate"><span class="pre">.bash_profile</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">[</span> <span class="o">-</span><span class="n">f</span> <span class="o">~/.</span><span class="n">bashrc</span> <span class="p">];</span> <span class="n">then</span>
+   <span class="n">source</span> <span class="o">~/.</span><span class="n">bashrc</span>
+<span class="n">fi</span>
+</pre></div>
+</div>
+<p>One customization I make sure to always add:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">CLICOLOR</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">export</span> <span class="n">LS_COLORS</span><span class="o">=</span><span class="s1">&#39;di=1;35&#39;</span>
+</pre></div>
+</div>
+<p>The first line turns on color coding (e.g.&nbsp;use different colored text
+for files and directories), and the second defines colors to use. There
+are many options for defining colors, and many suggestions. This happens
+to the be choice I use. An internet search will provide many alternate
+suggestions.</p>
+<p>You can also set up aliases to save time. e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alias</span> <span class="n">vmd</span><span class="o">=</span><span class="s2">&quot;/Applications/VMD\ 1.9.3.app/Contents/MacOS/startup.command&quot;</span>
+<span class="n">alias</span> <span class="n">flux</span><span class="o">=</span><span class="s2">&quot;ssh hbmayes@flux-login.arc-ts.umich.edu&quot;</span>
+</pre></div>
+</div>
+<p>This lets me quickly launch vmd from my command line.</p>
+<p><em>Pro tip</em>: <code class="docutils literal notranslate"><span class="pre">.bash_profile</span></code> and <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> are only loaded when a new
+bash instance in launched. To take the changes take place immediately,
+check the file in with <code class="docutils literal notranslate"><span class="pre">.</span> <span class="pre">.bash_profile</span></code> (since this file will launch
+.bashrc, both do not need to be checked in). &gt; <em>FYI</em>: It will only be
+checked in for that shell. If several instances were open before the
+change was made, the file needs to be check in for each, or the instance
+closed and reopened.</p>
+</div>
+</div>
+</div>
+<div class="section" id="Recommended-text-editor:-vim">
+<h1>Recommended text editor: vim<a class="headerlink" href="#Recommended-text-editor:-vim" title="Permalink to this headline">¶</a></h1>
+<p>Because of the breadth of functinoality, there is some start-up time to
+learn how to use it. There are many tutorials, such as
+<a class="reference external" href="https://danielmiessler.com/study/vim/#null">https://danielmiessler.com/study/vim/#null</a> and <a class="reference external" href="http://www.openvim.com/">http://www.openvim.com/</a>,
+that will be extremely helpful to the computational researcher. Some
+basic essentials are shared below.</p>
+<p><em>FYI</em>: some people prefer emacs. Vim is lightweight (doesn’t require as
+much computer resources) and more popular, so it is introduced here.</p>
+<div class="section" id="Customizing-vim">
+<h2>Customizing vim<a class="headerlink" href="#Customizing-vim" title="Permalink to this headline">¶</a></h2>
+<p>In your home directory, you can make a <code class="docutils literal notranslate"><span class="pre">.vimrc</span></code> file (if there is not
+already one there) to make changes to your default configuration. My
+favorite additions are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">ruler</span>
+<span class="p">:</span><span class="n">syntax</span> <span class="n">on</span>
+</pre></div>
+</div>
+<p>The ruler shows you what line and column you are on. The <code class="docutils literal notranslate"><span class="pre">:syntax</span> <span class="pre">on</span></code>
+option provides helping coloring of key words.</p>
+<p>You can also set up spell check and may other options in your
+<code class="docutils literal notranslate"><span class="pre">.vimrc</span></code>. See <a class="reference external" href="https://danielmiessler.com/study/vim/#null">https://danielmiessler.com/study/vim/#null</a> for several
+suggestions, if you are interested.</p>
+</div>
+<div class="section" id="‘Normal’-and-‘insert’-modes">
+<h2>‘Normal’ and ‘insert’ modes<a class="headerlink" href="#‘Normal’-and-‘insert’-modes" title="Permalink to this headline">¶</a></h2>
+<p>Some basics: When you first open a file with vim, you will be in
+‘normal’ mode. To enter text, you need to be in ‘insert’ mode. Type
+<code class="docutils literal notranslate"><span class="pre">i</span></code> to enter insert mode. When you are done typing (or pasting from
+your buffer), press <code class="docutils literal notranslate"><span class="pre">esc</span></code> to return to ‘normal’ mode.</p>
+<p>There are other ways to enter insert mode. Typing ‘o’ will enter insert
+mode on a new line below your curser, while <code class="docutils literal notranslate"><span class="pre">O</span></code> will enter insert mode
+on a new line above your curser.</p>
+<p>In the normal mode, <code class="docutils literal notranslate"><span class="pre">u</span></code> undoes the last action. <code class="docutils literal notranslate"><span class="pre">.</span></code> repeats the last
+action.</p>
+<p>FYI: the tutorials will show you ways of entering words or characters
+with a specified number of repeats, replacing a letters or words
+(without having to go in and out of insert mode), and more time-saving
+tips. There are also other modes, such as the visual mode, which can be
+handy in selecting/inserting/deleting text, especially column-wise</p>
+</div>
+<div class="section" id="Navigation">
+<h2>Navigation<a class="headerlink" href="#Navigation" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Arrow keys will move the cursor in either mode. I always use them
+instead of <code class="docutils literal notranslate"><span class="pre">h</span></code>, <code class="docutils literal notranslate"><span class="pre">j</span></code>, <code class="docutils literal notranslate"><span class="pre">k</span></code>, and <code class="docutils literal notranslate"><span class="pre">l</span></code>, which move the cursor only
+in normal mode, for obvious reasons. All the shortcuts below work
+only in normal mode, for the same reason.</li>
+<li><code class="docutils literal notranslate"><span class="pre">G</span></code> will navigate to the bottom line; gg to the first line.</li>
+<li>Typing a number and pressing enter will move your curser down that
+number of lines. Typing a number followed by <code class="docutils literal notranslate"><span class="pre">G</span></code> will bring your
+cursor to that line number.</li>
+<li><code class="docutils literal notranslate"><span class="pre">$</span></code> brings you to the end of the current line; <code class="docutils literal notranslate"><span class="pre">0</span></code> to the
+beginning</li>
+<li><code class="docutils literal notranslate"><span class="pre">/text</span></code> will search for the next occurance of ‘text’, and
+<code class="docutils literal notranslate"><span class="pre">?text</span></code>. After either search is done, <code class="docutils literal notranslate"><span class="pre">n</span></code> will move to the next
+occurance, and <code class="docutils literal notranslate"><span class="pre">N</span></code> to the previous occurance.</li>
+</ul>
+<p><em>FYI</em>: tutorials and ‘cheatsheets’ will show you may more time-saving
+navigation tricks, e.g.&nbsp;skipping to the next word, etc.</p>
+</div>
+<div class="section" id="Copy-and-Paste">
+<h2>Copy and Paste<a class="headerlink" href="#Copy-and-Paste" title="Permalink to this headline">¶</a></h2>
+<p>There is a different vim buffer from your computer’s cut buffer. If you
+copy text to your computer buffer (command-c), you can paste into vim by
+first entering the insert mode and then pasting from the computer cut
+butter (command-v).</p>
+<p>If you want to cut and paste within your file in vim, vim offers
+additional functionality. <code class="docutils literal notranslate"><span class="pre">d</span></code> stands for delete and acts like cutting;
+<code class="docutils literal notranslate"><span class="pre">y</span></code> for yank and acts like copying; <code class="docutils literal notranslate"><span class="pre">p</span></code> is for paste.</p>
+<p>Enter <code class="docutils literal notranslate"><span class="pre">dd</span></code> or <code class="docutils literal notranslate"><span class="pre">yy</span></code> to delete or copy one line. If you want to
+perform the operation on the current line plus the next 2 lines, type
+<code class="docutils literal notranslate"><span class="pre">d3</span></code> and then enter/return (no enter/return is needed with just
+<code class="docutils literal notranslate"><span class="pre">dd</span></code>). Whether deleted or yanked, those line(s) will now be in vim’s
+buffer. <code class="docutils literal notranslate"><span class="pre">p</span></code> will place those lines below your cursor. Before pasting,
+you can move your cursor as desired. You can paste multiple types by
+entering a number before <code class="docutils literal notranslate"><span class="pre">p</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">10p</span></code> to past the line(s) 10
+times.</p>
+</div>
+<div class="section" id="Saving-and-exiting">
+<h2>Saving and exiting<a class="headerlink" href="#Saving-and-exiting" title="Permalink to this headline">¶</a></h2>
+<p>To save: while in normal mode, enter <code class="docutils literal notranslate"><span class="pre">:w</span></code>. To quit, enter <code class="docutils literal notranslate"><span class="pre">:q</span></code>. If
+you try to quit without first saving, vim will warn you, tell you how to
+exit without saving (<code class="docutils literal notranslate"><span class="pre">:q!</span></code>). To save and exit together, type <code class="docutils literal notranslate"><span class="pre">:wq</span></code>.</p>
+</div>
+<div class="section" id="Caution:-vim-will-put-your-file-in-editing-mode,-which-is-not-always-appropriate!">
+<h2>Caution: vim will put your file in editing mode, which is not always appropriate!<a class="headerlink" href="#Caution:-vim-will-put-your-file-in-editing-mode,-which-is-not-always-appropriate!" title="Permalink to this headline">¶</a></h2>
+<p>You may want to look at the output of a file while it is being
+generated. Opening it in vim can interfere with proper additional
+output. You can safely view such files by using alternate bash commands
+or unix utilities, such as <code class="docutils literal notranslate"><span class="pre">cat</span></code>, <code class="docutils literal notranslate"><span class="pre">tail</span> <span class="pre">-f</span></code>, <code class="docutils literal notranslate"><span class="pre">less</span></code>, or <code class="docutils literal notranslate"><span class="pre">more</span></code>.</p>
+</div>
+</div>
+<div class="section" id="Reusable-bash-scripts">
+<h1>Reusable bash scripts<a class="headerlink" href="#Reusable-bash-scripts" title="Permalink to this headline">¶</a></h1>
+<p>Series of bash commands can be saved as a script and by executing the
+script. For example, make a file called <code class="docutils literal notranslate"><span class="pre">bananas.sh</span></code> with the
+following contents:</p>
+#!/usr/bin/env bash
+
+first=2
+last=8
+incr=2
+
+name=banana
+
+echo 'May I have @@@num bananas?' > ${name}.tpl
+
+for job in $(seq $first $incr $last); do
+#for job in "A B"; do
+    sed "s/@@@num/$job/" <  ${name}.tpl > ${name}_${job}.txt
+    cat ${name}_${job}.txt
+done<div class="section" id="The-shebang">
+<h2>The shebang<a class="headerlink" href="#The-shebang" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">#!</span></code> is colloquially called the shebang. It is not strictly necessary
+in this case, but is good practice. If it were not included, the script
+would be run as a bash script if your shell is bash. However, including
+this in your script will ensure it is run as a bash script even if your
+shell is tsch, etc. It will also specify which bash instance will be
+used to run the script.</p>
+<p>Alternately, you can specify how the script is running by explicitly
+envoking it in the command line: <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">bananas.sh</span></code>.</p>
+<p>By including the shebang, we can save a few keystrokes by instead
+entring <code class="docutils literal notranslate"><span class="pre">./bananas.sh</span></code></p>
+<p>Did that not work? If so, that is because the computer didn’t know that
+it should treat the file as an executable. We can easily fix that with
+this command: <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">bananas.sh</span></code></p>
+<p>That only has to be done once. <code class="docutils literal notranslate"><span class="pre">chmod</span></code> can be used for changing
+multiple type of permissions. Those other options are beyond our scope
+for now.</p>
+<div class="section" id="A-note-on-file-names">
+<h3>A note on file names<a class="headerlink" href="#A-note-on-file-names" title="Permalink to this headline">¶</a></h3>
+<p>Most file names are <code class="docutils literal notranslate"><span class="pre">something.extension</span></code>. The extension isn’t
+required and doesn’t guarantee anything, but is normally used, and best
+practice to use it, to indicate the type file. <code class="docutils literal notranslate"><span class="pre">txt</span></code> is used for text
+files, and <code class="docutils literal notranslate"><span class="pre">sh</span></code> for bash scripts, <code class="docutils literal notranslate"><span class="pre">.py</span></code> for python scripts, etc. *
+If you only learn one thing in this class, please learn this: <em>please</em>
+don’t use spaces or special characters in your file names. Use only
+letters, numbers, _, - (although - should never be the first letter,
+bash will interpret it as a flag; if . is used first, it will be a
+‘hidden’ file), and then a period followed by the appropriate extension</p>
+<p>Please keep thise files for some practice below.</p>
+</div>
+</div>
+</div>
+<div class="section" id="Other-great-utilities-and-functions">
+<h1>Other great utilities and functions<a class="headerlink" href="#Other-great-utilities-and-functions" title="Permalink to this headline">¶</a></h1>
+<p>To help us explore these utilities, make a file <code class="docutils literal notranslate"><span class="pre">stp.txt</span></code> with the
+contents:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Algorhyme</span>
+
+<span class="n">I</span> <span class="n">think</span> <span class="n">that</span> <span class="n">I</span> <span class="n">shall</span> <span class="n">never</span> <span class="n">see</span>
+<span class="n">A</span> <span class="n">graph</span> <span class="n">more</span> <span class="n">lovely</span> <span class="n">than</span> <span class="n">a</span> <span class="n">tree</span><span class="o">.</span>
+
+<span class="n">A</span> <span class="n">tree</span> <span class="n">whose</span> <span class="n">crucial</span> <span class="nb">property</span>
+<span class="n">Is</span> <span class="n">loop</span><span class="o">-</span><span class="n">free</span> <span class="n">connectivity</span><span class="o">.</span>
+
+<span class="n">A</span> <span class="n">tree</span> <span class="n">which</span> <span class="n">must</span> <span class="n">be</span> <span class="n">sure</span> <span class="n">to</span> <span class="n">span</span>
+<span class="n">So</span> <span class="n">packets</span> <span class="n">can</span> <span class="n">reach</span> <span class="n">every</span> <span class="n">LAN</span><span class="o">.</span>
+
+<span class="n">First</span> <span class="n">the</span> <span class="n">root</span> <span class="n">must</span> <span class="n">be</span> <span class="n">selected</span><span class="o">.</span>
+<span class="n">By</span> <span class="n">ID</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">elected</span><span class="o">.</span>
+
+<span class="n">Least</span> <span class="n">cost</span> <span class="n">paths</span> <span class="kn">from</span> <span class="nn">root</span> <span class="n">are</span> <span class="n">traced</span><span class="o">.</span>
+<span class="n">In</span> <span class="n">the</span> <span class="n">tree</span> <span class="n">these</span> <span class="n">paths</span> <span class="n">are</span> <span class="n">placed</span><span class="o">.</span>
+
+<span class="n">A</span> <span class="n">mesh</span> <span class="ow">is</span> <span class="n">made</span> <span class="n">by</span> <span class="n">folks</span> <span class="n">like</span> <span class="n">me</span>
+<span class="n">Then</span> <span class="n">bridges</span> <span class="n">find</span> <span class="n">a</span> <span class="n">spanning</span> <span class="n">tree</span><span class="o">.</span>
+
+<span class="o">--</span><span class="n">From</span> <span class="n">the</span> <span class="n">paper</span> <span class="s2">&quot;An Algorithm for Distributed Computation of a Spanning Tree in an Extended LAN&quot;</span> <span class="n">by</span> <span class="n">Radia</span> <span class="n">Perlman</span><span class="p">,</span> <span class="n">inventor</span> <span class="n">of</span> <span class="n">the</span> <span class="n">spanning</span> <span class="n">tree</span> <span class="n">protocol</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="section" id="grep">
+<h2><code class="docutils literal notranslate"><span class="pre">grep</span></code><a class="headerlink" href="#grep" title="Permalink to this headline">¶</a></h2>
+<p>This utility searches for strings in files. It has many functions. It
+can search in one or many files. By default, it returns the line with
+the matching word, but that can be adjusted (e.g.&nbsp;return lines before or
+after).</p>
+<p>In the directory with the files <code class="docutils literal notranslate"><span class="pre">stp.txt</span></code>, enter the command:
+<code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">tree</span> <span class="pre">stp.txt</span></code>. What do you see?</p>
+<p>In the directory with the files
+<code class="docutils literal notranslate"><span class="pre">banana_2.txt</span> <span class="pre">banana_4.txt</span> <span class="pre">banana_6.txt</span> <span class="pre">banana_8.txt</span></code>, enter the
+command: <code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">banana</span> <span class="pre">*.txt</span></code>. What do you see?</p>
+</div>
+<div class="section" id="Directing-input-and-output">
+<h2>Directing input and output<a class="headerlink" href="#Directing-input-and-output" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code> indicates that the file name after the character should be treated
+as input to the action preceeding the character. For grep, the input
+file is known based on its position, but we could also directly specifcy
+it. Try entering the following bash commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="n">banana</span>  <span class="n">banana_2</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">grep</span> <span class="n">banana</span> <span class="o">&lt;</span> <span class="n">banana_2</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">grep</span> <span class="o">&lt;</span> <span class="n">banana_2</span><span class="o">.</span><span class="n">txt</span> <span class="n">banana</span>
+<span class="n">grep</span> <span class="n">banana_2</span><span class="o">.</span><span class="n">txt</span> <span class="n">banana</span>
+</pre></div>
+</div>
+<p>This case is quite trivial. For working with grep and these files, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>
+can be <em>very</em> useful. Try this; the first command should return a erorr
+that there is no such file, which is what we want (or it would be
+overwritten in following steps):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="n">all_bananas</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">grep</span> <span class="n">banana</span> <span class="o">*.</span><span class="n">txt</span> <span class="o">&gt;</span> <span class="n">all_bananas</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">ls</span> <span class="n">all_bananas</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">cat</span> <span class="n">all_bananas</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>In this case, the <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> will overwrite anything in the file
+<code class="docutils literal notranslate"><span class="pre">all_bananas.txt</span></code> if the file had existed. What if we just wanted to
+add it to the end? <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> will accomplish that. <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> will act the same
+as <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> if the file did not previously exist, so let’s use with the
+file we just made (<code class="docutils literal notranslate"><span class="pre">all_bananas.txt</span></code>). First, I check that the file is
+still there. If not, make it again as above.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">all_bananas</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">grep</span> <span class="n">root</span> <span class="n">stp</span><span class="o">.</span><span class="n">txt</span> <span class="o">&gt;&gt;</span> <span class="n">all_bananas</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">cat</span> <span class="n">all_bananas</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Combining-commands">
+<h2>Combining commands<a class="headerlink" href="#Combining-commands" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">|</span></code> character can feed the results of the first command to the
+second command. Compare the commands below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="n">tree</span> <span class="n">stp</span><span class="o">.</span><span class="n">txt</span> <span class="o">&gt;</span> <span class="n">trees</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="n">trees</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">rm</span> <span class="n">trees</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Versus:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="n">tree</span> <span class="n">stp</span><span class="o">.</span><span class="n">txt</span> <span class="o">|</span> <span class="n">wc</span> <span class="o">-</span><span class="n">l</span>
+</pre></div>
+</div>
+<p>This is just one of many ways that bash commands can increase
+efficiencies.</p>
+</div>
+<div class="section" id="sed">
+<h2>sed<a class="headerlink" href="#sed" title="Permalink to this headline">¶</a></h2>
+<p>sed is a stream-line editor. It can function from the command line,
+within a bash script (as in the example above), or within vim.</p>
+<p>Try the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="n">stp</span><span class="o">.</span><span class="n">txt</span> <span class="n">stp_edited</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">diff</span> <span class="n">stp</span><span class="o">.</span><span class="n">txt</span> <span class="n">stp_edited</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">sed</span> <span class="s1">&#39;s/I/We/&#39;</span> <span class="n">stp_edited</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">diff</span> <span class="n">stp</span><span class="o">.</span><span class="n">txt</span> <span class="n">stp_edited</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="s1">&#39;s/I/We/&#39;</span> <span class="n">stp_edited</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p><em>Note</em>: The above command words for Unix, but not on the Max OSX
+terminal. There, use <code class="docutils literal notranslate"><span class="pre">sed</span> <span class="pre">-i</span> <span class="pre">'</span> <span class="pre">'</span> <span class="pre">'s/I/We/'</span> <span class="pre">stp_edited.txt</span></code>. This
+command will not work on Unix. This is an example of some of the small
+difference between implementations on thse systems.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="n">stp</span><span class="o">.</span><span class="n">txt</span> <span class="n">stp_edited</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="n">cp</span> <span class="n">stp</span><span class="o">.</span><span class="n">txt</span> <span class="n">stp_edited</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="s1">&#39;s/I/We/g&#39;</span> <span class="n">stp_edited</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p><em>Note</em>: again, on Mac OSx, follow <code class="docutils literal notranslate"><span class="pre">-i</span></code> with <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">'</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="n">stp</span><span class="o">.</span><span class="n">txt</span> <span class="n">stp_edited</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Sed it a very powerful utilitiy; this is just a quick taste of the
+different options that can be invoked, including search and replace
+in-place (in the input file), changing only the first instance on a
+line, etc.</p>
+<p>If you are interested in learning more about sed, one resource (of many)
+is: <a class="reference external" href="https://www.gnu.org/software/sed/manual/sed.html">https://www.gnu.org/software/sed/manual/sed.html</a></p>
+<p>Sed can also be used while in vim. See
+<a class="reference external" href="http://vim.wikia.com/wiki/Search_and_replace">http://vim.wikia.com/wiki/Search_and_replace</a> for some nice tricks!</p>
+</div>
+<div class="section" id="awk-for-text-processing-and-extraction">
+<h2>awk for text processing and extraction<a class="headerlink" href="#awk-for-text-processing-and-extraction" title="Permalink to this headline">¶</a></h2>
+<p>We will not spend much time on this powerful utility. Hereis one example
+of its functionality. There are many resources to learn more, should you
+be interested (e.g.&nbsp;<a class="reference external" href="https://likegeeks.com/awk-command/">https://likegeeks.com/awk-command/</a>;
+<a class="reference external" href="https://www.gnu.org/software/gawk/manual/gawk.html#toc-Getting-Started-with-awk">https://www.gnu.org/software/gawk/manual/gawk.html#toc-Getting-Started-with-awk</a>
+for a whole book on it).</p>
+<p>I often use awk to print a column from a file. Key variables available
+include: * <code class="docutils literal notranslate"><span class="pre">$0</span></code> for the whole line. * <code class="docutils literal notranslate"><span class="pre">$1</span></code> for the first field. *
+<code class="docutils literal notranslate"><span class="pre">$2</span></code> for the second field. * <code class="docutils literal notranslate"><span class="pre">$n</span></code> for the nth field.</p>
+<p>Try the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">awk</span> <span class="s1">&#39;{print $0}&#39;</span> <span class="n">all_bananas</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">awk</span> <span class="s1">&#39;{print $1}&#39;</span> <span class="n">all_bananas</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">awk</span> <span class="s1">&#39;{print $2}&#39;</span> <span class="n">all_bananas</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">awk</span> <span class="s1">&#39;{print $1,$3}&#39;</span> <span class="n">all_bananas</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>This can be used in conjunction with other commands, (e.g.&nbsp;using <code class="docutils literal notranslate"><span class="pre">|</span></code>)
+to, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tail</span> <span class="o">-</span><span class="mi">2</span><span class="n">n</span> <span class="n">all_bananas</span><span class="o">.</span><span class="n">txt</span> <span class="o">|</span> <span class="n">awk</span> <span class="s1">&#39;{print $1,$3}&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Summary">
+<h1>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h1>
+<p>This is just a quick taste to help us use the bash shell for navitaging
+and editing files. We’ll practice using bash throughout the semester for
+our efficiency. It is not a main focus.</p>
+<p>A very important tool will be jupyter notebooks, discussed next!</p>
+</div>
 
 
           </div>
@@ -131,15 +518,12 @@ def f(x):
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="right" >
-          <a href="lecture01.html" title="Welcome to ChE 696, On-Ramp to Data Science!"
-             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: Data Science for Chemical Engineers 0.1 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Heather Mayes.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
     </div>
   </body>
 </html>

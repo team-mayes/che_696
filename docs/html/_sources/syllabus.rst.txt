@@ -15,7 +15,7 @@ Engineers are encountering and generating a ever-growing body of data and recogn
 Topics
 ------
 
-- One week intro to Bash/Python/vim/IDE (main ideas, then practice the rest of the semester)
+- Intro to Bash/Python/vim/IDE (main ideas, then practice the rest of the semester)
     - Get students comfortable with pycharm and jupyter notebooks (they can proceed with either)
     - Enough of a foundation to be able to immediately use in the next week
     - Introduce libraries, including numpy, and numpy arrays
@@ -24,37 +24,35 @@ Topics
     - Python intro to quickly get started: https://jakevdp.github.io/WhirlwindTourOfPython/  Getting it done
     - Python intro with more comp sci content: http://interactivepython.org/courselib/static/pythonds/index.html
     - Intro to Jupyter Notebooks: http://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Notebook%20Basics.html
-- Two weeks on data structures (continuing intro python)
+
+- Programming practices
+    - Versioning (git)
+    - Testing
+    - Modular programming
+    - Documentation
+
+- Data structures (continuing intro python)
     - Basic data types (integers, floats, lists, tuples, arrays, dictionaries)
     - Tree, graphs (network X)
     - Tie together how data structures are composed of other data structures (trees for sorted lists, keys on dicts, etc.)
     - Debugging
     - Timing (libraries versus writing own functions)
-    -
 
-    -
-- Three weeks on basics of linear algebra/numerical methods
+- Basics of linear algebra/numerical methods
     - Show how to solve by hand and using numpy libraries
     - Matrix algebra
     - Linear determinants
     - Basic eigenvalue/eigenvector problems
-    -
 
-- Two weeks on programming practices
-    - Versioning (git)
-    - Testing
-    - Modular programming
-    - Documentation
-    -
-
-- Three weeks on algorithms (e.g. key topics from http://algs4.cs.princeton.edu/home/)
+- Algorithms (e.g. key topics from http://algs4.cs.princeton.edu/home/)
     - Terminology: Big O notation, NP hard, etc.
     - Sorting (as example)
     - Searching/matching
     - Graph processing
     - String searching and manipulation
     - Optimization methods
-- Three weeks on probability and statistics
+
+- Probability and statistics
     - Basics (terminology, notation, basic laws)
     - Conditional probabilities and Bayesian statistics
     - Discrete and continuous probability distributions
@@ -65,12 +63,12 @@ Topics
 Texts
 -----
 
-### Free online resources
+## Free online resources
 
 - *Whirlwind Tour of Python* by Jake VanderPlas, https://jakevdp.github.io/WhirlwindTourOfPython/
 - *Python Data Science Handbook* by Jake VanderPlas, https://jakevdp.github.io/PythonDataScienceHandbook/
 
-### Free through the University of Michigan: Download while on campus or VPN
+## Free through the University of Michigan: Download while on campus or VPN
 
 Willmore, F. T.; Eric, J.; Coray, C. *Introduction to Scientific and Technical Computing*; Willmore, F. T., Eric, J., Coray, C., Eds.; Taylor & Francis Group: Boca Raton, FL, 2017. http://www.crcnetbase.com/isbn/978-1-4987-4506-2
 

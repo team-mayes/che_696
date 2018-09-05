@@ -4,20 +4,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Sphinx extensions for embedded plots, math and more &#8212; CHE 696: Data Science for Chemical Engineers 0.1 documentation</title>
     <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
@@ -26,13 +18,12 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="IPython Directive" href="ipython_directive.html" />
-    <link rel="prev" title="How to Learn Data Science" href="lectures/nas_data_sci_path.html" />
+    <link rel="prev" title="Syllabus" href="syllabus.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
-  </head>
-  <body>
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -43,7 +34,7 @@
           <a href="ipython_directive.html" title="IPython Directive"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="lectures/nas_data_sci_path.html" title="How to Learn Data Science"
+          <a href="syllabus.html" title="Syllabus"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">CHE 696: Data Science for Chemical Engineers 0.1 documentation</a> &#187;</li> 
       </ul>
@@ -51,19 +42,21 @@
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="lectures/nas_data_sci_path.html"
-                        title="previous chapter">How to Learn Data Science</a></p>
+  <p class="topless"><a href="syllabus.html"
+                        title="previous chapter">Syllabus</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="ipython_directive.html"
                         title="next chapter">IPython Directive</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -84,10 +77,10 @@ matplotlib.sphinxext module, some of which are included only in the
 sphinx doc directory, and there are other extensions written by other
 groups, eg numpy and ipython.  We’re collecting these in this tutorial
 and showing you how to install and use them for your own project.
-First let’s grab the python extension files from the <code class="file docutils literal"><span class="pre">sphinxext</span></code>
+First let’s grab the python extension files from the <code class="file docutils literal notranslate"><span class="pre">sphinxext</span></code>
 directory from git, and install them in
-our <code class="file docutils literal"><span class="pre">sampledoc</span></code> project <code class="file docutils literal"><span class="pre">sphinxext</span></code> directory:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">home</span><span class="p">:</span><span class="o">~/</span><span class="n">tmp</span><span class="o">/</span><span class="n">sampledoc</span><span class="o">&gt;</span> <span class="n">mkdir</span> <span class="n">sphinxext</span>
+our <code class="file docutils literal notranslate"><span class="pre">sampledoc</span></code> project <code class="file docutils literal notranslate"><span class="pre">sphinxext</span></code> directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">home</span><span class="p">:</span><span class="o">~/</span><span class="n">tmp</span><span class="o">/</span><span class="n">sampledoc</span><span class="o">&gt;</span> <span class="n">mkdir</span> <span class="n">sphinxext</span>
 <span class="n">home</span><span class="p">:</span><span class="o">~/</span><span class="n">tmp</span><span class="o">/</span><span class="n">sampledoc</span><span class="o">&gt;</span> <span class="n">cp</span> <span class="o">../</span><span class="n">sampledoc_tut</span><span class="o">/</span><span class="n">sphinxext</span><span class="o">/*.</span><span class="n">py</span> <span class="n">sphinxext</span><span class="o">/</span>
 <span class="n">home</span><span class="p">:</span><span class="o">~/</span><span class="n">tmp</span><span class="o">/</span><span class="n">sampledoc</span><span class="o">&gt;</span> <span class="n">ls</span> <span class="n">sphinxext</span><span class="o">/</span>
 <span class="n">apigen</span><span class="o">.</span><span class="n">py</span>  <span class="n">docscrape</span><span class="o">.</span><span class="n">py</span>  <span class="n">docscrape_sphinx</span><span class="o">.</span><span class="n">py</span>  <span class="n">numpydoc</span><span class="o">.</span><span class="n">py</span>
@@ -97,16 +90,16 @@ our <code class="file docutils literal"><span class="pre">sampledoc</span></code
 plots and rendering math with matplotlib’s native math engine, we also
 have extensions for syntax highlighting ipython sessions, making
 inhertiance diagrams, and more.</p>
-<p>We need to inform sphinx of our new extensions in the <code class="file docutils literal"><span class="pre">conf.py</span></code>
+<p>We need to inform sphinx of our new extensions in the <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code>
 file by adding the following.  First we tell it where to find the extensions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># If your extensions are in another directory, add it here. If the</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># If your extensions are in another directory, add it here. If the</span>
 <span class="c1"># directory is relative to the documentation root, use</span>
 <span class="c1"># os.path.abspath to make it absolute, like shown here.</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;sphinxext&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>And then we tell it what extensions to load:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Add any Sphinx extension module names here, as strings. They can be extensions</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add any Sphinx extension module names here, as strings. They can be extensions</span>
 <span class="c1"># coming with Sphinx (named &#39;sphinx.ext.*&#39;) or your custom ones.</span>
 <span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;matplotlib.sphinxext.only_directives&#39;</span><span class="p">,</span>
               <span class="s1">&#39;matplotlib.sphinxext.plot_directive&#39;</span><span class="p">,</span>
@@ -124,8 +117,8 @@ source for this file at <a class="reference internal" href="#extensions-literal"
 <div class="section" id="ipython-sessions">
 <span id="ipython-highlighting"></span><h2>ipython sessions<a class="headerlink" href="#ipython-sessions" title="Permalink to this headline">¶</a></h2>
 <p>Michael Droettboom contributed a sphinx extension which does <a class="reference external" href="http://pygments.org">pygments</a> syntax highlighting on <a class="reference external" href="http://ipython.scipy.org">ipython</a> sessions.  Just use ipython as the
-language in the <code class="docutils literal"><span class="pre">sourcecode</span></code> directive:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">sourcecode</span><span class="p">::</span> <span class="n">ipython</span>
+language in the <code class="docutils literal notranslate"><span class="pre">sourcecode</span></code> directive:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">sourcecode</span><span class="p">::</span> <span class="n">ipython</span>
 
     <span class="n">In</span> <span class="p">[</span><span class="mi">69</span><span class="p">]:</span> <span class="n">lines</span> <span class="o">=</span> <span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 
@@ -137,7 +130,7 @@ language in the <code class="docutils literal"><span class="pre">sourcecode</spa
 </pre></div>
 </div>
 <p>and you will get the syntax highlighted output below.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [69]: </span><span class="n">lines</span> <span class="o">=</span> <span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [69]: </span><span class="n">lines</span> <span class="o">=</span> <span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 
 <span class="gp">In [70]: </span><span class="n">setp</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
 <span class="go">  alpha: float</span>
@@ -155,17 +148,17 @@ in a future version of Pygments by default.</p>
 <dt>In sphinx you can include inline math :math:<a href="#id2"><span class="problematic" id="id3">`</span></a>xleftarrow yxforall</dt>
 <dd>yx-y` or display math</dd>
 </dl>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[W^{3\beta}_{\delta_1 \rho_1 \sigma_2} = U^{3\beta}_{\delta_1 \rho_1} + \frac{1}{8 \pi 2} \int^{\alpha_2}_{\alpha_2} d \alpha^\prime_2 \left[\frac{ U^{2\beta}_{\delta_1 \rho_1} - \alpha^\prime_2U^{1\beta}_{\rho_1 \sigma_2} }{U^{0\beta}_{\rho_1 \sigma_2}}\right]\]</div>
 <p>To include math in your document, just use the math directive; here is
 a simpler equation:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">math</span><span class="p">::</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">math</span><span class="p">::</span>
 
   <span class="n">W</span><span class="o">^</span><span class="p">{</span><span class="mi">3</span>\<span class="n">beta</span><span class="p">}</span><span class="n">_</span><span class="p">{</span>\<span class="n">delta_1</span> \<span class="n">rho_1</span> \<span class="n">sigma_2</span><span class="p">}</span> \<span class="n">approx</span> <span class="n">U</span><span class="o">^</span><span class="p">{</span><span class="mi">3</span>\<span class="n">beta</span><span class="p">}</span><span class="n">_</span><span class="p">{</span>\<span class="n">delta_1</span> \<span class="n">rho_1</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>which is rendered as</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[W^{3\beta}_{\delta_1 \rho_1 \sigma_2} \approx U^{3\beta}_{\delta_1 \rho_1}\]</div>
 <p>Recent versions of Sphinx include built-in support for math.
 There are three flavors:</p>
@@ -188,19 +181,19 @@ more information on writing mathematical expressions in matplotlib.</p>
 <div class="section" id="inserting-matplotlib-plots">
 <span id="pyplots"></span><h2>Inserting matplotlib plots<a class="headerlink" href="#inserting-matplotlib-plots" title="Permalink to this headline">¶</a></h2>
 <p>Inserting automatically-generated plots is easy.  Simply put the
-script to generate the plot in the <code class="file docutils literal"><span class="pre">pyplots</span></code> directory, and
-refer to it using the <code class="docutils literal"><span class="pre">plot</span></code> directive.  First make a
-<code class="file docutils literal"><span class="pre">pyplots</span></code> directory at the top level of your project (next to
-:<code class="docutils literal"><span class="pre">conf.py</span></code>) and copy the <code class="file docutils literal"><span class="pre">ellipses.py`</span></code> file into it:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">home</span><span class="p">:</span><span class="o">~/</span><span class="n">tmp</span><span class="o">/</span><span class="n">sampledoc</span><span class="o">&gt;</span> <span class="n">mkdir</span> <span class="n">pyplots</span>
+script to generate the plot in the <code class="file docutils literal notranslate"><span class="pre">pyplots</span></code> directory, and
+refer to it using the <code class="docutils literal notranslate"><span class="pre">plot</span></code> directive.  First make a
+<code class="file docutils literal notranslate"><span class="pre">pyplots</span></code> directory at the top level of your project (next to
+:<code class="docutils literal notranslate"><span class="pre">conf.py</span></code>) and copy the <code class="file docutils literal notranslate"><span class="pre">ellipses.py`</span></code> file into it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">home</span><span class="p">:</span><span class="o">~/</span><span class="n">tmp</span><span class="o">/</span><span class="n">sampledoc</span><span class="o">&gt;</span> <span class="n">mkdir</span> <span class="n">pyplots</span>
 <span class="n">home</span><span class="p">:</span><span class="o">~/</span><span class="n">tmp</span><span class="o">/</span><span class="n">sampledoc</span><span class="o">&gt;</span> <span class="n">cp</span> <span class="o">../</span><span class="n">sampledoc_tut</span><span class="o">/</span><span class="n">pyplots</span><span class="o">/</span><span class="n">ellipses</span><span class="o">.</span><span class="n">py</span> <span class="n">pyplots</span><span class="o">/</span>
 </pre></div>
 </div>
 <p>You can refer to this file in your sphinx documentation; by default it
 will just inline the plot with links to the source and PF and high
 resolution PNGS.  To also include the source code for the plot in the
-document, pass the <code class="docutils literal"><span class="pre">include-source</span></code> parameter:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">plot</span><span class="p">::</span> <span class="n">pyplots</span><span class="o">/</span><span class="n">ellipses</span><span class="o">.</span><span class="n">py</span>
+document, pass the <code class="docutils literal notranslate"><span class="pre">include-source</span></code> parameter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">plot</span><span class="p">::</span> <span class="n">pyplots</span><span class="o">/</span><span class="n">ellipses</span><span class="o">.</span><span class="n">py</span>
    <span class="p">:</span><span class="n">include</span><span class="o">-</span><span class="n">source</span><span class="p">:</span>
 </pre></div>
 </div>
@@ -241,30 +234,20 @@ lots of examples of matplotlib plots.</p>
 <h2>Inheritance diagrams<a class="headerlink" href="#inheritance-diagrams" title="Permalink to this headline">¶</a></h2>
 <p>Inheritance diagrams can be inserted directly into the document by
 providing a list of class or module names to the
-<code class="docutils literal"><span class="pre">inheritance-diagram</span></code> directive.</p>
+<code class="docutils literal notranslate"><span class="pre">inheritance-diagram</span></code> directive.</p>
 <p>For example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">inheritance</span><span class="o">-</span><span class="n">diagram</span><span class="p">::</span> <span class="n">codecs</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">inheritance</span><span class="o">-</span><span class="n">diagram</span><span class="p">::</span> <span class="n">codecs</span>
 </pre></div>
 </div>
 <p>produces:</p>
-<img src="_images/inheritance-9b9f0ab18aee8e265d88f8c102de49defb25c694.png" alt="Inheritance diagram of codecs" usemap="#inheritance7e56675552" class="inheritance"/>
-<map id="inheritance7e56675552" name="inheritance7e56675552">
-<area shape="rect" id="node1" title="This subclass of IncrementalDecoder can be used as the baseclass for an" alt="" coords="255,276,509,301"/>
-<area shape="rect" id="node2" title="An IncrementalDecoder decodes an input in multiple steps. The input can" alt="" coords="5,276,207,301"/>
-<area shape="rect" id="node3" title="This subclass of IncrementalEncoder can be used as the baseclass for an" alt="" coords="255,227,509,252"/>
-<area shape="rect" id="node4" title="An IncrementalEncoder encodes an input in multiple steps. The input can" alt="" coords="7,227,205,252"/>
-<area shape="rect" id="node5" title="Defines the interface for stateless encoders/decoders." alt="" coords="51,153,161,179"/>
-<area shape="rect" id="node6" title="Codec details when looking up the codec registry" alt="" coords="39,104,173,129"/>
-<area shape="rect" id="node8" title="StreamReaderWriter instances allow wrapping streams which" alt="" coords="7,55,205,80"/>
-<area shape="rect" id="node9" title="StreamRecoder instances translate data from one encoding to another." alt="" coords="21,5,191,31"/>
-</map>
+<img src="_images/inheritance-9b9f0ab18aee8e265d88f8c102de49defb25c694.png" alt="Inheritance diagram of codecs" class="inheritance"/>
 <p>See the <a class="reference internal" href="ipython_directive.html#ipython-directive"><span class="std std-ref">IPython Directive</span></a> for a tutorial on embedding stateful,
 matplotlib aware ipython sessions into your rest docs with multiline
 and doctest support.</p>
 </div>
 <div class="section" id="this-file">
 <span id="extensions-literal"></span><h2>This file<a class="headerlink" href="#this-file" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>.. _extensions:
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.. _extensions:
 
 ***************************************************
 Sphinx extensions for embedded plots, math and more
@@ -508,14 +491,14 @@ This file
           <a href="ipython_directive.html" title="IPython Directive"
              >next</a> |</li>
         <li class="right" >
-          <a href="lectures/nas_data_sci_path.html" title="How to Learn Data Science"
+          <a href="syllabus.html" title="Syllabus"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">CHE 696: Data Science for Chemical Engineers 0.1 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Heather Mayes.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
     </div>
   </body>
 </html>
