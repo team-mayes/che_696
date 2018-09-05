@@ -5,7 +5,7 @@ Syllabus
 ========
 
 Fall 2018, Prof. Heather Mayes,
-MW 10-11:30 am, 3150 Dow
+MW 10-11:20 am, 3150 Dow
 
 Course description
 ------------------
