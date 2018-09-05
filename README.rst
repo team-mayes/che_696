@@ -2,7 +2,7 @@
 Website for the `University of Michigan's <https://www.umich.edu/>`_ CHE 696: Data Science for Chemical Engineers
 =================================================================================================================
 
-The class's site is published here: https://team-mayes.github.io/che_696/
+The class's site is published here: https://team-mayes.github.io/che_696/source/
 
 Setup
 -----
