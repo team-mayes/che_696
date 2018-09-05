@@ -13,13 +13,14 @@ CHE 696: Data Science for Chemical Engineers
    syllabus.rst
 
    notebooks/lecture01_intro.ipynb
-   notebooks/lecture01_shell.ipynb
-   notebooks/HW01.ipynb
 
-   .. :caption: About Sphinx:
+   notebooks/lecture01_shell.ipynb
+
+   notebooks/HW01.ipynb
 
 
 ..
+   .. :caption: About Sphinx:
 
 Indices and tables
 ==================
