@@ -17,7 +17,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Shell overview\n",
+    "## Shell overview\n",
     "\n",
     "Many of the programs we use have GUIs: Graphical User Interfaces. Direct text input can often save quite a bit of time and allow additional functionality. While the tasks in this class will be able to be completed on a laptop or desktop (in any operating system), scientific computing generally requires larger, remote resources that are typically Unix or Unix-like systems. In those systems, the primary mode of user iteraction with the operating system is via text-based **shell** processes.\n",
     "\n",
@@ -138,7 +138,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Recommended text editor: vim\n",
+    "## Recommended text editor: vim\n",
     "\n",
     "Because of the breadth of functinoality, there is some start-up time to learn how to use it. There are many tutorials, such as https://danielmiessler.com/study/vim/#null and http://www.openvim.com/, that will be extremely helpful to the computational researcher. Some basic essentials are shared below. \n",
     "\n",
@@ -206,7 +206,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Reusable bash scripts\n",
+    "## Reusable bash scripts\n",
     "\n",
     "Series of bash commands can be saved as a script and by executing the script. For example, make a file called `bananas.sh` with the following contents:"
    ]
@@ -265,7 +265,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Other great utilities and functions\n",
+    "## Other great utilities and functions\n",
     "\n",
     "To help us explore these utilities, make a file `stp.txt` with the contents:\n",
     "\n",
@@ -417,7 +417,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Summary\n",
+    "## Summary\n",
     "\n",
     "This is just a quick taste to help us use the bash shell for navitaging and editing files. We'll practice using bash throughout the semester for our efficiency. It is not a main focus.\n",
     "\n",

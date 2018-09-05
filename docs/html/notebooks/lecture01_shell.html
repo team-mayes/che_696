@@ -17,7 +17,8 @@
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Syllabus" href="../syllabus.html" />
+    <link rel="next" title="HW1, practicing bash and vim" href="HW01.html" />
+    <link rel="prev" title="Welcome to ChE 696, On-Ramp to Data Science!" href="lecture01_intro.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
@@ -30,7 +31,10 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../syllabus.html" title="Syllabus"
+          <a href="HW01.html" title="HW1, practicing bash and vim"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="lecture01_intro.html" title="Welcome to ChE 696, On-Ramp to Data Science!"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: Data Science for Chemical Engineers 0.1 documentation</a> &#187;</li> 
       </ul>
@@ -38,8 +42,11 @@
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../syllabus.html"
-                        title="previous chapter">Syllabus</a></p>
+  <p class="topless"><a href="lecture01_intro.html"
+                        title="previous chapter">Welcome to ChE 696, On-Ramp to Data Science!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="HW01.html"
+                        title="next chapter">HW1, practicing bash and vim</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <div class="searchformwrapper">
@@ -68,9 +75,8 @@ more.</p>
 <p><em>Related text</em>: Chapter 1 of <a class="reference external" href="http://www.crcnetbase.com/isbn/978-1-4987-4506-2">Introduction to Scientific and Technical
 Computing</a></p>
 <p><em>Optional related tutorial:</em> <a class="reference external" href="http://swcarpentry.github.io/shell-novice/">http://swcarpentry.github.io/shell-novice/</a></p>
-</div>
 <div class="section" id="Shell-overview">
-<h1>Shell overview<a class="headerlink" href="#Shell-overview" title="Permalink to this headline">¶</a></h1>
+<h2>Shell overview<a class="headerlink" href="#Shell-overview" title="Permalink to this headline">¶</a></h2>
 <p>Many of the programs we use have GUIs: Graphical User Interfaces. Direct
 text input can often save quite a bit of time and allow additional
 functionality. While the tasks in this class will be able to be
@@ -105,7 +111,7 @@ another route to get you to a bash shell.</p>
 <p>You will find bash scripts and commands useful throughout this course.
 They can even be invoked from within a python program.</p>
 <div class="section" id="Some-key-points-from-the-Software-carpentry-module-on-bash:">
-<h2>Some key points from the Software carpentry module on bash:<a class="headerlink" href="#Some-key-points-from-the-Software-carpentry-module-on-bash:" title="Permalink to this headline">¶</a></h2>
+<h3>Some key points from the Software carpentry module on bash:<a class="headerlink" href="#Some-key-points-from-the-Software-carpentry-module-on-bash:" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>A shell is a program whose primary purpose is to read commands and
 run other programs.</li>
@@ -115,8 +121,10 @@ access networked machines.</li>
 <li>The shell’s main disadvantages are its primarily textual nature and
 how cryptic its commands and operation can be.</li>
 </ul>
+</div>
+</div>
 <div class="section" id="Some-basic,-extremely-useful-bash-commands">
-<h3>Some basic, extremely useful bash commands<a class="headerlink" href="#Some-basic,-extremely-useful-bash-commands" title="Permalink to this headline">¶</a></h3>
+<h2>Some basic, extremely useful bash commands<a class="headerlink" href="#Some-basic,-extremely-useful-bash-commands" title="Permalink to this headline">¶</a></h2>
 <p>First, open a bash session (e.g.&nbsp;launch terminal on your mac).</p>
 <p>Enter the following commands (one at a time), and note what you see:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pwd</span>
@@ -159,7 +167,7 @@ careful with this. <code class="docutils literal notranslate"><span class="pre">
 all the files in the current folder that have the <code class="docutils literal notranslate"><span class="pre">.dat</span></code> extention.</p>
 </div>
 <div class="section" id="Some-of-my-favorite-bash-time-saving-tips">
-<h3>Some of my favorite bash time-saving tips<a class="headerlink" href="#Some-of-my-favorite-bash-time-saving-tips" title="Permalink to this headline">¶</a></h3>
+<h2>Some of my favorite bash time-saving tips<a class="headerlink" href="#Some-of-my-favorite-bash-time-saving-tips" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>When you change your mind about what you want to type, <code class="docutils literal notranslate"><span class="pre">ctrl-u</span></code>
 clears the line. This is especially helpful when you are typing a
@@ -172,7 +180,7 @@ through your history</li>
 </ul>
 </div>
 <div class="section" id="Customizing-bash">
-<h3>Customizing bash<a class="headerlink" href="#Customizing-bash" title="Permalink to this headline">¶</a></h3>
+<h2>Customizing bash<a class="headerlink" href="#Customizing-bash" title="Permalink to this headline">¶</a></h2>
 <p>In your home directory (e.g.&nbsp;type <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">$HOME</span></code>), you may have both a
 <code class="docutils literal notranslate"><span class="pre">.bash_profile</span></code> and <code class="docutils literal notranslate"><span class="pre">.bash_rc</span></code>. It can be confusing why there are
 two places you can customize bash, and where to put what, as described
@@ -209,10 +217,8 @@ checked in for that shell. If several instances were open before the
 change was made, the file needs to be check in for each, or the instance
 closed and reopened.</p>
 </div>
-</div>
-</div>
 <div class="section" id="Recommended-text-editor:-vim">
-<h1>Recommended text editor: vim<a class="headerlink" href="#Recommended-text-editor:-vim" title="Permalink to this headline">¶</a></h1>
+<h2>Recommended text editor: vim<a class="headerlink" href="#Recommended-text-editor:-vim" title="Permalink to this headline">¶</a></h2>
 <p>Because of the breadth of functinoality, there is some start-up time to
 learn how to use it. There are many tutorials, such as
 <a class="reference external" href="https://danielmiessler.com/study/vim/#null">https://danielmiessler.com/study/vim/#null</a> and <a class="reference external" href="http://www.openvim.com/">http://www.openvim.com/</a>,
@@ -221,7 +227,7 @@ basic essentials are shared below.</p>
 <p><em>FYI</em>: some people prefer emacs. Vim is lightweight (doesn’t require as
 much computer resources) and more popular, so it is introduced here.</p>
 <div class="section" id="Customizing-vim">
-<h2>Customizing vim<a class="headerlink" href="#Customizing-vim" title="Permalink to this headline">¶</a></h2>
+<h3>Customizing vim<a class="headerlink" href="#Customizing-vim" title="Permalink to this headline">¶</a></h3>
 <p>In your home directory, you can make a <code class="docutils literal notranslate"><span class="pre">.vimrc</span></code> file (if there is not
 already one there) to make changes to your default configuration. My
 favorite additions are:</p>
@@ -236,7 +242,7 @@ option provides helping coloring of key words.</p>
 suggestions, if you are interested.</p>
 </div>
 <div class="section" id="‘Normal’-and-‘insert’-modes">
-<h2>‘Normal’ and ‘insert’ modes<a class="headerlink" href="#‘Normal’-and-‘insert’-modes" title="Permalink to this headline">¶</a></h2>
+<h3>‘Normal’ and ‘insert’ modes<a class="headerlink" href="#‘Normal’-and-‘insert’-modes" title="Permalink to this headline">¶</a></h3>
 <p>Some basics: When you first open a file with vim, you will be in
 ‘normal’ mode. To enter text, you need to be in ‘insert’ mode. Type
 <code class="docutils literal notranslate"><span class="pre">i</span></code> to enter insert mode. When you are done typing (or pasting from
@@ -253,7 +259,7 @@ tips. There are also other modes, such as the visual mode, which can be
 handy in selecting/inserting/deleting text, especially column-wise</p>
 </div>
 <div class="section" id="Navigation">
-<h2>Navigation<a class="headerlink" href="#Navigation" title="Permalink to this headline">¶</a></h2>
+<h3>Navigation<a class="headerlink" href="#Navigation" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Arrow keys will move the cursor in either mode. I always use them
 instead of <code class="docutils literal notranslate"><span class="pre">h</span></code>, <code class="docutils literal notranslate"><span class="pre">j</span></code>, <code class="docutils literal notranslate"><span class="pre">k</span></code>, and <code class="docutils literal notranslate"><span class="pre">l</span></code>, which move the cursor only
@@ -273,7 +279,7 @@ occurance, and <code class="docutils literal notranslate"><span class="pre">N</s
 navigation tricks, e.g.&nbsp;skipping to the next word, etc.</p>
 </div>
 <div class="section" id="Copy-and-Paste">
-<h2>Copy and Paste<a class="headerlink" href="#Copy-and-Paste" title="Permalink to this headline">¶</a></h2>
+<h3>Copy and Paste<a class="headerlink" href="#Copy-and-Paste" title="Permalink to this headline">¶</a></h3>
 <p>There is a different vim buffer from your computer’s cut buffer. If you
 copy text to your computer buffer (command-c), you can paste into vim by
 first entering the insert mode and then pasting from the computer cut
@@ -291,13 +297,13 @@ entering a number before <code class="docutils literal notranslate"><span class=
 times.</p>
 </div>
 <div class="section" id="Saving-and-exiting">
-<h2>Saving and exiting<a class="headerlink" href="#Saving-and-exiting" title="Permalink to this headline">¶</a></h2>
+<h3>Saving and exiting<a class="headerlink" href="#Saving-and-exiting" title="Permalink to this headline">¶</a></h3>
 <p>To save: while in normal mode, enter <code class="docutils literal notranslate"><span class="pre">:w</span></code>. To quit, enter <code class="docutils literal notranslate"><span class="pre">:q</span></code>. If
 you try to quit without first saving, vim will warn you, tell you how to
 exit without saving (<code class="docutils literal notranslate"><span class="pre">:q!</span></code>). To save and exit together, type <code class="docutils literal notranslate"><span class="pre">:wq</span></code>.</p>
 </div>
 <div class="section" id="Caution:-vim-will-put-your-file-in-editing-mode,-which-is-not-always-appropriate!">
-<h2>Caution: vim will put your file in editing mode, which is not always appropriate!<a class="headerlink" href="#Caution:-vim-will-put-your-file-in-editing-mode,-which-is-not-always-appropriate!" title="Permalink to this headline">¶</a></h2>
+<h3>Caution: vim will put your file in editing mode, which is not always appropriate!<a class="headerlink" href="#Caution:-vim-will-put-your-file-in-editing-mode,-which-is-not-always-appropriate!" title="Permalink to this headline">¶</a></h3>
 <p>You may want to look at the output of a file while it is being
 generated. Opening it in vim can interfere with proper additional
 output. You can safely view such files by using alternate bash commands
@@ -305,7 +311,7 @@ or unix utilities, such as <code class="docutils literal notranslate"><span clas
 </div>
 </div>
 <div class="section" id="Reusable-bash-scripts">
-<h1>Reusable bash scripts<a class="headerlink" href="#Reusable-bash-scripts" title="Permalink to this headline">¶</a></h1>
+<h2>Reusable bash scripts<a class="headerlink" href="#Reusable-bash-scripts" title="Permalink to this headline">¶</a></h2>
 <p>Series of bash commands can be saved as a script and by executing the
 script. For example, make a file called <code class="docutils literal notranslate"><span class="pre">bananas.sh</span></code> with the
 following contents:</p>
@@ -324,7 +330,7 @@ for job in $(seq $first $incr $last); do
     sed "s/@@@num/$job/" <  ${name}.tpl > ${name}_${job}.txt
     cat ${name}_${job}.txt
 done<div class="section" id="The-shebang">
-<h2>The shebang<a class="headerlink" href="#The-shebang" title="Permalink to this headline">¶</a></h2>
+<h3>The shebang<a class="headerlink" href="#The-shebang" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">#!</span></code> is colloquially called the shebang. It is not strictly necessary
 in this case, but is good practice. If it were not included, the script
 would be run as a bash script if your shell is bash. However, including
@@ -341,8 +347,10 @@ this command: <code class="docutils literal notranslate"><span class="pre">chmod
 <p>That only has to be done once. <code class="docutils literal notranslate"><span class="pre">chmod</span></code> can be used for changing
 multiple type of permissions. Those other options are beyond our scope
 for now.</p>
+</div>
+</div>
 <div class="section" id="A-note-on-file-names">
-<h3>A note on file names<a class="headerlink" href="#A-note-on-file-names" title="Permalink to this headline">¶</a></h3>
+<h2>A note on file names<a class="headerlink" href="#A-note-on-file-names" title="Permalink to this headline">¶</a></h2>
 <p>Most file names are <code class="docutils literal notranslate"><span class="pre">something.extension</span></code>. The extension isn’t
 required and doesn’t guarantee anything, but is normally used, and best
 practice to use it, to indicate the type file. <code class="docutils literal notranslate"><span class="pre">txt</span></code> is used for text
@@ -354,10 +362,8 @@ bash will interpret it as a flag; if . is used first, it will be a
 ‘hidden’ file), and then a period followed by the appropriate extension</p>
 <p>Please keep thise files for some practice below.</p>
 </div>
-</div>
-</div>
 <div class="section" id="Other-great-utilities-and-functions">
-<h1>Other great utilities and functions<a class="headerlink" href="#Other-great-utilities-and-functions" title="Permalink to this headline">¶</a></h1>
+<h2>Other great utilities and functions<a class="headerlink" href="#Other-great-utilities-and-functions" title="Permalink to this headline">¶</a></h2>
 <p>To help us explore these utilities, make a file <code class="docutils literal notranslate"><span class="pre">stp.txt</span></code> with the
 contents:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Algorhyme</span>
@@ -384,7 +390,7 @@ contents:</p>
 </pre></div>
 </div>
 <div class="section" id="grep">
-<h2><code class="docutils literal notranslate"><span class="pre">grep</span></code><a class="headerlink" href="#grep" title="Permalink to this headline">¶</a></h2>
+<h3><code class="docutils literal notranslate"><span class="pre">grep</span></code><a class="headerlink" href="#grep" title="Permalink to this headline">¶</a></h3>
 <p>This utility searches for strings in files. It has many functions. It
 can search in one or many files. By default, it returns the line with
 the matching word, but that can be adjusted (e.g.&nbsp;return lines before or
@@ -396,7 +402,7 @@ after).</p>
 command: <code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">banana</span> <span class="pre">*.txt</span></code>. What do you see?</p>
 </div>
 <div class="section" id="Directing-input-and-output">
-<h2>Directing input and output<a class="headerlink" href="#Directing-input-and-output" title="Permalink to this headline">¶</a></h2>
+<h3>Directing input and output<a class="headerlink" href="#Directing-input-and-output" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code> indicates that the file name after the character should be treated
 as input to the action preceeding the character. For grep, the input
 file is known based on its position, but we could also directly specifcy
@@ -430,7 +436,7 @@ still there. If not, make it again as above.</p>
 </div>
 </div>
 <div class="section" id="Combining-commands">
-<h2>Combining commands<a class="headerlink" href="#Combining-commands" title="Permalink to this headline">¶</a></h2>
+<h3>Combining commands<a class="headerlink" href="#Combining-commands" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">|</span></code> character can feed the results of the first command to the
 second command. Compare the commands below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="n">tree</span> <span class="n">stp</span><span class="o">.</span><span class="n">txt</span> <span class="o">&gt;</span> <span class="n">trees</span><span class="o">.</span><span class="n">txt</span>
@@ -446,7 +452,7 @@ second command. Compare the commands below:</p>
 efficiencies.</p>
 </div>
 <div class="section" id="sed">
-<h2>sed<a class="headerlink" href="#sed" title="Permalink to this headline">¶</a></h2>
+<h3>sed<a class="headerlink" href="#sed" title="Permalink to this headline">¶</a></h3>
 <p>sed is a stream-line editor. It can function from the command line,
 within a bash script (as in the example above), or within vim.</p>
 <p>Try the following commands:</p>
@@ -482,7 +488,7 @@ is: <a class="reference external" href="https://www.gnu.org/software/sed/manual/
 <a class="reference external" href="http://vim.wikia.com/wiki/Search_and_replace">http://vim.wikia.com/wiki/Search_and_replace</a> for some nice tricks!</p>
 </div>
 <div class="section" id="awk-for-text-processing-and-extraction">
-<h2>awk for text processing and extraction<a class="headerlink" href="#awk-for-text-processing-and-extraction" title="Permalink to this headline">¶</a></h2>
+<h3>awk for text processing and extraction<a class="headerlink" href="#awk-for-text-processing-and-extraction" title="Permalink to this headline">¶</a></h3>
 <p>We will not spend much time on this powerful utility. Hereis one example
 of its functionality. There are many resources to learn more, should you
 be interested (e.g.&nbsp;<a class="reference external" href="https://likegeeks.com/awk-command/">https://likegeeks.com/awk-command/</a>;
@@ -506,11 +512,12 @@ to, for example:</p>
 </div>
 </div>
 <div class="section" id="Summary">
-<h1>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h1>
+<h2>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h2>
 <p>This is just a quick taste to help us use the bash shell for navitaging
 and editing files. We’ll practice using bash throughout the semester for
 our efficiency. It is not a main focus.</p>
 <p>A very important tool will be jupyter notebooks, discussed next!</p>
+</div>
 </div>
 
 
@@ -526,7 +533,10 @@ our efficiency. It is not a main focus.</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../syllabus.html" title="Syllabus"
+          <a href="HW01.html" title="HW1, practicing bash and vim"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="lecture01_intro.html" title="Welcome to ChE 696, On-Ramp to Data Science!"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: Data Science for Chemical Engineers 0.1 documentation</a> &#187;</li> 
       </ul>

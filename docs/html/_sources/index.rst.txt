@@ -21,10 +21,3 @@ CHE 696: Data Science for Chemical Engineers
 
 ..
    .. :caption: About Sphinx:
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
