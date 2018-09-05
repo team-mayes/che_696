@@ -4,7 +4,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Welcome to ChE 696, On-Ramp to Data Science!\n",
+    "# 0) Welcome to ChE 696, On-Ramp to Data Science!\n",
     "\n",
     "### Topics for today:\n",
     "- Motivation for this class\n",
@@ -84,9 +84,9 @@
     "- Oral and written communication\n",
     "- Use real, \"messy\" data\n",
     "- Show applications with broad impact\n",
-    "* Discuss ethical implications, such as unreliable and/or biased outcomes\n",
-    "    * https://www.nature.com/news/there-is-a-blind-spot-in-ai-research-1.20805\n",
-    "    * https://www.nature.com/articles/d41586-018-05469-3\n",
+    "- Discuss ethical implications, such as unreliable and/or biased outcomes\n",
+    "    - https://www.nature.com/news/there-is-a-blind-spot-in-ai-research-1.20805\n",
+    "    - https://www.nature.com/articles/d41586-018-05469-3\n",
     "\n",
     "More specifically, that they provide training in:\n",
     "- Mathematical foundations\n",
@@ -107,9 +107,9 @@
     "## What resources are available at Michigan?\n",
     "\n",
     "This course complements excellent computational and DS resources at Michigan. Under the umbrella of Advanced Research Computing (ARC, http://arc.umich.edu/). Sign up for the newsletter (form at bottom of the page) to find out about upcoming events.\n",
-    "* Michigan Institute for Computational Discovery and Engineering (MICDE), http://micde.umich.edu/\n",
-    "     * Offers both a certificate and PhD that can be earned in parallel to your primary grad degree, http://micde.umich.edu/academic-programs/\n",
-    "     * Seminar series, symposia, ...\n",
+    "- Michigan Institute for Computational Discovery and Engineering (MICDE), http://micde.umich.edu/\n",
+    "    - Offers both a certificate and PhD that can be earned in parallel to your primary grad degree, http://micde.umich.edu/academic-programs/\n",
+    "    - Seminar series, symposia, ...\n",
     "- CSCAR (http://cscar.research.umich.edu/) provides consulting services and training opportunities in data science, statistics, and advanced research computation.\n",
     "- Michigan Institute for Data Science (MIDAS, http://midas.umich.edu/)\n",
     "    - Hosts training and activities, including a Data Science Team\n",
@@ -157,7 +157,7 @@
    "source": [
     "## Next up....\n",
     "\n",
-    "Intro to bash!"
+    "Intro to bash and vim!"
    ]
   }
  ],

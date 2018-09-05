@@ -4,7 +4,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Intro to basic text-based computer interfaces: bash and vim\n",
+    "# 1) Intro to basic text-based computer interfaces: bash and vim\n",
     "\n",
     "Before we get into programming with python, we'll cover interacting with computers using bash, a convient and fast route to file handing and much more.\n",
     "\n",
@@ -95,10 +95,10 @@
    "source": [
     "## Some of my favorite bash time-saving tips\n",
     "\n",
-    "* When you change your mind about what you want to type, `ctrl-u` clears the line. This is especially helpful when you are typing a password and may have made a typo; this lets you quickly start again\n",
-    "* Want to run a command again? The up arrow will allow you to look back through  your history. You can also use `ctrl-r` to reverse search through your history\n",
-    "* `ctrl-a` moves the cursor to beginning of the line\n",
-    "* `ctrl-e` moves the cursor to the end of the line\n"
+    "- When you change your mind about what you want to type, `ctrl-u` clears the line. This is especially helpful when you are typing a password and may have made a typo; this lets you quickly start again\n",
+    "- Want to run a command again? The up arrow will allow you to look back through  your history. You can also use `ctrl-r` to reverse search through your history\n",
+    "- `ctrl-a` moves the cursor to beginning of the line\n",
+    "- `ctrl-e` moves the cursor to the end of the line\n"
    ]
   },
   {
@@ -167,11 +167,11 @@
     "\n",
     "### Navigation\n",
     "\n",
-    "* Arrow keys will move the cursor in either mode. I always use them instead of `h`, `j`, `k`, and `l`, which move the cursor only in normal mode, for obvious reasons. All the shortcuts below work only in normal mode, for the same reason.\n",
-    "* `G` will navigate to the bottom line; gg to the first line. \n",
-    "* Typing a number and pressing enter will move your curser down that number of lines. Typing a number followed by `G`  will bring your cursor to that line number.\n",
-    "* `$` brings you to the end of the current line; `0` to the beginning\n",
-    "* `/text` will search for the next occurance of 'text', and `?text`. After either search is done, `n` will move to the next occurance, and `N` to the previous occurance.\n",
+    "- Arrow keys will move the cursor in either mode. I always use them instead of `h`, `j`, `k`, and `l`, which move the cursor only in normal mode, for obvious reasons. All the shortcuts below work only in normal mode, for the same reason.\n",
+    "- `G` will navigate to the bottom line; gg to the first line. \n",
+    "- Typing a number and pressing enter will move your curser down that number of lines. Typing a number followed by `G`  will bring your cursor to that line number.\n",
+    "- `$` brings you to the end of the current line; `0` to the beginning\n",
+    "- `/text` will search for the next occurance of 'text', and `?text`. After either search is done, `n` will move to the next occurance, and `N` to the previous occurance.\n",
     "\n",
     "*FYI*: tutorials and 'cheatsheets' will show you may more time-saving navigation tricks, e.g. skipping to the next word, etc.\n"
    ]
@@ -256,9 +256,10 @@
     "## A note on file names\n",
     "\n",
     "Most file names are `something.extension`. The extension isn’t required and doesn’t guarantee anything, but is normally used, and best practice to use it, to indicate the type file. `txt` is used for text files, and `sh` for bash scripts, `.py` for python scripts, etc.\n",
-    "    * If you only learn one thing in this class, please learn this: *please* don't use spaces or special characters in your file names. Use only letters, numbers, _, - (although - should never be the first letter, bash will interpret it as a flag; if . is used first, it will be a 'hidden' file), and then a period followed by the appropriate extension \n",
     "\n",
-    "Please keep thise files for some practice below."
+    "**If you only learn one thing in this class,** please learn this: *please* don't use spaces or special characters in your file names. Use only letters, numbers, _, - (although - should never be the first letter, bash will interpret it as a flag; if . is used first, it will be a 'hidden' file), and then a period followed by the appropriate extension \n",
+    "\n",
+    "Please keep these files for some practice below."
    ]
   },
   {
@@ -394,10 +395,10 @@
     "We will not spend much time on this powerful utility. Hereis one example of its functionality. There are many resources to learn more, should you be interested (e.g. https://likegeeks.com/awk-command/; https://www.gnu.org/software/gawk/manual/gawk.html#toc-Getting-Started-with-awk for a whole book on it).\n",
     "\n",
     "I often use awk to print a column from a file. Key variables available include:\n",
-    "* `$0` for the whole line.\n",
-    "* `$1` for the first field.\n",
-    "* `$2` for the second field.\n",
-    "* `$n` for the nth field.\n",
+    "- `$0` for the whole line.\n",
+    "- `$1` for the first field.\n",
+    "- `$2` for the second field.\n",
+    "- `$n` for the nth field.\n",
     "\n",
     "Try the following commands:\n",
     "```\n",
