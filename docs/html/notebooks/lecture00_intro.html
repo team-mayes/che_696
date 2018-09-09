@@ -17,6 +17,8 @@
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1) Intro to basic text-based computer interfaces: bash and vim" href="lecture01_shell.html" />
+    <link rel="prev" title="Syllabus" href="../syllabus.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
@@ -28,11 +30,23 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="lecture01_shell.html" title="1) Intro to basic text-based computer interfaces: bash and vim"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../syllabus.html" title="Syllabus"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: Data Science for Chemical Engineers 0.1 documentation</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../syllabus.html"
+                        title="previous chapter">Syllabus</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="lecture01_shell.html"
+                        title="next chapter">1) Intro to basic text-based computer interfaces: bash and vim</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <div class="searchformwrapper">
@@ -77,10 +91,10 @@ accessible to engineers by condensing multiple prerequisites into one
 semester</p>
 <p>From
 <a class="reference external" href="https://www.nytimes.com/2017/11/01/education/edlife/stem-jobs-industry-careers.html">https://www.nytimes.com/2017/11/01/education/edlife/stem-jobs-industry-careers.html</a>:
-<img alt="Jobs" src="../_images/lect01_NYTJobs.png" /></p>
+<img alt="Jobs" src="../_images/lect00_NYTJobs.png" /></p>
 <p>From
 <a class="reference external" href="https://www.nytimes.com/2017/11/03/education/edlife/choosing-a-college-major.html">https://www.nytimes.com/2017/11/03/education/edlife/choosing-a-college-major.html</a>:
-<img alt="LifetimeEarnings" src="../_images/lect01_NYTEarnings.png" /></p>
+<img alt="LifetimeEarnings" src="../_images/lect00_NYTEarnings.png" /></p>
 <p>Specific demand for ChE’s with Data science training, as noted in the
 following paper, authored by employees at the Dow Chemical Company: &gt;
 88% of chemical industry executives acknowledge that data analytics will
@@ -94,20 +108,20 @@ actively calling for more data science training: &gt;
 <a class="reference external" href="https://www.nap.edu/catalog/24886/envisioning-the-data-science-discipline-the-undergraduate-perspective-interim-report">https://www.nap.edu/catalog/24886/envisioning-the-data-science-discipline-the-undergraduate-perspective-interim-report</a>
 &gt;
 <a class="reference external" href="https://www.nap.edu/catalog/25104/data-science-for-undergraduates-opportunities-and-options">https://www.nap.edu/catalog/25104/data-science-for-undergraduates-opportunities-and-options</a></p>
-<p>Favorite metaphor from the reports: <img alt="watershed" src="../_images/watershed.png" /></p>
+<p>Favorite metaphor from the reports: <img alt="watershed" src="../_images/lect00_watershed.png" /></p>
 </div>
 <div class="section" id="What-is-Data-Science?">
 <h3>What is Data Science?<a class="headerlink" href="#What-is-Data-Science?" title="Permalink to this headline">¶</a></h3>
 <p>Definitions vary; Big Data often defined by four “V”s (initially 3;
 Veracity is the newcomer)
 <a class="reference external" href="https://www.michigandaily.com/section/research/big-data-how-university-michigan-navigates-ethics-unpredictability-data-science">https://www.michigandaily.com/section/research/big-data-how-university-michigan-navigates-ethics-unpredictability-data-science</a>
-<img alt="DSVs" src="../_images/lect01_michigan_big_data.jpg" /></p>
+<img alt="DSVs" src="../_images/lect00_michigan_big_data.jpg" /></p>
 <p>Data science as a multidisciplinary set of skills:
 <a class="reference external" href="http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram">http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram</a>
-<img alt="DSVenn" src="../_images/Data_Science_VD.png" /></p>
+<img alt="DSVenn" src="../_images/lect00_Data_Science_VD.png" /></p>
 <p>Data science as a process:
 <a class="reference external" href="https://medium.com/the-mission/deconstructing-data-science-breaking-the-complex-craft-into-its-simplest-parts-15b15420df21">https://medium.com/the-mission/deconstructing-data-science-breaking-the-complex-craft-into-its-simplest-parts-15b15420df21</a>
-<img alt="DSProcess" src="../_images/DataSciDecontruct.jpg" /></p>
+<img alt="DSProcess" src="../_images/lect00_DataSciDecontruct.jpg" /></p>
 </div>
 <div class="section" id="What-is-the-path-to-“Data-Acumen”?">
 <h3>What is the path to “Data Acumen”?<a class="headerlink" href="#What-is-the-path-to-“Data-Acumen”?" title="Permalink to this headline">¶</a></h3>
@@ -213,6 +227,12 @@ everyone can benefit from the discussion.</li>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="lecture01_shell.html" title="1) Intro to basic text-based computer interfaces: bash and vim"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../syllabus.html" title="Syllabus"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: Data Science for Chemical Engineers 0.1 documentation</a> &#187;</li> 
       </ul>
     </div>

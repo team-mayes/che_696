@@ -1,0 +1,173 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>2 Jupyter notebooks &#8212; CHE 696: Data Science for Chemical Engineers 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="HW1, practicing bash and vim" href="HW01.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="HW01.html" title="HW1, practicing bash and vim"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: Data Science for Chemical Engineers 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="HW01.html"
+                        title="previous chapter">HW1, practicing bash and vim</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="2-Jupyter-notebooks">
+<h1>2 Jupyter notebooks<a class="headerlink" href="#2-Jupyter-notebooks" title="Permalink to this headline">¶</a></h1>
+<p>Related link: <a class="reference external" href="https://jupyter.readthedocs.io/en/latest/index.html">https://jupyter.readthedocs.io/en/latest/index.html</a></p>
+<p>To run jupyter notebooks, you must have python installed. To check if
+you have it installed, you can type:</p>
+$ which python<div class="section" id="If-you-have-python-installed:">
+<h2>If you have python installed:<a class="headerlink" href="#If-you-have-python-installed:" title="Permalink to this headline">¶</a></h2>
+<p>It will tell you were it is installed. Skip to the next cell.</p>
+<p>Otherwise, nothing will be returned.</p>
+<div class="section" id="If-you-do-not-have-python-installed:">
+<h3>If you do not have python installed:<a class="headerlink" href="#If-you-do-not-have-python-installed:" title="Permalink to this headline">¶</a></h3>
+<p>I highly recommend using conda to do so.</p>
+<p>Download and install miniconda for Python3, 32 or 64 bit depending on
+your system, from <a class="reference external" href="http://conda.pydata.org/miniconda.html">http://conda.pydata.org/miniconda.html</a></p>
+<p>For Windows users, who do not know what to choose for 32 or 64 bit, it
+is strongly recommended to read the second question of this FAQ first:
+<a class="reference external" href="http://windows.microsoft.com/en-us/windows/32-bit-and-64-bit-windows">http://windows.microsoft.com/en-us/windows/32-bit-and-64-bit-windows</a></p>
+<p>Run the installer and select yes to add conda to the PATH variable.</p>
+<p>If you have installed from a Linux shell, either open a new shell to
+have an updated PATH, or update your PATH variable by source ~/.bashrc
+(or .tcsh, .csh - whichever shell you are using).</p>
+</div>
+</div>
+<div class="section" id="Checking-your-version">
+<h2>Checking your version<a class="headerlink" href="#Checking-your-version" title="Permalink to this headline">¶</a></h2>
+<p>Now, whether you just installed python or already had it installed,
+check the version by entering the command <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-V</span></code> or
+<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">--version</span></code>. Anything 3.4 or above it good for this class.</p>
+<div class="section" id="A-note-on-organization">
+<h3>A note on organization<a class="headerlink" href="#A-note-on-organization" title="Permalink to this headline">¶</a></h3>
+<p>It is always easiest to start with organization in mind, rather than
+make many files and then think about how you want them named and
+organized. Practice organization with files you use for this class! We
+will talk more about this at a few different points in this class.</p>
+</div>
+<div class="section" id="Creating-a-new-jupyter-notebook">
+<h3>Creating a new jupyter notebook<a class="headerlink" href="#Creating-a-new-jupyter-notebook" title="Permalink to this headline">¶</a></h3>
+<p>Jupyter notebooks (formerly called ipython notebooks) provide convenient
+platforms for getting to know python, especially for making and going
+through tutorials. All class notes and homework assignments in this
+course are created as jupyter notebooks. You will be creating and
+editing them. Thus, the first step is to see if you have this capability
+installed already (it likely is). Again, we’ll use the <code class="docutils literal notranslate"><span class="pre">which</span> <span class="pre">jupyter</span></code>
+trick to quickly check if you have jupyter installed. If not, install it
+with conda:</p>
+$ conda install jupyter<p><em>FYI</em>: You can use jupyter notebooks with multiple versions of python,
+R, and Julia. We will only use python 3 and markdown (simple language
+for text formatting) in our notebooks for this class. If you are
+interested in other capability, see
+<a class="reference external" href="https://jupyter.readthedocs.io/en/latest/install-kernel.html">https://jupyter.readthedocs.io/en/latest/install-kernel.html</a></p>
+<p>In your terminal window, nativate to a good place for saving jupyter
+notebooks that you create and edit. Save a copy of <code class="docutils literal notranslate"><span class="pre">HW01.ipynb</span></code> and
+<code class="docutils literal notranslate"><span class="pre">lecture01_shell.ipynb</span></code> to that directory. You can download it from
+github or from Canvas. We’ll start by exploring these notebooks, as well
+as creating a new notebook. Launch jupyter notebooks by entering the
+command:</p>
+$ jupyter notebook<p>You see something like the following in your terminal window:</p>
+truffle:2_notebooks hbmayes$ jupyter notebook
+[I 17:28:55.267 NotebookApp] Serving notebooks from local directory: /Users/hbmayes/bee/code/latex/che_696_private/practice/2_notebooks
+[I 17:28:55.267 NotebookApp] 0 active kernels
+[I 17:28:55.267 NotebookApp] The Jupyter Notebook is running at: http://localhost:8890/?token=89e889e0edd31f172b8d74a30c196a3fac04a0c262395f4d
+[I 17:28:55.267 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).<p>And in your default browser, a new window with a screen like this:</p>
+<div class="figure" id="id1">
+<img alt="JupyterNotebookLaunch" src="../_images/lect02_launch_notebook.png" />
+<p class="caption"><span class="caption-text">JupyterNotebookLaunch</span></p>
+</div>
+<p>Click on the “New” dropdown. You only need to have python 3 as an
+option:</p>
+<div class="figure" id="id2">
+<img alt="JupyterNotebookLaunch" src="../_images/lect02_launch_new_notebook.png" />
+<p class="caption"><span class="caption-text">JupyterNotebookLaunch</span></p>
+</div>
+<p>Select that option, and a new window with a new notebook will be
+launched:</p>
+<div class="figure" id="id3">
+<img alt="JupyterNotebookLaunch" src="../_images/lect02_new_notebook.png" />
+<p class="caption"><span class="caption-text">JupyterNotebookLaunch</span></p>
+</div>
+<p>Note the dropdown menu with different options for each “cell”. Change
+the first cell to “Markdown”. Type something in the first cell. Rename
+the file. Save it, then from the file menu, let’s select “Halt and
+Close”. We’ll explore the two existing notebooks before returning to
+this practice notebook.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="HW01.html" title="HW1, practicing bash and vim"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: Data Science for Chemical Engineers 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Heather Mayes.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+    </div>
+  </body>
+</html>
