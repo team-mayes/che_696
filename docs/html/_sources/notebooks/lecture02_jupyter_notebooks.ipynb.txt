@@ -6,7 +6,10 @@
    "source": [
     "# 2 Jupyter notebooks\n",
     "\n",
-    "Related link: https://jupyter.readthedocs.io/en/latest/index.html\n",
+    "Related links:\n",
+    "- About jupyter notebooks: https://jupyter.readthedocs.io/en/latest/index.html\n",
+    "- About markdown: https://daringfireball.net/projects/markdown/\n",
+    "- A great example of how notebooks can be used to make tutorials that can be downloaded and/or viewed online: http://emma-project.org/latest/\n",
     "\n",
     "To run jupyter notebooks, you must have python installed. To check if you have it installed, you can type:"
    ]
@@ -129,7 +132,53 @@
     "\n",
     "![JupyterNotebookLaunch](images/lect02_new_notebook.png)\n",
     "\n",
-    "Note the dropdown menu with different options for each \"cell\". Change the first cell to \"Markdown\". Type something in the first cell. Rename the file. Save it, then from the file menu, let's select \"Halt and Close\". We'll explore the two existing notebooks before returning to this practice notebook."
+    "Note the dropdown menu with different options for each \"cell\". Change the first cell to \"Markdown\" from the default initial \"code\". Type something in the first cell. Rename the file. Save it, then from the file menu, let's select \"Halt and Close\". We'll explore the two existing notebooks before returning to this practice notebook. Open \"HW01.ipynb\"."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Edit and command modes\n",
+    "\n",
+    "The keyboard icon takes you to a list of keyboard commands that will save you time. There are many \"cheatsheets\" you can reference (use if you find any useful), including:\n",
+    "- https://www.cheatography.com/weidadeyue/cheat-sheets/jupyter-notebook/pdf_bw/\n",
+    "- https://kapeli.com/cheat_sheets/iPython_Notebook.docset/Contents/Resources/Documents/index\n",
+    "- http://datacamp-community.s3.amazonaws.com/48093c40-5303-45f4-bbf9-0c96c0133c40\n",
+    "\n",
+    "As with vim there is a command mode and an edit (insert) mode. If you are in edit mode, `esc` switches you to command mode, and `enter` puts you back into edit mode. The pencil (or lack thereof) indicates if you are in edit mode (or not).\n",
+    "\n",
+    "Edit mode allows you to use keystrokes to change the type of cell, insert cells, etc., more quickly than switching to the mouse and using the GUI options. \n",
+    "\n",
+    "The `code` cells would be for running python. Since we have not yet begun covering python, my notebooks so far only are either `markdown` or `RawNBConvert`. I use the second type of option for showing code snippits. My explanations, rants, and raves are in `markdown` cells.\n",
+    "\n",
+    "*FYI*: The default cell type for a new cell is `code`. Want to change that? Follow these instructions: https://stackoverflow.com/questions/40382454/jupyter-notebook-new-cell-type-default"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## What is Markdown?\n",
+    "\n",
+    "For a full definition and guide, see https://daringfireball.net/projects/markdown/\n",
+    "There is also a nice informal definition on Wikipedia:\n",
+    "> Markdown is a lightweight markup language with plain text formatting syntax. It is designed so that it can be converted to HTML and many other formats using a tool by the same name. Markdown is often used to format readme files, for writing messages in online discussion forums, and to create rich text using a plain text editor.\n",
+    "\n",
+    "This ability to have easy-to-format text that lends well to conversion to html is why I'm making my class notes in jupyter notebooks, and why I think they are great for writing tutorials.\n",
+    "\n",
+    "Some potentialy useful cheatsheets on markdown:\n",
+    "\n",
+    "- https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf\n",
+    "https://www.ibm.com/support/knowledgecenter/en/SSAS34_1.1.3/analyze-data/markd-jupyter.html\n",
+    "- https://www.markdownguide.org/cheat-sheet/"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "In addition to using notebooks for class notes and HW, we will start programming Python in notebooks, before switching over to using an IDE (integrated development environment)."
    ]
   }
  ],

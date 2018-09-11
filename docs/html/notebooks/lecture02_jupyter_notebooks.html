@@ -62,7 +62,11 @@
             
   <div class="section" id="2-Jupyter-notebooks">
 <h1>2 Jupyter notebooks<a class="headerlink" href="#2-Jupyter-notebooks" title="Permalink to this headline">¶</a></h1>
-<p>Related link: <a class="reference external" href="https://jupyter.readthedocs.io/en/latest/index.html">https://jupyter.readthedocs.io/en/latest/index.html</a></p>
+<p>Related links: - About jupyter notebooks:
+<a class="reference external" href="https://jupyter.readthedocs.io/en/latest/index.html">https://jupyter.readthedocs.io/en/latest/index.html</a> - About markdown:
+<a class="reference external" href="https://daringfireball.net/projects/markdown/">https://daringfireball.net/projects/markdown/</a> - A great example of how
+notebooks can be used to make tutorials that can be downloaded and/or
+viewed online: <a class="reference external" href="http://emma-project.org/latest/">http://emma-project.org/latest/</a></p>
 <p>To run jupyter notebooks, you must have python installed. To check if
 you have it installed, you can type:</p>
 $ which python<div class="section" id="If-you-have-python-installed:">
@@ -139,12 +143,57 @@ launched:</p>
 <p class="caption"><span class="caption-text">JupyterNotebookLaunch</span></p>
 </div>
 <p>Note the dropdown menu with different options for each “cell”. Change
-the first cell to “Markdown”. Type something in the first cell. Rename
-the file. Save it, then from the file menu, let’s select “Halt and
-Close”. We’ll explore the two existing notebooks before returning to
-this practice notebook.</p>
+the first cell to “Markdown” from the default initial “code”. Type
+something in the first cell. Rename the file. Save it, then from the
+file menu, let’s select “Halt and Close”. We’ll explore the two existing
+notebooks before returning to this practice notebook. Open “HW01.ipynb”.</p>
 </div>
 </div>
+</div>
+<div class="section" id="Edit-and-command-modes">
+<h1>Edit and command modes<a class="headerlink" href="#Edit-and-command-modes" title="Permalink to this headline">¶</a></h1>
+<p>The keyboard icon takes you to a list of keyboard commands that will
+save you time. There are many “cheatsheets” you can reference (use if
+you find any useful), including: -
+<a class="reference external" href="https://www.cheatography.com/weidadeyue/cheat-sheets/jupyter-notebook/pdf_bw/">https://www.cheatography.com/weidadeyue/cheat-sheets/jupyter-notebook/pdf_bw/</a>
+-
+<a class="reference external" href="https://kapeli.com/cheat_sheets/iPython_Notebook.docset/Contents/Resources/Documents/index">https://kapeli.com/cheat_sheets/iPython_Notebook.docset/Contents/Resources/Documents/index</a>
+-
+<a class="reference external" href="http://datacamp-community.s3.amazonaws.com/48093c40-5303-45f4-bbf9-0c96c0133c40">http://datacamp-community.s3.amazonaws.com/48093c40-5303-45f4-bbf9-0c96c0133c40</a></p>
+<p>As with vim there is a command mode and an edit (insert) mode. If you
+are in edit mode, <code class="docutils literal notranslate"><span class="pre">esc</span></code> switches you to command mode, and <code class="docutils literal notranslate"><span class="pre">enter</span></code>
+puts you back into edit mode. The pencil (or lack thereof) indicates if
+you are in edit mode (or not).</p>
+<p>Edit mode allows you to use keystrokes to change the type of cell,
+insert cells, etc., more quickly than switching to the mouse and using
+the GUI options.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">code</span></code> cells would be for running python. Since we have not yet
+begun covering python, my notebooks so far only are either <code class="docutils literal notranslate"><span class="pre">markdown</span></code>
+or <code class="docutils literal notranslate"><span class="pre">RawNBConvert</span></code>. I use the second type of option for showing code
+snippits. My explanations, rants, and raves are in <code class="docutils literal notranslate"><span class="pre">markdown</span></code> cells.</p>
+<p><em>FYI</em>: The default cell type for a new cell is <code class="docutils literal notranslate"><span class="pre">code</span></code>. Want to change
+that? Follow these instructions:
+<a class="reference external" href="https://stackoverflow.com/questions/40382454/jupyter-notebook-new-cell-type-default">https://stackoverflow.com/questions/40382454/jupyter-notebook-new-cell-type-default</a></p>
+<p>For a full definition and guide, see
+<a class="reference external" href="https://daringfireball.net/projects/markdown/">https://daringfireball.net/projects/markdown/</a> There is also a nice
+informal definition on Wikipedia: &gt; Markdown is a lightweight markup
+language with plain text formatting syntax. It is designed so that it
+can be converted to HTML and many other formats using a tool by the same
+name. Markdown is often used to format readme files, for writing
+messages in online discussion forums, and to create rich text using a
+plain text editor.</p>
+<p>This ability to have easy-to-format text that lends well to conversion
+to html is why I’m making my class notes in jupyter notebooks, and why I
+think they are great for writing tutorials.</p>
+<p>Some potentialy useful cheatsheets on markdown:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf">https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf</a>
+<a class="reference external" href="https://www.ibm.com/support/knowledgecenter/en/SSAS34_1.1.3/analyze-data/markd-jupyter.html">https://www.ibm.com/support/knowledgecenter/en/SSAS34_1.1.3/analyze-data/markd-jupyter.html</a></li>
+<li><a class="reference external" href="https://www.markdownguide.org/cheat-sheet/">https://www.markdownguide.org/cheat-sheet/</a></li>
+</ul>
+<p>In addition to using notebooks for class notes and HW, we will start
+programming Python in notebooks, before switching over to using an IDE
+(integrated development environment).</p>
 </div>
 
 

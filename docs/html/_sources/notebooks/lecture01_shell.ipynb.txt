@@ -229,7 +229,7 @@
     "\n",
     "echo 'May I have @@@num bananas?' > ${name}.tpl\n",
     "\n",
-    "for job in $(seq $\n",
+    "for job in $(seq $first $incr $last); do\n",
     "    sed \"s/@@@num/${job}/\" <  ${name}.tpl > ${name}_${job}.txt\n",
     "    cat ${name}_${job}.txt\n",
     "done"
@@ -264,7 +264,7 @@
    "cell_type": "raw",
    "metadata": {},
    "source": [
-    "$ ./bananas.sh"
+    "    $ ./bananas.sh"
    ]
   },
   {
@@ -345,7 +345,7 @@
    ]
   },
   {
-   "cell_type": "raw",
+   "cell_type": "markdown",
    "metadata": {},
    "source": [
     "With just the commands listed here on this brief intro to bash scripting, you can make templates and thus automate many repative tasks!"

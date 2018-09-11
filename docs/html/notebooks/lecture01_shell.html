@@ -330,7 +330,7 @@ name=banana
 
 echo 'May I have @@@num bananas?' > ${name}.tpl
 
-for job in $(seq $
+for job in $(seq $first $incr $last); do
     sed "s/@@@num/${job}/" <  ${name}.tpl > ${name}_${job}.txt
     cat ${name}_${job}.txt
 done<div class="section" id="The-shebang-and-more">
@@ -389,7 +389,9 @@ such as</p>
 
 for student in $( < students.txt); do
     echo "May ${student} have some bananas?"
-doneWith just the commands listed here on this brief intro to bash scripting, you can make templates and thus automate many repative tasks!</div>
+done<p>With just the commands listed here on this brief intro to bash
+scripting, you can make templates and thus automate many repative tasks!</p>
+</div>
 </div>
 <div class="section" id="A-note-on-file-names">
 <h2>A note on file names<a class="headerlink" href="#A-note-on-file-names" title="Permalink to this headline">¶</a></h2>
