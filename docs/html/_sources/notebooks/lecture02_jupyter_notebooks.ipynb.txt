@@ -4,7 +4,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# 2 Jupyter notebooks\n",
+    "# 2) Jupyter notebooks\n",
     "\n",
     "Related links:\n",
     "- About jupyter notebooks: https://jupyter.readthedocs.io/en/latest/index.html\n",
@@ -30,7 +30,7 @@
     "\n",
     "Otherwise, nothing will be returned.\n",
     "\n",
-    "## If you do not have python installed:\n",
+    "### If you do not have python installed:\n",
     "\n",
     "I highly recommend using conda to do so. \n",
     "\n",
@@ -139,7 +139,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Edit and command modes\n",
+    "## Edit and command modes\n",
     "\n",
     "The keyboard icon takes you to a list of keyboard commands that will save you time. There are many \"cheatsheets\" you can reference (use if you find any useful), including:\n",
     "- https://www.cheatography.com/weidadeyue/cheat-sheets/jupyter-notebook/pdf_bw/\n",
