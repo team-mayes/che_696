@@ -17,6 +17,7 @@
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="2) Jupyter notebooks" href="lecture02_jupyter_notebooks.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
@@ -28,11 +29,17 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="lecture02_jupyter_notebooks.html" title="2) Jupyter notebooks"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: Data Science for Chemical Engineers 0.1 documentation</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="lecture02_jupyter_notebooks.html"
+                        title="previous chapter">2) Jupyter notebooks</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <div class="searchformwrapper">
@@ -237,6 +244,170 @@ FORTRAN.</p>
 fast, compiled languages (they did that trouble for you). If you use
 them, you will save oodles of time both writing and running your
 scripts. Thus, we will be using them!</p>
+<p>You will import libraries as simply as this:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">this</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren&#39;t special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you&#39;re Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it&#39;s a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let&#39;s do more of those!
+</pre></div></div>
+</div>
+<p><img alt="From xkcd:" src="../_images/lect03_xkcd_python.png" /> (c) xkcd, <a class="reference external" href="https://xkcd.com/353/">https://xkcd.com/353/</a></p>
+<div class="section" id="More-motivation-for-learning-python:">
+<h3>More motivation for learning python:<a class="headerlink" href="#More-motivation-for-learning-python:" title="Permalink to this headline">¶</a></h3>
+<p>From the <a class="reference external" href="https://spectrum.ieee.org/at-work/innovation/the-2018-top-programming-languages">IEEE Spectrum,
+2018-07-31</a>,
+ranking by typical IEEE member and Spectrum reader, with a “focus on
+things like what’s <em>au courant</em> for open source projects”: <img alt="IEEE 2018 rankings" src="../_images/lect03_programming_rankings.jpeg" /></p>
+</div>
+</div>
+<div class="section" id="On-to-some-simple-python">
+<h2>On to some simple python<a class="headerlink" href="#On-to-some-simple-python" title="Permalink to this headline">¶</a></h2>
+<p>Remember how I mentioned that simple math is not simple in bash? It is
+in python!</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[2]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>4
+</pre></div>
+</div>
+</div>
+<p>A few important points: - The numbers are very helpful as you figure out
+what has been run in what order - By default, the output of the last
+line of code in a cell will be output.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="mi">1</span><span class="o">*</span><span class="mi">2</span>
+<span class="mi">3</span><span class="o">*</span><span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[3]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>12
+</pre></div>
+</div>
+</div>
+<p>You see that only the last line is output. You can also control what is
+printed. And, generally, we’ll be wanting to store output in variables.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">result_1</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result_1</span><span class="p">)</span>
+<span class="n">result_2</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2
+</pre></div></div>
+</div>
+<p>Python has what is referred to as duck-typing. That is, if it looks like
+a duck, it calls it a duck.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">var_1</span> <span class="o">=</span> <span class="s1">&#39;che_696-001&#39;</span>
+<span class="n">var_2</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">var_3</span> <span class="o">=</span> <span class="mf">4.3</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">var_1</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">var_2</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">var_3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;str&#39;&gt; &lt;class &#39;int&#39;&gt; &lt;class &#39;float&#39;&gt;
+</pre></div></div>
+</div>
+<p>Unlike other languages (like C++ and FORTRAN), the variable type can be
+changed.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">var_1</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">var_2</span> <span class="o">=</span> <span class="mf">4.2</span>
+<span class="n">var_3</span> <span class="o">=</span> <span class="s1">&#39;python is great&#39;</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">var_1</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">var_2</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">var_3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;int&#39;&gt; &lt;class &#39;float&#39;&gt; &lt;class &#39;str&#39;&gt;
+</pre></div></div>
+</div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
@@ -262,6 +433,9 @@ scripts. Thus, we will be using them!</p>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="lecture02_jupyter_notebooks.html" title="2) Jupyter notebooks"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: Data Science for Chemical Engineers 0.1 documentation</a> &#187;</li> 
       </ul>
     </div>

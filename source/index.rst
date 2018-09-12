@@ -20,5 +20,7 @@ CHE 696: Data Science for Chemical Engineers
 
    notebooks/lecture02_jupyter_notebooks.ipynb
 
+   notebooks/lecture03_intro_python_in_ipynb.ipynb
+
 ..
    .. :caption: About Sphinx:

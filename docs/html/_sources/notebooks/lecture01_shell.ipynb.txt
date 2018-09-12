@@ -264,7 +264,7 @@
    "cell_type": "raw",
    "metadata": {},
    "source": [
-    "    $ ./bananas.sh"
+    "$ ./bananas.sh"
    ]
   },
   {

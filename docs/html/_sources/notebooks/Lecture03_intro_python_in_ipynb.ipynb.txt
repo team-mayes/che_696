@@ -30,7 +30,203 @@
     "\n",
     "*Drawback*: it is slower to run than a compiled language like C++ or FORTRAN.\n",
     "\n",
-    "*Good news*: many libraries are available for python that are written in fast, compiled languages (they did that trouble for you). If you use them, you will save oodles of time both writing and running your scripts. Thus, we will be using them!"
+    "*Good news*: many libraries are available for python that are written in fast, compiled languages (they did that trouble for you). If you use them, you will save oodles of time both writing and running your scripts. Thus, we will be using them!\n",
+    "\n",
+    "You will import libraries as simply as this:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "The Zen of Python, by Tim Peters\n",
+      "\n",
+      "Beautiful is better than ugly.\n",
+      "Explicit is better than implicit.\n",
+      "Simple is better than complex.\n",
+      "Complex is better than complicated.\n",
+      "Flat is better than nested.\n",
+      "Sparse is better than dense.\n",
+      "Readability counts.\n",
+      "Special cases aren't special enough to break the rules.\n",
+      "Although practicality beats purity.\n",
+      "Errors should never pass silently.\n",
+      "Unless explicitly silenced.\n",
+      "In the face of ambiguity, refuse the temptation to guess.\n",
+      "There should be one-- and preferably only one --obvious way to do it.\n",
+      "Although that way may not be obvious at first unless you're Dutch.\n",
+      "Now is better than never.\n",
+      "Although never is often better than *right* now.\n",
+      "If the implementation is hard to explain, it's a bad idea.\n",
+      "If the implementation is easy to explain, it may be a good idea.\n",
+      "Namespaces are one honking great idea -- let's do more of those!\n"
+     ]
+    }
+   ],
+   "source": [
+    "import this"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![From xkcd:](images/lect03_xkcd_python.png)\n",
+    "(c) xkcd, https://xkcd.com/353/"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### More motivation for learning python:\n",
+    "\n",
+    "From the [IEEE Spectrum, 2018-07-31](https://spectrum.ieee.org/at-work/innovation/the-2018-top-programming-languages), ranking by typical IEEE member and Spectrum reader, with a \"focus on things like what’s *au courant* for open source projects\": \n",
+    "![IEEE 2018 rankings](images/lect03_programming_rankings.jpeg)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## On to some simple python\n",
+    "\n",
+    "Remember how I mentioned that simple math is not simple in bash? It is in python!"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "4"
+      ]
+     },
+     "execution_count": 2,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "2+2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "A few important points:\n",
+    "- The numbers are very helpful as you figure out what has been run in what order\n",
+    "- By default, the output of the last line of code in a cell will be output."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "12"
+      ]
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "1*2\n",
+    "3*4"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "You see that only the last line is output. You can also control what is printed. And, generally, we'll be wanting to store output in variables."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2\n"
+     ]
+    }
+   ],
+   "source": [
+    "result_1 = 1 * 2\n",
+    "print(result_1)\n",
+    "result_2 = 3 * 4"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Python has what is referred to as duck-typing. That is, if it looks like a duck, it calls it a duck."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'str'> <class 'int'> <class 'float'>\n"
+     ]
+    }
+   ],
+   "source": [
+    "var_1 = 'che_696-001'\n",
+    "var_2 = 4\n",
+    "var_3 = 4.3\n",
+    "print(type(var_1), type(var_2), type(var_3))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Unlike other languages (like C++ and FORTRAN), the variable type can be changed."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'int'> <class 'float'> <class 'str'>\n"
+     ]
+    }
+   ],
+   "source": [
+    "var_1 = 8\n",
+    "var_2 = 4.2\n",
+    "var_3 = 'python is great'\n",
+    "print(type(var_1), type(var_2), type(var_3))"
    ]
   },
   {
