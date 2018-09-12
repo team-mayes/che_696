@@ -37,9 +37,37 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 1,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "The Zen of Python, by Tim Peters\n",
+      "\n",
+      "Beautiful is better than ugly.\n",
+      "Explicit is better than implicit.\n",
+      "Simple is better than complex.\n",
+      "Complex is better than complicated.\n",
+      "Flat is better than nested.\n",
+      "Sparse is better than dense.\n",
+      "Readability counts.\n",
+      "Special cases aren't special enough to break the rules.\n",
+      "Although practicality beats purity.\n",
+      "Errors should never pass silently.\n",
+      "Unless explicitly silenced.\n",
+      "In the face of ambiguity, refuse the temptation to guess.\n",
+      "There should be one-- and preferably only one --obvious way to do it.\n",
+      "Although that way may not be obvious at first unless you're Dutch.\n",
+      "Now is better than never.\n",
+      "Although never is often better than *right* now.\n",
+      "If the implementation is hard to explain, it's a bad idea.\n",
+      "If the implementation is easy to explain, it may be a good idea.\n",
+      "Namespaces are one honking great idea -- let's do more of those!\n"
+     ]
+    }
+   ],
    "source": [
     "import this"
    ]
@@ -73,9 +101,20 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 2,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "4"
+      ]
+     },
+     "execution_count": 2,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "2+2"
    ]
@@ -91,7 +130,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 5,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -108,9 +147,17 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 6,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2\n"
+     ]
+    }
+   ],
    "source": [
     "result_1 = 1 * 2\n",
     "print(result_1)\n",
@@ -128,12 +175,29 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 8,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "In is type <class 'list'> and In = ['', 'import this', '2+2', '1*2\\n3*4', '1*2\\nresult_2 = 3*4', '1*2\\nresult_2 = 3*4', 'result_1 = 1 * 2\\nprint(result_1)\\nresult_2 = 3 * 4', 'print(\"In is type {} and In = {}\\\\n\".format(type(In), In))\\nprint(\"The third input was \\'{}\\'\\\\n\".format(In[3]))\\nprint(\"Out is type {} and Out = {}\".format(type(Out), Out))', 'print(\"In is type {} and In = {}\\\\n\".format(type(In), In))\\nprint(\"The third input was \\'{}\\'\\\\n\".format(In[3]))\\nprint(\\'The third input was \"{}\"\\\\n\\'.format(In[3]))\\nprint(\"Out is type {} and Out = {}\".format(type(Out), Out))']\n",
+      "\n",
+      "The third input was '1*2\n",
+      "3*4'\n",
+      "\n",
+      "The third input was \"1*2\n",
+      "3*4\"\n",
+      "\n",
+      "Out is type <class 'dict'> and Out = {2: 4, 3: 12}\n"
+     ]
+    }
+   ],
    "source": [
     "print(\"In is type {} and In = {}\\n\".format(type(In), In))\n",
     "print(\"The third input was '{}'\\n\".format(In[3]))\n",
+    "print('The third input was \"{}\"\\n'.format(In[3]))\n",
     "print(\"Out is type {} and Out = {}\".format(type(Out), Out))"
    ]
   },
@@ -147,7 +211,9 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "var_1 = 'che_696-001'\n",
@@ -166,7 +232,9 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "var_1 = 8\n",
