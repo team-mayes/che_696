@@ -8,8 +8,20 @@
     "\n",
     "Related links:\n",
     "- About jupyter notebooks: https://jupyter.readthedocs.io/en/latest/index.html\n",
+    "- Jupyter notebook tips & tricks: https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/\n",
     "- About markdown: https://daringfireball.net/projects/markdown/\n",
-    "- A great example of how notebooks can be used to make tutorials that can be downloaded and/or viewed online: http://emma-project.org/latest/\n",
+    "\n",
+    "## Why Jupyter notebooks?\n",
+    "\n",
+    "Jupyter notebooks (formerly ipython notebooks) provide convenient platforms for getting to know python (or one of the other languages supported by them, including R and Julia--see FYI), especially for making and going through tutorials. \n",
+    "\n",
+    "*FYI*: The name Jupyter is an indirect acronyum of the three core languages it was designed for: JUlia, PYThon, and R and is inspired by the planet Jupiter.\n",
+    "\n",
+    "Some great examples of the use of juypter notebooks for sharing knowledge and tutorials include:\n",
+    "- http://emma-project.org/latest/\n",
+    "- https://jakevdp.github.io/WhirlwindTourOfPython/\n",
+    "\n",
+    "All class notes and homework assignments in this course are created as jupyter notebooks. As you have seen, they can be rendered into html, or we can work with them directly as notebooks. You will be creating and editing notebooks throughout this class.\n",
     "\n",
     "To run jupyter notebooks, you must have python installed. To check if you have it installed, you can type:"
    ]
@@ -26,7 +38,7 @@
    "metadata": {},
    "source": [
     "### If you have python installed:\n",
-    "It will tell you were it is installed. Skip to the next cell.\n",
+    "It will tell you were it is installed. Skip the next section.\n",
     "\n",
     "Otherwise, nothing will be returned.\n",
     "\n",
@@ -67,7 +79,7 @@
    "source": [
     "## Creating a new jupyter notebook\n",
     "\n",
-    "Jupyter notebooks (formerly called ipython notebooks) provide convenient platforms for getting to know python, especially for making and going through tutorials. All class notes and homework assignments in this course are created as jupyter notebooks. You will be creating and editing them. Thus, the first step is to see if you have this capability installed already (it likely is). Again, we'll use the `which jupyter` trick to quickly check if you have jupyter installed. If not, install it with conda:"
+    "The first step is to see if you have this capability installed already (it likely is). Again, we'll use the `which jupyter` trick to quickly check if you have jupyter installed. If not, install it with conda:"
    ]
   },
   {
@@ -179,6 +191,66 @@
    "metadata": {},
    "source": [
     "In addition to using notebooks for class notes and HW, we will start programming Python in notebooks, before switching over to using an IDE (integrated development environment)."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Extensions to jupyter notebooks\n",
+    "\n",
+    "*FYI* There are [available unofficial extensions](https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/index.html) to jupyter notebooks. I, for example, would like to have my spelling checked.\n",
+    "\n",
+    "Here is how to install this capability: "
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": [
+    "$ pip install https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tarball/master\n",
+    "$ pip install jupyter_nbextensions_configurator\n",
+    "$ jupyter contrib nbextension install --user\n",
+    "$ jupyter nbextensions_configurator enable --user"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now to enable the [spellchecker](https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/nbextensions/spellchecker/README.html) extension:"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": [
+    "$ jupyter nbextension enable spellchecker/main"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## One last cool note about ipynbs, for those who love LaTex\n",
+    "\n",
+    "Beautiful equations can written in Markdown cells using LaTex surrounded by `\\\\( ... \\\\)`. For example:"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": [
+    "\\\\( P(A \\mid B) = \\frac{P(B \\mid A) \\, P(A)}{P(B)} \\\\)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Will be rendered as: \\\\( P(A \\mid B) = \\frac{P(B \\mid A) \\, P(A)}{P(B)} \\\\)\n",
+    "\n",
+    "While I did not add LaTex to our quite-full syllabus, I highly recommend it. "
    ]
   }
  ],

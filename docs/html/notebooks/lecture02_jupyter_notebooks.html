@@ -63,19 +63,35 @@
   <div class="section" id="2)-Jupyter-notebooks">
 <h1>2) Jupyter notebooks<a class="headerlink" href="#2)-Jupyter-notebooks" title="Permalink to this headline">¶</a></h1>
 <p>Related links: - About jupyter notebooks:
-<a class="reference external" href="https://jupyter.readthedocs.io/en/latest/index.html">https://jupyter.readthedocs.io/en/latest/index.html</a> - About markdown:
-<a class="reference external" href="https://daringfireball.net/projects/markdown/">https://daringfireball.net/projects/markdown/</a> - A great example of how
-notebooks can be used to make tutorials that can be downloaded and/or
-viewed online: <a class="reference external" href="http://emma-project.org/latest/">http://emma-project.org/latest/</a></p>
+<a class="reference external" href="https://jupyter.readthedocs.io/en/latest/index.html">https://jupyter.readthedocs.io/en/latest/index.html</a> - Jupyter notebook
+tips &amp; tricks:
+<a class="reference external" href="https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/">https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/</a> -
+About markdown: <a class="reference external" href="https://daringfireball.net/projects/markdown/">https://daringfireball.net/projects/markdown/</a></p>
+<div class="section" id="Why-Jupyter-notebooks?">
+<h2>Why Jupyter notebooks?<a class="headerlink" href="#Why-Jupyter-notebooks?" title="Permalink to this headline">¶</a></h2>
+<p>Jupyter notebooks (formerly ipython notebooks) provide convenient
+platforms for getting to know python (or one of the other languages
+supported by them, including R and Julia–see FYI), especially for making
+and going through tutorials.</p>
+<p><em>FYI</em>: The name Jupyter is an indirect acronyum of the three core
+languages it was designed for: JUlia, PYThon, and R and is inspired by
+the planet Jupiter.</p>
+<p>Some great examples of the use of juypter notebooks for sharing
+knowledge and tutorials include: - <a class="reference external" href="http://emma-project.org/latest/">http://emma-project.org/latest/</a> -
+<a class="reference external" href="https://jakevdp.github.io/WhirlwindTourOfPython/">https://jakevdp.github.io/WhirlwindTourOfPython/</a></p>
+<p>All class notes and homework assignments in this course are created as
+jupyter notebooks. As you have seen, they can be rendered into html, or
+we can work with them directly as notebooks. You will be creating and
+editing notebooks throughout this class.</p>
 <p>To run jupyter notebooks, you must have python installed. To check if
 you have it installed, you can type:</p>
 $ which python<div class="section" id="If-you-have-python-installed:">
-<h2>If you have python installed:<a class="headerlink" href="#If-you-have-python-installed:" title="Permalink to this headline">¶</a></h2>
-<p>It will tell you were it is installed. Skip to the next cell.</p>
+<h3>If you have python installed:<a class="headerlink" href="#If-you-have-python-installed:" title="Permalink to this headline">¶</a></h3>
+<p>It will tell you were it is installed. Skip the next section.</p>
 <p>Otherwise, nothing will be returned.</p>
 </div>
 <div class="section" id="If-you-do-not-have-python-installed:">
-<h2>If you do not have python installed:<a class="headerlink" href="#If-you-do-not-have-python-installed:" title="Permalink to this headline">¶</a></h2>
+<h3>If you do not have python installed:<a class="headerlink" href="#If-you-do-not-have-python-installed:" title="Permalink to this headline">¶</a></h3>
 <p>I highly recommend using conda to do so.</p>
 <p>Download and install miniconda for Python3, 32 or 64 bit depending on
 your system, from <a class="reference external" href="http://conda.pydata.org/miniconda.html">http://conda.pydata.org/miniconda.html</a></p>
@@ -88,27 +104,24 @@ have an updated PATH, or update your PATH variable by source ~/.bashrc
 (or .tcsh, .csh - whichever shell you are using).</p>
 </div>
 <div class="section" id="Checking-your-version">
-<h2>Checking your version<a class="headerlink" href="#Checking-your-version" title="Permalink to this headline">¶</a></h2>
+<h3>Checking your version<a class="headerlink" href="#Checking-your-version" title="Permalink to this headline">¶</a></h3>
 <p>Now, whether you just installed python or already had it installed,
 check the version by entering the command <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-V</span></code> or
 <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">--version</span></code>. Anything 3.4 or above it good for this class.</p>
+</div>
+</div>
 <div class="section" id="A-note-on-organization">
-<h3>A note on organization<a class="headerlink" href="#A-note-on-organization" title="Permalink to this headline">¶</a></h3>
+<h2>A note on organization<a class="headerlink" href="#A-note-on-organization" title="Permalink to this headline">¶</a></h2>
 <p>It is always easiest to start with organization in mind, rather than
 make many files and then think about how you want them named and
 organized. Practice organization with files you use for this class! We
 will talk more about this at a few different points in this class.</p>
 </div>
 <div class="section" id="Creating-a-new-jupyter-notebook">
-<h3>Creating a new jupyter notebook<a class="headerlink" href="#Creating-a-new-jupyter-notebook" title="Permalink to this headline">¶</a></h3>
-<p>Jupyter notebooks (formerly called ipython notebooks) provide convenient
-platforms for getting to know python, especially for making and going
-through tutorials. All class notes and homework assignments in this
-course are created as jupyter notebooks. You will be creating and
-editing them. Thus, the first step is to see if you have this capability
-installed already (it likely is). Again, we’ll use the <code class="docutils literal notranslate"><span class="pre">which</span> <span class="pre">jupyter</span></code>
-trick to quickly check if you have jupyter installed. If not, install it
-with conda:</p>
+<h2>Creating a new jupyter notebook<a class="headerlink" href="#Creating-a-new-jupyter-notebook" title="Permalink to this headline">¶</a></h2>
+<p>The first step is to see if you have this capability installed already
+(it likely is). Again, we’ll use the <code class="docutils literal notranslate"><span class="pre">which</span> <span class="pre">jupyter</span></code> trick to quickly
+check if you have jupyter installed. If not, install it with conda:</p>
 $ conda install jupyter<p><em>FYI</em>: You can use jupyter notebooks with multiple versions of python,
 R, and Julia. We will only use python 3 and markdown (simple language
 for text formatting) in our notebooks for this class. If you are
@@ -126,19 +139,19 @@ truffle:2_notebooks hbmayes$ jupyter notebook
 [I 17:28:55.267 NotebookApp] 0 active kernels
 [I 17:28:55.267 NotebookApp] The Jupyter Notebook is running at: http://localhost:8890/?token=89e889e0edd31f172b8d74a30c196a3fac04a0c262395f4d
 [I 17:28:55.267 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).<p>And in your default browser, a new window with a screen like this:</p>
-<div class="figure" id="id1">
+<div class="figure" id="id3">
 <img alt="JupyterNotebookLaunch" src="../_images/lect02_launch_notebook.png" />
 <p class="caption"><span class="caption-text">JupyterNotebookLaunch</span></p>
 </div>
 <p>Click on the “New” dropdown. You only need to have python 3 as an
 option:</p>
-<div class="figure" id="id2">
+<div class="figure" id="id4">
 <img alt="JupyterNotebookLaunch" src="../_images/lect02_launch_new_notebook.png" />
 <p class="caption"><span class="caption-text">JupyterNotebookLaunch</span></p>
 </div>
 <p>Select that option, and a new window with a new notebook will be
 launched:</p>
-<div class="figure" id="id3">
+<div class="figure" id="id5">
 <img alt="JupyterNotebookLaunch" src="../_images/lect02_new_notebook.png" />
 <p class="caption"><span class="caption-text">JupyterNotebookLaunch</span></p>
 </div>
@@ -149,7 +162,7 @@ file menu, let’s select “Halt and Close”. We’ll explore the two existing
 notebooks before returning to this practice notebook. Open “HW01.ipynb”.</p>
 </div>
 <div class="section" id="Edit-and-command-modes">
-<h3>Edit and command modes<a class="headerlink" href="#Edit-and-command-modes" title="Permalink to this headline">¶</a></h3>
+<h2>Edit and command modes<a class="headerlink" href="#Edit-and-command-modes" title="Permalink to this headline">¶</a></h2>
 <p>The keyboard icon takes you to a list of keyboard commands that will
 save you time. There are many “cheatsheets” you can reference (use if
 you find any useful), including: -
@@ -174,7 +187,7 @@ that? Follow these instructions:
 <a class="reference external" href="https://stackoverflow.com/questions/40382454/jupyter-notebook-new-cell-type-default">https://stackoverflow.com/questions/40382454/jupyter-notebook-new-cell-type-default</a></p>
 </div>
 <div class="section" id="What-is-Markdown?">
-<h3>What is Markdown?<a class="headerlink" href="#What-is-Markdown?" title="Permalink to this headline">¶</a></h3>
+<h2>What is Markdown?<a class="headerlink" href="#What-is-Markdown?" title="Permalink to this headline">¶</a></h2>
 <p>For a full definition and guide, see
 <a class="reference external" href="https://daringfireball.net/projects/markdown/">https://daringfireball.net/projects/markdown/</a> There is also a nice
 informal definition on Wikipedia: &gt; Markdown is a lightweight markup
@@ -196,6 +209,28 @@ think they are great for writing tutorials.</p>
 programming Python in notebooks, before switching over to using an IDE
 (integrated development environment).</p>
 </div>
+<div class="section" id="Extensions-to-jupyter-notebooks">
+<h2>Extensions to jupyter notebooks<a class="headerlink" href="#Extensions-to-jupyter-notebooks" title="Permalink to this headline">¶</a></h2>
+<p><em>FYI</em> There are <a class="reference external" href="https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/index.html">available unofficial
+extensions</a>
+to jupyter notebooks. I, for example, would like to have my spelling
+checked.</p>
+<p>Here is how to install this capability:</p>
+$ pip install https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tarball/master
+$ pip install jupyter_nbextensions_configurator
+$ jupyter contrib nbextension install --user
+$ jupyter nbextensions_configurator enable --user<p>Now to enable the
+<a class="reference external" href="https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/nbextensions/spellchecker/README.html">spellchecker</a>
+extension:</p>
+$ jupyter nbextension enable spellchecker/main</div>
+<div class="section" id="One-last-cool-note-about-ipynbs,-for-those-who-love-LaTex">
+<h2>One last cool note about ipynbs, for those who love LaTex<a class="headerlink" href="#One-last-cool-note-about-ipynbs,-for-those-who-love-LaTex" title="Permalink to this headline">¶</a></h2>
+<p>Beautiful equations can written in Markdown cells using LaTex surrounded
+by <code class="docutils literal notranslate"><span class="pre">\\(</span> <span class="pre">...</span> <span class="pre">\\)</span></code>. For example:</p>
+\\( P(A \mid B) = \frac{P(B \mid A) \, P(A)}{P(B)} \\)<p>Will be rendered as: \( P(A <a href="#id1"><span class="problematic" id="id2">:raw-latex:`\mid `B) =
+:raw-latex:`</span></a>frac{P(B mid A) , P(A)}{P(B)}` \)</p>
+<p>While I did not add LaTex to our quite-full syllabus, I highly recommend
+it.</p>
 </div>
 </div>
 
