@@ -72,7 +72,8 @@ Free online resources
 Free through the University of Michigan: Download while on campus or VPN
 ========================================================================
 
-Willmore, F. T.; Eric, J.; Coray, C. *Introduction to Scientific and Technical Computing*; Willmore, F. T., Eric, J., Coray, C., Eds.; Taylor & Francis Group: Boca Raton, FL, 2017. http://www.crcnetbase.com/isbn/978-1-4987-4506-2
+Willmore, F. T.; Eric, J.; Coray, C., Eds.; *Introduction to Scientific and Technical Computing*;
+Taylor & Francis Group: Boca Raton, FL, 2017. http://www.crcnetbase.com/isbn/978-1-4987-4506-2
 
 
 

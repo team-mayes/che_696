@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-CHE 696: Data Science for Chemical Engineers
-============================================
+CHE 696: On-Ramp to Data Science
+================================
 
 .. toctree::
    :maxdepth: 2
