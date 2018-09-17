@@ -61,7 +61,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'CHE 696: Data Science for Chemical Engineers'
+project = 'CHE 696: On-Ramp to Data Science'
 copyright = '2018, Heather Mayes'
 author = 'Heather Mayes'
 
@@ -91,6 +91,7 @@ pygments_style = 'sphinx'
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
+nbsphinx_allow_errors = True
 
 
 # -- Options for HTML output ----------------------------------------------

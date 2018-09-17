@@ -7,6 +7,8 @@ Syllabus
 Fall 2018, Prof. Heather Mayes,
 MW 10-11:20 am, 3150 Dow
 
+See also the [syllabus on Google Drive](https://docs.google.com/document/d/1dSnMrw5chVI4gSzG52Y3_wh5XpOMpfvovxjnbbBYcR8/edit?usp=sharing)
+
 Course description
 ------------------
 

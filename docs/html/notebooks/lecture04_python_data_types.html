@@ -1,0 +1,835 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>4) Data types in python &#8212; CHE 696: On-Ramp to Data Science 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: On-Ramp to Data Science 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #303F9F;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #D84315;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 9ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: #f7f7f7;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.pngmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+</style>
+<div class="section" id="4)-Data-types-in-python">
+<h1>4) Data types in python<a class="headerlink" href="#4)-Data-types-in-python" title="Permalink to this headline">¶</a></h1>
+<p>Related text:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://jakevdp.github.io/WhirlwindTourOfPython/index.html">https://jakevdp.github.io/WhirlwindTourOfPython/index.html</a></li>
+<li><a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/">https://jakevdp.github.io/PythonDataScienceHandbook/</a></li>
+</ul>
+<p>We will run some python today using variables and libraries.</p>
+<div class="section" id="Comments,-Integers-and-floats">
+<h2>Comments, Integers and floats<a class="headerlink" href="#Comments,-Integers-and-floats" title="Permalink to this headline">¶</a></h2>
+<p>As you saw last time, basic math can be performed without importing any
+libraries, and python will decide if you have a integer or a float.</p>
+<p>As engineers know, tracking units are of utmost importance. Comments can
+be a great way to both explain your code and track units.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Blocks of comments can be placed between lines containing three double-quotes, like this.</span>
+<span class="sd">They often appear at the beginning of a function, explaining what the function does and</span>
+<span class="sd">   noting the expected input and output. We&#39;ll come back to this later.</span>
+<span class="sd">This is an example of commenting and using variables in a formula.</span>
+<span class="sd">We&#39;ll use more advance math (exponents, etc.) so we&#39;ll import numpy, an excellent math library.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>  <span class="c1">#it is very common to import numpy as the shorthand alias, &#39;np&#39;</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">special</span>  <span class="c1"># we can also import just part of a library; this is needed to get erfc</span>
+
+<span class="c1"># One of the most important syntax characters to know: &#39;#&#39; is the comment character</span>
+<span class="c1"># They can start a line of comments only, or comments can follow code, as shown above and below.</span>
+
+<span class="c1"># I&#39;m old-school in certain ways; I explicity make values floats that I want treated as such, even if python will</span>
+<span class="c1">#    treat an integer variable as a float when doing the math</span>
+<span class="n">gas_constant</span> <span class="o">=</span> <span class="mf">0.00198588</span>  <span class="c1"># the ideal gas constant in units of kcal / (g-mol K)</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="mf">300.</span>  <span class="c1"># temp in K</span>
+<span class="n">energy</span> <span class="o">=</span> <span class="mf">5.</span>  <span class="c1"># kcal/mol</span>
+
+<span class="c1"># Save a little computation by creating a term that is repeatedly needed</span>
+<span class="n">ea_over_rt</span> <span class="o">=</span> <span class="n">energy</span> <span class="o">/</span> <span class="p">(</span><span class="n">gas_constant</span> <span class="o">*</span> <span class="n">temp</span><span class="p">)</span>
+
+<span class="c1"># The (integrated form of the) Maxwell-Boltzmann distribution for the fraction of molecules with energy of at least E</span>
+<span class="c1"># If consistent units were used, they should cancel out in each term (fractions are unitless!)</span>
+<span class="n">frac_mol</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">4.</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">ea_over_rt</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">ea_over_rt</span><span class="p">)</span> <span class="o">+</span> <span class="n">special</span><span class="o">.</span><span class="n">erfc</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">ea_over_rt</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;At {} K, {}</span><span class="si">% o</span><span class="s2">f molecules have energy &gt;= {} kcal/mol.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">frac_mol</span><span class="o">*</span><span class="mf">100.</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">energy</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+At 300.0 K, 0.08% of molecules have energy &gt;= 5.0 kcal/mol.
+</pre></div></div>
+</div>
+<div class="section" id="Identifying-and-changing-types">
+<h3>Identifying and changing types<a class="headerlink" href="#Identifying-and-changing-types" title="Permalink to this headline">¶</a></h3>
+<p>As has already appeared in ipynb’s for this course, we can find out the
+type of any variable by using the built-in global function <code class="docutils literal notranslate"><span class="pre">type()</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">temp</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">ea_over_rt</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;float&#39;&gt; &lt;class &#39;float&#39;&gt;
+</pre></div></div>
+</div>
+<p>We can also change the variable type with functions such as:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">temp</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">temp</span><span class="p">))</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">temp</span><span class="p">))</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">temp</span><span class="p">))</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">temp</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+300 &lt;class &#39;int&#39;&gt;
+300 &lt;class &#39;str&#39;&gt;
+300.0 &lt;class &#39;float&#39;&gt;
+300.0 &lt;class &#39;str&#39;&gt;
+</pre></div></div>
+</div>
+<p>The ability to change numbers to strings and strings to numbers can be
+useful when reading and writing variables.</p>
+</div>
+<div class="section" id="A-few-more-syntax-tips">
+<h3>A few more syntax tips<a class="headerlink" href="#A-few-more-syntax-tips" title="Permalink to this headline">¶</a></h3>
+<p>As with many other languages, there are shortcut ways of performing
+simple math on a variable:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">+=</span> <span class="mi">3</span>  <span class="c1"># same as x = x + 3.</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span>  <span class="c1"># same as x = x - 1.</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">*=</span> <span class="mi">3</span>  <span class="c1"># same as x = x * 3.</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+x = 4 &lt;class &#39;int&#39;&gt;
+x = 7 &lt;class &#39;int&#39;&gt;
+x = 6 &lt;class &#39;int&#39;&gt;
+x = 18 &lt;class &#39;int&#39;&gt;
+</pre></div></div>
+</div>
+<p>Note that the end of all statements is the end of the line, unlike C or
+C++ which ends statements with <code class="docutils literal notranslate"><span class="pre">;</span></code>. You can force a line to wrap by
+using the <code class="docutils literal notranslate"><span class="pre">\</span></code> key. Even more convenient: enclose the expression in
+parenthesis.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">+</span> <span class="mf">6.</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;y = &quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">+</span>\
+    <span class="mi">4</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">6</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;y = &quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">+</span>
+     <span class="mi">4</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">6</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;y = &quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+y =  21.0 &lt;class &#39;float&#39;&gt;
+y =  21 &lt;class &#39;int&#39;&gt;
+y =  21 &lt;class &#39;int&#39;&gt;
+</pre></div></div>
+</div>
+<p>In the code above, note the indentation. As you will see even more in
+the future, white space is meaningful in python.</p>
+<p>The convention is to use four spaces for indentation (and yes, there can
+be blocks inside blocks; the meaningful indentation can make it much
+easier to read!). Note that many programs automatically convert a tab to
+four spaces. Check whether that is happening when you tab in your
+notebook!</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="c1"># indentation indicates code block, and the first line of the block ends with &#39;:&#39;</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;i =&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">i</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;total =&quot;</span><span class="p">,</span> <span class="n">total</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+i = 0
+i = 1
+i = 2
+i = 3
+i = 4
+i = 5
+i = 6
+i = 7
+i = 8
+i = 9
+total = 45
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Note the difference between this and the above code block.</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="c1"># indentation indicates code block, and the first line of the block ends with &#39;:&#39;</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;i =&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">i</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;total =&quot;</span><span class="p">,</span> <span class="n">total</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+i = 0
+total = 0
+i = 1
+total = 1
+i = 2
+total = 3
+i = 3
+total = 6
+i = 4
+total = 10
+i = 5
+total = 15
+i = 6
+total = 21
+i = 7
+total = 28
+i = 8
+total = 36
+i = 9
+total = 45
+</pre></div></div>
+</div>
+<p>White space within lines will not affect the output. However, best
+practice is to put one space between each term and each operator.</p>
+<p>Best practices in the python community are codified in the <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP 8 style
+guide for python code</a>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="o">+</span><span class="mi">3</span><span class="o">+</span><span class="mi">4</span><span class="o">+</span><span class="mi">5</span><span class="o">+</span><span class="mi">6</span>  <span class="c1"># saves space but is non-standard</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;y = &quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+<span class="n">y</span>       <span class="o">=</span>   <span class="mi">1</span>    <span class="o">+</span><span class="mi">2</span>     <span class="o">+</span> <span class="mi">3</span>   <span class="o">+</span>        <span class="mi">4</span>  <span class="o">+</span> <span class="mi">5</span>    <span class="o">+</span> <span class="mi">6</span>  <span class="c1"># this does not help readability</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;y = &quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">6</span>  <span class="c1"># Much better readability. Follow this lead!</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;y = &quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+y =  21 &lt;class &#39;int&#39;&gt;
+y =  21 &lt;class &#39;int&#39;&gt;
+y =  21 &lt;class &#39;int&#39;&gt;
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Parentheses-Are-for-Grouping-or-Calling-(or-tuples!-covered-below)">
+<h3>Parentheses Are for Grouping or Calling (or tuples! covered below)<a class="headerlink" href="#Parentheses-Are-for-Grouping-or-Calling-(or-tuples!-covered-below)" title="Permalink to this headline">¶</a></h3>
+<p>You’ve seen two ways of using parenthesis above: grouping statements or
+calling functions.</p>
+<p>The terms inside the parenthesis used to call a function (like the
+<code class="docutils literal notranslate"><span class="pre">print</span></code> function below) are called <em>arguments</em>. The number of
+arguments that the function takes depends on the function. In the case
+of the <code class="docutils literal notranslate"><span class="pre">print</span></code> function, it will print as many arguments as you give
+it. However, the function <code class="docutils literal notranslate"><span class="pre">type</span></code> only takes certain arguments (here,
+we just give it one argument; it is <a class="reference external" href="https://docs.python.org/3/library/functions.html#type">possible to give it 2 specific
+additional
+arguments</a> but
+that is unusual and out of scope for this course).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;y = &quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;y = &quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;y = &quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+y =  6 &lt;class &#39;int&#39;&gt;
+y =  8 &lt;class &#39;int&#39;&gt;
+y =  5 &lt;class &#39;int&#39;&gt;
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Other-collections-in-python:-lists,-tuples,-and-dicts">
+<h2>Other collections in python: lists, tuples, and dicts<a class="headerlink" href="#Other-collections-in-python:-lists,-tuples,-and-dicts" title="Permalink to this headline">¶</a></h2>
+<p>A collection of values (strings, ints, floats, …) can be stored as types
+of collections.</p>
+<p>The main kinds are tuples, lists, and dicts. You’ve already seen lists,
+remember?</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">In</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;list&#39;&gt;
+</pre></div></div>
+</div>
+<p>New lists can be defined without any items in them yet (an empty list)
+or with items. They do not have to be of the same type. Python makes a
+list when it sees square brackets. Items in a list do not have to be of
+the same type.</p>
+<p>The built-in <code class="docutils literal notranslate"><span class="pre">len()</span></code> function will return the length of the function.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">list_1</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">list_1</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">list_1</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_1</span><span class="p">))</span>
+<span class="n">list_2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;ten&#39;</span><span class="p">,</span> <span class="n">list_1</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;list_2 = {}, has type {}, and length {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">list_2</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">list_2</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_2</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[] &lt;class &#39;list&#39;&gt; 0
+list_2 = [4, 5.2, 8, &#39;ten&#39;, []], has type &lt;class &#39;list&#39;&gt;, and length 5
+</pre></div></div>
+</div>
+<p>As we also previously saw, we can access entries in a list. Remember
+that counting starts with zero. Negative numbers access items from the
+end of the list.</p>
+<p>Items in a list can be changed.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;At the moment, the full list_2 = &quot;</span><span class="p">,</span> <span class="n">list_2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">list_2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">type</span><span class="p">(</span><span class="n">list_2</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">list_2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">type</span><span class="p">(</span><span class="n">list_2</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">list_2</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="nb">type</span><span class="p">(</span><span class="n">list_2</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">list_2</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="nb">type</span><span class="p">(</span><span class="n">list_2</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]))</span>
+<span class="n">list_2</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">print</span><span class="p">(</span><span class="n">list_2</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="nb">type</span><span class="p">(</span><span class="n">list_2</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]))</span>
+<span class="n">list_2</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="k">print</span><span class="p">(</span><span class="n">list_2</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="nb">type</span><span class="p">(</span><span class="n">list_2</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Now, the full list_2 = &quot;</span><span class="p">,</span> <span class="n">list_2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">list_2</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">list_2</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">list_2</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+At the moment, the full list_2 =  [4, 5.2, 8, &#39;ten&#39;, []]
+4 &lt;class &#39;int&#39;&gt;
+5.2 &lt;class &#39;float&#39;&gt;
+[] &lt;class &#39;list&#39;&gt;
+ten &lt;class &#39;str&#39;&gt;
+10 &lt;class &#39;int&#39;&gt;
+2 &lt;class &#39;int&#39;&gt;
+Now, the full list_2 =  [4, 5.2, 8, 10, 2]
+[4, 5.2]
+[5.2, 8]
+[8, 10, 2]
+</pre></div></div>
+</div>
+<div class="section" id="Built-in-methods">
+<h3>Built-in methods<a class="headerlink" href="#Built-in-methods" title="Permalink to this headline">¶</a></h3>
+<p>In addition to be able to use functions like <code class="docutils literal notranslate"><span class="pre">print</span></code> and <code class="docutils literal notranslate"><span class="pre">type</span></code> on
+lists, list have built-in <em>methods</em>. These are particular actions that
+python will know how to perform on any list. Here are a few examples;
+more can be found many places, including
+<a class="reference external" href="https://docs.python.org/3/tutorial/datastructures.html#more-on-lists">here</a>.</p>
+<p>These methods are followed by parenthesis (has parenthesis like a
+function) and may or may not need arguments.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;list_2 = &quot;</span><span class="p">,</span> <span class="n">list_2</span><span class="p">)</span>
+<span class="n">list_2</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;list_2 = &quot;</span><span class="p">,</span> <span class="n">list_2</span><span class="p">)</span>
+<span class="n">list_2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">7.1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;list_2 = &quot;</span><span class="p">,</span> <span class="n">list_2</span><span class="p">)</span>
+<span class="n">list_2</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mf">5.3</span><span class="p">,</span> <span class="mf">9.2</span><span class="p">,</span> <span class="mf">4.8</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;list_2 = &quot;</span><span class="p">,</span> <span class="n">list_2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+list_2 =  [4, 5.2, 8, 10, 2]
+list_2 =  [2, 4, 5.2, 8, 10]
+list_2 =  [2, 4, 5.2, 8, 10, 7.1]
+list_2 =  [2, 4, 5.2, 8, 10, 7.1, 5.3, 9.2, 4.8]
+</pre></div></div>
+</div>
+<p>If you accidentally try to make a list by using parenthesis, you’ll get
+a tuple instead!</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">not_a_list</span> <span class="o">=</span> <span class="p">(</span><span class="mf">4.3</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">not_a_list</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;tuple&#39;&gt;
+</pre></div></div>
+</div>
+<p>Some things are the same about tuples and lists, like how to print parts
+of them:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">print</span><span class="p">(</span><span class="n">not_a_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">type</span><span class="p">(</span><span class="n">not_a_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">not_a_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="nb">type</span><span class="p">(</span><span class="n">not_a_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">not_a_list</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">not_a_list</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">not_a_list</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+4.3 &lt;class &#39;float&#39;&gt;
+10 &lt;class &#39;int&#39;&gt;
+(4.3, 5.2)
+(5.2, 8)
+(8, 2, 10)
+</pre></div></div>
+</div>
+<p>The big difference is that tuples cannot be changed (they are
+immutable); you cannot change the value of an existing item or add new
+items.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">not_a_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">11.11</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-16-d1adc261984b&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>not_a_list<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> <span class="ansi-cyan-fg">11.11</span>
+
+<span class="ansi-red-fg">TypeError</span>: &#39;tuple&#39; object does not support item assignment
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">not_a_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">5.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-17-1038aa509a89&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>not_a_list<span class="ansi-blue-fg">.</span>append<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">5.5</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">AttributeError</span>: &#39;tuple&#39; object has no attribute &#39;append&#39;
+</pre></div></div>
+</div>
+<p>However, a tuple can contain mutable items.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tuple_2</span> <span class="o">=</span> <span class="p">([],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">tuple_2</span><span class="p">)</span>
+<span class="n">tuple_2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">tuple_2</span><span class="p">)</span>
+<span class="n">tuple_2</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="k">print</span><span class="p">(</span><span class="n">tuple_2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+([], [1, 2, 3])
+([5], [1, 2, 3])
+([5], [1, 4, 3])
+</pre></div></div>
+</div>
+<p>Combinations of collections (lists of lists, tuples of lists, etc.) took
+my a while to wrap my head around. We’ll have more practice in the
+future. Also, once we get past some of these basics, we’ll get to even
+more fun material.</p>
+<p><em>Next up:</em> more on variables and collections</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: On-Ramp to Data Science 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Heather Mayes.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+    </div>
+  </body>
+</html>

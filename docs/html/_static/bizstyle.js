@@ -36,6 +36,6 @@ $(window).resize(function(){
         $("li.nav-item-0 a").text("Top");
     }
     else {
-        $("li.nav-item-0 a").text("CHE 696: Data Science for Chemical Engineers 0.1 documentation");
+        $("li.nav-item-0 a").text("CHE 696: On-Ramp to Data Science 0.1 documentation");
     }
 });
