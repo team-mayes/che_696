@@ -33,15 +33,20 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "\"\"\"\n",
-    "Blocks of comments can be placed between lines containing three double-quotes, like this. \n",
-    "They often appear at the beginning of a function, explaining what the function does and \n",
-    "   noting the expected input and output. We'll come back to this later.\n",
+    "Blocks of comments can be placed between lines containing three \n",
+    "double-quotes, like this. \n",
+    "They often appear at the beginning of a function, explaining what the \n",
+    "   function does and noting the expected input and output. \n",
+    "   We'll come back to this later.\n",
     "This is an example of commenting and using variables in a formula.\n",
-    "We'll use more advance math (exponents, etc.) so we'll import numpy, an excellent math library.\n",
+    "We'll use more advance math (exponents, etc.) so we'll import numpy, \n",
+    "   an excellent math library.\n",
     "\"\"\"\n",
     "import numpy as np  #it is very common to import numpy as the shorthand alias, 'np'\n",
     "from scipy import special  # we can also import just part of a library; this is needed to get erfc\n",
@@ -49,8 +54,9 @@
     "# One of the most important syntax characters to know: '#' is the comment character\n",
     "# They can start a line of comments only, or comments can follow code, as shown above and below.\n",
     "\n",
-    "# I'm old-school in certain ways; I explicity make values floats that I want treated as such, even if python will\n",
-    "#    treat an integer variable as a float when doing the math\n",
+    "# I'm old-school in certain ways; I explicity make values floats that \n",
+    "#   I want treated as such, even if python will treat an integer \n",
+    "#   variable as a float when doing the math\n",
     "gas_constant = 0.00198588  # the ideal gas constant in units of kcal / (g-mol K)\n",
     "temp = 300.  # temp in K\n",
     "energy = 5.  # kcal/mol\n",
@@ -58,8 +64,10 @@
     "# Save a little computation by creating a term that is repeatedly needed\n",
     "ea_over_rt = energy / (gas_constant * temp)\n",
     "\n",
-    "# The (integrated form of the) Maxwell-Boltzmann distribution for the fraction of molecules with energy of at least E\n",
-    "# If consistent units were used, they should cancel out in each term (fractions are unitless!)\n",
+    "# The (integrated form of the) Maxwell-Boltzmann distribution for the \n",
+    "#    fraction of molecules with energy of at least E\n",
+    "# If consistent units were used, they should cancel out in each term \n",
+    "#    (fractions are unitless!)\n",
     "frac_mol = np.sqrt(4. / np.pi * ea_over_rt) * np.exp(-ea_over_rt) + special.erfc(np.sqrt(ea_over_rt))\n",
     "print(\"At {} K, {}% of molecules have energy >= {} kcal/mol.\".format(temp, round(frac_mol*100.,2), energy))"
    ]
@@ -76,7 +84,9 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "print(type(temp), type(ea_over_rt))"
@@ -92,7 +102,9 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "temp = int(temp)\n",
@@ -124,7 +136,9 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "x = 4\n",
@@ -141,6 +155,26 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
+    "The combinations of operators and the equals sign changes the pointers. What do you expect the following output to be?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "my_favorite_number = 8\n",
+    "x = my_favorite_number\n",
+    "y = x\n",
+    "x *= 2\n",
+    "print(\"x =\", x, \"and y =\", y)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
     "Note that the end of all statements is the end of the line, unlike C or C++ which ends statements with `;`. \n",
     "You can force a line to wrap by using the `\\` key. Even more convenient: enclose the expression in parenthesis. "
    ]
@@ -148,7 +182,9 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "y = 1 + 2 + 3 + 4 + 5 + 6.\n",
@@ -173,7 +209,9 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "total = 0\n",
@@ -188,7 +226,9 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "# Note the difference between this and the above code block.\n",
@@ -213,7 +253,9 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "y=1+2+3+4+5+6  # saves space but is non-standard\n",
@@ -222,6 +264,29 @@
     "print(\"y = \", y, type(y))\n",
     "y = 1 + 2 + 3 + 4 + 5 + 6  # Much better readability. Follow this lead!\n",
     "print(\"y = \", y, type(y))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "###  Other built-in operators\n",
+    "\n",
+    "Given the amount of material to cover in this class, we can't spend time going over all of the built-in operators. Note that I am skipping built-in math operators including modulo, floor division, or bitwise operations. If you want to learn about them, you can start with [this tutorial](https://jakevdp.github.io/WhirlwindTourOfPython/04-semantics-operators.html) or always just ask the internet. \n",
+    "\n",
+    "Comparison operators (== for equal to, >, <, !=, >=, and <=) will come up when we get to more into writing our own functions\n",
+    "\n",
+    "Boolean operators are very readable in python. The options are `True` and `False` (not the capitalization), and the standard operations are simply `and`, `or`, and `not`. For example:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "x = 4\n",
+    "(x < 6) and (x >= 2)"
    ]
   },
   {
@@ -238,7 +303,9 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "y = (2 + 1 + 3)\n",
@@ -263,7 +330,9 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "print(type(In))"
@@ -281,7 +350,9 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "list_1 = []\n",
@@ -302,7 +373,9 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "print(\"At the moment, the full list_2 = \", list_2)\n",
@@ -334,7 +407,9 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "print(\"list_2 = \", list_2)\n",
@@ -356,7 +431,9 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "not_a_list = (4.3, 5.2, 8, 2, 10)\n",
@@ -373,7 +450,9 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "print(not_a_list[0], type(not_a_list[0]))\n",
@@ -393,7 +472,9 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "not_a_list[0] = 11.11"
@@ -402,7 +483,9 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "not_a_list.append(5.5)"
@@ -418,7 +501,9 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "tuple_2 = ([], [1, 2, 3])\n",

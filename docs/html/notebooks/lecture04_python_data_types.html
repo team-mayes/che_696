@@ -17,6 +17,8 @@
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="HW2, practicing with jupyter notebooks" href="HW02.html" />
+    <link rel="prev" title="3) Intro to python using ipynb" href="lecture03_intro_python_in_ipynb.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
@@ -28,11 +30,23 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="HW02.html" title="HW2, practicing with jupyter notebooks"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="lecture03_intro_python_in_ipynb.html" title="3) Intro to python using ipynb"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: On-Ramp to Data Science 0.1 documentation</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="lecture03_intro_python_in_ipynb.html"
+                        title="previous chapter">3) Intro to python using ipynb</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="HW02.html"
+                        title="next chapter">HW2, practicing with jupyter notebooks</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <div class="searchformwrapper">
@@ -240,11 +254,14 @@ be a great way to both explain your code and track units.</p>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Blocks of comments can be placed between lines containing three double-quotes, like this.</span>
-<span class="sd">They often appear at the beginning of a function, explaining what the function does and</span>
-<span class="sd">   noting the expected input and output. We&#39;ll come back to this later.</span>
+<span class="sd">Blocks of comments can be placed between lines containing three</span>
+<span class="sd">double-quotes, like this.</span>
+<span class="sd">They often appear at the beginning of a function, explaining what the</span>
+<span class="sd">   function does and noting the expected input and output.</span>
+<span class="sd">   We&#39;ll come back to this later.</span>
 <span class="sd">This is an example of commenting and using variables in a formula.</span>
-<span class="sd">We&#39;ll use more advance math (exponents, etc.) so we&#39;ll import numpy, an excellent math library.</span>
+<span class="sd">We&#39;ll use more advance math (exponents, etc.) so we&#39;ll import numpy,</span>
+<span class="sd">   an excellent math library.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>  <span class="c1">#it is very common to import numpy as the shorthand alias, &#39;np&#39;</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">special</span>  <span class="c1"># we can also import just part of a library; this is needed to get erfc</span>
@@ -252,8 +269,9 @@ be a great way to both explain your code and track units.</p>
 <span class="c1"># One of the most important syntax characters to know: &#39;#&#39; is the comment character</span>
 <span class="c1"># They can start a line of comments only, or comments can follow code, as shown above and below.</span>
 
-<span class="c1"># I&#39;m old-school in certain ways; I explicity make values floats that I want treated as such, even if python will</span>
-<span class="c1">#    treat an integer variable as a float when doing the math</span>
+<span class="c1"># I&#39;m old-school in certain ways; I explicity make values floats that</span>
+<span class="c1">#   I want treated as such, even if python will treat an integer</span>
+<span class="c1">#   variable as a float when doing the math</span>
 <span class="n">gas_constant</span> <span class="o">=</span> <span class="mf">0.00198588</span>  <span class="c1"># the ideal gas constant in units of kcal / (g-mol K)</span>
 <span class="n">temp</span> <span class="o">=</span> <span class="mf">300.</span>  <span class="c1"># temp in K</span>
 <span class="n">energy</span> <span class="o">=</span> <span class="mf">5.</span>  <span class="c1"># kcal/mol</span>
@@ -261,8 +279,10 @@ be a great way to both explain your code and track units.</p>
 <span class="c1"># Save a little computation by creating a term that is repeatedly needed</span>
 <span class="n">ea_over_rt</span> <span class="o">=</span> <span class="n">energy</span> <span class="o">/</span> <span class="p">(</span><span class="n">gas_constant</span> <span class="o">*</span> <span class="n">temp</span><span class="p">)</span>
 
-<span class="c1"># The (integrated form of the) Maxwell-Boltzmann distribution for the fraction of molecules with energy of at least E</span>
-<span class="c1"># If consistent units were used, they should cancel out in each term (fractions are unitless!)</span>
+<span class="c1"># The (integrated form of the) Maxwell-Boltzmann distribution for the</span>
+<span class="c1">#    fraction of molecules with energy of at least E</span>
+<span class="c1"># If consistent units were used, they should cancel out in each term</span>
+<span class="c1">#    (fractions are unitless!)</span>
 <span class="n">frac_mol</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">4.</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">ea_over_rt</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">ea_over_rt</span><span class="p">)</span> <span class="o">+</span> <span class="n">special</span><span class="o">.</span><span class="n">erfc</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">ea_over_rt</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;At {} K, {}</span><span class="si">% o</span><span class="s2">f molecules have energy &gt;= {} kcal/mol.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">frac_mol</span><span class="o">*</span><span class="mf">100.</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">energy</span><span class="p">))</span>
 </pre></div>
@@ -362,13 +382,37 @@ x = 6 &lt;class &#39;int&#39;&gt;
 x = 18 &lt;class &#39;int&#39;&gt;
 </pre></div></div>
 </div>
+<p>The combinations of operators and the equals sign changes the pointers.
+What do you expect the following output to be?</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">my_favorite_number</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">my_favorite_number</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">x</span> <span class="o">*=</span> <span class="mi">2</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;and y =&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+x = 16 and y = 8
+</pre></div></div>
+</div>
 <p>Note that the end of all statements is the end of the line, unlike C or
 C++ which ends statements with <code class="docutils literal notranslate"><span class="pre">;</span></code>. You can force a line to wrap by
 using the <code class="docutils literal notranslate"><span class="pre">\</span></code> key. Even more convenient: enclose the expression in
 parenthesis.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [5]:
+<span></span>In [6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -402,7 +446,7 @@ four spaces. Check whether that is happening when you tab in your
 notebook!</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [6]:
+<span></span>In [7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -436,7 +480,7 @@ total = 45
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [7]:
+<span></span>In [8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -484,7 +528,7 @@ practice is to put one space between each term and each operator.</p>
 guide for python code</a>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [8]:
+<span></span>In [9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -508,6 +552,41 @@ y =  21 &lt;class &#39;int&#39;&gt;
 </pre></div></div>
 </div>
 </div>
+<div class="section" id="Other-built-in-operators">
+<h3>Other built-in operators<a class="headerlink" href="#Other-built-in-operators" title="Permalink to this headline">¶</a></h3>
+<p>Given the amount of material to cover in this class, we can’t spend time
+going over all of the built-in operators. Note that I am skipping
+built-in math operators including modulo, floor division, or bitwise
+operations. If you want to learn about them, you can start with <a class="reference external" href="https://jakevdp.github.io/WhirlwindTourOfPython/04-semantics-operators.html">this
+tutorial</a>
+or always just ask the internet.</p>
+<p>Comparison operators (== for equal to, &gt;, &lt;, !=, &gt;=, and &lt;=) will come
+up when we get to more into writing our own functions</p>
+<p>Boolean operators are very readable in python. The options are <code class="docutils literal notranslate"><span class="pre">True</span></code>
+and <code class="docutils literal notranslate"><span class="pre">False</span></code> (not the capitalization), and the standard operations are
+simply <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, and <code class="docutils literal notranslate"><span class="pre">not</span></code>. For example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[10]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>True
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="Parentheses-Are-for-Grouping-or-Calling-(or-tuples!-covered-below)">
 <h3>Parentheses Are for Grouping or Calling (or tuples! covered below)<a class="headerlink" href="#Parentheses-Are-for-Grouping-or-Calling-(or-tuples!-covered-below)" title="Permalink to this headline">¶</a></h3>
 <p>You’ve seen two ways of using parenthesis above: grouping statements or
@@ -523,7 +602,7 @@ arguments</a> but
 that is unusual and out of scope for this course).</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [9]:
+<span></span>In [11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -556,7 +635,7 @@ of collections.</p>
 remember?</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [10]:
+<span></span>In [12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -579,7 +658,7 @@ the same type.</p>
 <p>The built-in <code class="docutils literal notranslate"><span class="pre">len()</span></code> function will return the length of the function.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [11]:
+<span></span>In [13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -605,7 +684,7 @@ end of the list.</p>
 <p>Items in a list can be changed.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [12]:
+<span></span>In [14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -654,7 +733,7 @@ more can be found many places, including
 function) and may or may not need arguments.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [13]:
+<span></span>In [15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -683,7 +762,7 @@ list_2 =  [2, 4, 5.2, 8, 10, 7.1, 5.3, 9.2, 4.8]
 a tuple instead!</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [14]:
+<span></span>In [16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -704,7 +783,7 @@ a tuple instead!</p>
 of them:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [15]:
+<span></span>In [17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -733,7 +812,7 @@ immutable); you cannot change the value of an existing item or add new
 items.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [16]:
+<span></span>In [18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -748,7 +827,7 @@ items.</p>
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-16-d1adc261984b&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">&lt;ipython-input-18-d1adc261984b&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
 <span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>not_a_list<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> <span class="ansi-cyan-fg">11.11</span>
 
 <span class="ansi-red-fg">TypeError</span>: &#39;tuple&#39; object does not support item assignment
@@ -756,7 +835,7 @@ items.</p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [17]:
+<span></span>In [19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -771,7 +850,7 @@ items.</p>
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-17-1038aa509a89&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">&lt;ipython-input-19-1038aa509a89&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
 <span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>not_a_list<span class="ansi-blue-fg">.</span>append<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">5.5</span><span class="ansi-blue-fg">)</span>
 
 <span class="ansi-red-fg">AttributeError</span>: &#39;tuple&#39; object has no attribute &#39;append&#39;
@@ -780,7 +859,7 @@ items.</p>
 <p>However, a tuple can contain mutable items.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [18]:
+<span></span>In [20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -824,6 +903,12 @@ more fun material.</p>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="HW02.html" title="HW2, practicing with jupyter notebooks"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="lecture03_intro_python_in_ipynb.html" title="3) Intro to python using ipynb"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: On-Ramp to Data Science 0.1 documentation</a> &#187;</li> 
       </ul>
     </div>
