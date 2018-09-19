@@ -1,0 +1,737 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 5) More data types in python"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Related text:\n",
+    "\n",
+    "- https://jakevdp.github.io/WhirlwindTourOfPython/index.html<br>\n",
+    "- https://jakevdp.github.io/PythonDataScienceHandbook/"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Past and Present Topics\n",
+    "\n",
+    "Last time we covered syntax for multiple operations, from simple to more complex math, how variables in python point to places in memory, and some properties of lists. Any questions?\n",
+    "\n",
+    "Today, we will finish our discussion of data types in python. First, a few more operators that are handy when working with lists."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Identity and Membership Operators\n",
+    "\n",
+    "Like ``and``, ``or``, and ``not``, Python also contains prose-like operators  to check for identity and membership.\n",
+    "They are the following:\n",
+    "\n",
+    "| Operator      | Description                                       |\n",
+    "|---------------|---------------------------------------------------|\n",
+    "| ``a is b``    | True if ``a`` and ``b`` are identical objects     |\n",
+    "| ``a is not b``| True if ``a`` and ``b`` are not identical objects |\n",
+    "| ``a in b``    | True if ``a`` is a member of ``b``                |\n",
+    "| ``a not in b``| True if ``a`` is not a member of ``b``            |"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Identity Operators: \"``is``\" and \"``is not``\"\n",
+    "\n",
+    "The identity operators, \"``is``\" and \"``is not``\" check for *object identity*.\n",
+    "Object identity is different than equality, as we can see here:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "a = [1, 2, 3]\n",
+    "b = [1, 2, 3]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "a == b"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "a is b"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "a is not b"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "What do identical objects look like? "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "a = [1, 2, 3]\n",
+    "b = a\n",
+    "print(\"b is a:\", b is a)\n",
+    "c = a.copy()\n",
+    "print(\"c is a:\", c is a)\n",
+    "d = 4\n",
+    "e = 4\n",
+    "print(\"d is e:\", d is e)\n",
+    "e = 4.0\n",
+    "print(\"d is e:\", d is e)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The difference between the two cases here is that in the first assignments of a and b, a and b point to different objects, while in the second they point to the same object. As we previously discussed, Python variables are pointers. The \"is\" operator checks whether the two variables are pointing to the same container (object), rather than referring to what the container contains. \n",
+    "\n",
+    "As previously mentioned, if a copy is made of a collection (like a list) changes to one will not effect the other, but they will if they are pointing to the same object.\n",
+    "\n",
+    "Be careful not to use \"is\" if you really want ==. However, if you want to check whether two variables point to the same object, use \"is\"."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Membership operators\n",
+    "Membership operators check for membership within compound objects.\n",
+    "So, for example, we can write:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "1 in [1, 2, 3]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "2 not in [1, 2, 3]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Using this built-in functions will be *much faster* than if you wrote a loop to check membership!"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Strings\n",
+    "\n",
+    "As previously discussed strings (type is \"str\") can be defined with either single or double-quotes (if you don't use either, Python will assume you are referencing a variable and throw and error if the variable has not been defined."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "message = \"what do you like?\"\n",
+    "response = 'spam'"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Some commonalities with lists: \n",
+    "\n",
+    "For example, we've used the function `len` on lists."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "a_list = [1, 2, 3]\n",
+    "b_list = [4, 5]\n",
+    "question = \"what do you like?\"\n",
+    "response = 'spam'\n",
+    "print(\"Length and type of 'a_list' are: {} and {}\".format(len(a_list), type(a_list)))\n",
+    "print(\"Length and type of 'question' are: {} and {}\".format(len(question), type(question)))   "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Both can also be combined (added together, also called concatenation) with `+`:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "c_list = a_list + b_list\n",
+    "q_and_a = question + ' ' + response\n",
+    "print(\"'a_list' + 'b_list' yields:\", c_list)\n",
+    "print(\"'question' + ' ' + 'response' yields:\", q_and_a)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Parts of each can be accessed (called *indexing*) in the same ways:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(c_list[2:4])\n",
+    "print(q_and_a[2:4])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### A side note on indexing \n",
+    "\n",
+    "The book https://jakevdp.github.io/WhirlwindTourOfPython/index.html has a nice graphic to help picture list/string indexing. Python will return what is between the indexes shown below, with `:` specifying everything before, after, or in-between:\n",
+    "\n",
+    "![List Indexing Figure](images/lect05_list_indexing.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Back to string and list commonalities:\n",
+    "Both can be checked in the same way to see if they contain a particular object:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(\"Is '2' in c_list?  is 'at'?\", 2 in c_list, 'at' in c_list)\n",
+    "# One difference: you can look for anything in a list, but only strings in strings\n",
+    "# Thus, below, I will get an error if I search for an int or float  \n",
+    "#    so instead of checking for the int 2, I look for the string '2'\n",
+    "print(\"Is '2' in q_and_a? is 'at'?\", '2' in q_and_a, 'at' in q_and_a) "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "And both can be multiplied!"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(a_list * 3)\n",
+    "print(response * 3)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Some more string-specific actions\n",
+    "\n",
+    "Some built-in methods of strings include:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(response.upper())\n",
+    "print(q_and_a.capitalize())\n",
+    "print(q_and_a.replace('spam', \"tofu\"))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "q_a_split = q_and_a.split()\n",
+    "print(q_a_split, type(q_a_split))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "q_a_split_alt = q_and_a.split(\"?\")\n",
+    "print(q_a_split_alt)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Strings' built-in method `strip()` will (by default) remove beginning or ending white space."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "q_a_split_alt[1] = q_a_split_alt[1].strip()\n",
+    "print(q_a_split_alt)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "There are [many more built-in operations for strings](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) (and [also this link](https://docs.python.org/3/library/string.html)) that you are not responsible for knowing for this class. One that you are you have already seen: the `format` method!"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## A note on printing and floating-point precision\n",
+    "\n",
+    "One thing to be aware of with floating point arithmetic is that its precision is limited, which can cause equality tests to be unstable. For example:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "0.1 + 0.2 == 0.3"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "print(\"0.1 = {0:.17f}\".format(0.1))\n",
+    "print(\"0.2 = {0:.17f}\".format(0.2))\n",
+    "print(\"0.3 = {0:.17f}\".format(0.3))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Which values are stored exactly? Why, base-2 numbers of course since they are stored in binary, such as:\n",
+    "\n",
+    "$$\n",
+    "1/8 = 0\\cdot 2^{-1} + 0\\cdot 2^{-2} + 1\\cdot 2^{-3}\n",
+    "$$\n",
+    "\n",
+    "The value $0.125 = 0.001_2$ happens to be one number which both binary and decimal notation can represent in a finite number of digits.\n",
+    "\n",
+    "This is similar to how base-10 notation requires an infinite number of digits to represent:\n",
+    "$$\n",
+    "1 / 3 = 0.333333333\\cdots\n",
+    "$$\n",
+    "\n",
+    "The best way to deal with it is to always keep in mind that floating-point arithmetic is approximate, and *never* rely on exact equality tests with floating-point values. Numpy has a solution for this!"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "\n",
+    "x = 0.1 + 0.2\n",
+    "print(x, x == 0.3)\n",
+    "print(np.isclose(x, 0.3))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### A few more printing options\n",
+    "\n",
+    "We'll continue to introduce printing options in future class sessions."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "a = 0.1 + 0.2\n",
+    "b = 0.3\n",
+    "print(a, b)\n",
+    "print(\"a = {}\".format(a, b))\n",
+    "print(\"a = {}, b = {}\".format(a, b))\n",
+    "print(\"a = {0:}, b = {1:}, a = {0:}\".format(a, b))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(\"a = {:2.2f}, b = {:2.2f}\".format(a, b))\n",
+    "print(\"a = {:2.2e}, b = {:2.2e}\".format(a, b))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## The None Type\n",
+    "\n",
+    "The `None` type can be useful to name a value as a placeholder, and then be able to check if it got assigned a value later."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "var = None\n",
+    "if 2 > 4:\n",
+    "    var = 'all I know about math is wrong'\n",
+    "print(type(var))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "What values are the following assigned when recast as booleans?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(bool(var))\n",
+    "print(bool(0))\n",
+    "print(bool(2018))\n",
+    "print(bool(a_list))\n",
+    "print(bool(q_and_a))\n",
+    "print(bool(\"\"))\n",
+    "print(bool([]))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Thus, basically any variable can be used in an if statement:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "if var:\n",
+    "    var = \"Dow\"\n",
+    "else:\n",
+    "    var = \"NCRC\"\n",
+    "print(\"var =\", var)\n",
+    "if a_list:\n",
+    "    a_list = \"Dow\"\n",
+    "else:\n",
+    "    a_list = \"NCRC\"\n",
+    "print(\"a_list =\", a_list)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We'll hold off on a very important type of object, numpy arrays, until we talk more about math operations with numpy."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## More types of collections: sets and dicts\n",
+    "\n",
+    "So far, we've covered basic types (such as ``int``, ``float``, ``bool``, and ``str``) and lists and tuples as types of collections (containers for objects):\n",
+    "\n",
+    "We've discussed that the syntax used in defining the collection determines the collection type:\n",
+    "\n",
+    "| Type Name | Example                   |Description                            |\n",
+    "|-----------|---------------------------|---------------------------------------|\n",
+    "| ``list``  | ``[1, 2, 3]``             | Ordered collection                    |\n",
+    "| ``tuple`` | ``(1, 2, 3)``             | Immutable ordered collection          |\n",
+    "| ``set``   | ``{1, 2, 3}``             | Unordered collection of unique values |\n",
+    "| ``dict``  | ``{'a':1, 'b':2, 'c':3}`` | Unordered (key,value) mapping         |\n",
+    "\n",
+    "Let's now discuss these last two types of collections."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Sets\n",
+    "\n",
+    "Sets are very much like sets in math."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "primes = {7, 3, 2, 5, 7}\n",
+    "print(primes, \"len =\", len(primes))\n",
+    "odds = {9, 7, 1, 5, 3, 7, 9}\n",
+    "print(odds, \"len =\", len(odds))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# there are two ways of specifying a union\n",
+    "p_o_union = primes | odds\n",
+    "print(p_o_union == primes.union(odds))\n",
+    "print(p_o_union)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# and there are two ways of specifying an intersection\n",
+    "p_o_inter = primes & odds\n",
+    "print(p_o_inter == primes.intersection(odds) == odds.intersection(primes))\n",
+    "print(p_o_inter)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Many more operations with sets (that you are not responsible to know) can be found in the [Python documentation](https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset)."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Dictionaries\n",
+    "\n",
+    "With lists, you can access by their index. What if you want to access by something meaningful, like a student's unique name? Use a dict! \n",
+    "\n",
+    "Note: if the order is maintained, that is a coincidence; do not depend on this (see also below)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "classmates = {'avinav': 'Avin',\n",
+    "             'chechung': 'Carolina',\n",
+    "             'minjcha': ' Minjeong', \n",
+    "             }\n",
+    "print(classmates)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# How to add items to your dictionary\n",
+    "classmates['lyrivera'] = 'Luis'\n",
+    "# Print the 'keys' which are the handles to access the associated 'values'\n",
+    "print(classmates.keys())\n",
+    "print(classmates.values())\n",
+    "# like so:\n",
+    "print(classmates['avinav'])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "As you might already expect, keys must be unique but values can repeat.\n",
+    "\n",
+    "Lists in list, or dicts in lists, or dicts in dicts, can be hard concepts to think about, but very useful. What if I want the dictionary to allow me to track several properties of each student? A dict in dict works well."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "che_696 = {'avinav': {'first': 'Avin', 'last': 'Vijay', 'program': 'ChE'},\n",
+    "          'chechung': {'first': 'Carolina', 'last': 'Chung', 'program': 'Biomed'},\n",
+    "          'minjcha': {'first': ' Minjeong', 'last': 'Cha', 'program': 'Mat Sci'},\n",
+    "          'lyrivera': {'first': 'Luis', 'last': 'Rivera-Rivera', 'program': 'ChE'},\n",
+    "          }\n",
+    "print(che_696['chechung']['program'])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "This way of setting up the dict of dicts is onerous, but we could automatically make one by reading in a file that had columns for each category and a row per person. We'll get to that, but not today."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### More specialized data structures\n",
+    "\n",
+    "There is a built-in [collections module](https://docs.python.org/3/library/collections.html) that has even more types. Two I've found useful:\n",
+    "\n",
+    "- ``collections.defaultdict``: Like a dictionary, but unspecified keys have a user-specified default value\n",
+    "- ``collections.OrderedDict``: Like a dictionary, but the order of keys is maintained\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Some material I intentionally skipped\n",
+    "\n",
+    "*FYI*: Do you use complex numbers? Read about them [here](https://jakevdp.github.io/WhirlwindTourOfPython/05-built-in-scalar-types.html) (use the search option to skip to Complex Numbers)."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "*Next up:* Programming with an IDE!\n",
+    "\n",
+    "Before Monday, try installing [IntelliJ using this link](https://www.jetbrains.com/student)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.1"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

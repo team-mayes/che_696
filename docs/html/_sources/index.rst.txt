@@ -25,5 +25,7 @@ CHE 696: On-Ramp to Data Science
    notebooks/lecture04_python_data_types.ipynb
 
    notebooks/HW02.ipynb
+
+   notebooks/lecture05_python_data_types_cont.ipynb
 ..
    .. :caption: About Sphinx:

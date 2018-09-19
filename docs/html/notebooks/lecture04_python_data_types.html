@@ -368,6 +368,10 @@ simple math on a variable:</p>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="n">x</span> <span class="o">*=</span> <span class="mi">3</span>  <span class="c1"># same as x = x * 3.</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">/=</span> <span class="mi">3</span>  <span class="c1"># same as x = x * 3.</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">!=</span> <span class="mi">3</span>  <span class="c1"># same as x = x * 3.</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -380,6 +384,8 @@ x = 4 &lt;class &#39;int&#39;&gt;
 x = 7 &lt;class &#39;int&#39;&gt;
 x = 6 &lt;class &#39;int&#39;&gt;
 x = 18 &lt;class &#39;int&#39;&gt;
+x = 6.0 &lt;class &#39;float&#39;&gt;
+x = 6.0 &lt;class &#39;float&#39;&gt;
 </pre></div></div>
 </div>
 <p>The combinations of operators and the equals sign changes the pointers.
@@ -766,7 +772,8 @@ a tuple instead!</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">not_a_list</span> <span class="o">=</span> <span class="p">(</span><span class="mf">4.3</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span></span><span class="n">not_a_list</span> <span class="o">=</span> <span class="p">([</span><span class="mf">4.3</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span>
+               <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">not_a_list</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -800,11 +807,11 @@ of them:</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-4.3 &lt;class &#39;float&#39;&gt;
-10 &lt;class &#39;int&#39;&gt;
-(4.3, 5.2)
-(5.2, 8)
-(8, 2, 10)
+[4.3, 5.2, 8, 2, 10] &lt;class &#39;list&#39;&gt;
+[3] &lt;class &#39;list&#39;&gt;
+([4.3, 5.2, 8, 2, 10], [3])
+([3],)
+()
 </pre></div></div>
 </div>
 <p>The big difference is that tuples cannot be changed (they are
