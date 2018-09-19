@@ -362,6 +362,11 @@ here:</p>
 <span class="n">e</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;d is e:&quot;</span><span class="p">,</span> <span class="n">d</span> <span class="ow">is</span> <span class="n">e</span><span class="p">)</span>
 <span class="n">e</span> <span class="o">=</span> <span class="mf">4.0</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;e is d:&quot;</span><span class="p">,</span> <span class="n">e</span> <span class="ow">is</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mf">4.0</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;d is e:&quot;</span><span class="p">,</span> <span class="n">d</span> <span class="ow">is</span> <span class="n">e</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;d == e:&quot;</span><span class="p">,</span> <span class="n">d</span> <span class="o">==</span> <span class="n">e</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">e</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;d is e:&quot;</span><span class="p">,</span> <span class="n">d</span> <span class="ow">is</span> <span class="n">e</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -374,7 +379,10 @@ here:</p>
 b is a: True
 c is a: False
 d is e: True
+e is d: False
 d is e: False
+d == e: True
+d is e: True
 </pre></div></div>
 </div>
 <p>The difference between the two cases here is that in the first
@@ -443,7 +451,7 @@ loop to check membership!</p>
 either single or double-quotes (if you don’t use either, Python will
 assume you are referencing a variable and throw and error if the
 variable has not been defined.</p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [8]:
 </pre></div>
@@ -451,8 +459,17 @@ variable has not been defined.</p>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;what do you like?&quot;</span>
 <span class="n">response</span> <span class="o">=</span> <span class="s1">&#39;spam&#39;</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">message</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">response</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;str&#39;&gt; &lt;class &#39;str&#39;&gt;
+</pre></div></div>
 </div>
 <div class="section" id="Some-commonalities-with-lists:">
 <h3>Some commonalities with lists:<a class="headerlink" href="#Some-commonalities-with-lists:" title="Permalink to this headline">¶</a></h3>
@@ -598,7 +615,9 @@ spamspamspam
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
 <span class="k">print</span><span class="p">(</span><span class="n">q_and_a</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
-<span class="k">print</span><span class="p">(</span><span class="n">q_and_a</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s2">&quot;tofu&quot;</span><span class="p">))</span>
+<span class="n">q_and_a</span> <span class="o">=</span> <span class="n">q_and_a</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s2">&quot;tofu&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">q_and_a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">q_and_a</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -610,6 +629,7 @@ spamspamspam
 SPAM
 What do you like? spam
 what do you like? tofu
+spam what do you like? tofu
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -628,7 +648,7 @@ what do you like? tofu
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[&#39;what&#39;, &#39;do&#39;, &#39;you&#39;, &#39;like?&#39;, &#39;spam&#39;] &lt;class &#39;list&#39;&gt;
+[&#39;what&#39;, &#39;do&#39;, &#39;you&#39;, &#39;like?&#39;, &#39;tofu&#39;] &lt;class &#39;list&#39;&gt;
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -647,7 +667,7 @@ what do you like? tofu
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[&#39;what do you like&#39;, &#39; spam&#39;]
+[&#39;what do you like&#39;, &#39; tofu&#39;]
 </pre></div></div>
 </div>
 <p>Strings’ built-in method <code class="docutils literal notranslate"><span class="pre">strip()</span></code> will (by default) remove beginning
@@ -668,7 +688,7 @@ or ending white space.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[&#39;what do you like&#39;, &#39;spam&#39;]
+[&#39;what do you like&#39;, &#39;tofu&#39;]
 </pre></div></div>
 </div>
 <p>There are <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str">many more built-in operations for
@@ -676,6 +696,19 @@ strings</a>
 (and <a class="reference external" href="https://docs.python.org/3/library/string.html">also this link</a>)
 that you are not responsible for knowing for this class. One that you
 are you have already seen: the <code class="docutils literal notranslate"><span class="pre">format</span></code> method!</p>
+<p>You can also use regular expressions to give you much more
+functionality. You’ll need to import the <a class="reference external" href="https://docs.python.org/3/library/re.html">re
+library</a>:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">re</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="A-note-on-printing-and-floating-point-precision">
@@ -685,7 +718,7 @@ precision is limited, which can cause equality tests to be unstable. For
 example:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [18]:
+<span></span>In [19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -695,7 +728,7 @@ example:</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[18]:
+<span></span>Out[19]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -705,7 +738,7 @@ example:</p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [19]:
+<span></span>In [20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -741,7 +774,7 @@ equality tests with floating-point values. Numpy has a solution for
 this!</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [20]:
+<span></span>In [21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -767,7 +800,7 @@ True
 <p>We’ll continue to introduce printing options in future class sessions.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [21]:
+<span></span>In [22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -793,11 +826,11 @@ a = 0.30000000000000004, b = 0.3, a = 0.30000000000000004
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [22]:
+<span></span>In [23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;a = {:2.2f}, b = {:2.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+<span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;a = {:8.2f}, b = {:8.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;a = {:2.2e}, b = {:2.2e}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -807,7 +840,7 @@ a = 0.30000000000000004, b = 0.3, a = 0.30000000000000004
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-a = 0.30, b = 0.30
+a =     0.30, b =     0.30
 a = 3.00e-01, b = 3.00e-01
 </pre></div></div>
 </div>
@@ -819,7 +852,7 @@ a = 3.00e-01, b = 3.00e-01
 then be able to check if it got assigned a value later.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [23]:
+<span></span>In [24]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -841,17 +874,13 @@ then be able to check if it got assigned a value later.</p>
 <p>What values are the following assigned when recast as booleans?</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [24]:
+<span></span>In [25]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="k">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="n">var</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="mi">2018</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="n">a_list</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="n">q_and_a</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">([]))</span>
 </pre></div>
 </div>
 </div>
@@ -863,6 +892,26 @@ then be able to check if it got assigned a value later.</p>
 False
 False
 True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="n">a_list</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="n">q_and_a</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">([]))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
 True
 True
 False
@@ -872,7 +921,28 @@ False
 <p>Thus, basically any variable can be used in an if statement:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [25]:
+<span></span>In [27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># First, let&#39;s remind ourselves about these variables</span>
+<span class="k">print</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">var</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a_list</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a_list</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+None &lt;class &#39;NoneType&#39;&gt;
+[1, 2, 3] &lt;class &#39;list&#39;&gt;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [28]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -945,7 +1015,7 @@ determines the collection type:</p>
 <p>Sets are very much like sets in math.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [26]:
+<span></span>In [29]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -967,7 +1037,7 @@ determines the collection type:</p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [27]:
+<span></span>In [30]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -989,7 +1059,7 @@ True
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [28]:
+<span></span>In [31]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1021,7 +1091,7 @@ something meaningful, like a student’s unique name? Use a dict!</p>
 on this (see also below).</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [29]:
+<span></span>In [32]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1043,7 +1113,7 @@ on this (see also below).</p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [30]:
+<span></span>In [33]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1067,6 +1137,24 @@ dict_values([&#39;Avin&#39;, &#39;Carolina&#39;, &#39; Minjeong&#39;, &#39;Luis&
 Avin
 </pre></div></div>
 </div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;Avin&#39;</span> <span class="ow">in</span> <span class="n">classmates</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
 <p>As you might already expect, keys must be unique but values can repeat.</p>
 <p>Lists in list, or dicts in lists, or dicts in dicts, can be hard
 concepts to think about, but very useful. What if I want the dictionary
@@ -1074,7 +1162,7 @@ to allow me to track several properties of each student? A dict in dict
 works well.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [31]:
+<span></span>In [35]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1110,6 +1198,18 @@ have a user-specified default value</li>
 <li><code class="docutils literal notranslate"><span class="pre">collections.OrderedDict</span></code>: Like a dictionary, but the order of keys
 is maintained</li>
 </ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="n">ordered_class</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">OrderedDict</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="Some-material-I-intentionally-skipped">
