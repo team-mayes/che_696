@@ -17,7 +17,7 @@
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4) Data types in python" href="lecture04_python_data_types.html" />
+    <link rel="next" title="HW2, practicing with jupyter notebooks" href="HW02.html" />
     <link rel="prev" title="2) Jupyter notebooks" href="lecture02_jupyter_notebooks.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
@@ -31,7 +31,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="lecture04_python_data_types.html" title="4) Data types in python"
+          <a href="HW02.html" title="HW2, practicing with jupyter notebooks"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="lecture02_jupyter_notebooks.html" title="2) Jupyter notebooks"
@@ -45,8 +45,8 @@
   <p class="topless"><a href="lecture02_jupyter_notebooks.html"
                         title="previous chapter">2) Jupyter notebooks</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="lecture04_python_data_types.html"
-                        title="next chapter">4) Data types in python</a></p>
+  <p class="topless"><a href="HW02.html"
+                        title="next chapter">HW2, practicing with jupyter notebooks</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <div class="searchformwrapper">
@@ -303,9 +303,9 @@ things like what’s <em>au courant</em> for open source projects”: <img alt="
 <h2>On to some simple python<a class="headerlink" href="#On-to-some-simple-python" title="Permalink to this headline">¶</a></h2>
 <p>Remember how I mentioned that simple math is not simple in bash? It is
 in python!</p>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [2]:
+<span></span>In [ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -313,22 +313,12 @@ in python!</p>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[2]:
-</pre></div>
-</div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>4
-</pre></div>
-</div>
-</div>
 <p>A few important points: - The numbers are very helpful as you figure out
 what has been run in what order - By default, the output of the last
 line of code in a cell will be output.</p>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [3]:
+<span></span>In [ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -337,21 +327,11 @@ line of code in a cell will be output.</p>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[3]:
-</pre></div>
-</div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>12
-</pre></div>
-</div>
-</div>
 <p>You see that only the last line is output. You can also control what is
 printed. And, generally, we’ll be wanting to store output in variables.</p>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [4]:
+<span></span>In [ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -361,21 +341,13 @@ printed. And, generally, we’ll be wanting to store output in variables.</p>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-2
-</pre></div></div>
-</div>
 <p>The numbered lines can are stored and can be accessed!</p>
 <p>I’m demonstrate below that you can embed your variable output in text.
 The “<a href="#id1"><span class="problematic" id="id2">:raw-latex:`\n`</span></a>” gives me another new line so it is easier to see
 the three outputs.</p>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [5]:
+<span></span>In [ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -386,31 +358,15 @@ the three outputs.</p>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-In is type &lt;class &#39;list&#39;&gt; and In = [&#39;&#39;, &#39;import this&#39;, &#39;2+2&#39;, &#39;1*2\n3*4&#39;, &#39;result_1 = 1 * 2\nprint(result_1)\nresult_2 = 3 * 4&#39;, &#39;print(&#34;In is type {} and In = {}\\n&#34;.format(type(In), In))\nprint(&#34;The third input was \&#39;{}\&#39;\\n&#34;.format(In[3]))\nprint(\&#39;The third input was &#34;{}&#34;\\n\&#39;.format(In[3]))\nprint(&#34;Out is type {} and Out = {}&#34;.format(type(Out), Out))&#39;]
-
-The third input was &#39;1*2
-3*4&#39;
-
-The third input was &#34;1*2
-3*4&#34;
-
-Out is type &lt;class &#39;dict&#39;&gt; and Out = {2: 4, 3: 12}
-</pre></div></div>
-</div>
 <p>Note that Python has what is referred to as dynamic, or duck, typing.
 That is, if it quacks like a duck, it calls it a duck. This is in
 contrast to languages like C or Java that have static typing, in which
 the type of variable must be declared. This provides speed and
 flexibility, but also slows down running because variables are stored
 both with the value and type. More on this later.</p>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [6]:
+<span></span>In [ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -421,19 +377,11 @@ both with the value and type. More on this later.</p>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;class &#39;str&#39;&gt; &lt;class &#39;int&#39;&gt; &lt;class &#39;float&#39;&gt;
-</pre></div></div>
-</div>
 <p>Unlike other languages (like C++ and FORTRAN), the variable type of
 object assigned to the variable can be changed.</p>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [7]:
+<span></span>In [ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -444,23 +392,15 @@ object assigned to the variable can be changed.</p>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;class &#39;int&#39;&gt; &lt;class &#39;float&#39;&gt; &lt;class &#39;str&#39;&gt;
-</pre></div></div>
-</div>
 <p>In python, variables are pointers. They can first point to a string, and
 then point to a integer, and then to something else. We’ll come back to
 this point at times you may not get the behavior you expect if your
 mental model is “var_2 is 4” versus “right now, var_2 points to 4”. For
 example, think about what the output will be from the following
 statements:</p>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [8]:
+<span></span>In [ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -472,20 +412,11 @@ statements:</p>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-x = [1, 2, 3] and y = [1, 2, 3]
-x = [4, 2, 3] and y = [4, 2, 3]
-</pre></div></div>
-</div>
 <p>Right now, <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> point to the same object. That can be
 changed!</p>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [9]:
+<span></span>In [ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -494,17 +425,9 @@ changed!</p>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-x = 4 and y = [4, 2, 3]
-</pre></div></div>
-</div>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [10]:
+<span></span>In [ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -515,17 +438,9 @@ x = 4 and y = [4, 2, 3]
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-a = [4, 2, 3] and b = [1, 2, 3]
-</pre></div></div>
-</div>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [11]:
+<span></span>In [ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -536,17 +451,9 @@ a = [4, 2, 3] and b = [1, 2, 3]
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-c = [1, 2, 3, 4] and d = [1, 2, 3, 4]
-</pre></div></div>
-</div>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [12]:
+<span></span>In [ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -557,17 +464,9 @@ c = [1, 2, 3, 4] and d = [1, 2, 3, 4]
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-e = [1, 2, 4] and f = [1, 2, 3]
-</pre></div></div>
-</div>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [13]:
+<span></span>In [ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -579,15 +478,6 @@ e = [1, 2, 4] and f = [1, 2, 3]
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;g =&quot;</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="s2">&quot;and h =&quot;</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-g = 3.14 and h = 3.14
-g = 3.14 and h = 3.14
-</pre></div></div>
 </div>
 <p><em>FYI:</em> When I call <code class="docutils literal notranslate"><span class="pre">type</span></code> I get the type of the object the variable
 name points to at that moment.</p>
@@ -607,7 +497,7 @@ name points to at that moment.</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="lecture04_python_data_types.html" title="4) Data types in python"
+          <a href="HW02.html" title="HW2, practicing with jupyter notebooks"
              >next</a> |</li>
         <li class="right" >
           <a href="lecture02_jupyter_notebooks.html" title="2) Jupyter notebooks"

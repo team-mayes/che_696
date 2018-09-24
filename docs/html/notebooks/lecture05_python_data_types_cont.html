@@ -17,7 +17,8 @@
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="HW2, practicing with jupyter notebooks" href="HW02.html" />
+    <link rel="next" title="HW3, practice with python data types and syntax" href="HW03.html" />
+    <link rel="prev" title="4) Data types in python" href="lecture04_python_data_types.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
@@ -30,7 +31,10 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="HW02.html" title="HW2, practicing with jupyter notebooks"
+          <a href="HW03.html" title="HW3, practice with python data types and syntax"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="lecture04_python_data_types.html" title="4) Data types in python"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: On-Ramp to Data Science 0.1 documentation</a> &#187;</li> 
       </ul>
@@ -38,8 +42,11 @@
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="HW02.html"
-                        title="previous chapter">HW2, practicing with jupyter notebooks</a></p>
+  <p class="topless"><a href="lecture04_python_data_types.html"
+                        title="previous chapter">4) Data types in python</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="HW03.html"
+                        title="next chapter">HW3, practice with python data types and syntax</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <div class="searchformwrapper">
@@ -553,6 +560,85 @@ everything before, after, or in-between:</p>
 <img alt="List Indexing Figure" src="../_images/lect05_list_indexing.png" />
 <p class="caption"><span class="caption-text">List Indexing Figure</span></p>
 </div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">new_list</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[5, 7]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">print</span><span class="p">(</span><span class="n">new_list</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">new_list</span><span class="p">[:])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[5, 7]
+[2, 3, 5, 7, 11]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">print</span><span class="p">(</span><span class="n">new_list</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">new_list</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[2, 3, 5]
+[2, 3]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">print</span><span class="p">(</span><span class="n">new_list</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">new_list</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[5, 7, 11]
+[7, 11]
+</pre></div></div>
+</div>
 </div>
 </div>
 <div class="section" id="Back-to-string-and-list-commonalities:">
@@ -561,7 +647,7 @@ everything before, after, or in-between:</p>
 object:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [12]:
+<span></span>In [16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -585,7 +671,7 @@ Is &#39;2&#39; in q_and_a? is &#39;at&#39;? False True
 <p>And both can be multiplied!</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [13]:
+<span></span>In [17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -609,7 +695,7 @@ spamspamspam
 <p>Some built-in methods of strings include:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [14]:
+<span></span>In [18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -634,7 +720,7 @@ spam what do you like? tofu
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [15]:
+<span></span>In [19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -653,7 +739,7 @@ spam what do you like? tofu
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [16]:
+<span></span>In [20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -674,7 +760,7 @@ spam what do you like? tofu
 or ending white space.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [17]:
+<span></span>In [21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -699,15 +785,29 @@ are you have already seen: the <code class="docutils literal notranslate"><span 
 <p>You can also use regular expressions to give you much more
 functionality. You’ll need to import the <a class="reference external" href="https://docs.python.org/3/library/re.html">re
 library</a>:</p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [18]:
+<span></span>In [22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="c1"># More complicated example of splitting a string into lists based on multiple</span>
+<span class="c1">#    types of delimiters, including next line (`\n`)</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;The quick brown</span><span class="se">\n</span><span class="s1">fox jumps*over the lazy dog.&#39;</span>
+<span class="k">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;; |, |\*|</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">text</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;The quick brown&#39;, &#39;fox jumps&#39;, &#39;over the lazy dog.&#39;]
+</pre></div></div>
 </div>
 </div>
 </div>
@@ -718,7 +818,7 @@ precision is limited, which can cause equality tests to be unstable. For
 example:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [19]:
+<span></span>In [23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -728,7 +828,7 @@ example:</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[19]:
+<span></span>Out[23]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -738,7 +838,7 @@ example:</p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [20]:
+<span></span>In [24]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -774,7 +874,7 @@ equality tests with floating-point values. Numpy has a solution for
 this!</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [21]:
+<span></span>In [25]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -800,7 +900,7 @@ True
 <p>We’ll continue to introduce printing options in future class sessions.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [22]:
+<span></span>In [26]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -826,7 +926,7 @@ a = 0.30000000000000004, b = 0.3, a = 0.30000000000000004
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [23]:
+<span></span>In [27]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -852,7 +952,7 @@ a = 3.00e-01, b = 3.00e-01
 then be able to check if it got assigned a value later.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [24]:
+<span></span>In [28]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -874,7 +974,7 @@ then be able to check if it got assigned a value later.</p>
 <p>What values are the following assigned when recast as booleans?</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [25]:
+<span></span>In [29]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -896,7 +996,7 @@ True
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [26]:
+<span></span>In [30]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -921,7 +1021,7 @@ False
 <p>Thus, basically any variable can be used in an if statement:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [27]:
+<span></span>In [31]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -942,7 +1042,7 @@ None &lt;class &#39;NoneType&#39;&gt;
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [28]:
+<span></span>In [32]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1015,7 +1115,7 @@ determines the collection type:</p>
 <p>Sets are very much like sets in math.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [29]:
+<span></span>In [33]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1037,7 +1137,7 @@ determines the collection type:</p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [30]:
+<span></span>In [34]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1059,7 +1159,7 @@ True
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [31]:
+<span></span>In [35]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1091,7 +1191,7 @@ something meaningful, like a student’s unique name? Use a dict!</p>
 on this (see also below).</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [32]:
+<span></span>In [36]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1113,7 +1213,7 @@ on this (see also below).</p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [33]:
+<span></span>In [37]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1139,7 +1239,7 @@ Avin
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [34]:
+<span></span>In [38]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1162,7 +1262,7 @@ to allow me to track several properties of each student? A dict in dict
 works well.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [35]:
+<span></span>In [39]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1200,7 +1300,7 @@ is maintained</li>
 </ul>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [36]:
+<span></span>In [40]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1217,9 +1317,24 @@ is maintained</li>
 <p><em>FYI</em>: Do you use complex numbers? Read about them
 <a class="reference external" href="https://jakevdp.github.io/WhirlwindTourOfPython/05-built-in-scalar-types.html">here</a>
 (use the search option to skip to Complex Numbers).</p>
+<p>I also skipped some classic data structures like
+<a class="reference external" href="https://medium.freecodecamp.org/all-you-need-to-know-about-tree-data-structures-bceacb85490c">trees</a>
+and
+<a class="reference external" href="https://adrianmejia.com/blog/2018/05/14/data-structures-for-beginners-graphs-time-complexity-tutorial/">graphs</a>.
+Instead, I am focusing on data types and structures in python which are
+most used.</p>
+<p>We will learn about some additional data types in the future,
+specifically numpy arrays and pandas dataframes. We will get to those
+when we talk more about those libraries.</p>
 <p><em>Next up:</em> Programming with an IDE!</p>
 <p>Before Monday, try installing <a class="reference external" href="https://www.jetbrains.com/student">IntelliJ using this
-link</a></p>
+link</a>. That link should allow you
+to install the full, professional version of Intellij at no cost by
+registering with your .edu email address.</p>
+<p>We will be using IntelliJ IDEA Ultimate, rather than PyCharm. PyCharm is
+a stripped down version of the former, so uses less memory, but does not
+have all the features of IDEA Ultimate. We’ll talk more about this next
+class.</p>
 </div>
 </div>
 
@@ -1236,7 +1351,10 @@ link</a></p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="HW02.html" title="HW2, practicing with jupyter notebooks"
+          <a href="HW03.html" title="HW3, practice with python data types and syntax"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="lecture04_python_data_types.html" title="4) Data types in python"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: On-Ramp to Data Science 0.1 documentation</a> &#187;</li> 
       </ul>

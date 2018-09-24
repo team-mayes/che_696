@@ -57,7 +57,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 1,
+   "execution_count": null,
    "metadata": {
     "collapsed": true
    },
@@ -69,60 +69,27 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 2,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "True"
-      ]
-     },
-     "execution_count": 2,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
+   "outputs": [],
    "source": [
     "a == b"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "False"
-      ]
-     },
-     "execution_count": 3,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
+   "outputs": [],
    "source": [
     "a is b"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 4,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "True"
-      ]
-     },
-     "execution_count": 4,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
+   "outputs": [],
    "source": [
     "a is not b"
    ]
@@ -136,23 +103,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 5,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "b is a: True\n",
-      "c is a: False\n",
-      "d is e: True\n",
-      "e is d: False\n",
-      "d is e: False\n",
-      "d == e: True\n",
-      "d is e: True\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "a = [1, 2, 3]\n",
     "b = a\n",
@@ -193,40 +146,18 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 6,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "True"
-      ]
-     },
-     "execution_count": 6,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
+   "outputs": [],
    "source": [
     "1 in [1, 2, 3]"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 7,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "False"
-      ]
-     },
-     "execution_count": 7,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
+   "outputs": [],
    "source": [
     "2 not in [1, 2, 3]"
    ]
@@ -249,17 +180,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 8,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "<class 'str'> <class 'str'>\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "message = \"what do you like?\"\n",
     "response = 'spam'\n",
@@ -277,18 +200,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 9,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "Length and type of 'a_list' are: 3 and <class 'list'>\n",
-      "Length and type of 'question' are: 17 and <class 'str'>\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "a_list = [1, 2, 3]\n",
     "b_list = [4, 5]\n",
@@ -307,18 +221,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 10,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "'a_list' + 'b_list' yields: [1, 2, 3, 4, 5]\n",
-      "'question' + ' ' + 'response' yields: what do you like? spam\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "c_list = a_list + b_list\n",
     "q_and_a = question + ' ' + response\n",
@@ -335,18 +240,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 11,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[3, 4]\n",
-      "at\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "print(c_list[2:4])\n",
     "print(q_and_a[2:4])"
@@ -364,6 +260,52 @@
    ]
   },
   {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "new_list = [2, 3, 5, 7, 11]\n",
+    "print(new_list[2:4])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "print(new_list[-3:-1])\n",
+    "print(new_list[:])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "print(new_list[:3])\n",
+    "print(new_list[:-3])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "print(new_list[2:])\n",
+    "print(new_list[-2:])"
+   ]
+  },
+  {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
@@ -373,18 +315,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 12,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "Is '2' in c_list?  is 'at'? True False\n",
-      "Is '2' in q_and_a? is 'at'? False True\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "print(\"Is '2' in c_list?  is 'at'?\", 2 in c_list, 'at' in c_list)\n",
     "# One difference: you can look for anything in a list, but only strings in strings\n",
@@ -402,18 +335,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 13,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[1, 2, 3, 1, 2, 3, 1, 2, 3]\n",
-      "spamspamspam\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "print(a_list * 3)\n",
     "print(response * 3)"
@@ -430,20 +354,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 14,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "SPAM\n",
-      "What do you like? spam\n",
-      "what do you like? tofu\n",
-      "spam what do you like? tofu\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "print(response.upper())\n",
     "print(q_and_a.capitalize())\n",
@@ -454,17 +367,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 15,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "['what', 'do', 'you', 'like?', 'tofu'] <class 'list'>\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "q_a_split = q_and_a.split()\n",
     "print(q_a_split, type(q_a_split))"
@@ -472,17 +377,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 16,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "['what do you like', ' tofu']\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "q_a_split_alt = q_and_a.split(\"?\")\n",
     "print(q_a_split_alt)"
@@ -497,17 +394,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 17,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "['what do you like', 'tofu']\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "q_a_split_alt[1] = q_a_split_alt[1].strip()\n",
     "print(q_a_split_alt)"
@@ -524,13 +413,17 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 18,
-   "metadata": {
-    "collapsed": true
-   },
+   "execution_count": null,
+   "metadata": {},
    "outputs": [],
    "source": [
-    "import re"
+    "import re\n",
+    "\n",
+    "# More complicated example of splitting a string into lists based on multiple \n",
+    "#    types of delimiters, including next line (`\\n`)\n",
+    "import re\n",
+    "text = 'The quick brown\\nfox jumps*over the lazy dog.'\n",
+    "print(re.split('; |, |\\*|\\n',text))"
    ]
   },
   {
@@ -544,39 +437,18 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 19,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "False"
-      ]
-     },
-     "execution_count": 19,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
+   "outputs": [],
    "source": [
     "0.1 + 0.2 == 0.3"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 20,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "0.1 = 0.10000000000000001\n",
-      "0.2 = 0.20000000000000001\n",
-      "0.3 = 0.29999999999999999\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "print(\"0.1 = {0:.17f}\".format(0.1))\n",
     "print(\"0.2 = {0:.17f}\".format(0.2))\n",
@@ -605,18 +477,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 21,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "0.30000000000000004 False\n",
-      "True\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "import numpy as np\n",
     "\n",
@@ -636,20 +499,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 22,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "0.30000000000000004 0.3\n",
-      "a = 0.30000000000000004\n",
-      "a = 0.30000000000000004, b = 0.3\n",
-      "a = 0.30000000000000004, b = 0.3, a = 0.30000000000000004\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "a = 0.1 + 0.2\n",
     "b = 0.3\n",
@@ -661,18 +513,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 23,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "a =     0.30, b =     0.30\n",
-      "a = 3.00e-01, b = 3.00e-01\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "print(\"a = {:8.2f}, b = {:8.2f}\".format(a, b))\n",
     "print(\"a = {:2.2e}, b = {:2.2e}\".format(a, b))"
@@ -689,17 +532,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 24,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "<class 'NoneType'>\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "var = None\n",
     "if 2 > 4:\n",
@@ -716,19 +551,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 25,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "False\n",
-      "False\n",
-      "True\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "print(bool(var))\n",
     "print(bool(0))\n",
@@ -737,20 +562,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 26,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "True\n",
-      "True\n",
-      "False\n",
-      "False\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "print(bool(a_list))\n",
     "print(bool(q_and_a))\n",
@@ -767,18 +581,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 27,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "None <class 'NoneType'>\n",
-      "[1, 2, 3] <class 'list'>\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "# First, let's remind ourselves about these variables\n",
     "print(var, type(var))\n",
@@ -787,18 +592,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 28,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "var = NCRC\n",
-      "a_list = Dow\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "if var:\n",
     "    var = \"Dow\"\n",
@@ -850,18 +646,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 29,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "{2, 3, 5, 7} len = 4\n",
-      "{1, 3, 5, 7, 9} len = 5\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "primes = {7, 3, 2, 5, 7}\n",
     "print(primes, \"len =\", len(primes))\n",
@@ -871,18 +658,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 30,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "True\n",
-      "{1, 2, 3, 5, 7, 9}\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "# there are two ways of specifying a union\n",
     "p_o_union = primes | odds\n",
@@ -892,18 +670,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 31,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "True\n",
-      "{3, 5, 7}\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "# and there are two ways of specifying an intersection\n",
     "p_o_inter = primes & odds\n",
@@ -931,17 +700,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 32,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "{'avinav': 'Avin', 'chechung': 'Carolina', 'minjcha': ' Minjeong'}\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "classmates = {'avinav': 'Avin',\n",
     "             'chechung': 'Carolina',\n",
@@ -952,19 +713,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 33,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "dict_keys(['avinav', 'chechung', 'minjcha', 'lyrivera'])\n",
-      "dict_values(['Avin', 'Carolina', ' Minjeong', 'Luis'])\n",
-      "Avin\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "# How to add items to your dictionary\n",
     "classmates['lyrivera'] = 'Luis'\n",
@@ -977,17 +728,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 34,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "True\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "print('Avin' in classmates.values())"
    ]
@@ -1003,17 +746,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 35,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "Biomed\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "che_696 = {'avinav': {'first': 'Avin', 'last': 'Vijay', 'program': 'ChE'},\n",
     "          'chechung': {'first': 'Carolina', 'last': 'Chung', 'program': 'Biomed'},\n",
@@ -1044,7 +779,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 36,
+   "execution_count": null,
    "metadata": {
     "collapsed": true
    },
@@ -1068,9 +803,20 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
+    "I also skipped some classic data structures like [trees](https://medium.freecodecamp.org/all-you-need-to-know-about-tree-data-structures-bceacb85490c) and [graphs](https://adrianmejia.com/blog/2018/05/14/data-structures-for-beginners-graphs-time-complexity-tutorial/). Instead, I am focusing on data types and structures in python which are most used.\n",
+    "\n",
+    "We will learn about some additional data types in the future, specifically numpy arrays and pandas dataframes. We will get to those when we talk more about those libraries."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
     "*Next up:* Programming with an IDE!\n",
     "\n",
-    "Before Monday, try installing [IntelliJ using this link](https://www.jetbrains.com/student)"
+    "Before Monday, try installing [IntelliJ using this link](https://www.jetbrains.com/student). That link should allow you to install the full, professional version of Intellij at no cost by registering with your .edu email address. \n",
+    "\n",
+    "We will be using IntelliJ IDEA Ultimate, rather than PyCharm. PyCharm is a stripped down version of the former, so uses less memory, but does not have all the features of IDEA Ultimate. We'll talk more about this next class."
    ]
   }
  ],

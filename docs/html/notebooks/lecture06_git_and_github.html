@@ -1,0 +1,1959 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>6) Git and IDES for good programming practices &#8212; CHE 696: On-Ramp to Data Science 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: On-Ramp to Data Science 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="6)-Git-and-IDES-for-good-programming-practices">
+<h1>6) Git and IDES for good programming practices<a class="headerlink" href="#6)-Git-and-IDES-for-good-programming-practices" title="Permalink to this headline">¶</a></h1>
+<p>Related material:</p>
+<ul class="simple">
+<li>Main basis (with many thanks) for this ipynb:
+<a class="reference external" href="https://swcarpentry.github.io/git-novice/">https://swcarpentry.github.io/git-novice/</a></li>
+<li>Related nice reference:
+<a class="reference external" href="http://swcarpentry.github.io/git-novice/reference">http://swcarpentry.github.io/git-novice/reference</a></li>
+<li>Additional Git reference: <a class="reference external" href="https://git-scm.com/docs">https://git-scm.com/docs</a></li>
+<li><a class="reference external" href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a></li>
+<li><a class="reference external" href="https://gist.github.com/trey/2722934">https://gist.github.com/trey/2722934</a></li>
+</ul>
+<div class="section" id="Version-control-with-git">
+<h2>Version control with git<a class="headerlink" href="#Version-control-with-git" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://git-scm.com/">Git</a> is an extremely useful and broadly
+adopted version control system. Every save copies of files with
+different names as you work on them to enable going back to older
+versions?</p>
+<p><img alt="Piled Higher and Deeper by Jorge Cham, http://www.phdcomics.com/comics/archive_print.php?comicid=1531" src="../_images/lect06_phd_versions.png" /> “Piled
+Higher and Deeper” by Jorge Cham, <a class="reference external" href="http://www.phdcomics.com">http://www.phdcomics.com</a></p>
+<p>Git (and other version control software) avoids saving many
+almost-identical versions of files and then having to sort through them.
+It makes it very easy to store incremental changes and then compare
+them. When writing programs, this is especially useful as you might
+temporarily have to break some functionality while extending it;
+wouldn’t it be nice to make a separate “branch” to work on that, and
+merge it back when the new functionality is complete?</p>
+<p>This is such a common problem that multiple version control tools have
+been created. Git is the most common. It becomes especially helpful when
+there are multiple people that want to work on the same project/file.</p>
+<p>Git is not to be confused with GitHub; <a class="reference external" href="https://github.com/">GitHub</a>
+is an online host (website) for projects which interfaces with git. It
+is extremely helpful for sharing code, managing projects, and team
+project development. We will be using both.</p>
+</div>
+<div class="section" id="Some-visuals-of-what-git-can-do-for-you:">
+<h2>Some visuals of what git can do for you:<a class="headerlink" href="#Some-visuals-of-what-git-can-do-for-you:" title="Permalink to this headline">¶</a></h2>
+<p>Save changes sequentially: <img alt="Changes Are Saved Sequentially" src="../_images/lect06_play-changes.svg" /></p>
+<p>Make independent changes to the same file: <img alt="Different Versions Can be Saved" src="../_images/lect06_versions.svg" /></p>
+<p>Merge changes: If there are conflicts, you will have a chance to review
+them. <img alt="Multiple Versions Can be Merged" src="../_images/lect06_merge.svg" /></p>
+<p>The entire history of saved states (<strong>commits</strong>) and the metadata about
+them make up a particular git <strong>repository</strong>. These repositories are
+saved on individual machines, but can easily be can be kept in sync
+across different computers, facilitating collaboration among different
+people. Repositories do not need a central server to host the <strong>repo</strong>
+(the common shorthand for repository). Thus, git repos are described as
+distributed.</p>
+</div>
+<div class="section" id="When-first-using-Git-on-a-machine">
+<h2>When first using Git on a machine<a class="headerlink" href="#When-first-using-Git-on-a-machine" title="Permalink to this headline">¶</a></h2>
+<p>Below are a few examples of configurations we will set as we get started
+with Git:</p>
+<ul class="simple">
+<li>our name and email address,</li>
+<li>what our preferred text editor is,</li>
+<li>and that we want to use these settings globally (i.e.&nbsp;for every
+project).</li>
+</ul>
+<p>On a command line, Git commands are written as <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">verb</span> <span class="pre">options</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">verb</span></code> is what we actually want to do and <code class="docutils literal notranslate"><span class="pre">options</span></code> is
+additional optional information which may be needed for the <code class="docutils literal notranslate"><span class="pre">verb</span></code>. So
+here is how Dracula sets up his new laptop:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git config --global user.name &quot;Vlad Dracula&quot;
+$ git config --global user.email &quot;vlad@tran.sylvan.ia&quot;
+</pre></div>
+</div>
+<p>The user name and email you set will be associated with your subsequent
+Git activity, which means that any changes pushed to
+<a class="reference external" href="https://github.com/">GitHub</a>,
+<a class="reference external" href="https://bitbucket.org/">BitBucket</a>, <a class="reference external" href="https://gitlab.com/">GitLab</a>
+or another Git host server.</p>
+<div class="section" id="Line-Endings">
+<h3>Line Endings<a class="headerlink" href="#Line-Endings" title="Permalink to this headline">¶</a></h3>
+<p>As with other keys, when you hit Return on your keyboard, your computer
+encodes this input as a character. Different operating systems use
+different character(s) to represent the end of a line. (You may also
+hear these referred to as newlines or line breaks.) Because Git uses
+these characters to compare files, it may cause unexpected issues when
+editing a file on different machines.</p>
+<p>Although it is beyond the scope of this lesson, you can read more about
+this issue on <a class="reference external" href="https://help.github.com/articles/dealing-with-line-endings/">on this GitHub
+page</a>.</p>
+<p>You can change the way Git recognizes and encodes line endings using the
+<code class="docutils literal notranslate"><span class="pre">core.autocrlf</span></code> command to <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span></code>. Thus, the following
+settings are recommended:</p>
+<p>On macOS and Linux:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git config --global core.autocrlf input
+</pre></div>
+</div>
+<p>And on Windows: ~~~ $ git config –global core.autocrlf true ~~~</p>
+<p>We will be interacting with <a class="reference external" href="https://github.com/">GitHub</a> and so the
+email address used should be the same as the one used when setting up
+your GitHub account. If you are concerned about privacy, please review
+<a class="reference external" href="https://help.github.com/articles/keeping-your-email-address-private/">GitHub’s instructions for keeping your email address
+private</a>.</p>
+<p>If you elect to use a private email address with GitHub, then use that
+same email address for the <code class="docutils literal notranslate"><span class="pre">user.email</span></code> value, e.g.
+<code class="docutils literal notranslate"><span class="pre">username&#64;users.noreply.github.com</span></code> replacing <code class="docutils literal notranslate"><span class="pre">username</span></code> with your
+GitHub one. You can change the email address later on by using the
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span></code> command again.</p>
+<p>Dracula also has to set his favorite text editor, following this table:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Editor</th>
+<th class="head">Configuration command</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Atom</td>
+<td><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">core.editor</span> <span class="pre">&quot;atom</span> <span class="pre">--wait</span>
+<span class="pre">&quot;</span></code></td>
+</tr>
+<tr class="row-odd"><td>nano</td>
+<td><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">core.editor</span> <span class="pre">&quot;nano</span> <span class="pre">-w&quot;</span></code></td>
+</tr>
+<tr class="row-even"><td>BBEdit (Mac, with
+command line
+tools)</td>
+<td><a href="#id1"><span class="problematic" id="id2">``</span></a>$ git config –global core.editor “bbedit -w”`
+`</td>
+</tr>
+<tr class="row-odd"><td>Sublime Text
+(Mac)</td>
+<td><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">core.editor</span> <span class="pre">&quot;/Applicatio</span>
+<span class="pre">ns/Sublime\</span> <span class="pre">Text.app/Contents/SharedSupport/bin/</span>
+<span class="pre">subl</span> <span class="pre">-n</span> <span class="pre">-w&quot;</span></code></td>
+</tr>
+<tr class="row-even"><td>Sublime Text
+(Win, 32-bit
+install)</td>
+<td><dl class="first docutils">
+<dt><a href="#id3"><span class="problematic" id="id4">``</span></a>$ git config –global core.editor “‘c:/program</dt>
+<dd>files (x86)/sublime text 3/sublime_text.exe’ -w</dd>
+</dl>
+<p class="last">“``</p>
+</td>
+</tr>
+<tr class="row-odd"><td>Sublime Text
+(Win, 64-bit
+install)</td>
+<td><dl class="first last docutils">
+<dt><a href="#id5"><span class="problematic" id="id6">``</span></a>$ git config –global core.editor “‘c:/program</dt>
+<dd>files/sublime text 3/sublime_text.exe’ -w”``</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td>Notepad++ (Win,
+32-bit install)</td>
+<td><dl class="first last docutils">
+<dt><a href="#id7"><span class="problematic" id="id8">``</span></a>$ git config –global core.editor “‘c:/program</dt>
+<dd>files (x86)/Notepad++/notepad++.exe’ -multiInst
+-notabbar -nosession -noPlugin”``</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td>Notepad++ (Win,
+64-bit install)</td>
+<td><dl class="first docutils">
+<dt><a href="#id9"><span class="problematic" id="id10">``</span></a>$ git config –global core.editor “‘c:/program</dt>
+<dd>files/Notepad++/notepad++.exe’ -multiInst -nota</dd>
+</dl>
+<p class="last">bbar -nosession -noPlugin”``</p>
+</td>
+</tr>
+<tr class="row-even"><td>Kate (Linux)</td>
+<td><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">core.editor</span> <span class="pre">&quot;kate&quot;</span></code></td>
+</tr>
+<tr class="row-odd"><td>Gedit (Linux)</td>
+<td><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">core.editor</span> <span class="pre">&quot;gedit</span> <span class="pre">--wai</span>
+<span class="pre">t</span> <span class="pre">--new-window&quot;</span></code></td>
+</tr>
+<tr class="row-even"><td>Scratch (Linux)</td>
+<td><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">core.editor</span> <span class="pre">&quot;scratch-tex</span>
+<span class="pre">t-editor&quot;</span></code></td>
+</tr>
+<tr class="row-odd"><td>Emacs</td>
+<td><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">core.editor</span> <span class="pre">&quot;emacs&quot;</span></code></td>
+</tr>
+<tr class="row-even"><td>Vim</td>
+<td><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">core.editor</span> <span class="pre">&quot;vim&quot;</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>It is possible to reconfigure the text editor for Git whenever you want
+to change it.</p>
+<p>The four commands we just ran above only need to be run once: the flag
+<code class="docutils literal notranslate"><span class="pre">--global</span></code> tells Git to use the settings for every project, in your
+user account, on this computer.</p>
+<p>You can check your settings at any time:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git config --list
+</pre></div>
+</div>
+<p>You can change your configuration as many times as you want: just use
+the same commands to choose another editor or update your email address.</p>
+</div>
+<div class="section" id="Git-Help-and-Manual">
+<h3>Git Help and Manual<a class="headerlink" href="#Git-Help-and-Manual" title="Permalink to this headline">¶</a></h3>
+<p>If you forget a <code class="docutils literal notranslate"><span class="pre">git</span></code> command, you can access the list of commands by
+using <code class="docutils literal notranslate"><span class="pre">-h</span></code> and access the Git manual by using <code class="docutils literal notranslate"><span class="pre">--help</span></code> :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git config -h
+$ git config --help
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Let’s-make-a-Git-repo!">
+<h2>Let’s make a Git repo!<a class="headerlink" href="#Let’s-make-a-Git-repo!" title="Permalink to this headline">¶</a></h2>
+<p>We will make a repo for a project Wolfman and Dracula are working on,
+investigating if it is possible to send a planetary lander to Mars.</p>
+<div class="figure" id="id11">
+<img alt="motivatingexample" src="../_images/lect06_motivatingexample.png" />
+<p class="caption"><span class="caption-text">motivatingexample</span></p>
+</div>
+<p>First, let’s create a directory in <code class="docutils literal notranslate"><span class="pre">Desktop</span></code> folder for our work and
+then move into that directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd ~/Desktop
+$ mkdir planets
+$ cd planets
+</pre></div>
+</div>
+<p>Then we tell Git to make <code class="docutils literal notranslate"><span class="pre">planets</span></code> a repository (where Git can store
+versions of our files):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git init
+</pre></div>
+</div>
+<p>Note: that <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code> will create a repository that includes
+subdirectories and their files—there is no need to create separate
+repositories nested within the <code class="docutils literal notranslate"><span class="pre">planets</span></code> repository, whether
+subdirectories are present from the beginning or added later. Also, note
+that the creation of the <code class="docutils literal notranslate"><span class="pre">planets</span></code> directory and its initialization as
+a repository are completely separate processes.</p>
+<p>If we use <code class="docutils literal notranslate"><span class="pre">ls</span></code> to show the directory’s contents, it appears that
+nothing has changed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls
+</pre></div>
+</div>
+<p>But if we add the <code class="docutils literal notranslate"><span class="pre">-a</span></code> flag to show everything, we can see that Git
+has created a hidden directory within <code class="docutils literal notranslate"><span class="pre">planets</span></code> called <code class="docutils literal notranslate"><span class="pre">.git</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls -a
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span>   <span class="o">..</span>  <span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>Git uses this special sub-directory to store all the information about
+the project, including all files and sub-directories located within the
+project’s directory. If we ever delete the <code class="docutils literal notranslate"><span class="pre">.git</span></code> sub-directory, we
+will lose the project’s history.</p>
+<p>We can check that everything is set up correctly by asking Git to tell
+us the status of our project:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git status
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">master</span>
+
+<span class="n">Initial</span> <span class="n">commit</span>
+
+<span class="n">nothing</span> <span class="n">to</span> <span class="n">commit</span> <span class="p">(</span><span class="n">create</span><span class="o">/</span><span class="n">copy</span> <span class="n">files</span> <span class="ow">and</span> <span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="n">to</span> <span class="n">track</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you are using a different version of <code class="docutils literal notranslate"><span class="pre">git</span></code>, the exact wording of
+the output might be slightly different.</p>
+<div class="section" id="Correcting-git-init-Mistakes">
+<h3>Correcting <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code> Mistakes<a class="headerlink" href="#Correcting-git-init-Mistakes" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="USE-WITH-CAUTION!">
+<h4>USE WITH CAUTION!<a class="headerlink" href="#USE-WITH-CAUTION!" title="Permalink to this headline">¶</a></h4>
+<p>To undo accidental creation of a git repo (e.g.&nbsp;did init when in the
+Desktop directory, instead of after changing directory to planets), you
+can just remove the <code class="docutils literal notranslate"><span class="pre">.git</span></code> within a current directory using the
+following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rm -rf moons/.git
+</pre></div>
+</div>
+<p>But be careful! Running this command in the wrong directory, will remove
+the entire Git history of a project you might want to keep. Therefore,
+always check your current directory using the command <code class="docutils literal notranslate"><span class="pre">pwd</span></code>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="Tracking-Changes">
+<h2>Tracking Changes<a class="headerlink" href="#Tracking-Changes" title="Permalink to this headline">¶</a></h2>
+<p>Let’s create a file called <code class="docutils literal notranslate"><span class="pre">mars.txt</span></code> within the folder <code class="docutils literal notranslate"><span class="pre">planets</span></code>
+that contains some notes about the Red Planet’s suitability as a base.
+We’ll use <code class="docutils literal notranslate"><span class="pre">vim</span></code> to edit the file; this editor does not have to be the
+<code class="docutils literal notranslate"><span class="pre">core.editor</span></code> you set globally earlier.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ vim mars.txt
+</pre></div>
+</div>
+<p>Type the text below into the <code class="docutils literal notranslate"><span class="pre">mars.txt</span></code> file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cold</span> <span class="ow">and</span> <span class="n">dry</span><span class="p">,</span> <span class="n">but</span> <span class="n">everything</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">favorite</span> <span class="n">color</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">mars.txt</span></code> now contains a single line, which we can see by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat mars.txt
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cold</span> <span class="ow">and</span> <span class="n">dry</span><span class="p">,</span> <span class="n">but</span> <span class="n">everything</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">favorite</span> <span class="n">color</span>
+</pre></div>
+</div>
+<p>If we check the status of our project again, Git tells us that it’s
+noticed the new file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git status
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">master</span>
+
+<span class="n">Initial</span> <span class="n">commit</span>
+
+<span class="n">Untracked</span> <span class="n">files</span><span class="p">:</span>
+   <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">include</span> <span class="ow">in</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+
+    <span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">nothing</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="n">but</span> <span class="n">untracked</span> <span class="n">files</span> <span class="n">present</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="n">to</span> <span class="n">track</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The “untracked files” message means that there’s a file in the directory
+that Git isn’t keeping track of. We can tell Git to track a file using
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git add mars.txt
+</pre></div>
+</div>
+<p>and then check that the right thing happened:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git status
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">master</span>
+
+<span class="n">Initial</span> <span class="n">commit</span>
+
+<span class="n">Changes</span> <span class="n">to</span> <span class="n">be</span> <span class="n">committed</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git rm --cached &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">unstage</span><span class="p">)</span>
+
+    <span class="n">new</span> <span class="n">file</span><span class="p">:</span>   <span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p><em>Note</em>: You can add individual files by adding them by name, or any
+changes listed after typing <code class="docutils literal notranslate"><span class="pre">status</span></code> (new/modified/deleted files) by
+typing <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">.</span></code></p>
+<p>Git now knows that it’s supposed to keep track of <code class="docutils literal notranslate"><span class="pre">mars.txt</span></code>, but it
+hasn’t recorded these changes as a commit yet. To get it to do that, we
+need to run one more command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git commit -m &quot;Start notes on Mars as a base&quot;
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">master</span> <span class="p">(</span><span class="n">root</span><span class="o">-</span><span class="n">commit</span><span class="p">)</span> <span class="n">f22b25e</span><span class="p">]</span> <span class="n">Start</span> <span class="n">notes</span> <span class="n">on</span> <span class="n">Mars</span> <span class="k">as</span> <span class="n">a</span> <span class="n">base</span>
+ <span class="mi">1</span> <span class="n">file</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">insertion</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>When we run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>, Git takes everything we have told it to save
+by using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> and stores a copy permanently inside the special
+<code class="docutils literal notranslate"><span class="pre">.git</span></code> directory. This permanent copy is called a
+<a class="reference external" href="https://git-scm.com/docs/git-commit">commit</a> (or
+<a class="reference external" href="https://git-scm.com/docs/gitrevisions">revision</a>) and its short
+identifier is <code class="docutils literal notranslate"><span class="pre">f22b25e</span></code>. Your commit may have another identifier.</p>
+<p>We use the <code class="docutils literal notranslate"><span class="pre">-m</span></code> flag (for “message”) to record a short, descriptive,
+and specific comment that will help us remember later on what we did and
+why. If we just run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> without the <code class="docutils literal notranslate"><span class="pre">-m</span></code> option, Git will
+launch <code class="docutils literal notranslate"><span class="pre">vim</span></code> (or whatever other editor we configured as
+<code class="docutils literal notranslate"><span class="pre">core.editor</span></code>) so that we can write a longer message.</p>
+<p><a class="reference external" href="https://chris.beams.io/posts/git-commit/">Good commit messages</a>
+start with a brief (&lt; 50 characters) statement about the changes made in
+the commit. Generally, the message should complete the sentence “If
+applied, this commit will …”.</p>
+<p>If you want to go into more detail, add a blank line between the summary
+line and your additional notes. Use this additional space to explain why
+you made changes and/or what their impact will be.</p>
+<p>If we run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> now:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git status
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">master</span>
+<span class="n">nothing</span> <span class="n">to</span> <span class="n">commit</span><span class="p">,</span> <span class="n">working</span> <span class="n">directory</span> <span class="n">clean</span>
+</pre></div>
+</div>
+<p>it tells us everything is up to date. If we want to know what we’ve done
+recently, we can ask Git to show us the project’s history using
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git log
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">commit</span> <span class="n">f22b25e3233b4645dabd0d81e651fe074bd8e73b</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Vlad</span> <span class="n">Dracula</span> <span class="o">&lt;</span><span class="n">vlad</span><span class="nd">@tran</span><span class="o">.</span><span class="n">sylvan</span><span class="o">.</span><span class="n">ia</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Aug</span> <span class="mi">22</span> <span class="mi">09</span><span class="p">:</span><span class="mi">51</span><span class="p">:</span><span class="mi">46</span> <span class="mi">2013</span> <span class="o">-</span><span class="mi">0400</span>
+
+    <span class="n">Start</span> <span class="n">notes</span> <span class="n">on</span> <span class="n">Mars</span> <span class="k">as</span> <span class="n">a</span> <span class="n">base</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> lists all commits made to a repository in reverse
+chronological order. The listing for each commit includes the commit’s
+full identifier (which starts with the same characters as the short
+identifier printed by the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> command earlier), the commit’s
+author, when it was created, and the log message Git was given when the
+commit was created.</p>
+<div class="section" id="Where-Are-My-Changes?">
+<h3>Where Are My Changes?<a class="headerlink" href="#Where-Are-My-Changes?" title="Permalink to this headline">¶</a></h3>
+<p>If we run <code class="docutils literal notranslate"><span class="pre">ls</span></code> at this point, we will still see just one file called
+<code class="docutils literal notranslate"><span class="pre">mars.txt</span></code>. That’s because Git saves information about files’ history
+in the special <code class="docutils literal notranslate"><span class="pre">.git</span></code> directory mentioned earlier so that our
+filesystem doesn’t become cluttered (and so that we can’t accidentally
+edit or delete an old version).</p>
+<p>Now suppose Dracula adds more information to the file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ vim mars.txt
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cold</span> <span class="ow">and</span> <span class="n">dry</span><span class="p">,</span> <span class="n">but</span> <span class="n">everything</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">favorite</span> <span class="n">color</span>
+<span class="n">The</span> <span class="n">two</span> <span class="n">moons</span> <span class="n">may</span> <span class="n">be</span> <span class="n">a</span> <span class="n">problem</span> <span class="k">for</span> <span class="n">Wolfman</span>
+</pre></div>
+</div>
+<p>When we run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> now, it tells us that a file it already knows
+about has been modified:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git status
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">master</span>
+<span class="n">Changes</span> <span class="ow">not</span> <span class="n">staged</span> <span class="k">for</span> <span class="n">commit</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">update</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git checkout -- &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">discard</span> <span class="n">changes</span> <span class="ow">in</span> <span class="n">working</span> <span class="n">directory</span><span class="p">)</span>
+
+    <span class="n">modified</span><span class="p">:</span>   <span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="n">no</span> <span class="n">changes</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="s2">&quot;git commit -a&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The last line is the key phrase: “no changes added to commit”.</p>
+<p>We have changed this file, but we haven’t told Git we will want to save
+those changes (which we do with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>) nor have we saved them
+(which we do with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>).</p>
+<p>If you want to review your changes before saving them. We do this using
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code>. This shows us the differences between the current state of
+the file and the most recently saved version:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git diff
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span> <span class="n">b</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">index</span> <span class="n">df0654a</span><span class="o">..</span><span class="mi">315</span><span class="n">bf3a</span> <span class="mi">100644</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">1</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span> <span class="o">@@</span>
+ <span class="n">Cold</span> <span class="ow">and</span> <span class="n">dry</span><span class="p">,</span> <span class="n">but</span> <span class="n">everything</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">favorite</span> <span class="n">color</span>
+<span class="o">+</span><span class="n">The</span> <span class="n">two</span> <span class="n">moons</span> <span class="n">may</span> <span class="n">be</span> <span class="n">a</span> <span class="n">problem</span> <span class="k">for</span> <span class="n">Wolfman</span>
+</pre></div>
+</div>
+<p>The output is a series of commands for tools like editors and <code class="docutils literal notranslate"><span class="pre">patch</span></code>
+telling them how to reconstruct one file given the other:</p>
+<ol class="arabic simple">
+<li>The first line tells us that Git is producing output similar to the
+Unix <code class="docutils literal notranslate"><span class="pre">diff</span></code> command comparing the old and new versions of the file.</li>
+<li>The second line tells exactly which versions of the file Git is
+comparing; <code class="docutils literal notranslate"><span class="pre">df0654a</span></code> and <code class="docutils literal notranslate"><span class="pre">315bf3a</span></code> are unique computer-generated
+labels for those versions.</li>
+<li>The third and fourth lines once again show the name of the file being
+changed.</li>
+<li>The remaining lines are the most interesting, they show us the actual
+differences and the lines on which they occur. The <code class="docutils literal notranslate"><span class="pre">+</span></code> marker in
+the first column shows where we added a line.</li>
+</ol>
+<p>Now to commit:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git commit -m &quot;Add concerns about effects of Mars&#39; moons on Wolfman&quot;
+$ git status
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">master</span>
+<span class="n">Changes</span> <span class="ow">not</span> <span class="n">staged</span> <span class="k">for</span> <span class="n">commit</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">update</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git checkout -- &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">discard</span> <span class="n">changes</span> <span class="ow">in</span> <span class="n">working</span> <span class="n">directory</span><span class="p">)</span>
+
+    <span class="n">modified</span><span class="p">:</span>   <span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="n">no</span> <span class="n">changes</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="s2">&quot;git commit -a&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Why did we get that note?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git add mars.txt
+$ git commit -m &quot;Add concerns about effects of Mars&#39; moons on Wolfman&quot;
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">master</span> <span class="mi">34961</span><span class="n">b1</span><span class="p">]</span> <span class="n">Add</span> <span class="n">concerns</span> <span class="n">about</span> <span class="n">effects</span> <span class="n">of</span> <span class="n">Mars</span><span class="s1">&#39; moons on Wolfman</span>
+ <span class="mi">1</span> <span class="n">file</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">insertion</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Git insists that we add files to the set we want to commit before
+actually committing anything. This allows us to commit our changes in
+stages and capture changes in logical portions rather than only large
+batches.</p>
+<p>For example,suppose we’re adding a few citations to relevant research to
+our thesis. We might want to commit those additions, and the
+corresponding bibliography entries, but <em>not</em> commit some of our work
+drafting the conclusion (which we haven’t finished yet).</p>
+<p>To allow for this, Git has a special <em>staging area</em> where it keeps track
+of things that have been added to the current
+<a class="reference external" href="http://swcarpentry.github.io/git-novice/reference#changeset">changeset</a>
+but not yet committed.</p>
+</div>
+<div class="section" id="Staging-Area">
+<h3>Staging Area<a class="headerlink" href="#Staging-Area" title="Permalink to this headline">¶</a></h3>
+<p>If you think of Git as taking snapshots of changes over the life of a
+project, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> specifies <em>what</em> will go in a snapshot (putting
+things in the staging area), and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> then <em>actually takes</em>
+the snapshot, and makes a permanent record of it (as a commit). If you
+don’t have anything staged when you type <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>, Git will prompt
+you to use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-a</span></code> or <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">--all</span></code>.</p>
+<p>Only do this if you are certain you know what will go into the commit,
+at least by checking <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> first!</p>
+<div class="figure" id="id12">
+<img alt="The Git Staging Area" src="../_images/lect06_git-staging-area.svg" /><p class="caption"><span class="caption-text">The Git Staging Area</span></p>
+</div>
+<p>Let’s watch as our changes to a file move from our editor to the staging
+area and into long-term storage. First, we’ll add another line to the
+file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cold</span> <span class="ow">and</span> <span class="n">dry</span><span class="p">,</span> <span class="n">but</span> <span class="n">everything</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">favorite</span> <span class="n">color</span>
+<span class="n">The</span> <span class="n">two</span> <span class="n">moons</span> <span class="n">may</span> <span class="n">be</span> <span class="n">a</span> <span class="n">problem</span> <span class="k">for</span> <span class="n">Wolfman</span>
+<span class="n">But</span> <span class="n">the</span> <span class="n">Mummy</span> <span class="n">will</span> <span class="n">appreciate</span> <span class="n">the</span> <span class="n">lack</span> <span class="n">of</span> <span class="n">humidity</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git diff
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span> <span class="n">b</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">index</span> <span class="mi">315</span><span class="n">bf3a</span><span class="o">..</span><span class="n">b36abfd</span> <span class="mi">100644</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span> <span class="o">@@</span>
+ <span class="n">Cold</span> <span class="ow">and</span> <span class="n">dry</span><span class="p">,</span> <span class="n">but</span> <span class="n">everything</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">favorite</span> <span class="n">color</span>
+ <span class="n">The</span> <span class="n">two</span> <span class="n">moons</span> <span class="n">may</span> <span class="n">be</span> <span class="n">a</span> <span class="n">problem</span> <span class="k">for</span> <span class="n">Wolfman</span>
+<span class="o">+</span><span class="n">But</span> <span class="n">the</span> <span class="n">Mummy</span> <span class="n">will</span> <span class="n">appreciate</span> <span class="n">the</span> <span class="n">lack</span> <span class="n">of</span> <span class="n">humidity</span>
+</pre></div>
+</div>
+<p>Now let’s put that change in the staging area and see what <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code>
+reports:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git add mars.txt
+$ git diff
+</pre></div>
+</div>
+<p>There is no output: as far as Git can tell, there’s no difference
+between what it’s been asked to save permanently and what’s currently in
+the directory. However, if we do this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git diff --staged
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span> <span class="n">b</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">index</span> <span class="mi">315</span><span class="n">bf3a</span><span class="o">..</span><span class="n">b36abfd</span> <span class="mi">100644</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span> <span class="o">@@</span>
+ <span class="n">Cold</span> <span class="ow">and</span> <span class="n">dry</span><span class="p">,</span> <span class="n">but</span> <span class="n">everything</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">favorite</span> <span class="n">color</span>
+ <span class="n">The</span> <span class="n">two</span> <span class="n">moons</span> <span class="n">may</span> <span class="n">be</span> <span class="n">a</span> <span class="n">problem</span> <span class="k">for</span> <span class="n">Wolfman</span>
+<span class="o">+</span><span class="n">But</span> <span class="n">the</span> <span class="n">Mummy</span> <span class="n">will</span> <span class="n">appreciate</span> <span class="n">the</span> <span class="n">lack</span> <span class="n">of</span> <span class="n">humidity</span>
+</pre></div>
+</div>
+<p>it shows us the difference between the last committed change and what’s
+in the staging area.</p>
+<p>Let’s save our changes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git commit -m &quot;Discuss concerns about Mars&#39; climate for Mummy&quot;
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">master</span> <span class="mi">005937</span><span class="n">f</span><span class="p">]</span> <span class="n">Discuss</span> <span class="n">concerns</span> <span class="n">about</span> <span class="n">Mars</span><span class="s1">&#39; climate for Mummy</span>
+ <span class="mi">1</span> <span class="n">file</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">insertion</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>check our status:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git status
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">master</span>
+<span class="n">nothing</span> <span class="n">to</span> <span class="n">commit</span><span class="p">,</span> <span class="n">working</span> <span class="n">directory</span> <span class="n">clean</span>
+</pre></div>
+</div>
+<p>and look at the history of what we’ve done so far:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git log
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">commit</span> <span class="mi">005937</span><span class="n">fbe2a98fb83f0ade869025dc2636b4dad5</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Vlad</span> <span class="n">Dracula</span> <span class="o">&lt;</span><span class="n">vlad</span><span class="nd">@tran</span><span class="o">.</span><span class="n">sylvan</span><span class="o">.</span><span class="n">ia</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Aug</span> <span class="mi">22</span> <span class="mi">10</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">07</span> <span class="mi">2013</span> <span class="o">-</span><span class="mi">0400</span>
+
+    <span class="n">Discuss</span> <span class="n">concerns</span> <span class="n">about</span> <span class="n">Mars</span><span class="s1">&#39; climate for Mummy</span>
+
+<span class="n">commit</span> <span class="mi">34961</span><span class="n">b159c27df3b475cfe4415d94a6d1fcd064d</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Vlad</span> <span class="n">Dracula</span> <span class="o">&lt;</span><span class="n">vlad</span><span class="nd">@tran</span><span class="o">.</span><span class="n">sylvan</span><span class="o">.</span><span class="n">ia</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Aug</span> <span class="mi">22</span> <span class="mi">10</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mi">21</span> <span class="mi">2013</span> <span class="o">-</span><span class="mi">0400</span>
+
+    <span class="n">Add</span> <span class="n">concerns</span> <span class="n">about</span> <span class="n">effects</span> <span class="n">of</span> <span class="n">Mars</span><span class="s1">&#39; moons on Wolfman</span>
+
+<span class="n">commit</span> <span class="n">f22b25e3233b4645dabd0d81e651fe074bd8e73b</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Vlad</span> <span class="n">Dracula</span> <span class="o">&lt;</span><span class="n">vlad</span><span class="nd">@tran</span><span class="o">.</span><span class="n">sylvan</span><span class="o">.</span><span class="n">ia</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Aug</span> <span class="mi">22</span> <span class="mi">09</span><span class="p">:</span><span class="mi">51</span><span class="p">:</span><span class="mi">46</span> <span class="mi">2013</span> <span class="o">-</span><span class="mi">0400</span>
+
+    <span class="n">Start</span> <span class="n">notes</span> <span class="n">on</span> <span class="n">Mars</span> <span class="k">as</span> <span class="n">a</span> <span class="n">base</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Paging-the-Log">
+<h3>Paging the Log<a class="headerlink" href="#Paging-the-Log" title="Permalink to this headline">¶</a></h3>
+<p>When the output of <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> is too long to fit in your screen,
+<code class="docutils literal notranslate"><span class="pre">git</span></code> uses a program to split it into pages of the size of your
+screen. When this “pager” is called, you will notice that the last line
+in your screen is a <code class="docutils literal notranslate"><span class="pre">:</span></code>, instead of your usual prompt.</p>
+<ul class="simple">
+<li>To get out of the pager, press Q.</li>
+<li>To move to the next page, press Spacebar.</li>
+<li>To search for <code class="docutils literal notranslate"><span class="pre">some_word</span></code> in all pages, press / and type
+<code class="docutils literal notranslate"><span class="pre">some_word</span></code>. Navigate through matches pressing N.</li>
+</ul>
+</div>
+<div class="section" id="Limit-Log-Size">
+<h3>Limit Log Size<a class="headerlink" href="#Limit-Log-Size" title="Permalink to this headline">¶</a></h3>
+<p>To avoid having <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> cover your entire terminal screen, you can
+limit the number of commits that Git lists by using <code class="docutils literal notranslate"><span class="pre">-N</span></code>, where <code class="docutils literal notranslate"><span class="pre">N</span></code>
+is the number of commits that you want to view. For example, if you only
+want information from the last commit you can use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git log -1
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">commit</span> <span class="mi">005937</span><span class="n">fbe2a98fb83f0ade869025dc2636b4dad5</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Vlad</span> <span class="n">Dracula</span> <span class="o">&lt;</span><span class="n">vlad</span><span class="nd">@tran</span><span class="o">.</span><span class="n">sylvan</span><span class="o">.</span><span class="n">ia</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Aug</span> <span class="mi">22</span> <span class="mi">10</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">07</span> <span class="mi">2013</span> <span class="o">-</span><span class="mi">0400</span>
+
+    <span class="n">Discuss</span> <span class="n">concerns</span> <span class="n">about</span> <span class="n">Mars</span><span class="s1">&#39; climate for Mummy</span>
+</pre></div>
+</div>
+<p>You can also reduce the quantity of information using the <code class="docutils literal notranslate"><span class="pre">--oneline</span></code>
+option:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git log --oneline
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="mi">005937</span><span class="n">f</span> <span class="n">Discuss</span> <span class="n">concerns</span> <span class="n">about</span> <span class="n">Mars</span><span class="s1">&#39; climate for Mummy</span>
+<span class="o">-</span> <span class="mi">34961</span><span class="n">b1</span> <span class="n">Add</span> <span class="n">concerns</span> <span class="n">about</span> <span class="n">effects</span> <span class="n">of</span> <span class="n">Mars</span><span class="s1">&#39; moons on Wolfman</span>
+<span class="o">-</span> <span class="n">f22b25e</span> <span class="n">Start</span> <span class="n">notes</span> <span class="n">on</span> <span class="n">Mars</span> <span class="k">as</span> <span class="n">a</span> <span class="n">base</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Directories">
+<h3>Directories<a class="headerlink" href="#Directories" title="Permalink to this headline">¶</a></h3>
+<p>Two important facts you should know about directories in Git.</p>
+<ol class="arabic simple">
+<li>Git does not track directories on their own, only files within them.
+Try it for yourself:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir directory
+$ git status
+$ git add directory
+$ git status
+</pre></div>
+</div>
+<p>Note, our newly created empty directory <code class="docutils literal notranslate"><span class="pre">directory</span></code> does not appear in
+the list of untracked files even if we explicitly add it (<em>via</em>
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>) to our repository. This is the reason why you will
+sometimes see <code class="docutils literal notranslate"><span class="pre">.gitkeep</span></code> files in otherwise empty directories. Unlike
+<code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>, these files are not special and their sole purpose is to
+populate a directory so that Git adds it to the repository. In fact, you
+can name such files anything you like.</p>
+<ol class="arabic" start="2">
+<li><p class="first">If you create a directory in your Git repository and populate it with
+files, you can add all files in the directory at once by:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">&lt;</span><span class="n">directory</span><span class="o">-</span><span class="k">with</span><span class="o">-</span><span class="n">files</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>To recap, when we want to add changes to our repository, we first need
+to add the changed files to the staging area (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>) and then
+commit the staged changes to the repository (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>):</p>
+<div class="figure" id="id13">
+<img alt="The Git Commit Workflow" src="../_images/lect06_git-committing.svg" /><p class="caption"><span class="caption-text">The Git Commit Workflow</span></p>
+</div>
+</div>
+<div class="section" id="Author-and-Committer">
+<h3>Author and Committer<a class="headerlink" href="#Author-and-Committer" title="Permalink to this headline">¶</a></h3>
+<p>For each of the commits you have done, Git stored your name twice. You
+are named as the author and as the committer. You can observe that by
+telling Git to show you more information about your last commits:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git log --format=full
+</pre></div>
+</div>
+<p>When committing you can name someone else as the author:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git commit --author=&quot;Vlad Dracula &lt;vlad@tran.sylvan.ia&gt;&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Exploring-History">
+<h2>Exploring History<a class="headerlink" href="#Exploring-History" title="Permalink to this headline">¶</a></h2>
+<p>As we previously saw, we can refer to commits by their identifiers. You
+can refer to the <em>most recent commit</em> of the working directory by using
+the identifier <code class="docutils literal notranslate"><span class="pre">HEAD</span></code>.</p>
+<p>We’ve been adding one line at a time to <code class="docutils literal notranslate"><span class="pre">mars.txt</span></code>, so it’s easy to
+track our progress by looking, so let’s do that using our <code class="docutils literal notranslate"><span class="pre">HEAD</span></code>s.
+Before we start, let’s make a change to <code class="docutils literal notranslate"><span class="pre">mars.txt</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cold</span> <span class="ow">and</span> <span class="n">dry</span><span class="p">,</span> <span class="n">but</span> <span class="n">everything</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">favorite</span> <span class="n">color</span>
+<span class="n">The</span> <span class="n">two</span> <span class="n">moons</span> <span class="n">may</span> <span class="n">be</span> <span class="n">a</span> <span class="n">problem</span> <span class="k">for</span> <span class="n">Wolfman</span>
+<span class="n">But</span> <span class="n">the</span> <span class="n">Mummy</span> <span class="n">will</span> <span class="n">appreciate</span> <span class="n">the</span> <span class="n">lack</span> <span class="n">of</span> <span class="n">humidity</span>
+<span class="n">An</span> <span class="n">ill</span><span class="o">-</span><span class="n">considered</span> <span class="n">change</span>
+</pre></div>
+</div>
+<p>Now, let’s see what we get.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git diff HEAD mars.txt
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span> <span class="n">b</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">index</span> <span class="n">b36abfd</span><span class="o">..</span><span class="mi">0848</span><span class="n">c8d</span> <span class="mi">100644</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span> <span class="o">@@</span>
+ <span class="n">Cold</span> <span class="ow">and</span> <span class="n">dry</span><span class="p">,</span> <span class="n">but</span> <span class="n">everything</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">favorite</span> <span class="n">color</span>
+ <span class="n">The</span> <span class="n">two</span> <span class="n">moons</span> <span class="n">may</span> <span class="n">be</span> <span class="n">a</span> <span class="n">problem</span> <span class="k">for</span> <span class="n">Wolfman</span>
+ <span class="n">But</span> <span class="n">the</span> <span class="n">Mummy</span> <span class="n">will</span> <span class="n">appreciate</span> <span class="n">the</span> <span class="n">lack</span> <span class="n">of</span> <span class="n">humidity</span>
+<span class="o">+</span><span class="n">An</span> <span class="n">ill</span><span class="o">-</span><span class="n">considered</span> <span class="n">change</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>which is the same as what you would get if you leave out <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> (try
+it). The real goodness in all this is when you can refer to previous
+commits. We do that by adding <code class="docutils literal notranslate"><span class="pre">~1</span></code> (where “~” is “tilde”, pronounced
+[<strong>til</strong>-d*uh*]) to refer to the commit one before <code class="docutils literal notranslate"><span class="pre">HEAD</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git diff HEAD~1 mars.txt
+</pre></div>
+</div>
+<p>If we want to see the differences between older commits we can use
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> again, but with the notation <code class="docutils literal notranslate"><span class="pre">HEAD~1</span></code>, <code class="docutils literal notranslate"><span class="pre">HEAD~2</span></code>, and so
+on, to refer to them:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git diff HEAD~2 mars.txt
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span> <span class="n">b</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">index</span> <span class="n">df0654a</span><span class="o">..</span><span class="n">b36abfd</span> <span class="mi">100644</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">1</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span> <span class="o">@@</span>
+ <span class="n">Cold</span> <span class="ow">and</span> <span class="n">dry</span><span class="p">,</span> <span class="n">but</span> <span class="n">everything</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">favorite</span> <span class="n">color</span>
+<span class="o">+</span><span class="n">The</span> <span class="n">two</span> <span class="n">moons</span> <span class="n">may</span> <span class="n">be</span> <span class="n">a</span> <span class="n">problem</span> <span class="k">for</span> <span class="n">Wolfman</span>
+<span class="o">+</span><span class="n">But</span> <span class="n">the</span> <span class="n">Mummy</span> <span class="n">will</span> <span class="n">appreciate</span> <span class="n">the</span> <span class="n">lack</span> <span class="n">of</span> <span class="n">humidity</span>
+<span class="o">+</span><span class="n">An</span> <span class="n">ill</span><span class="o">-</span><span class="n">considered</span> <span class="n">change</span>
+</pre></div>
+</div>
+<p>We could also use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">show</span></code> which shows us what changes we made at an
+older commit as well as the commit message, rather than the
+<em>differences</em> between a commit and our working directory that we see by
+using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git show HEAD~2 mars.txt
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">commit</span> <span class="mi">34961</span><span class="n">b159c27df3b475cfe4415d94a6d1fcd064d</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Vlad</span> <span class="n">Dracula</span> <span class="o">&lt;</span><span class="n">vlad</span><span class="nd">@tran</span><span class="o">.</span><span class="n">sylvan</span><span class="o">.</span><span class="n">ia</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Aug</span> <span class="mi">22</span> <span class="mi">10</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mi">21</span> <span class="mi">2013</span> <span class="o">-</span><span class="mi">0400</span>
+
+    <span class="n">Start</span> <span class="n">notes</span> <span class="n">on</span> <span class="n">Mars</span> <span class="k">as</span> <span class="n">a</span> <span class="n">base</span>
+
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span> <span class="n">b</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">new</span> <span class="n">file</span> <span class="n">mode</span> <span class="mi">100644</span>
+<span class="n">index</span> <span class="mf">0000000.</span><span class="o">.</span><span class="n">df0654a</span>
+<span class="o">---</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="o">+</span><span class="mi">1</span> <span class="o">@@</span>
+<span class="o">+</span><span class="n">Cold</span> <span class="ow">and</span> <span class="n">dry</span><span class="p">,</span> <span class="n">but</span> <span class="n">everything</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">favorite</span> <span class="n">color</span>
+</pre></div>
+</div>
+<p>In this way, we can build up a chain of commits. The most recent end of
+the chain is referred to as <code class="docutils literal notranslate"><span class="pre">HEAD</span></code>; we can refer to previous commits
+using the <code class="docutils literal notranslate"><span class="pre">~</span></code> notation, so <code class="docutils literal notranslate"><span class="pre">HEAD~1</span></code> means “the previous commit”,
+while <code class="docutils literal notranslate"><span class="pre">HEAD~123</span></code> goes back 123 commits from where we are now.</p>
+<p>We can also refer to commits using those long strings of digits and
+letters that <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> displays. These are unique IDs for the changes,
+and “unique” really does mean unique: every change to any set of files
+on any computer has a unique 40-character identifier. Our first commit
+was given the ID <code class="docutils literal notranslate"><span class="pre">f22b25e3233b4645dabd0d81e651fe074bd8e73b</span></code>, so let’s
+try this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git diff f22b25e3233b4645dabd0d81e651fe074bd8e73b mars.txt
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span> <span class="n">b</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">index</span> <span class="n">df0654a</span><span class="o">..</span><span class="mi">93</span><span class="n">a3e13</span> <span class="mi">100644</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">1</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span> <span class="o">@@</span>
+ <span class="n">Cold</span> <span class="ow">and</span> <span class="n">dry</span><span class="p">,</span> <span class="n">but</span> <span class="n">everything</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">favorite</span> <span class="n">color</span>
+<span class="o">+</span><span class="n">The</span> <span class="n">two</span> <span class="n">moons</span> <span class="n">may</span> <span class="n">be</span> <span class="n">a</span> <span class="n">problem</span> <span class="k">for</span> <span class="n">Wolfman</span>
+<span class="o">+</span><span class="n">But</span> <span class="n">the</span> <span class="n">Mummy</span> <span class="n">will</span> <span class="n">appreciate</span> <span class="n">the</span> <span class="n">lack</span> <span class="n">of</span> <span class="n">humidity</span>
+<span class="o">+</span><span class="n">An</span> <span class="n">ill</span><span class="o">-</span><span class="n">considered</span> <span class="n">change</span>
+</pre></div>
+</div>
+<p>That’s the right answer, but typing out random 40-character strings is
+annoying, so Git lets us use just the first few characters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git diff f22b25e mars.txt
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span> <span class="n">b</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">index</span> <span class="n">df0654a</span><span class="o">..</span><span class="mi">93</span><span class="n">a3e13</span> <span class="mi">100644</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">1</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span> <span class="o">@@</span>
+ <span class="n">Cold</span> <span class="ow">and</span> <span class="n">dry</span><span class="p">,</span> <span class="n">but</span> <span class="n">everything</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">favorite</span> <span class="n">color</span>
+<span class="o">+</span><span class="n">The</span> <span class="n">two</span> <span class="n">moons</span> <span class="n">may</span> <span class="n">be</span> <span class="n">a</span> <span class="n">problem</span> <span class="k">for</span> <span class="n">Wolfman</span>
+<span class="o">+</span><span class="n">But</span> <span class="n">the</span> <span class="n">Mummy</span> <span class="n">will</span> <span class="n">appreciate</span> <span class="n">the</span> <span class="n">lack</span> <span class="n">of</span> <span class="n">humidity</span>
+<span class="o">+</span><span class="n">An</span> <span class="n">ill</span><span class="o">-</span><span class="n">considered</span> <span class="n">change</span>
+</pre></div>
+</div>
+<p>All right! So we can save changes to files and see what we’ve
+changed—now how can we restore older versions of things? Let’s suppose
+we accidentally overwrite our file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">We</span> <span class="n">will</span> <span class="n">need</span> <span class="n">to</span> <span class="n">manufacture</span> <span class="n">our</span> <span class="n">own</span> <span class="n">oxygen</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> now tells us that the file has been changed, but those
+changes haven’t been staged:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git status
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">master</span>
+<span class="n">Changes</span> <span class="ow">not</span> <span class="n">staged</span> <span class="k">for</span> <span class="n">commit</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">update</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git checkout -- &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">discard</span> <span class="n">changes</span> <span class="ow">in</span> <span class="n">working</span> <span class="n">directory</span><span class="p">)</span>
+
+    <span class="n">modified</span><span class="p">:</span>   <span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="n">no</span> <span class="n">changes</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="s2">&quot;git commit -a&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can put things back the way they were by using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout HEAD mars.txt
+$ cat mars.txt
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cold</span> <span class="ow">and</span> <span class="n">dry</span><span class="p">,</span> <span class="n">but</span> <span class="n">everything</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">favorite</span> <span class="n">color</span>
+<span class="n">The</span> <span class="n">two</span> <span class="n">moons</span> <span class="n">may</span> <span class="n">be</span> <span class="n">a</span> <span class="n">problem</span> <span class="k">for</span> <span class="n">Wolfman</span>
+<span class="n">But</span> <span class="n">the</span> <span class="n">Mummy</span> <span class="n">will</span> <span class="n">appreciate</span> <span class="n">the</span> <span class="n">lack</span> <span class="n">of</span> <span class="n">humidity</span>
+</pre></div>
+</div>
+<p>As you might guess from its name, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code> checks out (i.e.,
+restores) an old version of a file. In this case, we’re telling Git that
+we want to recover the version of the file recorded in <code class="docutils literal notranslate"><span class="pre">HEAD</span></code>, which
+is the last saved commit. If we want to go back even further, we can use
+a commit identifier instead:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout f22b25e mars.txt
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat mars.txt
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cold</span> <span class="ow">and</span> <span class="n">dry</span><span class="p">,</span> <span class="n">but</span> <span class="n">everything</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">favorite</span> <span class="n">color</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git status
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">master</span>
+<span class="n">Changes</span> <span class="n">to</span> <span class="n">be</span> <span class="n">committed</span><span class="p">:</span>
+   <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git reset HEAD &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">unstage</span><span class="p">)</span>
+<span class="n">Changes</span> <span class="ow">not</span> <span class="n">staged</span> <span class="k">for</span> <span class="n">commit</span><span class="p">:</span>
+   <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">update</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+   <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git checkout -- &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">discard</span> <span class="n">changes</span> <span class="ow">in</span> <span class="n">working</span> <span class="n">directory</span><span class="p">)</span>
+
+   <span class="n">modified</span><span class="p">:</span>   <span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="n">no</span> <span class="n">changes</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="s2">&quot;git commit -a&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Notice that the changes are on the staged area. Again, we can put things
+back the way they were by using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout HEAD mars.txt
+</pre></div>
+</div>
+<div class="section" id="Don’t-Lose-Your-HEAD">
+<h3>Don’t Lose Your HEAD<a class="headerlink" href="#Don’t-Lose-Your-HEAD" title="Permalink to this headline">¶</a></h3>
+<p>Above we used</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout f22b25e mars.txt
+</pre></div>
+</div>
+<p>to revert <code class="docutils literal notranslate"><span class="pre">mars.txt</span></code> to its state after the commit <code class="docutils literal notranslate"><span class="pre">f22b25e</span></code>. But be
+careful! The command <code class="docutils literal notranslate"><span class="pre">checkout</span></code> has other important functionalities
+and Git will misunderstand your intentions if you are not accurate with
+the typing. For example, if you forget <code class="docutils literal notranslate"><span class="pre">mars.txt</span></code> in the previous
+command.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout f22b25e
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Note</span><span class="p">:</span> <span class="n">checking</span> <span class="n">out</span> <span class="s1">&#39;f22b25e&#39;</span><span class="o">.</span>
+
+<span class="n">You</span> <span class="n">are</span> <span class="ow">in</span> <span class="s1">&#39;detached HEAD&#39;</span> <span class="n">state</span><span class="o">.</span> <span class="n">You</span> <span class="n">can</span> <span class="n">look</span> <span class="n">around</span><span class="p">,</span> <span class="n">make</span> <span class="n">experimental</span>
+<span class="n">changes</span> <span class="ow">and</span> <span class="n">commit</span> <span class="n">them</span><span class="p">,</span> <span class="ow">and</span> <span class="n">you</span> <span class="n">can</span> <span class="n">discard</span> <span class="nb">any</span> <span class="n">commits</span> <span class="n">you</span> <span class="n">make</span> <span class="ow">in</span> <span class="n">this</span>
+<span class="n">state</span> <span class="n">without</span> <span class="n">impacting</span> <span class="nb">any</span> <span class="n">branches</span> <span class="n">by</span> <span class="n">performing</span> <span class="n">another</span> <span class="n">checkout</span><span class="o">.</span>
+
+<span class="n">If</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">create</span> <span class="n">a</span> <span class="n">new</span> <span class="n">branch</span> <span class="n">to</span> <span class="n">retain</span> <span class="n">commits</span> <span class="n">you</span> <span class="n">create</span><span class="p">,</span> <span class="n">you</span> <span class="n">may</span>
+<span class="n">do</span> <span class="n">so</span> <span class="p">(</span><span class="n">now</span> <span class="ow">or</span> <span class="n">later</span><span class="p">)</span> <span class="n">by</span> <span class="n">using</span> <span class="o">-</span><span class="n">b</span> <span class="k">with</span> <span class="n">the</span> <span class="n">checkout</span> <span class="n">command</span> <span class="n">again</span><span class="o">.</span> <span class="n">Example</span><span class="p">:</span>
+
+ <span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="o">&lt;</span><span class="n">new</span><span class="o">-</span><span class="n">branch</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span>
+
+<span class="n">HEAD</span> <span class="ow">is</span> <span class="n">now</span> <span class="n">at</span> <span class="n">f22b25e</span> <span class="n">Start</span> <span class="n">notes</span> <span class="n">on</span> <span class="n">Mars</span> <span class="k">as</span> <span class="n">a</span> <span class="n">base</span>
+</pre></div>
+</div>
+<p>The “detached HEAD” is like “look, but don’t touch” here, so you
+shouldn’t make any changes in this state. After investigating your
+repo’s past state, reattach your <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">master</span></code>.</p>
+<p>It’s important to remember that we must use the commit number that
+identifies the state of the repository <em>before</em> the change we’re trying
+to undo. A common mistake is to use the number of the commit in which we
+made the change we’re trying to get rid of. In the example below, we
+want to retrieve the state from before the most recent commit
+(<code class="docutils literal notranslate"><span class="pre">HEAD~1</span></code>), which is commit <code class="docutils literal notranslate"><span class="pre">f22b25e</span></code>:</p>
+<div class="figure" id="id14">
+<img alt="Git Checkout" src="../_images/lect06_git-checkout.svg" /><p class="caption"><span class="caption-text">Git Checkout</span></p>
+</div>
+<p>So, to put it all together, here’s how Git works in cartoon form:</p>
+<div class="figure" id="id15">
+<img alt="https://figshare.com/articles/How_Git_works_a_cartoon/1328266" src="../_images/lect06_git_staging.svg" /><p class="caption"><span class="caption-text"><a class="reference external" href="https://figshare.com/articles/How_Git_works_a_cartoon/1328266">https://figshare.com/articles/How_Git_works_a_cartoon/1328266</a></span></p>
+</div>
+</div>
+<div class="section" id="Simplifying-the-Common-Case">
+<h3>Simplifying the Common Case<a class="headerlink" href="#Simplifying-the-Common-Case" title="Permalink to this headline">¶</a></h3>
+<p>If you read the output of <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> carefully, you’ll see that it
+includes this hint: ~~~ (use “git checkout – …” to discard changes in
+working directory) ~~~ As it says, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code> without a version
+identifier restores files to the state saved in <code class="docutils literal notranslate"><span class="pre">HEAD</span></code>. The double
+dash <code class="docutils literal notranslate"><span class="pre">--</span></code> (optional) separates the names of the files being recovered
+from the command itself. Without it, Git might try to use the name of
+the file as the commit identifier (but I haven’t had this problem).</p>
+<p>The fact that files can be reverted one by one tends to change the way
+people organize their work. If everything is in one large document, it’s
+hard (but not impossible) to undo changes to the introduction without
+also undoing changes made later to the conclusion. If the introduction
+and conclusion are stored in separate files, on the other hand, moving
+backward and forward in time becomes much easier.</p>
+</div>
+<div class="section" id="Explore-and-Summarize-Histories">
+<h3>Explore and Summarize Histories<a class="headerlink" href="#Explore-and-Summarize-Histories" title="Permalink to this headline">¶</a></h3>
+<p>Exploring history is an important part of git, often it is a challenge
+to find the right commit ID, especially if the commit is from several
+months ago.</p>
+<p>Imagine the <code class="docutils literal notranslate"><span class="pre">planets</span></code> project has more than 50 files. You would like
+to find a commit with specific text in <code class="docutils literal notranslate"><span class="pre">mars.txt</span></code> is modified. When
+you type <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code>, a very long list appeared, How can you narrow down
+the search?</p>
+<p>Recall that the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> command allow us to explore one specific
+file, e.g. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span> <span class="pre">mars.txt</span></code>. We can apply a similar idea here.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git log mars.txt
+</pre></div>
+</div>
+<p>Unfortunately some of these commit messages are very ambiguous e.g.
+<code class="docutils literal notranslate"><span class="pre">update</span> <span class="pre">files</span></code>. How can you search through these files?</p>
+<p>Both <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> are very useful and they summarize a
+different part of the history for you. Is it possible to combine both?
+Let’s try the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git log --oneline --patch mars.txt
+</pre></div>
+</div>
+<p>You should get a long list of output, and you should be able to see both
+commit messages and the difference between each commit.</p>
+</div>
+<div class="section" id="Tagging">
+<h3>Tagging<a class="headerlink" href="#Tagging" title="Permalink to this headline">¶</a></h3>
+<p>If there is a particularly important commit, e.g.&nbsp;a new version of a
+program, you can add an identifier to your commit (that is, just after
+committing). There are two types of tags. A “lightweight” tag is as
+simple as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git tag v0.1-lw
+</pre></div>
+</div>
+<p>This tag simply points to a particular commit and then can be used for
+checking out a branch instead of the alphanumeric string given to the
+branch.</p>
+<p>More useful is the annotated tag:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git tag -a v1.0 -m &quot;my version 1.0&quot;
+</pre></div>
+</div>
+<p>Annotated tags are stored as full objects in the Git database. They’re
+checksummed; contain the tagger name, email, and date; have a tagging
+message; and can be signed and verified with GNU Privacy Guard (GPG)
+(cryptographically signed). It’s generally recommended that you create
+annotated tags so you can have all this information, and then it is a
+full bookmark of the state.</p>
+<p>If desired, read more about tagging
+<a class="reference external" href="https://git-scm.com/book/en/v2/Git-Basics-Tagging">here</a>.</p>
+</div>
+</div>
+<div class="section" id="Ignoring-Things">
+<h2>Ignoring Things<a class="headerlink" href="#Ignoring-Things" title="Permalink to this headline">¶</a></h2>
+<p>What if we have files that we do not want Git to track for us, like
+backup files created by our editor or intermediate files created during
+data analysis? Let’s create a few dummy files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir results
+$ touch a.dat b.dat c.dat results/a.out results/b.out
+</pre></div>
+</div>
+<p>and see what Git says:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git status
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">master</span>
+<span class="n">Untracked</span> <span class="n">files</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">include</span> <span class="ow">in</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+
+    <span class="n">a</span><span class="o">.</span><span class="n">dat</span>
+    <span class="n">b</span><span class="o">.</span><span class="n">dat</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">dat</span>
+    <span class="n">results</span><span class="o">/</span>
+<span class="n">nothing</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="n">but</span> <span class="n">untracked</span> <span class="n">files</span> <span class="n">present</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="n">to</span> <span class="n">track</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Putting these files under version control would be a waste of disk
+space. What’s worse, having them all listed could distract us from
+changes that actually matter, so let’s tell Git to ignore them.</p>
+<p>We do this by creating a file in the root directory of our project
+called <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>:</p>
+<p>and adding ~~~ *.dat results/ ~~~</p>
+<p>These patterns tell Git to ignore any file whose name ends in <code class="docutils literal notranslate"><span class="pre">.dat</span></code>
+and everything in the <code class="docutils literal notranslate"><span class="pre">results</span></code> directory. (If any of these files were
+already being tracked, Git would continue to track them.)</p>
+<p>Once we have created this file, the output of <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> is much
+cleaner:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">master</span>
+<span class="n">Untracked</span> <span class="n">files</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">include</span> <span class="ow">in</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+
+    <span class="o">.</span><span class="n">gitignore</span>
+<span class="n">nothing</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="n">but</span> <span class="n">untracked</span> <span class="n">files</span> <span class="n">present</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="n">to</span> <span class="n">track</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The only thing Git notices now is the newly-created <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file.
+You might think we wouldn’t want to track it, but everyone we’re sharing
+our repository with will probably want to ignore the same things that
+we’re ignoring. Let’s add and commit <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git add .gitignore
+$ git commit -m &quot;Ignore data files and the results folder.&quot;
+$ git status
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># On branch master</span>
+<span class="n">nothing</span> <span class="n">to</span> <span class="n">commit</span><span class="p">,</span> <span class="n">working</span> <span class="n">directory</span> <span class="n">clean</span>
+</pre></div>
+</div>
+<p>As a bonus, using <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> helps us avoid accidentally adding to
+the repository files that we don’t want to track:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git add a.dat
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">following</span> <span class="n">paths</span> <span class="n">are</span> <span class="n">ignored</span> <span class="n">by</span> <span class="n">one</span> <span class="n">of</span> <span class="n">your</span> <span class="o">.</span><span class="n">gitignore</span> <span class="n">files</span><span class="p">:</span>
+<span class="n">a</span><span class="o">.</span><span class="n">dat</span>
+<span class="n">Use</span> <span class="o">-</span><span class="n">f</span> <span class="k">if</span> <span class="n">you</span> <span class="n">really</span> <span class="n">want</span> <span class="n">to</span> <span class="n">add</span> <span class="n">them</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>If we really want to override our ignore settings, we can use
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">-f</span></code> to force Git to add something. For example,
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">-f</span> <span class="pre">a.dat</span></code>.</p>
+<p>We can also always see the status of ignored files if we want:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git status --ignored
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">master</span>
+<span class="n">Ignored</span> <span class="n">files</span><span class="p">:</span>
+ <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add -f &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">include</span> <span class="ow">in</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+
+        <span class="n">a</span><span class="o">.</span><span class="n">dat</span>
+        <span class="n">b</span><span class="o">.</span><span class="n">dat</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">dat</span>
+        <span class="n">results</span><span class="o">/</span>
+
+<span class="n">nothing</span> <span class="n">to</span> <span class="n">commit</span><span class="p">,</span> <span class="n">working</span> <span class="n">directory</span> <span class="n">clean</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Branches!">
+<h2>Branches!<a class="headerlink" href="#Branches!" title="Permalink to this headline">¶</a></h2>
+<p>When you first start your project you will by default be on a branch
+called <code class="docutils literal notranslate"><span class="pre">master</span></code>. Check for yourself with the following command, which
+will show you all your branches.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git branch -a
+</pre></div>
+</div>
+<p>If I now want to start adding a new feature, best practice is to start a
+new branch.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout -b mercury
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Switched</span> <span class="n">to</span> <span class="n">a</span> <span class="n">new</span> <span class="n">branch</span> <span class="s1">&#39;mercury&#39;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">-b</span></code> flag created the new branch and switched to it. At any time,
+we can confirm that there are now two branches, <code class="docutils literal notranslate"><span class="pre">master</span></code> and
+<code class="docutils literal notranslate"><span class="pre">mercury</span></code>, with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-a</span></code>, which also highlights which branch
+you are on.</p>
+<p>Now let’s make changes to the branch.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ echo &quot;Mercury is the closest planet to our sun&quot; &gt; mercury.txt
+$ git status
+$ git add .
+$ git commit -m &#39;Added first note re Mercury&#39;
+</pre></div>
+</div>
+<p>We can create multiple branches to work on different features, so let’s
+do that:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout -b saturn
+$ echo &quot;Saturn is my favorite planet because of its beautiful rings&quot; &gt; saturn.txt
+$ git status
+$ git add .
+$ git commit -m &#39;Added first note re Saturn&#39;
+</pre></div>
+</div>
+<p>FYI: by default, branches will be made based on master. You can base a
+new branch off an existing branch with the command
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">&lt;new-branch&gt;</span> <span class="pre">&lt;existing-branch&gt;</span></code>.</p>
+<p>When I’m done with my changes on my local branch, I’m going to merge my
+master into my local branch. In this case, it is not strictly necessary
+because I know that I didn’t change the master.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git merge master
+$ git checkout master
+$ git branch -a
+$ git merge saturn
+$ git branch -d saturn
+$ git branch -a
+</pre></div>
+</div>
+<p>It is a good idea to clean up branches when you have finished making and
+then merging in the new feature.</p>
+</div>
+<div class="section" id="Remotes-in-GitHub">
+<h2>Remotes in GitHub<a class="headerlink" href="#Remotes-in-GitHub" title="Permalink to this headline">¶</a></h2>
+<p>Version control really comes into its own when we begin to collaborate
+with other people. We already have most of the machinery we need to do
+this; the only thing missing is to copy changes from one repository to
+another.</p>
+<p>Systems like Git allow us to move work between any two repositories. In
+practice, though, it’s easiest to use one copy as a central hub, and to
+keep it on the web rather than on someone’s laptop. Most programmers use
+hosting services like <a class="reference external" href="https://github.com">GitHub</a>,
+<a class="reference external" href="https://bitbucket.org">BitBucket</a> or
+<a class="reference external" href="https://gitlab.com/">GitLab</a> to hold those master copies; we’ll
+explore the pros and cons of this in the final section of this lesson.</p>
+<p>Let’s start by sharing the changes we’ve made to our current project
+with the world. Log in to GitHub, then click on the icon in the top
+right corner to create a new repository called <code class="docutils literal notranslate"><span class="pre">planets</span></code>:</p>
+<div class="figure" id="id16">
+<img alt="Creating a Repository on GitHub (Step 1)" src="../_images/lect06_github-create-repo-01.png" />
+<p class="caption"><span class="caption-text">Creating a Repository on GitHub (Step 1)</span></p>
+</div>
+<p>Name your repository “planets” and then click “Create Repository”:</p>
+<div class="figure" id="id17">
+<img alt="Creating a Repository on GitHub (Step 2)" src="../_images/lect06_github-create-repo-02.png" />
+<p class="caption"><span class="caption-text">Creating a Repository on GitHub (Step 2)</span></p>
+</div>
+<p>As soon as the repository is created, GitHub displays a page with a URL
+and some information on how to configure your local repository:</p>
+<div class="figure" id="id18">
+<img alt="Creating a Repository on GitHub (Step 3)" src="../_images/lect06_github-create-repo-03.png" />
+<p class="caption"><span class="caption-text">Creating a Repository on GitHub (Step 3)</span></p>
+</div>
+<p>This effectively does the following on GitHub’s servers:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir planets
+$ cd planets
+$ git init
+</pre></div>
+</div>
+<p>If you remember back when we added and commited our earlier work on
+<code class="docutils literal notranslate"><span class="pre">mars.txt</span></code>, we had a diagram of the local repository which looked like
+this:</p>
+<div class="figure" id="id19">
+<img alt="The Local Repository with Git Staging Area" src="../_images/lect06_git-staging-area.svg" /><p class="caption"><span class="caption-text">The Local Repository with Git Staging Area</span></p>
+</div>
+<p>Now that we have two repositories, we need a diagram like this:</p>
+<div class="figure" id="id20">
+<img alt="Freshly-Made GitHub Repository" src="../_images/lect06_git-freshly-made-github-repo.svg" /><p class="caption"><span class="caption-text">Freshly-Made GitHub Repository</span></p>
+</div>
+<p>Note that our local repository still contains our earlier work on
+<code class="docutils literal notranslate"><span class="pre">mars.txt</span></code>, but the remote repository on GitHub appears empty as it
+doesn’t contain any files yet.</p>
+<p>The next step is to connect the two repositories. We do this by making
+the GitHub repository a
+<a class="reference external" href="http://swcarpentry.github.io/git-novice/reference#remote">remote</a>
+for the local repository. The home page of the repository on GitHub
+includes the string we need to identify it:</p>
+<div class="figure" id="id21">
+<img alt="Where to Find Repository URL on GitHub" src="../_images/lect06_github-find-repo-string.png" />
+<p class="caption"><span class="caption-text">Where to Find Repository URL on GitHub</span></p>
+</div>
+<p>Click on the ‘HTTPS’ link to change the
+<a class="reference external" href="http://swcarpentry.github.io/git-novice%7D/reference#protocol">protocol</a>
+from SSH to HTTPS.</p>
+<div class="section" id="FYI:-HTTPS-vs.&nbsp;SSH">
+<h3>FYI: HTTPS vs.&nbsp;SSH<a class="headerlink" href="#FYI:-HTTPS-vs. SSH" title="Permalink to this headline">¶</a></h3>
+<p>We use HTTPS here because it does not require additional configuration.
+Later you may want to set up SSH access, which is a bit more secure, by
+following one of the great tutorials from
+<a class="reference external" href="https://help.github.com/articles/generating-ssh-keys">GitHub</a>,
+<a class="reference external" href="https://confluence.atlassian.com/display/BITBUCKET/Set+up+SSH+for+Git">Atlassian/BitBucket</a>
+and
+<a class="reference external" href="https://about.gitlab.com/2014/03/04/add-ssh-key-screencast/">GitLab</a>
+(this one has a screencast).</p>
+</div>
+<div class="section" id="Back-to-the-remote">
+<h3>Back to the remote<a class="headerlink" href="#Back-to-the-remote" title="Permalink to this headline">¶</a></h3>
+<p>Copy the the URL above from the browser, go into the local <code class="docutils literal notranslate"><span class="pre">planets</span></code>
+repository, and run this command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git remote add origin https://github.com/vlad/planets.git
+</pre></div>
+</div>
+<p>Make sure to use the URL for your repository rather than Vlad’s: the
+only difference should be your username instead of <code class="docutils literal notranslate"><span class="pre">vlad</span></code>.</p>
+<p>We can check that the command has worked by running <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">-v</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">origin</span>   <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">vlad</span><span class="o">/</span><span class="n">planets</span><span class="o">.</span><span class="n">git</span> <span class="p">(</span><span class="n">push</span><span class="p">)</span>
+<span class="n">origin</span>   <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">vlad</span><span class="o">/</span><span class="n">planets</span><span class="o">.</span><span class="n">git</span> <span class="p">(</span><span class="n">fetch</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The name <code class="docutils literal notranslate"><span class="pre">origin</span></code> is a local nickname for your remote repository. We
+could use something else if we wanted to, but <code class="docutils literal notranslate"><span class="pre">origin</span></code> is by far the
+most common choice.</p>
+<p>Once the nickname <code class="docutils literal notranslate"><span class="pre">origin</span></code> is set up, this command will push the
+changes from our local repository to the repository on GitHub:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git push origin master
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Counting</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Delta</span> <span class="n">compression</span> <span class="n">using</span> <span class="n">up</span> <span class="n">to</span> <span class="mi">4</span> <span class="n">threads</span><span class="o">.</span>
+<span class="n">Compressing</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">6</span><span class="o">/</span><span class="mi">6</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Writing</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">9</span><span class="o">/</span><span class="mi">9</span><span class="p">),</span> <span class="mi">821</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Total</span> <span class="mi">9</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">2</span><span class="p">),</span> <span class="n">reused</span> <span class="mi">0</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">To</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">vlad</span><span class="o">/</span><span class="n">planets</span>
+ <span class="o">*</span> <span class="p">[</span><span class="n">new</span> <span class="n">branch</span><span class="p">]</span>      <span class="n">master</span> <span class="o">-&gt;</span> <span class="n">master</span>
+<span class="n">Branch</span> <span class="n">master</span> <span class="nb">set</span> <span class="n">up</span> <span class="n">to</span> <span class="n">track</span> <span class="n">remote</span> <span class="n">branch</span> <span class="n">master</span> <span class="kn">from</span> <span class="nn">origin.</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-a</span></code> command from earlier will display both your local
+and remote branches.</p>
+</div>
+<div class="section" id="FYI:-Network-Proxies">
+<h3>FYI: Network Proxies<a class="headerlink" href="#FYI:-Network-Proxies" title="Permalink to this headline">¶</a></h3>
+<p>If the network you are connected to uses a proxy, there is a chance that
+your last command failed with “Could not resolve hostname” as the error
+message. To solve this issue, you need to tell Git about the proxy:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git config --global http.proxy http://user:password@proxy.url
+$ git config --global https.proxy http://user:password@proxy.url
+</pre></div>
+</div>
+<p>When you connect to another network that doesn’t use a proxy, you will
+need to tell Git to disable the proxy using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git config --global --unset http.proxy
+$ git config --global --unset https.proxy
+</pre></div>
+</div>
+</div>
+<div class="section" id="FYI-on-Password-Managers">
+<h3>FYI on Password Managers<a class="headerlink" href="#FYI-on-Password-Managers" title="Permalink to this headline">¶</a></h3>
+<p>If your operating system has a password manager configured, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code>
+will try to use it when it needs your username and password. For
+example, this is the default behavior for Git Bash on Windows. If you
+want to type your username and password at the terminal instead of using
+a password manager, type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ unset SSH_ASKPASS
+</pre></div>
+</div>
+<p>in the terminal, before you run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code>. Despite the name, <cite>git
+uses ``SSH_ASKPASS`</cite> for all credential
+entry &lt;<a class="reference external" href="https://git-scm.com/docs/gitcredentials#_requesting_credentials">https://git-scm.com/docs/gitcredentials#_requesting_credentials</a>&gt;`__,
+so you may want to unset <code class="docutils literal notranslate"><span class="pre">SSH_ASKPASS</span></code> whether you are using git via
+SSH or https.</p>
+<p>You may also want to add <code class="docutils literal notranslate"><span class="pre">unset</span> <span class="pre">SSH_ASKPASS</span></code> at the end of your
+<code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> to make git default to using the terminal for usernames
+and passwords.</p>
+</div>
+<div class="section" id="Back-to-our-local-and-remote-repositories">
+<h3>Back to our local and remote repositories<a class="headerlink" href="#Back-to-our-local-and-remote-repositories" title="Permalink to this headline">¶</a></h3>
+<p>They are now in this state:</p>
+<div class="figure" id="id22">
+<img alt="GitHub Repository After First Push" src="../_images/lect06_github-repo-after-first-push.svg" /><p class="caption"><span class="caption-text">GitHub Repository After First Push</span></p>
+</div>
+<p>We can pull changes from the remote repository to the local one as well:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git pull origin master
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">From</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">vlad</span><span class="o">/</span><span class="n">planets</span>
+ <span class="o">*</span> <span class="n">branch</span>            <span class="n">master</span>     <span class="o">-&gt;</span> <span class="n">FETCH_HEAD</span>
+<span class="n">Already</span> <span class="n">up</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">date</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Pulling has no effect in this case because the two repositories are
+already synchronized. If someone else had pushed some changes to the
+repository on GitHub, though, this command would download them to our
+local repository.</p>
+</div>
+</div>
+<div class="section" id="Collaborating">
+<h2>Collaborating<a class="headerlink" href="#Collaborating" title="Permalink to this headline">¶</a></h2>
+<p>For the next step, get into pairs. One person will be the “Owner” and
+the other will be the “Collaborator”. The goal is that the Collaborator
+add changes into the Owner’s repository. We will switch roles at the
+end, so both persons will play Owner and Collaborator.</p>
+<p>If you’re working through this lesson on your own, you can carry on by
+opening a second terminal window. This window will represent your
+partner, working on another computer. You won’t need to give anyone
+access on GitHub, because both ‘partners’ are you.</p>
+<p>If you do have a partner, the Owner needs to give the Collaborator
+access. On GitHub, click the settings button on the right, then select
+Collaborators, and enter your partner’s username.</p>
+<div class="figure" id="id23">
+<img alt="Adding Collaborators on GitHub" src="../_images/lect06_github-add-collaborators.png" />
+<p class="caption"><span class="caption-text">Adding Collaborators on GitHub</span></p>
+</div>
+<p><em>Note</em>: you can still copy any public repo even if you are not listed as
+a collaborator. Case in point, this class! We’ll come back to this
+point.</p>
+<p><em>FYI</em>: If you want to add to a project on which you are not a
+collaborator, you can instead
+<code class="docutils literal notranslate"><span class="pre">`fork</span></code> &lt;<a class="reference external" href="https://help.github.com/articles/fork-a-repo/">https://help.github.com/articles/fork-a-repo/</a>&gt;`__ the repo,
+and eventually even ask the original project owner if they want to
+incorporate your changes.</p>
+<p>To accept access to the Owner’s repo, the Collaborator needs to go to
+<a class="reference external" href="https://github.com/notifications">https://github.com/notifications</a>. Once there she can accept access to
+the Owner’s repo.</p>
+<p>Next, the Collaborator needs to download a copy of the Owner’s
+repository to her machine. This is called “cloning a repo”. To clone the
+Owner’s repo into her <code class="docutils literal notranslate"><span class="pre">Desktop</span></code> folder, the Collaborator enters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/vlad/planets.git ~/Desktop/vlad-planets
+</pre></div>
+</div>
+<p>Replace ‘vlad’ with the Owner’s username.</p>
+<div class="figure" id="id24">
+<img alt="After Creating Clone of Repository" src="../_images/lect06_github-collaboration.svg" /><p class="caption"><span class="caption-text">After Creating Clone of Repository</span></p>
+</div>
+<p>The Collaborator can now make a change in her clone of the Owner’s
+repository, exactly the same way as we’ve been doing before. It is best
+practice to only make changes to a new branch:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd ~/Desktop/vlad-planets
+$ git checkout -b pluto
+$ echo &#39;It is so a planet!&#39; &gt; pluto.txt
+$ git add pluto.txt
+$ git commit -m &quot;Add notes about Pluto&quot;
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="n">file</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">insertion</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
+<span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">pluto</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Then push the change to the <em>Owner’s repository</em> on GitHub, but as a new
+branch:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git push --set-upstream origin pluto
+</pre></div>
+</div>
+<p>Take a look to the Owner’s repository on its GitHub website now (maybe
+you need to refresh your browser). You should be able to see that there
+is a new branch available. If you wish, you request that the branch be
+merged to master.</p>
+<div class="figure" id="id25">
+<img alt="Request pull and merge" src="../_images/lect06_github-compare-pull.png" />
+<p class="caption"><span class="caption-text">Request pull and merge</span></p>
+</div>
+<p>Now, you can describe the features that you added (optional) or any
+other note for the owner to see before reviewing the request. You can
+also see what has changed. <img alt="Add description" src="../_images/lect06_github-add-descript.png" /></p>
+<p>If there are no conflicts (e.g.&nbsp;someone else already made a different
+file with the same name), you can review and accept. <img alt="No conflicts" src="../_images/lect06_github-no-conflicts.png" /></p>
+<div class="figure" id="id26">
+<img alt="Success" src="../_images/lect06_github-pull-success.png" />
+<p class="caption"><span class="caption-text">Success</span></p>
+</div>
+<p>We can delete the remote branch now, and the Collaborator can delete the
+local branch <code class="docutils literal notranslate"><span class="pre">pluto</span></code> as well, if desired.</p>
+<p>On the Owner’s local computer, to download the Collaborator’s changes
+from GitHub, the Owner now enters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git pull origin master
+</pre></div>
+</div>
+<p>Now the three repositories (Owner’s local, Collaborator’s local, and
+Owner’s on GitHub) are back in sync.</p>
+<div class="section" id="A-Basic-Collaborative-Workflow">
+<h3>A Basic Collaborative Workflow<a class="headerlink" href="#A-Basic-Collaborative-Workflow" title="Permalink to this headline">¶</a></h3>
+<p>In practice, it is good to be sure that you have an updated version of
+the repository you are collaborating on, so you should <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>
+before making our changes. The basic collaborative workflow would be:</p>
+<ul class="simple">
+<li>update your local repo with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">origin</span> <span class="pre">master</span></code></li>
+<li>create a branch on which to make changes
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">&lt;new-feature&gt;</span></code></li>
+<li>make your changes and stage them with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code></li>
+<li>commit your changes with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span></code></li>
+<li>check if there will be any conflicts with the master with
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span> <span class="pre">master</span></code> and resolve if necessary (see below)</li>
+<li>upload the changes to GitHub with
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">--set-upstream</span> <span class="pre">origin</span> <span class="pre">&lt;new-feature&gt;</span></code></li>
+<li>request that the new branch it push origin master</li>
+<li>delete remote and local branches</li>
+</ul>
+<p>It is better to make many commits with smaller changes rather than of
+one commit with massive changes: small commits are easier to read and
+review.</p>
+</div>
+<div class="section" id="Comment-Changes-in-GitHub">
+<h3>Comment Changes in GitHub<a class="headerlink" href="#Comment-Changes-in-GitHub" title="Permalink to this headline">¶</a></h3>
+<p>The Collaborator has some questions about one line change made by the
+Owner and has some suggestions to propose.</p>
+<p>With GitHub, it is possible to comment the diff of a commit. Over the
+line of code to comment, a blue comment icon appears to open a comment
+window.</p>
+<p>The Collaborator posts its comments and suggestions using GitHub
+interface.</p>
+</div>
+</div>
+<div class="section" id="Conflicts">
+<h2>Conflicts<a class="headerlink" href="#Conflicts" title="Permalink to this headline">¶</a></h2>
+<p>As soon as people can work in parallel, they’ll likely step on each
+other’s toes. This will even happen with a single person: if we are
+working on a piece of software on both our laptop and a server in the
+lab, we could make different changes to each copy. Version control helps
+us manage these
+<a class="reference external" href="%7B%7B%20page.root%20%7D%7D/reference#conflicts">conflicts</a> by
+giving us tools to
+<a class="reference external" href="%7B%7B%20page.root%20%7D%7D/reference#resolve">resolve</a> overlapping
+changes.</p>
+<p>To see how we can resolve conflicts, we must first create one. The file
+<code class="docutils literal notranslate"><span class="pre">mars.txt</span></code> currently looks like this in both partners’ copies of our
+<code class="docutils literal notranslate"><span class="pre">planets</span></code> repository:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cold</span> <span class="ow">and</span> <span class="n">dry</span><span class="p">,</span> <span class="n">but</span> <span class="n">everything</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">favorite</span> <span class="n">color</span>
+<span class="n">The</span> <span class="n">two</span> <span class="n">moons</span> <span class="n">may</span> <span class="n">be</span> <span class="n">a</span> <span class="n">problem</span> <span class="k">for</span> <span class="n">Wolfman</span>
+<span class="n">But</span> <span class="n">the</span> <span class="n">Mummy</span> <span class="n">will</span> <span class="n">appreciate</span> <span class="n">the</span> <span class="n">lack</span> <span class="n">of</span> <span class="n">humidity</span>
+</pre></div>
+</div>
+<p>Let’s add a line to one partner’s copy only:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cold</span> <span class="ow">and</span> <span class="n">dry</span><span class="p">,</span> <span class="n">but</span> <span class="n">everything</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">favorite</span> <span class="n">color</span>
+<span class="n">The</span> <span class="n">two</span> <span class="n">moons</span> <span class="n">may</span> <span class="n">be</span> <span class="n">a</span> <span class="n">problem</span> <span class="k">for</span> <span class="n">Wolfman</span>
+<span class="n">But</span> <span class="n">the</span> <span class="n">Mummy</span> <span class="n">will</span> <span class="n">appreciate</span> <span class="n">the</span> <span class="n">lack</span> <span class="n">of</span> <span class="n">humidity</span>
+<span class="n">This</span> <span class="n">line</span> <span class="n">added</span> <span class="n">to</span> <span class="n">Wolfman</span><span class="s1">&#39;s copy</span>
+</pre></div>
+</div>
+<p>and then push the change to GitHub:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git add mars.txt
+$ git commit -m &quot;Add a line in our home copy&quot;
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">master</span> <span class="mi">5</span><span class="n">ae9631</span><span class="p">]</span> <span class="n">Add</span> <span class="n">a</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">our</span> <span class="n">home</span> <span class="n">copy</span>
+ <span class="mi">1</span> <span class="n">file</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">insertion</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git push origin master
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Counting</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Delta</span> <span class="n">compression</span> <span class="n">using</span> <span class="n">up</span> <span class="n">to</span> <span class="mi">4</span> <span class="n">threads</span><span class="o">.</span>
+<span class="n">Compressing</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Writing</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span> <span class="mi">352</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Total</span> <span class="mi">3</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">1</span><span class="p">),</span> <span class="n">reused</span> <span class="mi">0</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">To</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">vlad</span><span class="o">/</span><span class="n">planets</span>
+   <span class="mi">29</span><span class="n">aba7c</span><span class="o">..</span><span class="n">dabb4c8</span>  <span class="n">master</span> <span class="o">-&gt;</span> <span class="n">master</span>
+</pre></div>
+</div>
+<p>Now let’s have the other partner make a different change to their copy
+<em>without</em> updating from GitHub:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cold</span> <span class="ow">and</span> <span class="n">dry</span><span class="p">,</span> <span class="n">but</span> <span class="n">everything</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">favorite</span> <span class="n">color</span>
+<span class="n">The</span> <span class="n">two</span> <span class="n">moons</span> <span class="n">may</span> <span class="n">be</span> <span class="n">a</span> <span class="n">problem</span> <span class="k">for</span> <span class="n">Wolfman</span>
+<span class="n">But</span> <span class="n">the</span> <span class="n">Mummy</span> <span class="n">will</span> <span class="n">appreciate</span> <span class="n">the</span> <span class="n">lack</span> <span class="n">of</span> <span class="n">humidity</span>
+<span class="n">We</span> <span class="n">added</span> <span class="n">a</span> <span class="n">different</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">other</span> <span class="n">copy</span>
+</pre></div>
+</div>
+<p>We can commit the change locally:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git add mars.txt
+$ git commit -m &quot;Add a line in my copy&quot;
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">master</span> <span class="mi">07</span><span class="n">ebc69</span><span class="p">]</span> <span class="n">Add</span> <span class="n">a</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">my</span> <span class="n">copy</span>
+ <span class="mi">1</span> <span class="n">file</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">insertion</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>but Git won’t let us push it to GitHub:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git push origin master
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>To https://github.com/vlad/planets.git
+ ! [rejected]        master -&gt; master (non-fast-forward)
+error: failed to push some refs to &#39;https://github.com/vlad/planets.git&#39;
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Merge the remote changes (e.g. &#39;git pull&#39;)
+hint: before pushing again.
+hint: See the &#39;Note about fast-forwards&#39; in &#39;git push --help&#39; for details.
+</pre></div>
+</div>
+<div class="figure" id="id27">
+<img alt="The Conflicting Changes" src="../_images/lect06_conflict.svg" /><p class="caption"><span class="caption-text">The Conflicting Changes</span></p>
+</div>
+<p>Git rejects the push because it detects that the remote repository has
+new updates that have not been incorporated into the local branch. What
+we have to do is pull the changes from GitHub,
+<a class="reference external" href="%7B%7B%20page.root%20%7D%7D/reference#merge">merge</a> them into the
+copy we’re currently working in, and then push that. Let’s start by
+pulling:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git pull origin master
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">remote</span><span class="p">:</span> <span class="n">Counting</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">remote</span><span class="p">:</span> <span class="n">Compressing</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">remote</span><span class="p">:</span> <span class="n">Total</span> <span class="mi">3</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">1</span><span class="p">),</span> <span class="n">reused</span> <span class="mi">3</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">Unpacking</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">From</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">vlad</span><span class="o">/</span><span class="n">planets</span>
+ <span class="o">*</span> <span class="n">branch</span>            <span class="n">master</span>     <span class="o">-&gt;</span> <span class="n">FETCH_HEAD</span>
+<span class="n">Auto</span><span class="o">-</span><span class="n">merging</span> <span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">CONFLICT</span> <span class="p">(</span><span class="n">content</span><span class="p">):</span> <span class="n">Merge</span> <span class="n">conflict</span> <span class="ow">in</span> <span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">Automatic</span> <span class="n">merge</span> <span class="n">failed</span><span class="p">;</span> <span class="n">fix</span> <span class="n">conflicts</span> <span class="ow">and</span> <span class="n">then</span> <span class="n">commit</span> <span class="n">the</span> <span class="n">result</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> command updates the local repository to include those
+changes already included in the remote repository. After the changes
+from remote branch have been fetched, Git detects that changes made to
+the local copy overlap with those made to the remote repository, and
+therefore refuses to merge the two versions to stop us from trampling on
+our previous work. The conflict is marked in in the affected file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat mars.txt
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cold</span> <span class="ow">and</span> <span class="n">dry</span><span class="p">,</span> <span class="n">but</span> <span class="n">everything</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">favorite</span> <span class="n">color</span>
+<span class="n">The</span> <span class="n">two</span> <span class="n">moons</span> <span class="n">may</span> <span class="n">be</span> <span class="n">a</span> <span class="n">problem</span> <span class="k">for</span> <span class="n">Wolfman</span>
+<span class="n">But</span> <span class="n">the</span> <span class="n">Mummy</span> <span class="n">will</span> <span class="n">appreciate</span> <span class="n">the</span> <span class="n">lack</span> <span class="n">of</span> <span class="n">humidity</span>
+<span class="o">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="n">HEAD</span>
+<span class="n">We</span> <span class="n">added</span> <span class="n">a</span> <span class="n">different</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">other</span> <span class="n">copy</span>
+<span class="o">=======</span>
+<span class="n">This</span> <span class="n">line</span> <span class="n">added</span> <span class="n">to</span> <span class="n">Wolfman</span><span class="s1">&#39;s copy</span>
+<span class="o">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="n">dabb4c8c450e8475aee9b14b4383acc99f42af1d</span>
+</pre></div>
+</div>
+<p>Our change is preceded by <code class="docutils literal notranslate"><span class="pre">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="pre">HEAD</span></code>. Git has then inserted
+<code class="docutils literal notranslate"><span class="pre">=======</span></code> as a separator between the conflicting changes and marked
+the end of the content downloaded from GitHub with <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span></code>. (The
+string of letters and digits after that marker identifies the commit
+we’ve just downloaded.)</p>
+<p>It is now up to us to edit this file to remove these markers and
+reconcile the changes. We can do anything we want: keep the change made
+in the local repository, keep the change made in the remote repository,
+write something new to replace both, or get rid of the change entirely.
+Let’s replace both so that the file looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cold</span> <span class="ow">and</span> <span class="n">dry</span><span class="p">,</span> <span class="n">but</span> <span class="n">everything</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">favorite</span> <span class="n">color</span>
+<span class="n">The</span> <span class="n">two</span> <span class="n">moons</span> <span class="n">may</span> <span class="n">be</span> <span class="n">a</span> <span class="n">problem</span> <span class="k">for</span> <span class="n">Wolfman</span>
+<span class="n">But</span> <span class="n">the</span> <span class="n">Mummy</span> <span class="n">will</span> <span class="n">appreciate</span> <span class="n">the</span> <span class="n">lack</span> <span class="n">of</span> <span class="n">humidity</span>
+<span class="n">We</span> <span class="n">removed</span> <span class="n">the</span> <span class="n">conflict</span> <span class="n">on</span> <span class="n">this</span> <span class="n">line</span>
+</pre></div>
+</div>
+<p>To finish merging, we add <code class="docutils literal notranslate"><span class="pre">mars.txt</span></code> to the changes being made by the
+merge and then commit:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git add mars.txt
+$ git status
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">master</span>
+<span class="n">All</span> <span class="n">conflicts</span> <span class="n">fixed</span> <span class="n">but</span> <span class="n">you</span> <span class="n">are</span> <span class="n">still</span> <span class="n">merging</span><span class="o">.</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git commit&quot;</span> <span class="n">to</span> <span class="n">conclude</span> <span class="n">merge</span><span class="p">)</span>
+
+<span class="n">Changes</span> <span class="n">to</span> <span class="n">be</span> <span class="n">committed</span><span class="p">:</span>
+
+    <span class="n">modified</span><span class="p">:</span>   <span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git commit -m &quot;Merge changes from GitHub&quot;
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">master</span> <span class="mi">2</span><span class="n">abf2b1</span><span class="p">]</span> <span class="n">Merge</span> <span class="n">changes</span> <span class="kn">from</span> <span class="nn">GitHub</span>
+</pre></div>
+</div>
+<p>Now we can push our changes to GitHub:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git push origin master
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Counting</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Delta</span> <span class="n">compression</span> <span class="n">using</span> <span class="n">up</span> <span class="n">to</span> <span class="mi">4</span> <span class="n">threads</span><span class="o">.</span>
+<span class="n">Compressing</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">6</span><span class="o">/</span><span class="mi">6</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Writing</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">6</span><span class="o">/</span><span class="mi">6</span><span class="p">),</span> <span class="mi">697</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Total</span> <span class="mi">6</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">2</span><span class="p">),</span> <span class="n">reused</span> <span class="mi">0</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">To</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">vlad</span><span class="o">/</span><span class="n">planets</span><span class="o">.</span><span class="n">git</span>
+   <span class="n">dabb4c8</span><span class="o">..</span><span class="mi">2</span><span class="n">abf2b1</span>  <span class="n">master</span> <span class="o">-&gt;</span> <span class="n">master</span>
+</pre></div>
+</div>
+<p>Git keeps track of what we’ve merged with what, so we don’t have to fix
+things by hand again when the collaborator who made the first change
+pulls again:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git pull origin master
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">remote</span><span class="p">:</span> <span class="n">Counting</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">remote</span><span class="p">:</span> <span class="n">Compressing</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">4</span><span class="o">/</span><span class="mi">4</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">remote</span><span class="p">:</span> <span class="n">Total</span> <span class="mi">6</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">2</span><span class="p">),</span> <span class="n">reused</span> <span class="mi">6</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">Unpacking</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">6</span><span class="o">/</span><span class="mi">6</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">From</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">vlad</span><span class="o">/</span><span class="n">planets</span>
+ <span class="o">*</span> <span class="n">branch</span>            <span class="n">master</span>     <span class="o">-&gt;</span> <span class="n">FETCH_HEAD</span>
+<span class="n">Updating</span> <span class="n">dabb4c8</span><span class="o">..</span><span class="mi">2</span><span class="n">abf2b1</span>
+<span class="n">Fast</span><span class="o">-</span><span class="n">forward</span>
+ <span class="n">mars</span><span class="o">.</span><span class="n">txt</span> <span class="o">|</span> <span class="mi">2</span> <span class="o">+-</span>
+ <span class="mi">1</span> <span class="n">file</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">insertion</span><span class="p">(</span><span class="o">+</span><span class="p">),</span> <span class="mi">1</span> <span class="n">deletion</span><span class="p">(</span><span class="o">-</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We get the merged file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cold</span> <span class="ow">and</span> <span class="n">dry</span><span class="p">,</span> <span class="n">but</span> <span class="n">everything</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">favorite</span> <span class="n">color</span>
+<span class="n">The</span> <span class="n">two</span> <span class="n">moons</span> <span class="n">may</span> <span class="n">be</span> <span class="n">a</span> <span class="n">problem</span> <span class="k">for</span> <span class="n">Wolfman</span>
+<span class="n">But</span> <span class="n">the</span> <span class="n">Mummy</span> <span class="n">will</span> <span class="n">appreciate</span> <span class="n">the</span> <span class="n">lack</span> <span class="n">of</span> <span class="n">humidity</span>
+<span class="n">We</span> <span class="n">removed</span> <span class="n">the</span> <span class="n">conflict</span> <span class="n">on</span> <span class="n">this</span> <span class="n">line</span>
+</pre></div>
+</div>
+<p>We don’t need to merge again because Git knows someone has already done
+that.</p>
+<p>Git’s ability to resolve conflicts is very useful, but conflict
+resolution costs time and effort, and can introduce errors if conflicts
+are not resolved correctly. If you find yourself resolving a lot of
+conflicts in a project, consider these technical approaches to reducing
+them:</p>
+<ul class="simple">
+<li>Pull from upstream more frequently, especially before starting new
+work</li>
+<li>Use topic branches to segregate work, merging to master when complete</li>
+<li>Make smaller more atomic commits</li>
+<li>Where logically appropriate, break large files into smaller ones so
+that it is less likely that two authors will alter the same file
+simultaneously</li>
+</ul>
+<p>Conflicts can also be minimized with project management strategies:</p>
+<ul class="simple">
+<li>Clarify who is responsible for what areas with your collaborators</li>
+<li>Discuss what order tasks should be carried out in with your
+collaborators so that tasks expected to change the same lines won’t
+be worked on simultaneously</li>
+<li>If the conflicts are stylistic churn (e.g.&nbsp;tabs vs.&nbsp;spaces),
+establish a project convention that is governing and use code style
+tools (e.g. <code class="docutils literal notranslate"><span class="pre">htmltidy</span></code>, <code class="docutils literal notranslate"><span class="pre">perltidy</span></code>, <code class="docutils literal notranslate"><span class="pre">rubocop</span></code>, etc.) to
+enforce, if necessary</li>
+</ul>
+</div>
+<div class="section" id="Open-Science">
+<h2>Open Science<a class="headerlink" href="#Open-Science" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>The opposite of “open” isn’t “closed”. The opposite of “open” is
+“broken”.</p>
+<p class="attribution">&mdash;John Wilbanks</p>
+</div></blockquote>
+<p>Free sharing of information might be the ideal in science, but the
+reality is often more complicated. Normal practice today looks something
+like this:</p>
+<ul class="simple">
+<li>A scientist collects some data and stores it on a machine that is
+occasionally backed up by her department.</li>
+<li>She then writes or modifies a few small programs (which also reside
+on her machine) to analyze that data.</li>
+<li>Once she has some results, she writes them up and submits her paper.
+She might include her data—a growing number of journals require
+this—but she probably doesn’t include her code.</li>
+<li>Time passes.</li>
+<li>The journal sends her reviews written anonymously by a handful of
+other people in her field. She revises her paper to satisfy them,
+during which time she might also modify the scripts she wrote
+earlier, and resubmits.</li>
+<li>More time passes.</li>
+<li>The paper is eventually published. It might include a link to an
+online copy of her data, but the paper itself will be behind a
+paywall: only people who have personal or institutional access will
+be able to read it.</li>
+</ul>
+<p>For a growing number of scientists, though, the process looks like this:</p>
+<ul class="simple">
+<li>The data that the scientist collects is stored in an open access
+repository like <a class="reference external" href="https://figshare.com/">figshare</a> or
+<a class="reference external" href="https://zenodo.org">Zenodo</a>, possibly as soon as it’s collected,
+and given its own <a class="reference external" href="https://en.wikipedia.org/wiki/Digital_object_identifier">Digital Object
+Identifier</a>
+(DOI). Or the data was already published and is stored in
+<a class="reference external" href="https://datadryad.org/">Dryad</a>.</li>
+<li>The scientist creates a new repository on GitHub to hold her work.</li>
+<li>As she does her analysis, she pushes changes to her scripts (and
+possibly some output files) to that repository. She also uses the
+repository for her paper; that repository is then the hub for
+collaboration with her colleagues.</li>
+<li>When she’s happy with the state of her paper, she posts a version to
+<a class="reference external" href="https://arxiv.org/">arXiv</a> or some other preprint server to
+invite feedback from peers.</li>
+<li>Based on that feedback, she may post several revisions before finally
+submitting her paper to a journal.</li>
+<li>The published paper includes links to her preprint and to her code
+and data repositories, which makes it much easier for other
+scientists to use her work as starting point for their own research.</li>
+</ul>
+<p>This open model accelerates discovery: the more open work is, <a class="reference external" href="https://doi.org/10.1371/journal.pone.0000308">the more
+widely it is cited and
+re-used</a>.</p>
+<p>However, people who want to work this way need to make some decisions
+about what exactly “open” means and how to do it. You can find more on
+the different aspects of Open Science in <a class="reference external" href="https://link.springer.com/book/10.1007/978-3-319-00026-8">this
+book</a>.</p>
+<p>This is one of the (many) reasons we teach version control. When used
+diligently, it answers the “how” question by acting as a shareable
+electronic lab notebook for computational work:</p>
+<ul class="simple">
+<li>The conceptual stages of your work are documented, including who did
+what and when. Every step is stamped with an identifier (the commit
+ID) that is for most intents and purposes unique.</li>
+<li>You can tie documentation of rationale, ideas, and other intellectual
+work directly to the changes that spring from them.</li>
+<li>You can refer to what you used in your research to obtain your
+computational results in a way that is unique and recoverable.</li>
+<li>With a version control system such as Git, the entire history of the
+repository is easy to archive for perpetuity.</li>
+</ul>
+</div>
+<div class="section" id="Licensing">
+<h2>Licensing<a class="headerlink" href="#Licensing" title="Permalink to this headline">¶</a></h2>
+<p>When a repository with source code, a manuscript or other creative works
+becomes public, it should include a file <code class="docutils literal notranslate"><span class="pre">LICENSE</span></code> or <code class="docutils literal notranslate"><span class="pre">LICENSE.txt</span></code>
+in the base directory of the repository that clearly states under which
+license the content is being made available. This is because creative
+works are automatically eligible for intellectual property (and thus
+copyright) protection. Reusing creative works without a license is
+dangerous, because the copyright holders could sue you for copyright
+infringement.</p>
+<p>A license solves this problem by granting rights to others (the
+licensees) that they would otherwise not have. What rights are being
+granted under which conditions differs, often only slightly, from one
+license to another. In practice, a few licenses are by far the most
+popular, and <a class="reference external" href="https://choosealicense.com/">choosealicense.com</a> will
+help you find a common license that suits your needs. Important
+considerations include:</p>
+<ul class="simple">
+<li>Whether you want to address patent rights.</li>
+<li>Whether you require people distributing derivative works to also
+distribute their source code.</li>
+<li>Whether the content you are licensing is source code.</li>
+<li>Whether you want to license the code at all.</li>
+</ul>
+<p>Choosing a license that is in common use makes life easier for
+contributors and users, because they are more likely to already be
+familiar with the license and don’t have to wade through a bunch of
+jargon to decide if they’re ok with it. The <a class="reference external" href="https://opensource.org/licenses">Open Source
+Initiative</a> and <a class="reference external" href="https://www.gnu.org/licenses/license-list.html">Free Software
+Foundation</a> both
+maintain lists of licenses which are good choices.</p>
+<p>[This article][software-licensing] provides an excellent overview of
+licensing and licensing options from the perspective of scientists who
+also write code.</p>
+<p>At the end of the day what matters is that there is a clear statement as
+to what the license is. Also, the license is best chosen from the
+get-go, even if for a repository that is not public. Pushing off the
+decision only makes it more complicated later, because each time a new
+collaborator starts contributing, they, too, hold copyright and will
+thus need to be asked for approval once a license is chosen.</p>
+</div>
+<div class="section" id="Citation">
+<h2>Citation<a class="headerlink" href="#Citation" title="Permalink to this headline">¶</a></h2>
+<p>You may want to include a file called <code class="docutils literal notranslate"><span class="pre">CITATION</span></code> or <code class="docutils literal notranslate"><span class="pre">CITATION.txt</span></code>
+that describes how to reference your project; the <a class="reference external" href="https://github.com/swcarpentry/website/blob/gh-pages/CITATION">one for Software
+Carpentry</a>
+states:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">To</span> <span class="n">reference</span> <span class="n">Software</span> <span class="n">Carpentry</span> <span class="ow">in</span> <span class="n">publications</span><span class="p">,</span> <span class="n">please</span> <span class="n">cite</span> <span class="n">both</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span><span class="p">:</span>
+
+<span class="n">Greg</span> <span class="n">Wilson</span><span class="p">:</span> <span class="s2">&quot;Software Carpentry: Getting Scientists to Write Better</span>
+<span class="n">Code</span> <span class="n">by</span> <span class="n">Making</span> <span class="n">Them</span> <span class="n">More</span> <span class="n">Productive</span><span class="s2">&quot;.  Computing in Science &amp;</span>
+<span class="n">Engineering</span><span class="p">,</span> <span class="n">Nov</span><span class="o">-</span><span class="n">Dec</span> <span class="mf">2006.</span>
+
+<span class="n">Greg</span> <span class="n">Wilson</span><span class="p">:</span> <span class="s2">&quot;Software Carpentry: Lessons Learned&quot;</span><span class="o">.</span> <span class="n">arXiv</span><span class="p">:</span><span class="mf">1307.5448</span><span class="p">,</span>
+<span class="n">July</span> <span class="mf">2013.</span>
+
+<span class="nd">@article</span><span class="p">{</span><span class="n">wilson</span><span class="o">-</span><span class="n">software</span><span class="o">-</span><span class="n">carpentry</span><span class="o">-</span><span class="mi">2006</span><span class="p">,</span>
+    <span class="n">author</span> <span class="o">=</span>  <span class="p">{</span><span class="n">Greg</span> <span class="n">Wilson</span><span class="p">},</span>
+    <span class="n">title</span> <span class="o">=</span>   <span class="p">{</span><span class="n">Software</span> <span class="n">Carpentry</span><span class="p">:</span> <span class="n">Getting</span> <span class="n">Scientists</span> <span class="n">to</span> <span class="n">Write</span> <span class="n">Better</span> <span class="n">Code</span> <span class="n">by</span> <span class="n">Making</span> <span class="n">Them</span> <span class="n">More</span> <span class="n">Productive</span><span class="p">},</span>
+    <span class="n">journal</span> <span class="o">=</span> <span class="p">{</span><span class="n">Computing</span> <span class="ow">in</span> <span class="n">Science</span> \<span class="o">&amp;</span> <span class="n">Engineering</span><span class="p">},</span>
+    <span class="n">month</span> <span class="o">=</span>   <span class="p">{</span><span class="n">November</span><span class="o">--</span><span class="n">December</span><span class="p">},</span>
+    <span class="n">year</span> <span class="o">=</span>    <span class="p">{</span><span class="mi">2006</span><span class="p">},</span>
+<span class="p">}</span>
+
+<span class="nd">@online</span><span class="p">{</span><span class="n">wilson</span><span class="o">-</span><span class="n">software</span><span class="o">-</span><span class="n">carpentry</span><span class="o">-</span><span class="mi">2013</span><span class="p">,</span>
+  <span class="n">author</span>      <span class="o">=</span> <span class="p">{</span><span class="n">Greg</span> <span class="n">Wilson</span><span class="p">},</span>
+  <span class="n">title</span>       <span class="o">=</span> <span class="p">{</span><span class="n">Software</span> <span class="n">Carpentry</span><span class="p">:</span> <span class="n">Lessons</span> <span class="n">Learned</span><span class="p">},</span>
+  <span class="n">version</span>     <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">},</span>
+  <span class="n">date</span>        <span class="o">=</span> <span class="p">{</span><span class="mi">2013</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">20</span><span class="p">},</span>
+  <span class="n">eprinttype</span>  <span class="o">=</span> <span class="p">{</span><span class="n">arxiv</span><span class="p">},</span>
+  <span class="n">eprint</span>      <span class="o">=</span> <span class="p">{</span><span class="mf">1307.5448</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>More detailed advice, and other ways to make your code citable can be
+found <a class="reference external" href="https://www.software.ac.uk/how-cite-and-describe-software">at the Software Sustainability Institute
+blog</a> and
+in:</p>
+<blockquote>
+<div>Smith AM, Katz DS, Niemeyer KE, FORCE11 Software Citation Working
+Group. (2016) Software citation principles. <a class="reference external" href="https://peerj.com/articles/cs-86/">PeerJ Computer Science
+2:e86</a>
+<a class="reference external" href="https://doi.org/10.7717/peerj-cs.86">https://doi.org/10.7717/peerj-cs.86</a></div></blockquote>
+<p>There is also an
+<code class="docutils literal notranslate"><span class="pre">`&#64;software{…</span></code> &lt;<a class="reference external" href="https://www.google.de/search?q=git+citation+%22%40software%7B%22">https://www.google.de/search?q=git+citation+%22%40software%7B%22</a>&gt;`__
+<a class="reference external" href="https://www.ctan.org/pkg/bibtex">BibTeX</a> entry type in case no
+“umbrella” citation like a paper or book exists for the project you want
+to make citable.</p>
+</div>
+<div class="section" id="Hosting">
+<h2>Hosting<a class="headerlink" href="#Hosting" title="Permalink to this headline">¶</a></h2>
+<p>The second big question for groups that want to open up their work is
+where to host their code and data. One option is for the lab, the
+department, or the university to provide a server, manage accounts and
+backups, and so on. The main benefit of this is that it clarifies who
+owns what, which is particularly important if any of the material is
+sensitive (i.e., relates to experiments involving human subjects or may
+be used in a patent application). The main drawbacks are the cost of
+providing the service and its longevity: a scientist who has spent ten
+years collecting data would like to be sure that data will still be
+available ten years from now, but that’s well beyond the lifespan of
+most of the grants that fund academic infrastructure.</p>
+<p>Another option is to purchase a domain and pay an Internet service
+provider (ISP) to host it. This gives the individual or group more
+control, and sidesteps problems that can arise when moving from one
+institution to another, but requires more time and effort to set up than
+either the option above or the option below.</p>
+<p>The third option is to use a public hosting service like
+<a class="reference external" href="https://github.com">GitHub</a>, <a class="reference external" href="https://gitlab.com">GitLab</a>,or
+<a class="reference external" href="https://bitbucket.org">BitBucket</a>. Each of these services provides a
+web interface that enables people to create, view, and edit their code
+repositories. These services also provide communication and project
+management tools including issue tracking, wiki pages, email
+notifications, and code reviews. These services benefit from economies
+of scale and network effects: it’s easier to run one large service well
+than to run many smaller services to the same standard. It’s also easier
+for people to collaborate. Using a popular service can help connect your
+project with communities already using the same service.</p>
+<p>As an example, Software Carpentry <a class="reference external" href="%7B%7B%20swc_github%20%7D%7D">is on
+GitHub</a> where you can find the <a class="reference external" href="%7B%7Bpage.root%7D%7D/_episodes/13-hosting.md">source
+for this page</a>. Anyone
+with a GitHub account can suggest changes to this text.</p>
+<p>GitHub repositories can also be assigned DOIs, <a class="reference external" href="https://guides.github.com/activities/citable-code/">by connecting its
+releases to
+Zenodo</a>. For
+example, <code class="docutils literal notranslate"><span class="pre">`10.5281/zenodo.57467</span></code> &lt;<a class="reference external" href="https://zenodo.org/record/57467">https://zenodo.org/record/57467</a>&gt;`__
+is the DOI that has been “minted” for the Software Carpentry
+introduction to Git.</p>
+<p>Using large, well-established services can also help you quickly take
+advantage of powerful tools. One such tool, continuous integration (CI),
+can automatically run software builds and tests whenever code is
+committed or pull requests are submitted. Direct integration of CI with
+an online hosting service means this information is present in any pull
+request, and helps maintain code integrity and quality standards. While
+CI is still available in self-hosted situations, there is much less
+setup and maintenance involved with using an online service.
+Furthermore, such tools are often provided free of charge to open source
+projects, and are also available for private repositories for a fee.</p>
+<div class="section" id="Institutional-Barriers">
+<h3>Institutional Barriers<a class="headerlink" href="#Institutional-Barriers" title="Permalink to this headline">¶</a></h3>
+<p>Sharing is the ideal for science, but many institutions place
+restrictions on sharing, for example to protect potentially patentable
+intellectual property. If you encounter such restrictions, it can be
+productive to inquire about the underlying motivations and either to
+request an exception for a specific project or domain, or to push more
+broadly for institutional reform to support more open science.</p>
+</div>
+</div>
+<div class="section" id="Summary-of-key-points-from-this-notebook">
+<h2>Summary of key points from this notebook<a class="headerlink" href="#Summary-of-key-points-from-this-notebook" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Version control is like an unlimited ‘undo’.</li>
+<li>Version control also allows many people to work in parallel.</li>
+<li><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code> initializes a repository.</li>
+<li>Git stores all of its repository data in the .git directory. Be
+<em>really</em> careful before deleting such a directory!</li>
+<li><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> shows the status of a repository.</li>
+<li><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> puts files in the staging area.</li>
+<li><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> saves the staged content as a new commit in the local
+repository</li>
+<li><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> displays differences between commits.</li>
+<li><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code> recovers old versions of files.</li>
+<li><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span> <span class="pre">--oneline</span></code> displays one line describing each commit in the
+repo.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file tells Git what files to ignore.</li>
+<li><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span></code> copies a remote repository to create a local repository
+with a remote called <code class="docutils literal notranslate"><span class="pre">origin</span></code> automatically set up.</li>
+<li>Conflicts occur when two or more people change the same file(s) at
+the same time.</li>
+<li>The version control system does not allow people to overwrite each
+other’s changes blindly, but highlights conflicts so that they can be
+resolved.</li>
+<li>Open scientific work is more useful and more highly cited than
+closed.</li>
+<li>People who are not lawyers should not try to write licenses from
+scratch.</li>
+<li>Add a CITATION file to a repository to explain how you want your work
+cited.</li>
+<li>Projects can be hosted on university servers, on personal domains, or
+on public forges.</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: On-Ramp to Data Science 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Heather Mayes.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+    </div>
+  </body>
+</html>
