@@ -1,0 +1,531 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# HW3, practice with Git and IntelliJ\n",
+    "\n",
+    "This assignment (one long question) reviews materials in lectures 6 and 7.\n",
+    "\n",
+    "In all cases, programming should be done in python 3 and you should use any good programming practices that we have discussed so far (e.g. use of white space)."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 1. Git\n",
+    "\n",
+    "### i. After Wolfman initialized the repo `planets` from the empty directory, Dracula wants to start tracking information about moons. \n",
+    "\n",
+    "Despite Wolfman's concerns, Dracula creates a `moons` project inside his `planets` \n",
+    "project with the following sequence of commands:\n",
+    "\n",
+    "~~~\n",
+    "$ cd ~/Desktop   # return to Desktop directory\n",
+    "$ cd planets     # go into planets directory, which is already a Git repository\n",
+    "$ ls -a          # ensure the .git sub-directory is still present in the planets directory\n",
+    "$ mkdir moons    # make a sub-directory planets/moons\n",
+    "$ cd moons       # go into moons sub-directory\n",
+    "$ git init       # make the moons sub-directory a Git repository\n",
+    "$ ls -a          # ensure the .git sub-directory is present indicating we have created a new Git repository\n",
+    "~~~\n",
+    "\n",
+    "Is the `git init` command, run inside the `moons` sub-directory, required for \n",
+    "tracking files stored in the `moons` sub-directory?"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {
+    "collapsed": true
+   },
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ii. Choosing a Commit Message\n",
+    "\n",
+    "Which of the following commit messages would be most appropriate for the commits made to `mars.txt` in class?\n",
+    "\n",
+    "1. \"Changes\"\n",
+    "2. \"Added line 'But the Mummy will appreciate the lack of humidity' to mars.txt\"\n",
+    "3. \"Discuss effects of Mars' climate on the Mummy\""
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### iii. Committing Changes to Git\n",
+    "\n",
+    "Which command(s) below would save the changes of `myfile.txt`\n",
+    "to my local Git repository?\n",
+    "\n",
+    "1. ~~~\n",
+    "   $ git commit -m \"my recent changes\"\n",
+    "   ~~~\n",
+    "\n",
+    "2. ~~~\n",
+    "   $ git init myfile.txt\n",
+    "$ git commit -m \"my recent changes\"\n",
+    "   ~~~\n",
+    "\n",
+    "3. ~~~\n",
+    "   $ git add myfile.txt\n",
+    "$ git commit -m \"my recent changes\"\n",
+    "   ~~~\n",
+    "\n",
+    "4. ~~~\n",
+    "   $ git commit -m myfile.txt \"my recent changes\"\n",
+    "   ~~~"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### iv. Committing Multiple Files\n",
+    "\n",
+    "The staging area can hold changes from any number of files that you want to commit as a single snapshot.\n",
+    "\n",
+    "1. Add some text to `mars.txt` noting your decision to consider Venus as a base\n",
+    "\n",
+    "2. Create a new file `venus.txt` with your initial thoughts about Venus as a base for you and your friends\n",
+    "\n",
+    "3. Add changes from both files to the staging area, and commit those changes."
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### v.  Creating a new repository\n",
+    "\n",
+    "- Create a new Git repository on your computer called `bio`.\n",
+    "- Write a three-line biography for yourself in a file called `me.txt`, commit your changes\n",
+    "- Modify one line, add a fourth line\n",
+    "- Display the differences between its updated state and its original state."
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### vi. Recovering Older Versions of a File\n",
+    "\n",
+    "Pilar has made changes to the Python script that she has been working on for weeks, and the\n",
+    "modifications she made this morning \"broke\" the script and it no longer runs. She has spent\n",
+    "~ 1hr trying to fix it, with no luck...\n",
+    "\n",
+    "Luckily, she has been keeping track of her project's versions using Git! Which commands below will let her recover the last committed version of her Python script called\n",
+    "`data_cruncher.py`?"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### vii. Reverting a Commit\n",
+    "\n",
+    "Pilar is collaborating on her Python script with her colleagues and\n",
+    "realizes her last commit to the group repository is wrong and wants to\n",
+    "undo it.  Jennifer needs to undo correctly so everyone in the group\n",
+    "repository gets the correct change.  `git revert [wrong commit ID]`\n",
+    "will make a new commit that undoes Jennifer's previous wrong\n",
+    "commit. Therefore `git revert` is different than `git checkout [commit\n",
+    "ID]` because `checkout` is for local changes not committed to the\n",
+    "group repository.  Below are the right steps and explanations for\n",
+    "Jennifer to use `git revert`, what is the missing command?\n",
+    "\n",
+    "1. `________ # Look at the git history of the project to find the commit ID`\n",
+    "\n",
+    "2. Copy the ID (the first few characters of the ID, e.g. 0g1d055).\n",
+    "\n",
+    "3. `git revert [commit ID]`\n",
+    "\n",
+    "4. Type in the new commit message.\n",
+    "\n",
+    "5. Save and close"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### viii. Understanding Workflow and History\n",
+    "\n",
+    "What is the output of the last command in\n",
+    "\n",
+    "~~~\n",
+    "$ cd planets\n",
+    "$ echo \"Venus is beautiful and full of love\" > venus.txt\n",
+    "$ git add venus.txt\n",
+    "$ echo \"Venus is too hot to be suitable as a base\" >> venus.txt\n",
+    "$ git commit -m \"Comment on Venus as an unsuitable base\"\n",
+    "$ git checkout HEAD venus.txt\n",
+    "$ cat venus.txt #this will print the contents of venus.txt to the screen\n",
+    "~~~"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ix. Getting Rid of Staged Changes\n",
+    "\n",
+    "`git checkout` can be used to restore a previous commit when unstaged changes have\n",
+    "been made, but will it also work for changes that have been staged but not committed?\n",
+    "Make a change to `mars.txt`, add that change, and use `git checkout` to see if\n",
+    "you can remove your change."
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### x. What does the following command do?\n",
+    "\n",
+    "~~~\n",
+    "$ git log --patch HEAD~3 *.txt\n",
+    "~~~"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### xi. Ignoring Nested Files\n",
+    "\n",
+    "Given a directory structure that looks like:\n",
+    "\n",
+    "~~~\n",
+    "results/data\n",
+    "results/plots\n",
+    "~~~\n",
+    "\n",
+    "How would you ignore only `results/plots` and not `results/data`?"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### xii. Including Specific Files\n",
+    "\n",
+    "How would you ignore all `.data` files in your root directory except for\n",
+    "`final.data`?\n",
+    "Hint: Find out what `!` (the exclamation point operator) does"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### xiii. Ignoring all data Files in a Directory\n",
+    "\n",
+    "Given a directory structure that looks like:\n",
+    "\n",
+    "~~~\n",
+    "results/data/position/gps/a.data\n",
+    "results/data/position/gps/b.data\n",
+    "results/data/position/gps/c.data\n",
+    "results/data/position/gps/info.txt\n",
+    "results/plots\n",
+    "~~~\n",
+    "\n",
+    "What's the shortest `.gitignore` rule you could write to ignore all `.data`\n",
+    "files in `result/data/position/gps`? Do not ignore the `info.txt`."
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### xiv.  The Order of Rules\n",
+    "Given a `.gitignore` file with the following contents:\n",
+    "~~~\n",
+    "*.data\n",
+    "!*.data\n",
+    "~~~\n",
+    "\n",
+    "What will be the result?"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### xv.  Log Files\n",
+    "\n",
+    "You wrote a script that creates many intermediate log-files of the form `log_01`, `log_02`, `log_03`, etc.\n",
+    "You want to keep them but you do not want to track them through `git`.\n",
+    "\n",
+    "1. Write **one** `.gitignore` entry that excludes files of the form `log_01`, `log_02`, etc.\n",
+    "\n",
+    "2. Test your \"ignore pattern\" by creating some dummy files of the form `log_01`, etc.\n",
+    "\n",
+    "3. You find that the file `log_01` is very important after all, add it to the tracked files without changing the `.gitignore` again.\n",
+    "\n",
+    "4. What other types of files could reside in your directory that you do not want to track and thus would exclude via `.gitignore`?"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### xvi. GitHub GUI\n",
+    "\n",
+    "Browse to your `planets` repository on GitHub.\n",
+    "Under the Code tab, find and click on the text that says \"XX commits\" (where \"XX\" is some number).\n",
+    "Hover over, and click on, the three buttons to the right of each commit.\n",
+    "What information can you gather/explore from these buttons?\n",
+    "How would you get that same information in the shell?"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### xvii. GitHub Timestamp\n",
+    "\n",
+    "Create a remote repository on GitHub.  Push the contents of your local\n",
+    "repository to the remote.  Make changes to your local repository and push\n",
+    "these changes.  Go to the repo you just created on GitHub and check the\n",
+    "[timestamps](http://swcarpentry.github.io/git-novice/reference#timestamp) of the files.  How does GitHub record\n",
+    "times, and why?"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### xviii. Push vs. Commit\n",
+    "\n",
+    "How is \"git push\" different from \"git commit\"?"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ixx. Fixing Remote Settings\n",
+    "\n",
+    "It happens quite often in practice that you made a typo in the\n",
+    "remote URL. This exercise is about how to fix this kind of issue.\n",
+    "First start by adding a remote with an invalid URL:\n",
+    "\n",
+    "~~~\n",
+    "git remote add broken https://github.com/this/url/is/invalid\n",
+    "~~~\n",
+    "\n",
+    "Do you get an error when adding a remote? Can you think of a command that would make it obvious that your remote URL was not valid? Can you figure out how to fix the URL (tip: use `git remote -h`)? Don't forget to clean up and remove this remote once you are\n",
+    "done with this exercise."
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### xx. GitHub License and README files\n",
+    "\n",
+    "We learned about creating a remote repository on GitHub, but when you initialized your GitHub repo, you didn't add a README.md or a license file. If you had, what do you think would have happened when you tried to link your local and remote repositories?"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### xxi. Review Changes\n",
+    "\n",
+    "The Owner pushed commits to the repository without giving any information\n",
+    "to the Collaborator. How can the Collaborator find out what has changed with\n",
+    "command line? And on GitHub?"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### xxii. Conflicts on Non-textual files\n",
+    "\n",
+    "What does Git do\n",
+    "when there is a conflict in an image or some other non-textual file\n",
+    "that is stored in version control?"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### xxiii. A Typical Work Session\n",
+    "\n",
+    "You sit down at your computer to work on a shared project that is tracked in a\n",
+    "remote Git repository. During your work session, you take the following\n",
+    "actions, but not in this order:\n",
+    "\n",
+    "- *Make changes* by appending the number `100` to a text file `numbers.txt`\n",
+    "- *Update remote* repository to match the local repository.\n",
+    "- After your pull request is accepted, *Celebrate* your success.\n",
+    "- *Request a pull* from your working branch to the master branch.\n",
+    "- *Update local* repository to match the remote repository.\n",
+    "- *Stage changes* to be committed.\n",
+    "- *Merge the master* branch into your working branch to check for any conflicts.\n",
+    "- *Commit changes* to the local repository.\n",
+    "- *Make a new branch* where you will make all your changes, and switch to it.\n",
+    "\n",
+    "In what order should you perform these actions to minimize the chances of\n",
+    "conflicts? Put the commands above in order in the *action* column of the table\n",
+    "below. When you have the order right, see if you can write the corresponding\n",
+    "commands in the *command* column. A few steps are populated to get you\n",
+    "started.\n",
+    "\n",
+    "|order|action . . . . . . . |command . . . . . . . . . . . . . . . . . . . |\n",
+    "|-----|---------------------|----------------------------------------------|\n",
+    "|1    |                     |                                              |\n",
+    "|2    |                     |                                              |\n",
+    "|3    |                     |                                              |\n",
+    "|4    |                     |                                              |\n",
+    "|5    |                     |                                              |\n",
+    "|6    |                     |                                              |\n",
+    "|7    |                     |                                              |\n",
+    "|8    |                     |                                              |\n",
+    "|9    | Celebrate!          | echo \"Cheers!\"                               |"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.1"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

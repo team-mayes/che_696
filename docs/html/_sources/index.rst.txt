@@ -33,5 +33,10 @@ CHE 696: On-Ramp to Data Science
    notebooks/lecture06_git_and_github.ipynb
 
    notebooks/lecture07_git_and_github_cont.ipynb
+
+   notebooks/HW04.ipynb
+
+   notebooks/lecture07_git_and_github_cont.ipynb
+
     ..
    .. :caption: About Sphinx:
