@@ -17,6 +17,7 @@
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="HW3, practice with Git and IntelliJ" href="HW04.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
@@ -28,11 +29,17 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="HW04.html" title="HW3, practice with Git and IntelliJ"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: On-Ramp to Data Science 0.1 documentation</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="HW04.html"
+                        title="previous chapter">HW3, practice with Git and IntelliJ</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <div class="searchformwrapper">
@@ -59,15 +66,20 @@
 <ul class="simple">
 <li><a class="reference external" href="https://cookiecutter.readthedocs.io/en/latest/readme.html">https://cookiecutter.readthedocs.io/en/latest/readme.html</a></li>
 <li><a class="reference external" href="https://www.jetbrains.com/help/pycharm/meet-pycharm.html">https://www.jetbrains.com/help/pycharm/meet-pycharm.html</a></li>
-<li><a class="reference external" href="https://jeffknupp.com/blog/2013/08/16/open-sourcing-a-python-project-the-right-way/">https://jeffknupp.com/blog/2013/08/16/open-sourcing-a-python-project-the-right-way/</a></li>
+<li><a class="reference external" href="http://swcarpentry.github.io/python-novice-inflammation/">http://swcarpentry.github.io/python-novice-inflammation/</a></li>
+<li><a class="reference external" href="https://matplotlib.org/users/pyplot_tutorial.html">https://matplotlib.org/users/pyplot_tutorial.html</a></li>
 </ul>
-<div class="section" id="Plan-for-today:-Good-programming-workflow-using-python,-git,-and-IDES">
-<h2>Plan for today: Good programming workflow using python, git, and IDES<a class="headerlink" href="#Plan-for-today:-Good-programming-workflow-using-python,-git,-and-IDES" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Plan-for-today:-Good-programming-workflow-using-python,-git,-and-IDEs">
+<h2>Plan for today: Good programming workflow using python, git, and IDEs<a class="headerlink" href="#Plan-for-today:-Good-programming-workflow-using-python,-git,-and-IDEs" title="Permalink to this headline">¶</a></h2>
 <p>Last class, I shared a part of a git workflow for good software
 development, but we were only using text files to simplify learning git.
-We will build on this today by making a python project. It is always
-good to start with an idea of the type of input that is expected and the
-type of output desired.</p>
+We will build on this today by making a python project. This happens to
+be something that can be done quite simply in other ways (e.g.&nbsp;in Excel)
+but the value in making a nice project will be that the actions will be
+consistently repeatable without errors (since we’ll be checking for
+those!). In the process, we’ll introduce features of the IntelliJ IDE.</p>
+<p>It is always good to start with an idea of the type of input that is
+expected and the type of output desired.</p>
 <p>We are going to create a new project that will take a CSV file of data
 from an arthritis study and then:</p>
 <ol class="arabic simple">
@@ -75,8 +87,8 @@ from an arthritis study and then:</p>
 <li>Plot the result to discuss and share with colleagues.</li>
 </ol>
 <p>Instead of using a Jupyter notebook do to this, we will create a project
-using a template to start us off with good organization, and do all our
-programming using an IDE.</p>
+using a template to start us off with good organization and show how we
+can make a python program that is easy to run anywhere.</p>
 </div>
 <div class="section" id="Start-with-a-plan">
 <h2>Start with a plan<a class="headerlink" href="#Start-with-a-plan" title="Permalink to this headline">¶</a></h2>
@@ -97,18 +109,20 @@ is very useful. <img alt="Inflamation data" src="../_images/lect08_test_patient_
 <div class="section" id="Rough-plan:">
 <h2>Rough plan:<a class="headerlink" href="#Rough-plan:" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Read in data</li>
+<li>Give the program the name of the file</li>
+<li>Have the program read in data</li>
 <li>Calculate average, min, and max values per patient</li>
-<li>Plot resuls</li>
+<li>Plot results</li>
 </ol>
 <p>In the process, we will be learning about numpy, IDEs, reading and
 writing data, and more!</p>
 <p><strong>Note</strong>: This walk-through can serve as excellent example of the type
 of project that you will turn in by November 18 (feel free to turn it in
-earlier). The main idea is for you to write a well-structured python
-program to complete some task that will be helpful for you in your
-classes or research. More details about this project, which will be due
-Nov.&nbsp;21, will be posted at the same time as HW05, on Monday, October 1.</p>
+earlier). The main objective is for you to write a well-structured,
+documented python program to complete a task that will be helpful for
+your classes or research. More details about this project, which will be
+due Nov.&nbsp;21, will be posted at the same time as HW05, on Monday, October
+1.</p>
 <div class="section" id="Getting-started">
 <h3>Getting started<a class="headerlink" href="#Getting-started" title="Permalink to this headline">¶</a></h3>
 <p>You likely already completed the first required steps: downloaded the
@@ -140,16 +154,16 @@ started by another group.</p>
 <p>We’ll do the later; it is always a good idea to benefit from others’
 efforts when it will save you some time, and in this case, provide some
 ideas about what makes a good project structure.</p>
-<p>We’ll download a cookiecutter project from a
+<p>We’ll download a cookiecutter project based on another project from a
 <a class="reference external" href="http://www.choderalab.org/">group</a> that does computational chemistry
 and molecular dynamics and cares about <a class="reference external" href="https://github.com/choderalab/software-development">best practices in software
 development</a>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cookiecutter gh:choderalab/cookiecutter-compchem
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cookiecutter gh:team-mayes/cookiecutter-compchem
 project_name [project_name]: arthritis_proj
 repo_name [arthritis_proj]:
 first_module_name [arthritis_proj]: data_proc
 author_name [Your name (or your organization/company/team)]: hbmayes
-description [A short description of the project.]: Demo including processing data from csvs
+description [A short description of the project.]: Demo including processing data from a csv
 Select open_source_license:
 1 - MIT
 2 - BSD-3-Clause
@@ -202,6 +216,15 @@ Initialized empty Git repository in /Users/hbmayes/bee/code/python/arthritis_pro
  <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">versioneer</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
+<p><em>FYI</em>: only the first time you are getting a copy of the cookiecutter
+template from a remote location (in this case, gb = github), do you need
+to specify the remote location (as done in
+<code class="docutils literal notranslate"><span class="pre">cookiecutter</span> <span class="pre">gh:team-mayes/cookiecutter-compchem</span></code>). After that, if
+you do the same command again, you will get a warning than you are going
+to redownload and overwrite the template from before. Instead, you can
+just make a copy of the template that you’ve already made local by
+removing the reference to the remote location (e.g.
+<code class="docutils literal notranslate"><span class="pre">cookiecutter</span> <span class="pre">cookiecutter-compchem</span></code>).</p>
 </div>
 <div class="section" id="Explore-the-templated-project-with-IntelliJ">
 <h3>Explore the templated project with IntelliJ<a class="headerlink" href="#Explore-the-templated-project-with-IntelliJ" title="Permalink to this headline">¶</a></h3>
@@ -209,10 +232,13 @@ Initialized empty Git repository in /Users/hbmayes/bee/code/python/arthritis_pro
 programs I can open. I can use either IDEA Ultimate or PyCharm. At least
 previous versions of PyCharm did not include all the functionality in
 IDEA Ultimate; this may have been fixed. I still use IDEA Ultimate
-because 1) I have plenty of memory so I can easily load this larger
-program, and 2) IDEA Ultimate has all the functionality of PyCharm plus
-support for other languages, and I like having all of that available so
-I can switch between projects.</p>
+because:</p>
+<ol class="arabic simple">
+<li>I have plenty of memory so I can easily load this larger program</li>
+<li>IDEA Ultimate has all the functionality of PyCharm plus support for
+other languages, and I like having all of that available so I can
+switch between projects.</li>
+</ol>
 <div class="figure" id="id2">
 <img alt="Jetbrains toolbox" src="../_images/lect07_jetbrains_toolbox.png" />
 <p class="caption"><span class="caption-text">Jetbrains toolbox</span></p>
@@ -222,22 +248,316 @@ year. After a year, you can use any .edu email address to re-up the
 license.</p>
 <p>If you are using IntelliJ programs for for-profit projects, then pay the
 license. Many software development companies buy licenses because it is
-worth the efficiency boost. <img alt="IDEA Ultimate" src="../_images/lect07_idea-no-interp.png" /></p>
-<p>Now, let’s open the existing project with <code class="docutils literal notranslate"><span class="pre">Open</span></code>. <img alt="IDEA Ultimate" src="../_images/lect07_idea-no-interp.png" /></p>
+worth the efficiency boost. <img alt="IDEA Ultimate" src="../_images/lect08_jb-success1.png" /></p>
+<p>Now, let’s open the existing project with <code class="docutils literal notranslate"><span class="pre">Open</span></code>. <img alt="IDEA Ultimate" src="../_images/lect08_jb-success1.png" /></p>
 <p>FYI: make sure you are opening the top-level folder, the one with the
-<code class="docutils literal notranslate"><span class="pre">.git</span></code> directory in it. <img alt="IDEA Ultimate" src="../_images/lect07_idea-no-interp.png" /></p>
+<code class="docutils literal notranslate"><span class="pre">.git</span></code> directory in it. <img alt="IDEA Ultimate" src="../_images/lect08_jb-success1.png" /></p>
 <p>The first time you open IDEA Ultimate, you will get a series of
 suggestions of what you should do next. In this case, it notes the
 <code class="docutils literal notranslate"><span class="pre">.py</span></code> extension and recognizes that it has a plug-in to allow is
 asking us to install a plug-in that recognizes python syntax. Let’s
-install it! <img alt="IDEA Ultimate" src="../_images/lect07_idea-no-interp.png" /></p>
+install it! <img alt="IDEA Ultimate" src="../_images/lect08_jb-success1.png" /></p>
 <p>Before we installed it, there were no events in the <code class="docutils literal notranslate"><span class="pre">Event</span> <span class="pre">Log</span></code>
 (bottom right corner of the screen above. Now that I installed the
 python plugin, I have some events. I double-click on <code class="docutils literal notranslate"><span class="pre">Event</span> <span class="pre">Log</span></code> to
 see what they are, and follow the recommendation to restart IntelliJ.
-<img alt="IDEA Ultimate" src="../_images/lect07_idea-no-interp.png" /></p>
+<img alt="IDEA Ultimate" src="../_images/lect08_jb-success1.png" /></p>
 <p>After doing so, see the nice syntax highlighting in my <code class="docutils literal notranslate"><span class="pre">.py</span></code> file?
-<img alt="IDEA Ultimate" src="../_images/lect07_idea-no-interp.png" /></p>
+<img alt="IDEA Ultimate" src="../_images/lect08_jb-success1.png" /></p>
+<p>We also have a warning that we need to configure our python editor.</p>
+<p>Click on the project name, and press F4. That will bring up the Project
+Structure Window. Let’s choose Python 3 for our SDK for both the Project
+Settings and Platform settings.</p>
+<p><img alt="IDEA Ultimate" src="../_images/lect08_jb-success1.png" /> <img alt="IDEA Ultimate" src="../_images/lect08_jb-success1.png" /></p>
+<p>After pressing <code class="docutils literal notranslate"><span class="pre">OK</span></code>, the python interpreter warning should disappear.</p>
+<p>Let’s start looking around the folders. Click the arrow next to
+<code class="docutils literal notranslate"><span class="pre">.idea</span></code> so that the files within the directory are shown.</p>
+<div class="figure" id="id3">
+<img alt="IDEA Ultimate" src="../_images/lect08_jb-untracked-files.png" />
+<p class="caption"><span class="caption-text">IDEA Ultimate</span></p>
+</div>
+<p>The red means that the files are not being tracked with Git (IntelliJ
+IDEs are highly integrated with Git). These are configuration files that
+we don’t want to track as part of the package that we’ll share on
+GitHUb.</p>
+<ul class="simple">
+<li>Why isn’t the directory red?</li>
+<li>What should I do to have the files in the folder ignored by git?</li>
+</ul>
+<div class="figure" id="id4">
+<img alt="IDEA Ultimate" src="../_images/lect08_jb-gitignore.png" />
+<p class="caption"><span class="caption-text">IDEA Ultimate</span></p>
+</div>
+<p><em>FYI:</em> if there are other problems, like a warning above that we need to
+configure our files, the suggestions by IntelliJ are generally, well,
+intelligent. Go ahead and accept its suggestions.</p>
+<div class="figure" id="id5">
+<img alt="IDEA Ultimate" src="../_images/lect08_jb-configure.png" />
+<p class="caption"><span class="caption-text">IDEA Ultimate</span></p>
+</div>
+<p><em>Back to exploring the project:</em> Note above that .gitignore turned blue.
+This indicaes that a tracked file has been changed. When a file is
+staged to be committed, it will turn green. When there are no untracked
+files that are not in <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> and no differences between the
+current versions of tracked files and those files state in HEAD, all
+files will be in black.</p>
+<p>To stage and commit our changes, we can go to our terminal, or note that
+at the bottom left of the screen, there is an option to show a terminal.
+Let’s use it to stage and commit the change to <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>.</p>
+<div class="figure" id="id6">
+<img alt="IDEA Ultimate" src="../_images/lect08_jb-terminal.png" />
+<p class="caption"><span class="caption-text">IDEA Ultimate</span></p>
+</div>
+<p>For now, we can ignore all folders except the arthritis_proj. Note that
+this is standard–to have a folder with the same name as the project that
+will hold your python scripts, such as the <code class="docutils literal notranslate"><span class="pre">data_proc.py</span></code> script that
+I defined when I was setting up the project with cookiecutter. Let’s see
+what cookiecutter has set up for us, starting at the top, with the
+description and imports, and the green check that says that the code
+passes all the tests IntelliJ is looking for, such as proper indents,
+following PEP8 code for variable names.</p>
+<p>Note that the description we gave it is included in the comments at the
+top of the code. We can modify it as we add functionality.</p>
+<div class="figure" id="id7">
+<img alt="IDEA Ultimate" src="../_images/lect08_py-stub.png" />
+<p class="caption"><span class="caption-text">IDEA Ultimate</span></p>
+</div>
+<p>Now scroll to the bottom. Customarily, the flow will start at the
+bottom, with a <code class="docutils literal notranslate"><span class="pre">main</span></code> function, and other functions that are called
+will be above it. Let’s follow the logic starting from main; see that it
+first calls <code class="docutils literal notranslate"><span class="pre">parse_cmdline(argv)</span></code>, which, as you might hope, parses
+any flags on the command line into arguments that will be stored in
+<code class="docutils literal notranslate"><span class="pre">args</span></code>. It also returns a return message that flags whether any errors
+were found. <img alt="IDEA Ultimate" src="../_images/lect08_jb-success1.png" /></p>
+<p>I don’t want to have to remember that <code class="docutils literal notranslate"><span class="pre">0</span></code> == success, so I’m going to
+make that a constant using option-command-c (if you forget this
+shortcut, you’ll find the option after right-clicking and looking under
+<code class="docutils literal notranslate"><span class="pre">refactor</span></code>). <img alt="IDEA Ultimate" src="../_images/lect08_jb-success1.png" /></p>
+<p>I renamed it <code class="docutils literal notranslate"><span class="pre">SUCCESS</span></code>. It automatically defined the variable at the
+top, under imports (where it belongs). <img alt="IDEA Ultimate" src="../_images/lect08_jb-success1.png" /></p>
+<p>It only gave me the option to select <code class="docutils literal notranslate"><span class="pre">0</span></code> in that function. I’ll also
+change it in the function above.</p>
+<div class="figure" id="id8">
+<img alt="IDEA Ultimate" src="../_images/lect08_jb-success2.png" />
+<p class="caption"><span class="caption-text">IDEA Ultimate</span></p>
+</div>
+<p>Note that as I start typing <code class="docutils literal notranslate"><span class="pre">SU</span></code> it suggests the rest of the variable
+name. This will help us to correctly use a variable that has already
+been defined (10 points for IntelliJ). I’ll also rename 2 to
+<code class="docutils literal notranslate"><span class="pre">IO_ERROR</span></code>.</p>
+<div class="figure" id="id9">
+<img alt="Lect08 Snapshot" src="../_images/lect08_jb-autocomplete.png" />
+<p class="caption"><span class="caption-text">Lect08 Snapshot</span></p>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">-h</span></code> is an automatically assigned flag by the <code class="docutils literal notranslate"><span class="pre">argparse</span></code>
+library we brought in. We can already try running our program in the
+terminal! <img alt="Lect08 Snapshot" src="../_images/lect08_basic-stats-plot.png" /></p>
+<p>Now let’s try running the program without any flags, with the <code class="docutils literal notranslate"><span class="pre">-n</span></code>
+flag, and with a flag that has not yet been defined. <img alt="Lect08 Snapshot" src="../_images/lect08_basic-stats-plot.png" /></p>
+<p>Clearly, we have a working script, but it doesn’t yet do what we want!
+Let’s start simply–let’s read in the name of the file we want to read.
+We can use the commented hint to get us started.</p>
+<div class="figure" id="id10">
+<img alt="Lect08 Snapshot" src="../_images/lect08_parse-edits.png" />
+<p class="caption"><span class="caption-text">Lect08 Snapshot</span></p>
+</div>
+<p>Our output (with no arguments) is now: <img alt="Lect08 Snapshot" src="../_images/lect08_basic-stats-plot.png" /></p>
+<p>Now let’s read in the file, within the parser, as it is already set up
+to handle an IO_ERROR. We’ll use a numpy function to read in the file,
+so we’ll import that at the top, using <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code>. Note that
+this line will be gray until we actually use the library, to let us know
+that we are unnecessarily (so far) importing a library. Now let’s use a
+built-in function to load our data into a python array.</p>
+<div class="figure" id="id11">
+<img alt="Lect08 Snapshot" src="../_images/lect08_io-error.png" />
+<p class="caption"><span class="caption-text">Lect08 Snapshot</span></p>
+</div>
+<p>The program gave us a useful error note–there is no file in the current
+directory called <code class="docutils literal notranslate"><span class="pre">data.csv</span></code>.</p>
+<p>We could simply add one there, but that would not follow nice
+organization. Instead, we’ll take the suggestion from the <code class="docutils literal notranslate"><span class="pre">README.md</span></code>
+file in the <code class="docutils literal notranslate"><span class="pre">data</span></code> folder and place sample data in that folder. Let’s
+replace the <code class="docutils literal notranslate"><span class="pre">look_and_say.dat</span></code> file with the sample patient data, and
+rename it <code class="docutils literal notranslate"><span class="pre">sample_data.csv</span></code>.</p>
+<div class="figure" id="id12">
+<img alt="Lect08 Snapshot" src="../_images/lect08_refactor.png" />
+<p class="caption"><span class="caption-text">Lect08 Snapshot</span></p>
+</div>
+<p>Now we can tell our program the relative location of our file!</p>
+<div class="figure" id="id13">
+<img alt="Lect08 Snapshot" src="../_images/lect08_file-location.png" />
+<p class="caption"><span class="caption-text">Lect08 Snapshot</span></p>
+</div>
+<p><em>FYI</em>: IntelliJ is always saving for you! Let’s save our changes to git.</p>
+<p>Remember how I said that Git and IntelliJ play well together? Let’s
+rightclick on our file and compare <code class="docutils literal notranslate"><span class="pre">data_proc.py</span></code> to our previous
+commit. <img alt="Lect08 Snapshot" src="../_images/lect08_basic-stats-plot.png" /> <img alt="Lect08 Snapshot" src="../_images/lect08_basic-stats-plot.png" /></p>
+<p>Now let’s change the function <code class="docutils literal notranslate"><span class="pre">canvas</span></code> to <code class="docutils literal notranslate"><span class="pre">data_analysis</span></code>, call it
+in main, and start modifying it.</p>
+<div class="figure" id="id14">
+<img alt="Lect08 Snapshot" src="../_images/lect08_data_analysis-stub.png" />
+<p class="caption"><span class="caption-text">Lect08 Snapshot</span></p>
+</div>
+<p>We’ll come back to more about numpy arrays; for now, I’ll just give you
+the correct syntax for calculating the values we desire.</p>
+<div class="figure" id="id15">
+<img alt="Numpy axes" src="../_images/lect08_python-operations-across-axes.png" />
+<p class="caption"><span class="caption-text">Numpy axes</span></p>
+</div>
+<div class="figure" id="id16">
+<img alt="Lect08 Snapshot" src="../_images/lect08_basic-stats.png" />
+<p class="caption"><span class="caption-text">Lect08 Snapshot</span></p>
+</div>
+<p>These are exactly the numbers that I calculated before. Hooray!</p>
+<p>It is fine to just print this when we have a small number of patients,
+but it probably would be more helpful if we save the data to a file. As
+you might expect, numpy has a <code class="docutils literal notranslate"><span class="pre">savetxt</span></code> function. First, we need to
+have a file name for saveing. I want it to be the base name of the input
+file (<code class="docutils literal notranslate"><span class="pre">sample_data</span></code> in this case) to which I’ll add <code class="docutils literal notranslate"><span class="pre">_stats.csv</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">out_fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">csv_data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">os</span></code> is a library that we don’t have yet, so it is underlined in red.
+If we click on it, we’ll get a red light bulb. Often this is helpful,
+but I don’t see the option to import the <code class="docutils literal notranslate"><span class="pre">os</span></code> library, so I’ll do that
+myself at the top of the file.</p>
+<div class="figure" id="id17">
+<img alt="Screen shot" src="../_images/lect08_os-red.png" />
+<p class="caption"><span class="caption-text">Screen shot</span></p>
+</div>
+<p>Now, I’ll remove the extension, and add the suffix <code class="docutils literal notranslate"><span class="pre">_stats</span></code>. Since
+I’ll want to use this base name again (when saving an image), I’ll add
+the <code class="docutils literal notranslate"><span class="pre">.csv</span></code> extension separately.</p>
+<div class="figure" id="id18">
+<img alt="Screen shot" src="../_images/lect08_np-savetxt.png" />
+<p class="caption"><span class="caption-text">Screen shot</span></p>
+</div>
+<div class="figure" id="id19">
+<img alt="Screen shot" src="../_images/lect08_np-savetxt.png" />
+<p class="caption"><span class="caption-text">Screen shot</span></p>
+</div>
+<p>Now, let’s add a function that will plot the data. Again, we’ll come
+back to more information about different options in the imported
+package. For now, I’ll give you what is needed for this example as part
+of the complete code below:</p>
+"""
+data_proc.py
+Demo including:
+ - reading in numeric data from a csv
+ - calculating the mean, max, and min per row
+ - plotting the results
+"""
+
+import sys
+import argparse
+import numpy as np
+import matplotlib.pyplot as plt
+import os
+
+SUCCESS = 0
+IO_ERROR = 2
+
+DEF_DATA_FILE = 'data.csv'
+
+
+def warning(*objs):
+    """Writes a message to stderr."""
+    print("WARNING: ", *objs, file=sys.stderr)
+
+
+def data_analysis(data_array):
+    """
+    Finds the average, min, and max for each row of the given array
+
+    Parameters
+    ----------
+    data_array : numpy array of patient data (one line per patient, daily measurements) in plasma inflammation units
+
+    Returns
+    -------
+    data_stats : numpy array
+        array with same number of rows as data_array, and columns for average, max, and min values (in that order)
+    """
+    num_patients, num_days = data_array.shape
+    data_stats = np.zeros((num_patients, 3))
+
+    data_stats[:, 0] = np.mean(data_array, axis=1)
+    data_stats[:, 1] = np.max(data_array, axis=1)
+    data_stats[:, 2] = np.min(data_array, axis=1)
+
+    return data_stats
+
+
+def parse_cmdline(argv):
+    """
+    Returns the parsed argument list and return code.
+    `argv` is a list of arguments, or `None` for ``sys.argv[1:]``.
+    """
+    if argv is None:
+        argv = sys.argv[1:]
+
+    # initialize the parser object:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-c", "--csv_data_file", help="The location of the csv file with data to analyze",
+                        default=DEF_DATA_FILE)
+    args = None
+    try:
+        args = parser.parse_args(argv)
+        args.csv_data = np.loadtxt(fname=args.csv_data_file, delimiter=',')
+    except IOError as e:
+        warning("Problems reading file:", e)
+        parser.print_help()
+        return args, IO_ERROR
+
+    return args, SUCCESS
+
+
+def plot_stats(base_f_name, data_stats):
+    """
+    Makes a plot of the mean, max, and min inflammation per patient
+    :param base_f_name: str of base output name (without extension)
+    :param data_stats: numpy array with shape (num_patients, num_stats) where num_stats = 3 (mean, max, min)
+    :return: saves a png file
+    """
+    num_patients, num_stats = data_stats.shape
+    x_axis = np.arange(1, num_patients + 1, 1)
+    # red dashes, blue squares and green triangles
+    plt.plot(x_axis, data_stats[:, 0], 'bs',
+             x_axis, data_stats[:, 1], 'g^',
+             x_axis, data_stats[:, 2], 'r.')
+    plt.title('Patient Arthritis Data')
+    plt.xlabel('Patient Number')
+    plt.ylabel('Plasma Inflammation Units')
+    out_name = base_f_name + ".png"
+    plt.savefig(out_name)
+    print("Wrote file: {}".format(out_name))
+
+
+def main(argv=None):
+    args, ret = parse_cmdline(argv)
+    if ret != SUCCESS:
+        return ret
+    data_stats = data_analysis(args.csv_data)
+
+    # get the name of the input file without the directory it is in, if one was specified
+    base_out_fname = os.path.basename(args.csv_data_file)
+    # get the first part of the file name (omit extension) and add the suffix
+    base_out_fname = os.path.splitext(base_out_fname)[0] + '_stats'
+    # add suffix and extension
+    out_fname = base_out_fname + '.csv'
+    np.savetxt(out_fname, data_stats, delimiter=',')
+    print("Wrote file: {}".format(out_fname))
+
+    # send the base_out_fname and data to a new function that will plot the data
+    plot_stats(base_out_fname, data_stats)
+    return SUCCESS  # success
+
+
+if __name__ == "__main__":
+    status = main()
+    sys.exit(status)<p>This gives us the following plot: <img alt="Lect08 Snapshot" src="../_images/lect08_basic-stats-plot.png" /></p>
+<p>Next up: More on numpy, plotting, testing, and the power of the
+cookiecutter package!</p>
 </div>
 </div>
 </div>
@@ -254,6 +574,9 @@ see what they are, and follow the recommendation to restart IntelliJ.
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="HW04.html" title="HW3, practice with Git and IntelliJ"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: On-Ramp to Data Science 0.1 documentation</a> &#187;</li> 
       </ul>
     </div>

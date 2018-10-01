@@ -15,23 +15,26 @@
     "\n",
     "- https://cookiecutter.readthedocs.io/en/latest/readme.html\n",
     "- https://www.jetbrains.com/help/pycharm/meet-pycharm.html\n",
-    "- https://jeffknupp.com/blog/2013/08/16/open-sourcing-a-python-project-the-right-way/"
+    "- http://swcarpentry.github.io/python-novice-inflammation/\n",
+    "- https://matplotlib.org/users/pyplot_tutorial.html"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "### Plan for today: Good programming workflow using python, git, and IDES\n",
+    "### Plan for today: Good programming workflow using python, git, and IDEs\n",
     "\n",
-    "Last class, I shared a part of a git workflow for good software development, but we were only using text files to simplify learning git. We will build on this today by making a python project. It is always good to start with an idea of the type of input that is expected and the type of output desired. \n",
+    "Last class, I shared a part of a git workflow for good software development, but we were only using text files to simplify learning git. We will build on this today by making a python project. This happens to be something that can be done quite simply in other ways (e.g. in Excel) but the value in making a nice project will be that the actions will be consistently repeatable without errors (since we'll be checking for those!). In the process, we'll introduce features of the IntelliJ IDE.\n",
+    "\n",
+    "It is always good to start with an idea of the type of input that is expected and the type of output desired. \n",
     "\n",
     "We are going to create a new project that will take a CSV file of data from an arthritis study and then: \n",
     "\n",
     "1. Calculate the average inflammation per day across all patients.\n",
     "1. Plot the result to discuss and share with colleagues.\n",
     "\n",
-    "Instead of using a Jupyter notebook do to this, we will create a project using a template to start us off with good organization, and do all our programming using an IDE."
+    "Instead of using a Jupyter notebook do to this, we will create a project using a template to start us off with good organization and show how we can make a python program that is easy to run anywhere."
    ]
   },
   {
@@ -58,9 +61,11 @@
    "metadata": {},
    "source": [
     "### Rough plan:\n",
-    "1. Read in data\n",
-    "2. Calculate average, min, and max values per patient\n",
-    "3. Plot resuls\n",
+    "\n",
+    "1. Give the program the name of the file\n",
+    "1. Have the program read in data\n",
+    "1. Calculate average, min, and max values per patient\n",
+    "1. Plot results\n",
     "\n",
     "In the process, we will be learning about numpy, IDEs, reading and writing data, and more!"
    ]
@@ -69,7 +74,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "**Note**: This walk-through can serve as excellent example of the type of project that you will turn in by November 18 (feel free to turn it in earlier). The main idea is for you to write a well-structured python program to complete some task that will be helpful for you in your classes or research. More details about this project, which will be due Nov. 21, will be posted at the same time as HW05, on Monday, October 1."
+    "**Note**: This walk-through can serve as excellent example of the type of project that you will turn in by November 18 (feel free to turn it in earlier). The main objective is for you to write a well-structured, documented python program to complete a task that will be helpful for your classes or research. More details about this project, which will be due Nov. 21, will be posted at the same time as HW05, on Monday, October 1."
    ]
   },
   {
@@ -115,15 +120,15 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "We'll download a cookiecutter project from a [group](http://www.choderalab.org/) that does computational chemistry and molecular dynamics and cares about [best practices in software development](https://github.com/choderalab/software-development).\n",
+    "We'll download a cookiecutter project based on another project from a [group](http://www.choderalab.org/) that does computational chemistry and molecular dynamics and cares about [best practices in software development](https://github.com/choderalab/software-development).\n",
     "\n",
     "~~~\n",
-    "$ cookiecutter gh:choderalab/cookiecutter-compchem\n",
+    "$ cookiecutter gh:team-mayes/cookiecutter-compchem\n",
     "project_name [project_name]: arthritis_proj\n",
     "repo_name [arthritis_proj]: \n",
     "first_module_name [arthritis_proj]: data_proc\n",
     "author_name [Your name (or your organization/company/team)]: hbmayes\n",
-    "description [A short description of the project.]: Demo including processing data from csvs \n",
+    "description [A short description of the project.]: Demo including processing data from a csv\n",
     "Select open_source_license:\n",
     "1 - MIT\n",
     "2 - BSD-3-Clause\n",
@@ -187,9 +192,19 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
+    "*FYI*: only the first time you are getting a copy of the cookiecutter template from a remote location (in this case, gb = github), do you need to specify the remote location (as done in `cookiecutter gh:team-mayes/cookiecutter-compchem`). After that, if you do the same command again, you will get a warning than you are going to redownload and overwrite the template from before. Instead, you can just make a copy of the template that you've already made local by removing the reference to the remote location (e.g. `cookiecutter cookiecutter-compchem`)."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
     "## Explore the templated project with IntelliJ\n",
     "\n",
-    "Clicking the cube icon at the top of my screen shows me the IntelliJ programs I can open. I can use either IDEA Ultimate or PyCharm. At least previous versions of PyCharm did not include all the functionality in IDEA Ultimate; this may have been fixed. I still use IDEA Ultimate because 1) I have plenty of memory so I can easily load this larger program, and 2) IDEA Ultimate has all the functionality of PyCharm plus support for other languages, and I like having all of that available so I can switch between projects.\n",
+    "Clicking the cube icon at the top of my screen shows me the IntelliJ programs I can open. I can use either IDEA Ultimate or PyCharm. At least previous versions of PyCharm did not include all the functionality in IDEA Ultimate; this may have been fixed. I still use IDEA Ultimate because:\n",
+    "\n",
+    "1. I have plenty of memory so I can easily load this larger program\n",
+    "1. IDEA Ultimate has all the functionality of PyCharm plus support for other languages, and I like having all of that available so I can switch between projects.\n",
     "\n",
     "![Jetbrains toolbox](images/lect07_jetbrains_toolbox.png)"
    ]
@@ -247,12 +262,380 @@
   {
    "cell_type": "markdown",
    "metadata": {},
-   "source": []
+   "source": [
+    "We also have a warning that we need to configure our python editor.\n",
+    "\n",
+    "Click on the project name, and press F4. That will bring up the Project Structure Window. Let's choose Python 3 for our SDK for both the Project Settings and Platform settings.\n",
+    "\n",
+    "![IDEA Ultimate](images/lect08_jb-proj-set.png)\n",
+    "![IDEA Ultimate](images/lect08_jb-plat-set.png)\n",
+    "\n",
+    "After pressing `OK`, the python interpreter warning should disappear."
+   ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
-   "source": []
+   "source": [
+    "Let's start looking around the folders. Click the arrow next to `.idea` so that the files within the directory are shown.\n",
+    "\n",
+    "![IDEA Ultimate](images/lect08_jb-untracked-files.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The red means that the files are not being tracked with Git (IntelliJ IDEs are highly integrated with Git). These are configuration files that we don't want to track as part of the package that we'll share on GitHUb.\n",
+    "\n",
+    "- Why isn't the directory red?\n",
+    "- What should I do to have the files in the folder ignored by git?\n",
+    "\n",
+    "![IDEA Ultimate](images/lect08_jb-gitignore.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "*FYI:* if there are other problems, like a warning above that we need to configure our files, the suggestions by IntelliJ are generally, well, intelligent. Go ahead and accept its suggestions.\n",
+    "\n",
+    "![IDEA Ultimate](images/lect08_jb-configure.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "*Back to exploring the project:* Note above that .gitignore turned blue. This indicaes that a tracked file has been changed. When a file is staged to be committed, it will turn green. When there are no untracked files that are not in `.gitignore` and no differences between the current versions of tracked files and those files state in HEAD, all files will be in black.\n",
+    "\n",
+    "To stage and commit our changes, we can go to our terminal, or note that at the bottom left of the screen, there is an option to show a terminal. Let's use it to stage and commit the change to `.gitignore`.\n",
+    "\n",
+    "![IDEA Ultimate](images/lect08_jb-terminal.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "For now, we can ignore all folders except the arthritis_proj. Note that this is standard--to have a folder with the same name as the project that will hold your python scripts, such as the `data_proc.py` script that I defined when I was setting up the project with cookiecutter. Let's see what cookiecutter has set up for us, starting at the top, with the description and imports, and the green check that says that the code passes all the tests IntelliJ is looking for, such as proper indents, following PEP8 code for variable names.\n",
+    "\n",
+    "Note that the description we gave it is included in the comments at the top of the code. We can modify it as we add functionality.\n",
+    "\n",
+    "![IDEA Ultimate](images/lect08_py-stub.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now scroll to the bottom. Customarily, the flow will start at the bottom, with a `main` function, and other functions that are called will be above it. Let's follow the logic starting from main; see that it first calls  `parse_cmdline(argv)`, which, as you might hope, parses any flags on the command line into arguments that will be stored in `args`. It also returns a return message that flags whether any errors were found.\n",
+    "![IDEA Ultimate](images/lect08_jb-main.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "I don't want to have to remember that `0` == success, so I'm going to make that a constant using option-command-c (if you forget this shortcut, you'll find the option after right-clicking and looking under `refactor`). \n",
+    "![IDEA Ultimate](images/lect08_jb-constant.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "I renamed it `SUCCESS`. It automatically defined the variable at the top, under imports (where it belongs).\n",
+    "![IDEA Ultimate](images/lect08_jb-success1.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "It only gave me the option to select `0` in that function. I'll also change it in the function above.\n",
+    "\n",
+    "![IDEA Ultimate](images/lect08_jb-success2.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Note that as I start typing `SU` it suggests the rest of the variable name. This will help us to correctly use a variable that has already been defined (10 points for IntelliJ). I'll also rename 2 to `IO_ERROR`.\n",
+    "\n",
+    "![Lect08 Snapshot](images/lect08_jb-autocomplete.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Note that `-h` is an automatically assigned flag by the `argparse` library we brought in. We can already try running our program in the terminal!\n",
+    "![Lect08 Snapshot](images/lect08_help.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now let's try running the program without any flags, with the `-n` flag, and with a flag that has not yet been defined. \n",
+    "![Lect08 Snapshot](images/lect08_flags.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Clearly, we have a working script, but it doesn't yet do what we want! Let's start simply--let's read in the name of the file we want to read. We can use the commented hint to get us started.\n",
+    "\n",
+    "![Lect08 Snapshot](images/lect08_parse-edits.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Our output (with no arguments) is now:\n",
+    "![Lect08 Snapshot](images/lect08_print-csv-name.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now let's read in the file, within the parser, as it is already set up to handle an IO_ERROR. We'll use a numpy function to read in the file, so we'll import that at the top, using `import numpy as np`. Note that this line will be gray until we actually use the library, to let us know that we are unnecessarily (so far) importing a library. Now let's use a built-in function to load our data into a python array.\n",
+    "\n",
+    "![Lect08 Snapshot](images/lect08_io-error.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The program gave us a useful error note--there is no file in the current directory called `data.csv`.\n",
+    "\n",
+    "We could simply add one there, but that would not follow nice organization. Instead, we'll take the suggestion from the `README.md` file in the `data` folder and place sample data in that folder. Let's replace the `look_and_say.dat` file with the sample patient data, and rename it `sample_data.csv`.\n",
+    "\n",
+    "![Lect08 Snapshot](images/lect08_refactor.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now we can tell our program the relative location of our file!\n",
+    "\n",
+    "![Lect08 Snapshot](images/lect08_file-location.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "*FYI*: IntelliJ is always saving for you! Let's save our changes to git.\n",
+    "\n",
+    "Remember how I said that Git and IntelliJ play well together? Let's rightclick on our file and compare `data_proc.py` to our previous commit.\n",
+    "![Lect08 Snapshot](images/lect08_jb-git.png)\n",
+    "![Lect08 Snapshot](images/lect08_jb-compare.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now let's change the function `canvas` to `data_analysis`, call it in main, and start modifying it. \n",
+    "\n",
+    "![Lect08 Snapshot](images/lect08_data_analysis-stub.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We'll come back to more about numpy arrays; for now, I'll just give you the correct syntax for calculating the values we desire.\n",
+    "\n",
+    "![Numpy axes](images/lect08_python-operations-across-axes.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Lect08 Snapshot](images/lect08_basic-stats.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "These are exactly the numbers that I calculated before. Hooray! \n",
+    "\n",
+    "It is fine to just print this when we have a small number of patients, but it probably would be more helpful if we save the data to a file. As you might expect, numpy has a `savetxt` function. First, we need to have a file name for saveing. I want it to be the base name of the input file (`sample_data` in this case) to which I'll add `_stats.csv`.\n",
+    "\n",
+    "~~~~\n",
+    "out_fname = os.path.basename(args.csv_data)\n",
+    "~~~~\n",
+    "\n",
+    "`os` is a library that we don't have yet, so it is underlined in red. If we click on it, we'll get a red light bulb. Often this is helpful, but I don't see the option to import the `os` library, so I'll do that myself at the top of the file.\n",
+    "\n",
+    "![Screen shot](images/lect08_os-red.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now, I'll remove the extension, and add the suffix `_stats`. Since I'll want to use this base name again (when saving an image), I'll add the `.csv` extension separately.\n",
+    "\n",
+    "![Screen shot](images/lect08_np-savetxt.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Screen shot](images/lect08_np-savetxt.png)\n",
+    "\n",
+    "Now, let's add a function that will plot the data. Again, we'll come back to more information about different options in the imported package. For now, I'll give you what is needed for this example as part of the complete code below:"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": [
+    "\"\"\"\n",
+    "data_proc.py\n",
+    "Demo including:\n",
+    " - reading in numeric data from a csv\n",
+    " - calculating the mean, max, and min per row\n",
+    " - plotting the results\n",
+    "\"\"\"\n",
+    "\n",
+    "import sys\n",
+    "import argparse\n",
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt\n",
+    "import os\n",
+    "\n",
+    "SUCCESS = 0\n",
+    "IO_ERROR = 2\n",
+    "\n",
+    "DEF_DATA_FILE = 'data.csv'\n",
+    "\n",
+    "\n",
+    "def warning(*objs):\n",
+    "    \"\"\"Writes a message to stderr.\"\"\"\n",
+    "    print(\"WARNING: \", *objs, file=sys.stderr)\n",
+    "\n",
+    "\n",
+    "def data_analysis(data_array):\n",
+    "    \"\"\"\n",
+    "    Finds the average, min, and max for each row of the given array\n",
+    "\n",
+    "    Parameters\n",
+    "    ----------\n",
+    "    data_array : numpy array of patient data (one line per patient, daily measurements) in plasma inflammation units\n",
+    "\n",
+    "    Returns\n",
+    "    -------\n",
+    "    data_stats : numpy array\n",
+    "        array with same number of rows as data_array, and columns for average, max, and min values (in that order)\n",
+    "    \"\"\"\n",
+    "    num_patients, num_days = data_array.shape\n",
+    "    data_stats = np.zeros((num_patients, 3))\n",
+    "\n",
+    "    data_stats[:, 0] = np.mean(data_array, axis=1)\n",
+    "    data_stats[:, 1] = np.max(data_array, axis=1)\n",
+    "    data_stats[:, 2] = np.min(data_array, axis=1)\n",
+    "\n",
+    "    return data_stats\n",
+    "\n",
+    "\n",
+    "def parse_cmdline(argv):\n",
+    "    \"\"\"\n",
+    "    Returns the parsed argument list and return code.\n",
+    "    `argv` is a list of arguments, or `None` for ``sys.argv[1:]``.\n",
+    "    \"\"\"\n",
+    "    if argv is None:\n",
+    "        argv = sys.argv[1:]\n",
+    "\n",
+    "    # initialize the parser object:\n",
+    "    parser = argparse.ArgumentParser()\n",
+    "    parser.add_argument(\"-c\", \"--csv_data_file\", help=\"The location of the csv file with data to analyze\",\n",
+    "                        default=DEF_DATA_FILE)\n",
+    "    args = None\n",
+    "    try:\n",
+    "        args = parser.parse_args(argv)\n",
+    "        args.csv_data = np.loadtxt(fname=args.csv_data_file, delimiter=',')\n",
+    "    except IOError as e:\n",
+    "        warning(\"Problems reading file:\", e)\n",
+    "        parser.print_help()\n",
+    "        return args, IO_ERROR\n",
+    "\n",
+    "    return args, SUCCESS\n",
+    "\n",
+    "\n",
+    "def plot_stats(base_f_name, data_stats):\n",
+    "    \"\"\"\n",
+    "    Makes a plot of the mean, max, and min inflammation per patient\n",
+    "    :param base_f_name: str of base output name (without extension)\n",
+    "    :param data_stats: numpy array with shape (num_patients, num_stats) where num_stats = 3 (mean, max, min)\n",
+    "    :return: saves a png file\n",
+    "    \"\"\"\n",
+    "    num_patients, num_stats = data_stats.shape\n",
+    "    x_axis = np.arange(1, num_patients + 1, 1)\n",
+    "    # red dashes, blue squares and green triangles\n",
+    "    plt.plot(x_axis, data_stats[:, 0], 'bs',\n",
+    "             x_axis, data_stats[:, 1], 'g^',\n",
+    "             x_axis, data_stats[:, 2], 'r.')\n",
+    "    plt.title('Patient Arthritis Data')\n",
+    "    plt.xlabel('Patient Number')\n",
+    "    plt.ylabel('Plasma Inflammation Units')\n",
+    "    out_name = base_f_name + \".png\"\n",
+    "    plt.savefig(out_name)\n",
+    "    print(\"Wrote file: {}\".format(out_name))\n",
+    "\n",
+    "\n",
+    "def main(argv=None):\n",
+    "    args, ret = parse_cmdline(argv)\n",
+    "    if ret != SUCCESS:\n",
+    "        return ret\n",
+    "    data_stats = data_analysis(args.csv_data)\n",
+    "\n",
+    "    # get the name of the input file without the directory it is in, if one was specified\n",
+    "    base_out_fname = os.path.basename(args.csv_data_file)\n",
+    "    # get the first part of the file name (omit extension) and add the suffix\n",
+    "    base_out_fname = os.path.splitext(base_out_fname)[0] + '_stats'\n",
+    "    # add suffix and extension\n",
+    "    out_fname = base_out_fname + '.csv'\n",
+    "    np.savetxt(out_fname, data_stats, delimiter=',')\n",
+    "    print(\"Wrote file: {}\".format(out_fname))\n",
+    "\n",
+    "    # send the base_out_fname and data to a new function that will plot the data\n",
+    "    plot_stats(base_out_fname, data_stats)\n",
+    "    return SUCCESS  # success\n",
+    "\n",
+    "\n",
+    "if __name__ == \"__main__\":\n",
+    "    status = main()\n",
+    "    sys.exit(status)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "This gives us the following plot:\n",
+    "![Lect08 Snapshot](images/lect08_basic-stats-plot.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Next up: More on numpy, plotting, testing, and the power of the cookiecutter package!"
+   ]
   }
  ],
  "metadata": {
