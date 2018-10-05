@@ -69,7 +69,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Clearly, we have a working script, but it doesn't yet do what we want! Let's start simply--let's read in the name of the file we want to read. We can use the commented hint to get us started.\n",
+    "Clearly, we have a working script, but it doesn't yet do what we want! Let's start with reading in the name of the file we want to process. We can use the commented hint to get us started.\n",
     "\n",
     "![Lect08 Snapshot](images/lect08_parse-edits.png)"
    ]
@@ -153,7 +153,7 @@
    "source": [
     "These are exactly the numbers that I calculated before. Hooray! \n",
     "\n",
-    "It is fine to just print this when we have a small number of patients, but it probably would be more helpful if we save the data to a file. As you might expect, numpy has a `savetxt` function. First, we need to have a file name for saveing. I want it to be the base name of the input file (`sample_data` in this case) to which I'll add `_stats.csv`.\n",
+    "It is fine to just print this when we have a small number of patients, but it probably would be more helpful if we save the data to a file. As you might expect, numpy has a `savetxt` function. First, we need to have a file name for saving. I want it to be the base name of the input file (`sample_data` in this case) to which I'll add `_stats.csv`.\n",
     "\n",
     "~~~~\n",
     "out_fname = os.path.basename(args.csv_data)\n",
@@ -177,8 +177,6 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "![Screen shot](images/lect08_np-savetxt.png)\n",
-    "\n",
     "Now, let's add a function that will plot the data. Again, we'll come back to more information about different options in the imported package. For now, I'll give you what is needed for this example as part of the complete code below:"
    ]
   },
@@ -310,6 +308,65 @@
    "source": [
     "This gives us the following plot:\n",
     "![Lect08 Snapshot](images/lect08_basic-stats-plot.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Sharing on Github\n",
+    "\n",
+    "Of course, as shown before, I can make a repo on github and follow the directions given to connect my local repository to the one on github, and then push the project there. \n",
+    "\n",
+    "![Screen shot](images/lect09_new-repo.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Merging conflicts with IntelliJ\n",
+    "\n",
+    "Previously I showed that you can directly edit a conflicted file to remove a conflict. If there is a conflict (say a collaborator and you changed the same flag description), you'll get a warning of the merge cannot be done automatically.\n",
+    "\n",
+    "![Screen shot](images/lect09_merge-conflict.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "I greatly prefer resolving conflicts with IntelliJ, since it will show you exactly what parts of lines have conflicts, and make it easy to choose which version to keep. You can easily take some conflicted changes from one version, and others from the other file. \n",
+    "\n",
+    "In intelliJ, conflicted files will be highlighted in red and underlined.\n",
+    "\n",
+    "![Screen shot](images/lect09_IntelliJ-conflict.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Right-click on the file, and under git, choose \"Resolve Conflicts\".\n",
+    "\n",
+    "![Screen shot](images/lect09_git-resolve-conflict.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "A new window will appear with three options: accept all of the changes from your current working branch (\"yours\"), accept all of the changes from the other version (\"theirs\"), or \"merge\" which will let you examine the difference and choose what changes you want to keep, which can be a combination of \"yours\" and \"theirs\". We'll choose that.\n",
+    "![Screen shot](images/lect09_conflict-options.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "A new three-panel window will appear that has three panels: \"Your version\" and branch on the left, the conflicted version the right, and in the center will be the result after you make the changes. In this case, there are some non-conflicted insertions (in blue) and the conflict is shown in red. In all cases we can either discard the change (the \"X\" in the gray gutter) or accept it into the final result (the \">>\" or \"<<\" in the gray gutter). When all changes are done, click \"Apply\" in the bottom-right corner. Remember to commit the merge. If the conflict came from a collaborator, suggest that they pull the merged version so that your work better stays in sync.\n",
+    "\n",
+    "![Screen shot](images/lect09_git-conflict-panels.png)"
    ]
   },
   {

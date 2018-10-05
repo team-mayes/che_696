@@ -85,8 +85,8 @@ terminal! <img alt="Lect08 Snapshot" src="../_images/lect08_basic-stats-plot.png
 <p>Now let’s try running the program without any flags, with the <code class="docutils literal notranslate"><span class="pre">-n</span></code>
 flag, and with a flag that has not yet been defined. <img alt="Lect08 Snapshot" src="../_images/lect08_basic-stats-plot.png" /></p>
 <p>Clearly, we have a working script, but it doesn’t yet do what we want!
-Let’s start simply–let’s read in the name of the file we want to read.
-We can use the commented hint to get us started.</p>
+Let’s start with reading in the name of the file we want to process. We
+can use the commented hint to get us started.</p>
 <div class="figure" id="id3">
 <img alt="Lect08 Snapshot" src="../_images/lect08_parse-edits.png" />
 <p class="caption"><span class="caption-text">Lect08 Snapshot</span></p>
@@ -142,7 +142,7 @@ the correct syntax for calculating the values we desire.</p>
 <p>It is fine to just print this when we have a small number of patients,
 but it probably would be more helpful if we save the data to a file. As
 you might expect, numpy has a <code class="docutils literal notranslate"><span class="pre">savetxt</span></code> function. First, we need to
-have a file name for saveing. I want it to be the base name of the input
+have a file name for saving. I want it to be the base name of the input
 file (<code class="docutils literal notranslate"><span class="pre">sample_data</span></code> in this case) to which I’ll add <code class="docutils literal notranslate"><span class="pre">_stats.csv</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">out_fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">csv_data</span><span class="p">)</span>
 </pre></div>
@@ -159,10 +159,6 @@ myself at the top of the file.</p>
 I’ll want to use this base name again (when saving an image), I’ll add
 the <code class="docutils literal notranslate"><span class="pre">.csv</span></code> extension separately.</p>
 <div class="figure" id="id11">
-<img alt="Screen shot" src="../_images/lect08_np-savetxt.png" />
-<p class="caption"><span class="caption-text">Screen shot</span></p>
-</div>
-<div class="figure" id="id12">
 <img alt="Screen shot" src="../_images/lect08_np-savetxt.png" />
 <p class="caption"><span class="caption-text">Screen shot</span></p>
 </div>
@@ -286,8 +282,62 @@ def main(argv=None):
 if __name__ == "__main__":
     status = main()
     sys.exit(status)<p>This gives us the following plot: <img alt="Lect08 Snapshot" src="../_images/lect08_basic-stats-plot.png" /></p>
+<div class="section" id="Sharing-on-Github">
+<h2>Sharing on Github<a class="headerlink" href="#Sharing-on-Github" title="Permalink to this headline">¶</a></h2>
+<p>Of course, as shown before, I can make a repo on github and follow the
+directions given to connect my local repository to the one on github,
+and then push the project there.</p>
+<div class="figure" id="id12">
+<img alt="Screen shot" src="../_images/lect09_new-repo.png" />
+<p class="caption"><span class="caption-text">Screen shot</span></p>
+</div>
+</div>
+<div class="section" id="Merging-conflicts-with-IntelliJ">
+<h2>Merging conflicts with IntelliJ<a class="headerlink" href="#Merging-conflicts-with-IntelliJ" title="Permalink to this headline">¶</a></h2>
+<p>Previously I showed that you can directly edit a conflicted file to
+remove a conflict. If there is a conflict (say a collaborator and you
+changed the same flag description), you’ll get a warning of the merge
+cannot be done automatically.</p>
+<div class="figure" id="id13">
+<img alt="Screen shot" src="../_images/lect09_merge-conflict.png" />
+<p class="caption"><span class="caption-text">Screen shot</span></p>
+</div>
+<p>I greatly prefer resolving conflicts with IntelliJ, since it will show
+you exactly what parts of lines have conflicts, and make it easy to
+choose which version to keep. You can easily take some conflicted
+changes from one version, and others from the other file.</p>
+<p>In intelliJ, conflicted files will be highlighted in red and underlined.</p>
+<div class="figure" id="id14">
+<img alt="Screen shot" src="../_images/lect09_IntelliJ-conflict.png" />
+<p class="caption"><span class="caption-text">Screen shot</span></p>
+</div>
+<p>Right-click on the file, and under git, choose “Resolve Conflicts”.</p>
+<div class="figure" id="id15">
+<img alt="Screen shot" src="../_images/lect09_git-resolve-conflict.png" />
+<p class="caption"><span class="caption-text">Screen shot</span></p>
+</div>
+<p>A new window will appear with three options: accept all of the changes
+from your current working branch (“yours”), accept all of the changes
+from the other version (“theirs”), or “merge” which will let you examine
+the difference and choose what changes you want to keep, which can be a
+combination of “yours” and “theirs”. We’ll choose that. <img alt="Screen shot" src="../_images/lect09_conflict-options.png" /></p>
+<p>A new three-panel window will appear that has three panels: “Your
+version” and branch on the left, the conflicted version the right, and
+in the center will be the result after you make the changes. In this
+case, there are some non-conflicted insertions (in blue) and the
+conflict is shown in red. In all cases we can either discard the change
+(the “X” in the gray gutter) or accept it into the final result (the
+“&gt;&gt;” or “&lt;&lt;” in the gray gutter). When all changes are done, click
+“Apply” in the bottom-right corner. Remember to commit the merge. If the
+conflict came from a collaborator, suggest that they pull the merged
+version so that your work better stays in sync.</p>
+<div class="figure" id="id16">
+<img alt="Screen shot" src="../_images/lect09_git-conflict-panels.png" />
+<p class="caption"><span class="caption-text">Screen shot</span></p>
+</div>
 <p>Next up: More on numpy, plotting, testing, and the power of the
 cookiecutter package!</p>
+</div>
 </div>
 
 
