@@ -1,0 +1,411 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>HW5, practice material from the “Whirlwind Tour of Python” &#8212; CHE 696: On-Ramp to Data Science 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="9) Cookie cutter projects and IDES for organized, delightful programming, cont." href="lecture09_cookiecutter_and_IDEs_cont.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="lecture09_cookiecutter_and_IDEs_cont.html" title="9) Cookie cutter projects and IDES for organized, delightful programming, cont."
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: On-Ramp to Data Science 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="lecture09_cookiecutter_and_IDEs_cont.html"
+                        title="previous chapter">9) Cookie cutter projects and IDES for organized, delightful programming, cont.</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #303F9F;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #D84315;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 9ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: #f7f7f7;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.pngmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+</style>
+<div class="section" id="HW5,-practice-material-from-the-“Whirlwind-Tour-of-Python”">
+<h1>HW5, practice material from the “Whirlwind Tour of Python”<a class="headerlink" href="#HW5,-practice-material-from-the-“Whirlwind-Tour-of-Python”" title="Permalink to this headline">¶</a></h1>
+<p>The material covered in lectures 8 and 9 will primarily be practiced as
+you work on your individual project.</p>
+<p>Thus, this homework is a little different from the others. It is based
+on sections 8-13 of
+<a class="reference external" href="https://jakevdp.github.io/WhirlwindTourOfPython/index.html">https://jakevdp.github.io/WhirlwindTourOfPython/index.html</a>. Knowing this
+material will help you with Python programming in general, and your
+project in particular.</p>
+<p>The question numbers start with 8 so that the numbers align with the
+section of the book. Thus, it points to which section to read if you do
+not already know how to answer the question.</p>
+<div class="section" id="8.-Control-Flow-Statements">
+<h2>8. Control Flow Statements<a class="headerlink" href="#8.-Control-Flow-Statements" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="i.-Write-your-own-working-if-elif-else-statement">
+<h3>i. Write your own working if-elif-else statement<a class="headerlink" href="#i.-Write-your-own-working-if-elif-else-statement" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ii.-What-does-the-break-statement-do?">
+<h3>ii. What does the <code class="docutils literal notranslate"><span class="pre">break</span></code> statement do?<a class="headerlink" href="#ii.-What-does-the-break-statement-do?" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="iii.-Write-your-own-for-loop-that-includes-a-break-statement,-that-causes-some-output-to-be-different-than-if-the-break-were-not-included.-Verify-that-output.">
+<h3>iii. Write your own <code class="docutils literal notranslate"><span class="pre">for</span></code> loop that includes a <code class="docutils literal notranslate"><span class="pre">break</span></code> statement, that causes some output to be different than if the <code class="docutils literal notranslate"><span class="pre">break</span></code> were not included. Verify that output.<a class="headerlink" href="#iii.-Write-your-own-for-loop-that-includes-a-break-statement,-that-causes-some-output-to-be-different-than-if-the-break-were-not-included.-Verify-that-output." title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="iv.-What-does-the-continue-statement-do?">
+<h3>iv. What does the <code class="docutils literal notranslate"><span class="pre">continue</span></code> statement do?<a class="headerlink" href="#iv.-What-does-the-continue-statement-do?" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="v.-Write-your-own-while-loop-that-includes-a-continue-statement.-Check-that-the-statement-did-what-was-expected.">
+<h3>v. Write your own <code class="docutils literal notranslate"><span class="pre">while</span></code> loop that includes a <code class="docutils literal notranslate"><span class="pre">continue</span></code> statement. Check that the statement did what was expected.<a class="headerlink" href="#v.-Write-your-own-while-loop-that-includes-a-continue-statement.-Check-that-the-statement-did-what-was-expected." title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="9.-Defining-Functions">
+<h2>9. Defining Functions<a class="headerlink" href="#9.-Defining-Functions" title="Permalink to this headline">¶</a></h2>
+<p>Define a function (which has not been used in an example in class or in
+the Whirlwind book) that has at least one required and one optional
+parameter, and then call it.</p>
+<p><em>Suggestion:</em> Write this answer with the next question in mind. In the
+next question you’ll need some code that sometimes works, and sometimes
+has an error. If this is true of what you write here, you can use the
+same function and then update it to catch the error when you answer the
+next question.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="10.-Errors-and-Exceptions">
+<h2>10. Errors and Exceptions<a class="headerlink" href="#10.-Errors-and-Exceptions" title="Permalink to this headline">¶</a></h2>
+<p>Write a function that sometimes will work and sometimes will not (this
+can be your answer to the previous problem). Add a try-catch
+(try…except) clause so you get a nice, clean error message instead of a
+runtime error.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="11.-Iterators">
+<h2>11. Iterators<a class="headerlink" href="#11.-Iterators" title="Permalink to this headline">¶</a></h2>
+<ol class="lowerroman simple">
+<li>Write a function using the <code class="docutils literal notranslate"><span class="pre">enumerate</span></code> iterator.</li>
+</ol>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<ol class="lowerroman simple" start="2">
+<li>Write a function using the <code class="docutils literal notranslate"><span class="pre">zip</span></code> iterator.</li>
+</ol>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="12.-List-Comprehensions">
+<h2>12. List Comprehensions<a class="headerlink" href="#12.-List-Comprehensions" title="Permalink to this headline">¶</a></h2>
+<p>Is the following a valid line of Python code? If so, what is the output?
+If not, fix what is wrong and then list the output. ~~<sub>[val for
+val in range(20) if val % 3 = 0]</sub>~~</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="13.-Generators-and-Generator-Expressions">
+<h2>13. Generators and Generator Expressions<a class="headerlink" href="#13.-Generators-and-Generator-Expressions" title="Permalink to this headline">¶</a></h2>
+<p>What is the difference between the following two snippets of code?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">P</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Q</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">Q</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="lecture09_cookiecutter_and_IDEs_cont.html" title="9) Cookie cutter projects and IDES for organized, delightful programming, cont."
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: On-Ramp to Data Science 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Heather Mayes.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+    </div>
+  </body>
+</html>
