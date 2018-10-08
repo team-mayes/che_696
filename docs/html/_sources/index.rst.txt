@@ -41,5 +41,7 @@ CHE 696: On-Ramp to Data Science
    notebooks/lecture09_cookiecutter_and_IDEs_cont.ipynb
 
    notebooks/HW05.ipynb
+
+   notebooks/lecture10_unit_testing.ipynb
     ..
    .. :caption: About Sphinx:
