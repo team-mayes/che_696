@@ -17,6 +17,7 @@
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="11) Automated testing and packaging your project" href="lecture11_continuous_integration_and_packaging_projects.html" />
     <link rel="prev" title="HW5, practice material from the “Whirlwind Tour of Python”" href="HW05.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
@@ -30,6 +31,9 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
+          <a href="lecture11_continuous_integration_and_packaging_projects.html" title="11) Automated testing and packaging your project"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
           <a href="HW05.html" title="HW5, practice material from the “Whirlwind Tour of Python”"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: On-Ramp to Data Science 0.1 documentation</a> &#187;</li> 
@@ -40,6 +44,9 @@
   <h4>Previous topic</h4>
   <p class="topless"><a href="HW05.html"
                         title="previous chapter">HW5, practice material from the “Whirlwind Tour of Python”</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="lecture11_continuous_integration_and_packaging_projects.html"
+                        title="next chapter">11) Automated testing and packaging your project</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <div class="searchformwrapper">
@@ -406,7 +413,7 @@ that we want to test.</p>
 <span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">from</span> <span class="nn">arthritis_proj</span> <span class="kn">import</span> <span class="n">main</span><span class="p">,</span> <span class="n">data_analysis</span>
+<span class="kn">from</span> <span class="nn">arthritis_proj.data_proc</span> <span class="kn">import</span> <span class="n">main</span><span class="p">,</span> <span class="n">data_analysis</span>
 </pre></div>
 </div>
 </div>
@@ -439,7 +446,7 @@ you think the following lines do?</p>
 <span class="n">TEST_DATA_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">CURRENT_DIR</span><span class="p">,</span> <span class="s1">&#39;data_proc&#39;</span><span class="p">)</span>
 <span class="n">PROJ_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">MAIN_DIR</span><span class="p">,</span> <span class="s1">&#39;arthritis_proj&#39;</span><span class="p">)</span>
 <span class="n">DATA_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">PROJ_DIR</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span><span class="p">)</span>
-<span class="n">DEFAULT_DATA_FILE_LOC</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATA_DIR</span><span class="p">,</span> <span class="s1">&#39;sample_data.csv&#39;</span><span class="p">)</span>
+<span class="n">SAMPLE_DATA_FILE_LOC</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATA_DIR</span><span class="p">,</span> <span class="s1">&#39;sample_data.csv&#39;</span><span class="p">)</span>
 
 <span class="c1"># Assumes running tests from the main directory</span>
 <span class="n">DEF_CSV_OUT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">MAIN_DIR</span><span class="p">,</span> <span class="s1">&#39;sample_data_stats.csv&#39;</span><span class="p">)</span>
@@ -454,7 +461,7 @@ you think the following lines do?</p>
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-4-9fac5ab8a926&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">&lt;ipython-input-4-eee6dc89282f&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
 <span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>CURRENT_DIR <span class="ansi-blue-fg">=</span> os<span class="ansi-blue-fg">.</span>path<span class="ansi-blue-fg">.</span>dirname<span class="ansi-blue-fg">(</span>__file__<span class="ansi-blue-fg">)</span>
 <span class="ansi-green-intense-fg ansi-bold">      2</span> MAIN_DIR <span class="ansi-blue-fg">=</span> os<span class="ansi-blue-fg">.</span>path<span class="ansi-blue-fg">.</span>join<span class="ansi-blue-fg">(</span>CURRENT_DIR<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;..&#39;</span><span class="ansi-blue-fg">)</span>
 <span class="ansi-green-intense-fg ansi-bold">      3</span> TEST_DATA_DIR <span class="ansi-blue-fg">=</span> os<span class="ansi-blue-fg">.</span>path<span class="ansi-blue-fg">.</span>join<span class="ansi-blue-fg">(</span>CURRENT_DIR<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;data_proc&#39;</span><span class="ansi-blue-fg">)</span>
@@ -507,7 +514,8 @@ what they do:</p>
         <span class="c1"># Checks that runs with defaults and that files are created</span>
         <span class="n">test_input</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="n">DEFAULT_DATA_FILE_LOC</span><span class="p">]</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">main</span><span class="p">(</span><span class="n">test_input</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">logger</span><span class="o">.</span><span class="n">isEnabledFor</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">):</span>
+                <span class="n">main</span><span class="p">(</span><span class="n">test_input</span><span class="p">)</span>
             <span class="c1"># checks that the expected message is sent to standard out</span>
             <span class="k">with</span> <span class="n">capture_stdout</span><span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">test_input</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="s2">&quot;sample_data_stats.csv&quot;</span> <span class="ow">in</span> <span class="n">output</span><span class="p">)</span>
@@ -576,7 +584,7 @@ standard error, respectively, to be captured as strings.</p>
 <span></span><span class="k">class</span> <span class="nc">TestDataAnalysis</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">testSampleData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># Tests that the np array generated by the data_analysis function matches saved expected results</span>
-        <span class="n">csv_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="n">DEFAULT_DATA_FILE_LOC</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+        <span class="n">csv_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="n">SAMPLE_DATA_FILE_LOC</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
         <span class="n">analysis_results</span> <span class="o">=</span> <span class="n">data_analysis</span><span class="p">(</span><span class="n">csv_data</span><span class="p">)</span>
         <span class="n">expected_results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">TEST_DATA_DIR</span><span class="p">,</span> <span class="s2">&quot;sample_data_results.csv&quot;</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">expected_results</span><span class="p">,</span> <span class="n">analysis_results</span><span class="p">))</span>
@@ -769,103 +777,6 @@ ensure that the new functionality is not already a working path that
 has not been plugged into the interface.</li>
 </ul>
 </div>
-<div class="section" id="Continuous-integration">
-<h2>Continuous integration<a class="headerlink" href="#Continuous-integration" title="Permalink to this headline">¶</a></h2>
-<p>Wouldn’t it be nice if every time we pushed to GitHub, all our tests
-were run and we got a report on if they passed?</p>
-<p>So many people want this, that there are multiple tools to help you do
-so. A commonly used one is <a class="reference external" href="https://docs.travis-ci.com/user/getting-started/">Travis
-CI</a>. Start by
-signing up at <a class="reference external" href="https://travis-ci.org/">https://travis-ci.org/</a> and follow the directions to hook
-it to your GitHub account. We are using the free version so it does not
-prioritize running our tests, but they will run eventually, and you’ll
-get a report as to whether all tests pass on its system.</p>
-<div class="figure" id="id6">
-<img alt="Screen shot" src="../_images/lect10_travis-hook.png" />
-<p class="caption"><span class="caption-text">Screen shot</span></p>
-</div>
-</div>
-<div class="section" id="Setting-up-your-package-to-run-anywhere">
-<h2>Setting up your package to run anywhere<a class="headerlink" href="#Setting-up-your-package-to-run-anywhere" title="Permalink to this headline">¶</a></h2>
-<p>First, we need a place where we will have all our programs on our
-computer, that our OS will look at to find them. See if you already have
-the folder: <code class="docutils literal notranslate"><span class="pre">$HOME/.local/bin</span></code>. If not, please create it.</p>
-<p>We also need to tell bash that this is a place to look for code. Find
-where your PATHs are noted (either .bashrc or .bash_profile) and add
-this line: ~~<sub>PATH=:math:`PATH:</sub>HOME/.local/bin`~~</p>
-<p>Save and source the file (e.g. <code class="docutils literal notranslate"><span class="pre">.</span> <span class="pre">.bashrc</span></code>).</p>
-<p>Now, in your python project, go to <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> in the main directory
-for your project. Make sure that the following line is there:</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [12]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>    <span class="n">entry_points</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;console_scripts&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;data_proc = arthritis_proj.data_proc:main&#39;</span><span class="p">,</span>
-                                      <span class="p">],</span>
-                  <span class="p">},</span>     <span class="n">package_dir</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;arthritis_proj&#39;</span><span class="p">:</span> <span class="s1">&#39;arthritis_proj&#39;</span><span class="p">},</span> <span class="n">install_requires</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;numpy&#39;</span><span class="p">,</span> <span class="s1">&#39;matplotlib&#39;</span><span class="p">]</span>
-
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">&#34;&lt;ipython-input-12-6410d1927269&gt;&#34;</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">1</span>
-<span class="ansi-red-fg">    entry_points={&#39;console_scripts&#39;: [&#39;data_proc = arthritis_proj.data_proc:main&#39;,</span>
-                ^
-<span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> can&#39;t assign to literal
-
-</pre></div></div>
-</div>
-<p>These <code class="docutils literal notranslate"><span class="pre">entry_points</span></code> are how we will invoke the project on the command
-line (type <code class="docutils literal notranslate"><span class="pre">data_proc</span></code> to launch <code class="docutils literal notranslate"><span class="pre">arthritis_proj.data_proc:main</span></code>).</p>
-<p>Now, open the terminal to the main directory and run</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">sdist</span>
-</pre></div>
-</div>
-<p>If this is your first time running the command, it will create the
-folder <code class="docutils literal notranslate"><span class="pre">dist</span></code>. Let’s look there; you should see a <code class="docutils literal notranslate"><span class="pre">.tar.gz</span></code> file
-there.</p>
-<div class="figure" id="id7">
-<img alt="Screen shot" src="../_images/lect10_dist.png" />
-<p class="caption"><span class="caption-text">Screen shot</span></p>
-</div>
-<p>This is a rather log name. It is identifying exactly which git version
-is associated with this tarball. Let’s give it a nicer looking name by
-adding a tag:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">tag</span> <span class="o">-</span><span class="n">a</span> <span class="s1">&#39;ver0.0&#39;</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;Initial version with tests&#39;</span>
-</pre></div>
-</div>
-<p>Again running <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">sdist</span></code> we see a nicer name, and will
-delete the old one.</p>
-<div class="figure" id="id8">
-<img alt="Screen shot" src="../_images/lect10_dist2.png" />
-<p class="caption"><span class="caption-text">Screen shot</span></p>
-</div>
-<p>Now, let’s install the package!</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">dist</span><span class="o">/</span><span class="n">arthritis_proj</span><span class="o">-</span><span class="n">ver0</span><span class="o">.</span><span class="mf">0.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span> <span class="o">--</span><span class="n">user</span>
-</pre></div>
-</div>
-<p>Note: We can copy this tarball to any other system and install it in the
-same way. After the first time you install the project, you’ll want to
-add the <code class="docutils literal notranslate"><span class="pre">--upgrade</span></code> flag after <code class="docutils literal notranslate"><span class="pre">install</span></code>.</p>
-<p>Let’s check that this worked. First, let’s see if <code class="docutils literal notranslate"><span class="pre">data_proc</span></code> is now
-in <code class="docutils literal notranslate"><span class="pre">$HOME/.local/bin</span></code>. It is! Hooray!</p>
-<p>Now, I’m going to go to an entirely different directory and make a file
-<code class="docutils literal notranslate"><span class="pre">data.csv</span></code> with the following data: ~~<sub>1,2,3,4,5 6,7,8,9,10
-3,6,8,2,1 6,2,9,2,0</sub>~~</p>
-<p>In that directory, all I need to do is enter <code class="docutils literal notranslate"><span class="pre">data_proc</span></code>, and the
-program runs! ~~~ truffle:hw_solutions hbmayes$ data_proc Wrote file:
-data_stats.csv Wrote file: data_stats.png ~~~</p>
-<div class="figure" id="id9">
-<img alt="Output" src="../_images/lect10_data_stats.png" />
-<p class="caption"><span class="caption-text">Output</span></p>
-</div>
-</div>
 <div class="section" id="Next-steps">
 <h2>Next steps<a class="headerlink" href="#Next-steps" title="Permalink to this headline">¶</a></h2>
 <p>Start thinking about your project. I encourage discussion with me about
@@ -873,8 +784,6 @@ what you might want to do and how to accomplish it. I will be posting
 some more examples to help you with the project; knowing what kinds of
 tasks you want to accomplish will help me set up useful examples for
 you.</p>
-<p>In the meantime, we’ll be learning more about helpful libraries
-(e.g.&nbsp;numpy and pandas).</p>
 </div>
 </div>
 
@@ -890,6 +799,9 @@ you.</p>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="lecture11_continuous_integration_and_packaging_projects.html" title="11) Automated testing and packaging your project"
+             >next</a> |</li>
         <li class="right" >
           <a href="HW05.html" title="HW5, practice material from the “Whirlwind Tour of Python”"
              >previous</a> |</li>
