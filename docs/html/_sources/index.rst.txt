@@ -47,5 +47,7 @@ CHE 696: On-Ramp to Data Science
    notebooks/lecture11_continuous_integration_and_packaging_projects.ipynb
 
    notebooks/lecture12_numpy_attributes_methods.ipynb
+
+   notebooks/project_instructions.ipynb
     ..
    .. :caption: About Sphinx:

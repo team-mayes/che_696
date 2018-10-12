@@ -1,0 +1,61 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Individual Project\n",
+    "\n",
+    "For this individual project, you are welcome to consult with Prof. Mayes and your classmates, but the work must be your own.\n",
+    "\n",
+    "The project should have the following attributes:\n",
+    "\n",
+    "1. It should help you with a task that you regularly perform or expect to perform in the future. For example, are there calculations or plots that you have done more than once using Excel, which could be replaced by a reliable Python program?\n",
+    "1. You should start the project from a cookiecutter template.\n",
+    "1. The program should be able to run from the command line.\n",
+    "1. File names, variable names, and formatting should follow conventions discussed in class (see https://www.python.org/dev/peps/pep-0008/).\n",
+    "1. Tests must be included in the project. These tests should cover at least 90% of the code in the main Python scripts, and should pass when I run them on my computer (a Mac OSX running Python 3.6.1).\n",
+    "\n",
+    "## Resources to help you\n",
+    "\n",
+    "In addition to the example project https://github.com/team-mayes/arthritis_proj_demo that you will expand up on in HW6, the repo https://github.com/team-mayes/che696_examples has some additional Python scripts to provide more examples for you to work from.\n",
+    "\n",
+    "#### Examples of projects that would receive full credit\n",
+    "\n",
+    "The length of the project will depend upon the task it is intended to perform. At a minimum, there should be two options that the user can choose to control the output of the program. Two examples of projects that would receive full points are:\n",
+    "\n",
+    "1. Under arthritis_proj_demo, `data_proc.py` and its tests. \n",
+    "1. Under che696_examples, `tex_add_spell` and its tests.\n",
+    "1. Under che696_examples, `add_to_each_line` with the function called from `common`, and its tests.\n",
+    "\n",
+    "The other scripts in che696_examples are longer and more complex than necessary; they are included in the examples because they functionality that may be of interest.\n",
+    "\n",
+    "\n",
+    "## Due date\n",
+    "\n",
+    "November 21. You are welcome to turn it in early; if I see that any criterion is not passed, I will let you know so you have time to fix this before the final due date."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.1"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

@@ -11,7 +11,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "## Continuous integration\n",
+    "## FYI: Continuous integration\n",
     "\n",
     "Wouldn't it be nice if every time we pushed to GitHub, all of our tests were run and we got a report on whether they passed?\n",
     "\n",
