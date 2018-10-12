@@ -1,0 +1,998 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 13) More NumPy Plus Linear Algebra Basics\n",
+    "\n",
+    "Related references:\n",
+    "\n",
+    "- https://jakevdp.github.io/PythonDataScienceHandbook/02.04-computation-on-arrays-aggregates.html\n",
+    "- https://jakevdp.github.io/PythonDataScienceHandbook/02.05-computation-on-arrays-broadcasting.html\n",
+    "- [Feature Engineering for Machine Learning](https://search.lib.umich.edu/catalog/record/016260792) \n",
+    "- [The Manga Guide to Linear Algebra](https://www.safaribooksonline.com/library/view/the-manga-guide/9781457166730/)\n",
+    "- [Introduction to Linear Algebra by Gilbert Strang](http://math.mit.edu/~gs/linearalgebra/)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## The simplicity of NumPy math\n",
+    "\n",
+    "As we've discussed, Numpy allows us to perform math with arrays without writing loops, speeding programs and programming. \n",
+    "\n",
+    "As always, array sizes must be compatible. Binary operations are performed on an element-by-element basis:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[5 6 7]\n",
+      "[ 0  5 10]\n"
+     ]
+    }
+   ],
+   "source": [
+    "import numpy as np\n",
+    "\n",
+    "a = np.array([0, 1, 2])\n",
+    "b = np.array([5, 5, 5])\n",
+    "print(a + b)\n",
+    "print(a * b)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Broadcasting\n",
+    "\n",
+    "We can also perform these operations with a scalar; NumPy will \"broadcast\" it to the correct size for the binary operation. In the case below, it will treat `5` as the ndarray `[5, 5, 5]` while never actually creating such an array."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[5 6 7]\n",
+      "[ 0  5 10]\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(a + 5)\n",
+    "print(a * 5)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "`Broadcasting` can also be done in higher dimensions:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 1.,  2.,  3.],\n",
+       "       [ 1.,  2.,  3.],\n",
+       "       [ 1.,  2.,  3.]])"
+      ]
+     },
+     "execution_count": 4,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "m = np.ones((3, 3))\n",
+    "m + a"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[0 1 2]\n",
+      "[[5]\n",
+      " [5]\n",
+      " [5]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(a)\n",
+    "print(b.reshape((3, 1)))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[5, 6, 7],\n",
+       "       [5, 6, 7],\n",
+       "       [5, 6, 7]])"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "a + b.reshape((3, 1))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "A visual to describe broadcasting:\n",
+    "\n",
+    "![From PythonDataScienceHandbook](images/lect13_broadcasting.png)\n",
+    "\n",
+    "The light boxes represent the broadcasted values: again, this extra memory is not actually allocated in the course of the operation, but it can be useful conceptually to imagine that it is."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### More examples of NumPy's math knowledge"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "x     = [1, 2, 4, 10]\n",
+      "e^x   = [  2.71828183e+00   7.38905610e+00   5.45981500e+01   2.20264658e+04]\n",
+      "2^x   = [    2.     4.    16.  1024.]\n",
+      "3^x   = [    3     9    81 59049]\n",
+      "ln(x)    = [ 0.          0.69314718  1.38629436  2.30258509]\n",
+      "log2(x)  = [ 0.          1.          2.          3.32192809]\n",
+      "log10(x) = [ 0.          0.30103     0.60205999  1.        ]\n",
+      "sum(x)   = 17\n",
+      "min(x)   = 1\n",
+      "max(x)   = 17\n",
+      "mean(x)  = 4.25\n",
+      "std(x)   = 3.49106001094\n"
+     ]
+    }
+   ],
+   "source": [
+    "x = [1, 2, 4, 10]\n",
+    "print(\"x     =\", x)\n",
+    "print(\"e^x   =\", np.exp(x))\n",
+    "print(\"2^x   =\", np.exp2(x))\n",
+    "print(\"3^x   =\", np.power(3, x))\n",
+    "print(\"ln(x)    =\", np.log(x))\n",
+    "print(\"log2(x)  =\", np.log2(x))\n",
+    "print(\"log10(x) =\", np.log10(x))\n",
+    "print(\"sum(x)   =\", np.sum(x))\n",
+    "print(\"min(x)   =\", np.min(x))\n",
+    "print(\"max(x)   =\", np.sum(x))\n",
+    "print(\"mean(x)  =\", np.mean(x))\n",
+    "print(\"std(x)   =\", np.std(x))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### What about math with NaNs?\n",
+    "\n",
+    "NaN = not a number, and you can specify NaN with np.nan."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[ 0.48692473  0.49694635  0.97752024  0.96223823]\n",
+      " [ 0.69795263  0.73261823  0.81629359  0.95318601]\n",
+      " [ 0.38039224  0.99946882  0.43509908         nan]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "m = np.random.random((3, 4))\n",
+    "n = np.random.random((4, 3))\n",
+    "m[2, 3] = np.nan\n",
+    "print(m)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 0.55858852,  0.96038343,  1.28389251,  1.3899813 ],\n",
+       "       [ 0.78920754,  1.56038521,  1.63187531,  1.0696104 ],\n",
+       "       [ 1.27580053,  1.52000993,  1.28381351,         nan]])"
+      ]
+     },
+     "execution_count": 14,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "m + n.T"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 0.03489487,  0.23030337,  0.29948509,  0.41159074],\n",
+       "       [ 0.0636916 ,  0.60643718,  0.66575413,  0.1109741 ],\n",
+       "       [ 0.34060636,  0.52026461,  0.36927487,         nan]])"
+      ]
+     },
+     "execution_count": 17,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "m * n.T"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Let's check if these other functions work with `np.nan`:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "m     = [[ 0.48692473  0.49694635  0.97752024  0.96223823]\n",
+      " [ 0.69795263  0.73261823  0.81629359  0.95318601]\n",
+      " [ 0.38039224  0.99946882  0.43509908         nan]]\n",
+      "e^m   = [[ 1.62730413  1.64369433  2.65785722  2.61754861]\n",
+      " [ 2.00963403  2.08052077  2.26210002  2.59396089]\n",
+      " [ 1.46285827  2.71683831  1.54511614         nan]]\n",
+      "2^m   = [[ 1.40145433  1.41122336  1.96907797  1.94833024]\n",
+      " [ 1.62220105  1.66165196  1.76087634  1.93614367]\n",
+      " [ 1.30169571  1.99926376  1.35200368         nan]]\n",
+      "3^m   = [[ 1.70734835  1.72624989  2.92681778  2.87808962]\n",
+      " [ 2.15282156  2.23639097  2.45172087  2.84960921]\n",
+      " [ 1.51877424  2.99824982  1.61285386         nan]]\n",
+      "ln(m)    = [[ -7.19645717e-01  -6.99273213e-01  -2.27362795e-02  -3.84932148e-02]\n",
+      " [ -3.59604042e-01  -3.11130542e-01  -2.02981192e-01  -4.79452105e-02]\n",
+      " [ -9.66552353e-01  -5.31324784e-04  -8.32181510e-01              nan]]\n",
+      "log2(m)  = [[ -1.03822931e+00  -1.00883800e+00  -3.28015176e-02  -5.55339701e-02]\n",
+      " [ -5.18798968e-01  -4.48866491e-01  -2.92839959e-01  -6.91703174e-02]\n",
+      " [ -1.39444029e+00  -7.66539631e-04  -1.20058414e+00              nan]]\n",
+      "log10(m) = [[ -3.12538164e-01  -3.03690498e-01  -9.87424071e-03  -1.67173908e-02]\n",
+      " [ -1.56174051e-01  -1.35122278e-01  -8.81536116e-02  -2.08223403e-02]\n",
+      " [ -4.19768353e-01  -2.30751422e-04  -3.61411838e-01              nan]]\n",
+      "sum(m)   = nan\n",
+      "min(m)   = nan\n",
+      "max(m)   = nan\n",
+      "mean(m)  = nan\n",
+      "std(m)   = nan\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"m     =\", m)\n",
+    "print(\"e^m   =\", np.exp(m))\n",
+    "print(\"2^m   =\", np.exp2(m))\n",
+    "print(\"3^m   =\", np.power(3, m))\n",
+    "print(\"ln(m)    =\", np.log(m))\n",
+    "print(\"log2(m)  =\", np.log2(m))\n",
+    "print(\"log10(m) =\", np.log10(m))\n",
+    "print(\"sum(m)   =\", np.sum(m))\n",
+    "print(\"min(m)   =\", np.min(m))\n",
+    "print(\"max(m)   =\", np.max(m))\n",
+    "print(\"mean(m)  =\", np.mean(m))\n",
+    "print(\"std(m)   =\", np.std(m))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Not all did, but there are \"NaN=safe\" versions of functions! That is, they ignore the NaNs and carry on.\n",
+    "\n",
+    "|Function Name      |   NaN-safe Version  | Description                                      |\n",
+    "|-------------------|---------------------|--------------------------------------------------|\n",
+    "| ``np.sum``        | ``np.nansum``       | Compute sum of elements                          |\n",
+    "| ``np.prod``       | ``np.nanprod``      | Compute product of elements                      |\n",
+    "| ``np.mean``       | ``np.nanmean``      | Compute mean of elements                         |\n",
+    "| ``np.std``        | ``np.nanstd``       | Compute standard deviation                       |\n",
+    "| ``np.var``        | ``np.nanvar``       | Compute variance                                 |\n",
+    "| ``np.min``        | ``np.nanmin``       | Find minimum value                               |\n",
+    "| ``np.max``        | ``np.nanmax``       | Find maximum value                               |\n",
+    "| ``np.argmin``     | ``np.nanargmin``    | Find index of minimum value                      |\n",
+    "| ``np.argmax``     | ``np.nanargmax``    | Find index of maximum value                      |\n",
+    "| ``np.median``     | ``np.nanmedian``    | Compute median of elements                       |\n",
+    "| ``np.percentile`` | ``np.nanpercentile``| Compute rank-based statistics of elements        |\n",
+    "| ``np.any``        | N/A                 | Evaluate whether any elements are true (see note)|\n",
+    "| ``np.all``        | N/A                 | Evaluate whether all elements are true (see note)|\n",
+    "| N/A               | ``np.isnan``        | Test for NaN; returns a boolean array            |\n",
+    "\n",
+    "*Note*:  NaN, positive infinity and negative infinity evaluate to True because these are not equal to zero."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "sum(m)   = 7.93864015649\n",
+      "min(m)   = 0.380392238123\n",
+      "max(m)   = 0.999468816344\n",
+      "mean(m)  = 0.721694559681\n",
+      "std(m)   = 0.227224303742\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"sum(m)   =\", np.nansum(m))\n",
+    "print(\"min(m)   =\", np.nanmin(m))\n",
+    "print(\"max(m)   =\", np.nanmax(m))\n",
+    "print(\"mean(m)  =\", np.nanmean(m))\n",
+    "print(\"std(m)   =\", np.nanstd(m))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "These are a few examples, but just ask the Internet if there is anything you need and you'll get an answer, even if that is to use `scipy.special` as we had to for `erfc`. Let's focus on a particular kind of math NumPy knows well: linear algebra."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Linear algebra"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Overview\n",
+    "\n",
+    "![What is linear algebra](images/lect13_linear-alg.png)\n",
+    "This and other comics from [The Manga Guide to Linear Algebra](https://www.safaribooksonline.com/library/view/the-manga-guide/9781457166730/)\n",
+    "\n",
+    "Importantly, they are great for solving linear equations, especially those with the same number unknowns and independent equations. They are great for turning problems into forms that are easily solved by computers!"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![What is linear algebra](images/lect13_linear-alg-overview.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Fundamentals\n",
+    "\n",
+    "#### Inverse Functions\n",
+    "\n",
+    "![Functions](images/lect13_onto-one2one.png)\n",
+    "![Functions](images/lect13_inverse.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Linear Transformations\n",
+    "\n",
+    "Let $x_i$ and $x_j$ be two arbitrary elements of the set $X$, $c$ be any real number, and $f$ be a function from $X$ to $Y$. $f$ is called a *linear transformation* from $X$ to $Y$ if is satisfies both:\n",
+    "\n",
+    "1. $f(x_i) + f(x_j) = f(x_i + x_j)$\n",
+    "1. $cf(x_i) = f(cx_i)$\n",
+    "\n",
+    "![Functions](images/lect13_linear-trans.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Permutations\n",
+    "\n",
+    "Choosing three from n items in a certain order creates a permutation of the chosen items. The number of possible permutations of k objects chosen among n objects is written as: \n",
+    "$ _nP_k $\n",
+    "The number of ways k objects can be chosen among n possible ones is equal to:\n",
+    "$$ _nP_k = \\frac{n!}{(n-k)!} $$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Combinations\n",
+    "\n",
+    "Choosing k among n items without considering the order in which they are chosen is called a combination. The number of different ways this can be done is written by using the binomial coefficient notation:\n",
+    "$ {n\\choose k} $ or $_nC_r$\n",
+    "which is read \"n choose k.\"\n",
+    "\n",
+    "$$ {n\\choose k} = \\frac{n!}{k!(n-k)!} = \\frac{_nP_k}{k!} $$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "When the order *doesn't* matter, it is a Combination.\n",
+    "\n",
+    "When the order *does* matter it is a Permutation.\n",
+    "![Basics](images/lect13_permutation.png)\n",
+    "A Permutation is an ordered Combination."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Matrices\n",
+    "\n",
+    "![Matrices](images/lect13_matrix.png)\n",
+    "![Matrices](images/lect13_matrix1.png)\n",
+    "![Matrices](images/lect13_matrix2.png)\n",
+    "![Matrices](images/lect13_matrix3.png)\n",
+    "![Matrices](images/lect13_matrix4.png)\n",
+    "![Matrices](images/lect13_matrix5.png)\n",
+    "![Matrices](images/lect13_matrix6.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Matrix Addition\n",
+    "\n",
+    "![Matrices](images/lect13_matrix7.png)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "a = np.array([[10, 10]])\n",
+    "b = np.array([[3, 6]])\n",
+    "print(a, b)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[7 4]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(a - b)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Scalar Multiplication\n",
+    "\n",
+    "![Matrices](images/lect13_matrix8.png)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2]\n",
+      " [3 4]\n",
+      " [5 6]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "c = np.arange(1, 7).reshape((3, 2))\n",
+    "print(c)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[10 20]\n",
+      " [30 40]\n",
+      " [50 60]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(10 * c)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Matrix Multiplication\n",
+    "\n",
+    "![Matrices](images/lect13_matrix9.png)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[ 8 -3]\n",
+      " [ 2  1]]\n",
+      "[[3 1]\n",
+      " [1 2]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "d = np.array([[8, -3], [2, 1]])\n",
+    "e = np.array([[3, 1], [1, 2]])\n",
+    "print(d)\n",
+    "print(e)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[24, -3],\n",
+       "       [ 2,  2]])"
+      ]
+     },
+     "execution_count": 35,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "print(d * e)\n",
+    "print(np.multiply(e, d))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 37,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[21,  2],\n",
+       "       [ 7,  4]])"
+      ]
+     },
+     "execution_count": 37,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.matmul(d, e)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 36,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[26, -8],\n",
+       "       [12, -1]])"
+      ]
+     },
+     "execution_count": 36,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.matmul(e, d)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Matrices](images/lect13_matrix10.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Special Matrices\n",
+    "\n",
+    "![Matrices](images/lect13_matrix11.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Matrices](images/lect13_matrix12.png)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 41,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[2 0]\n",
+      " [0 3]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "f = np.array([[2, 0], [0, 3]])\n",
+    "print(f)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 43,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 8,  0],\n",
+       "       [ 0, 27]])"
+      ]
+     },
+     "execution_count": 43,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.linalg.matrix_power(f, 3)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Matrices](images/lect13_matrix13.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### What is the identity matrix and why is it called that?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 49,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[ 8 -3]\n",
+      " [ 2  1]]\n",
+      "[[1 0]\n",
+      " [0 1]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "eye = np.eye(2, dtype=int)\n",
+    "print(d)\n",
+    "print(eye)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 47,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 8, -3],\n",
+       "       [ 2,  1]])"
+      ]
+     },
+     "execution_count": 47,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.matmul(d, eye)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 48,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 8, -3],\n",
+       "       [ 2,  1]])"
+      ]
+     },
+     "execution_count": 48,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.matmul(eye, d)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Matrices](images/lect13_matrix14.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "If the product of two square matrices is an identity matrix, then the two factor matrices are inverses of each other. This means that \n",
+    "$ \\left( \\begin{array}{ccc}\n",
+    "x_{11} & x_{12} \\\\\n",
+    "x_{21} & x_{22} \\end{array} \\right) $ is an inverse matrix to \n",
+    "$ \\left( \\begin{array}{ccc}\n",
+    "1 & 2 \\\\\n",
+    "3 & 4 \\end{array} \\right) $  if\n",
+    "\n",
+    "$$ \\left( \\begin{array}{ccc}\n",
+    "1 & 2 \\\\\n",
+    "3 & 4 \\end{array} \\right)\n",
+    "\\left( \\begin{array}{ccc}\n",
+    "x_{11} & x_{12} \\\\\n",
+    "x_{21} & x_{22} \\end{array} \\right)\n",
+    "= \\left( \\begin{array}{ccc}\n",
+    "1 & 0 \\\\\n",
+    "0 & 1 \\end{array} \\right) $$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Matrices](images/lect13_matrix15.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Matrices](images/lect13_matrix16.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Matrices](images/lect13_matrix17.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now, using Gaussian elimination (e.g. the sweeping method) find, the inverse matrix of \n",
+    "$ \\left( \\begin{array}{ccc}\n",
+    "3 & 1 \\\\\n",
+    "1 & 2 \\end{array} \\right) $"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 53,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[ 0.4 -0.2]\n",
+      " [-0.2  0.6]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "g = np.array([[3, 1], [1, 2]])\n",
+    "h = np.linalg.inv(g)\n",
+    "print(h)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 55,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 1.,  0.],\n",
+       "       [ 0.,  1.]])"
+      ]
+     },
+     "execution_count": 55,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# checking our work\n",
+    "np.matmul(g, h)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 56,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 1.,  0.],\n",
+       "       [ 0.,  1.]])"
+      ]
+     },
+     "execution_count": 56,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.matmul(h, g)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Matrices](images/lect13_matrix18.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Vectors"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Next up: Vectors! Eigenvectors and eigenvalues!"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.1"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

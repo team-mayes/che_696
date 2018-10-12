@@ -1,0 +1,1166 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>13) More NumPy Plus Linear Algebra Basics &#8212; CHE 696: On-Ramp to Data Science 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: On-Ramp to Data Science 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #303F9F;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #D84315;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 9ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: #f7f7f7;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.pngmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+</style>
+<div class="section" id="13)-More-NumPy-Plus-Linear-Algebra-Basics">
+<h1>13) More NumPy Plus Linear Algebra Basics<a class="headerlink" href="#13)-More-NumPy-Plus-Linear-Algebra-Basics" title="Permalink to this headline">¶</a></h1>
+<p>Related references:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/02.04-computation-on-arrays-aggregates.html">https://jakevdp.github.io/PythonDataScienceHandbook/02.04-computation-on-arrays-aggregates.html</a></li>
+<li><a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/02.05-computation-on-arrays-broadcasting.html">https://jakevdp.github.io/PythonDataScienceHandbook/02.05-computation-on-arrays-broadcasting.html</a></li>
+<li><a class="reference external" href="https://search.lib.umich.edu/catalog/record/016260792">Feature Engineering for Machine
+Learning</a></li>
+<li><a class="reference external" href="https://www.safaribooksonline.com/library/view/the-manga-guide/9781457166730/">The Manga Guide to Linear
+Algebra</a></li>
+<li><a class="reference external" href="http://math.mit.edu/~gs/linearalgebra/">Introduction to Linear Algebra by Gilbert
+Strang</a></li>
+</ul>
+</div>
+<div class="section" id="The-simplicity-of-NumPy-math">
+<h1>The simplicity of NumPy math<a class="headerlink" href="#The-simplicity-of-NumPy-math" title="Permalink to this headline">¶</a></h1>
+<p>As we’ve discussed, Numpy allows us to perform math with arrays without
+writing loops, speeding programs and programming.</p>
+<p>As always, array sizes must be compatible. Binary operations are
+performed on an element-by-element basis:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[5 6 7]
+[ 0  5 10]
+</pre></div></div>
+</div>
+<div class="section" id="Broadcasting">
+<h2>Broadcasting<a class="headerlink" href="#Broadcasting" title="Permalink to this headline">¶</a></h2>
+<p>We can also perform these operations with a scalar; NumPy will
+“broadcast” it to the correct size for the binary operation. In the case
+below, it will treat <code class="docutils literal notranslate"><span class="pre">5</span></code> as the ndarray <code class="docutils literal notranslate"><span class="pre">[5,</span> <span class="pre">5,</span> <span class="pre">5]</span></code> while never
+actually creating such an array.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[5 6 7]
+[ 0  5 10]
+</pre></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Broadcasting</span></code> can also be done in higher dimensions:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">m</span> <span class="o">+</span> <span class="n">a</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[4]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[ 1.,  2.,  3.],
+       [ 1.,  2.,  3.],
+       [ 1.,  2.,  3.]])
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0 1 2]
+[[5]
+ [5]
+ [5]]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[9]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[5, 6, 7],
+       [5, 6, 7],
+       [5, 6, 7]])
+</pre></div>
+</div>
+</div>
+<p>A visual to describe broadcasting:</p>
+<div class="figure" id="id11">
+<img alt="From PythonDataScienceHandbook" src="../_images/lect13_broadcasting.png" />
+<p class="caption"><span class="caption-text">From PythonDataScienceHandbook</span></p>
+</div>
+<p>The light boxes represent the broadcasted values: again, this extra
+memory is not actually allocated in the course of the operation, but it
+can be useful conceptually to imagine that it is.</p>
+</div>
+<div class="section" id="More-examples-of-NumPy’s-math-knowledge">
+<h2>More examples of NumPy’s math knowledge<a class="headerlink" href="#More-examples-of-NumPy’s-math-knowledge" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;x     =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;e^x   =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;2^x   =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;3^x   =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;ln(x)    =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;log2(x)  =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;log10(x) =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;sum(x)   =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;min(x)   =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;max(x)   =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;mean(x)  =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;std(x)   =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+x     = [1, 2, 4, 10]
+e^x   = [  2.71828183e+00   7.38905610e+00   5.45981500e+01   2.20264658e+04]
+2^x   = [    2.     4.    16.  1024.]
+3^x   = [    3     9    81 59049]
+ln(x)    = [ 0.          0.69314718  1.38629436  2.30258509]
+log2(x)  = [ 0.          1.          2.          3.32192809]
+log10(x) = [ 0.          0.30103     0.60205999  1.        ]
+sum(x)   = 17
+min(x)   = 1
+max(x)   = 17
+mean(x)  = 4.25
+std(x)   = 3.49106001094
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="What-about-math-with-NaNs?">
+<h2>What about math with NaNs?<a class="headerlink" href="#What-about-math-with-NaNs?" title="Permalink to this headline">¶</a></h2>
+<p>NaN = not a number, and you can specify NaN with np.nan.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[ 0.48692473  0.49694635  0.97752024  0.96223823]
+ [ 0.69795263  0.73261823  0.81629359  0.95318601]
+ [ 0.38039224  0.99946882  0.43509908         nan]]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">m</span> <span class="o">+</span> <span class="n">n</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[14]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[ 0.55858852,  0.96038343,  1.28389251,  1.3899813 ],
+       [ 0.78920754,  1.56038521,  1.63187531,  1.0696104 ],
+       [ 1.27580053,  1.52000993,  1.28381351,         nan]])
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">m</span> <span class="o">*</span> <span class="n">n</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[17]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[ 0.03489487,  0.23030337,  0.29948509,  0.41159074],
+       [ 0.0636916 ,  0.60643718,  0.66575413,  0.1109741 ],
+       [ 0.34060636,  0.52026461,  0.36927487,         nan]])
+</pre></div>
+</div>
+</div>
+<p>Let’s check if these other functions work with <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;m     =&quot;</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;e^m   =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;2^m   =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp2</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;3^m   =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">m</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;ln(m)    =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;log2(m)  =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;log10(m) =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;sum(m)   =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;min(m)   =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;max(m)   =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;mean(m)  =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;std(m)   =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+m     = [[ 0.48692473  0.49694635  0.97752024  0.96223823]
+ [ 0.69795263  0.73261823  0.81629359  0.95318601]
+ [ 0.38039224  0.99946882  0.43509908         nan]]
+e^m   = [[ 1.62730413  1.64369433  2.65785722  2.61754861]
+ [ 2.00963403  2.08052077  2.26210002  2.59396089]
+ [ 1.46285827  2.71683831  1.54511614         nan]]
+2^m   = [[ 1.40145433  1.41122336  1.96907797  1.94833024]
+ [ 1.62220105  1.66165196  1.76087634  1.93614367]
+ [ 1.30169571  1.99926376  1.35200368         nan]]
+3^m   = [[ 1.70734835  1.72624989  2.92681778  2.87808962]
+ [ 2.15282156  2.23639097  2.45172087  2.84960921]
+ [ 1.51877424  2.99824982  1.61285386         nan]]
+ln(m)    = [[ -7.19645717e-01  -6.99273213e-01  -2.27362795e-02  -3.84932148e-02]
+ [ -3.59604042e-01  -3.11130542e-01  -2.02981192e-01  -4.79452105e-02]
+ [ -9.66552353e-01  -5.31324784e-04  -8.32181510e-01              nan]]
+log2(m)  = [[ -1.03822931e+00  -1.00883800e+00  -3.28015176e-02  -5.55339701e-02]
+ [ -5.18798968e-01  -4.48866491e-01  -2.92839959e-01  -6.91703174e-02]
+ [ -1.39444029e+00  -7.66539631e-04  -1.20058414e+00              nan]]
+log10(m) = [[ -3.12538164e-01  -3.03690498e-01  -9.87424071e-03  -1.67173908e-02]
+ [ -1.56174051e-01  -1.35122278e-01  -8.81536116e-02  -2.08223403e-02]
+ [ -4.19768353e-01  -2.30751422e-04  -3.61411838e-01              nan]]
+sum(m)   = nan
+min(m)   = nan
+max(m)   = nan
+mean(m)  = nan
+std(m)   = nan
+</pre></div></div>
+</div>
+<p>Not all did, but there are “NaN=safe” versions of functions! That is,
+they ignore the NaNs and carry on.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Function Name</th>
+<th class="head">NaN-safe Version</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">np.sum</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">np.nansum</span></code></td>
+<td>Compute sum of
+elements</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">np.prod</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">np.nanprod</span></code></td>
+<td>Compute product of
+elements</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">np.mean</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">np.nanmean</span></code></td>
+<td>Compute mean of
+elements</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">np.std</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">np.nanstd</span></code></td>
+<td>Compute standard
+deviation</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">np.var</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">np.nanvar</span></code></td>
+<td>Compute variance</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">np.min</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">np.nanmin</span></code></td>
+<td>Find minimum value</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">np.max</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">np.nanmax</span></code></td>
+<td>Find maximum value</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">np.argmin</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">np.nanargmin</span></code></td>
+<td>Find index of minimum
+value</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">np.argmax</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">np.nanargmax</span></code></td>
+<td>Find index of maximum
+value</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">np.median</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">np.nanmedian</span></code></td>
+<td>Compute median of
+elements</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">np.percentile</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">np.nanpercentile</span></code></td>
+<td>Compute rank-based
+statistics of
+elements</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">np.any</span></code></td>
+<td>N/A</td>
+<td>Evaluate whether any
+elements are true
+(see note)</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">np.all</span></code></td>
+<td>N/A</td>
+<td>Evaluate whether all
+elements are true
+(see note)</td>
+</tr>
+<tr class="row-odd"><td>N/A</td>
+<td><code class="docutils literal notranslate"><span class="pre">np.isnan</span></code></td>
+<td>Test for NaN; returns
+a boolean array</td>
+</tr>
+</tbody>
+</table>
+<p><em>Note</em>: NaN, positive infinity and negative infinity evaluate to True
+because these are not equal to zero.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;sum(m)   =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;min(m)   =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;max(m)   =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;mean(m)  =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;std(m)   =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+sum(m)   = 7.93864015649
+min(m)   = 0.380392238123
+max(m)   = 0.999468816344
+mean(m)  = 0.721694559681
+std(m)   = 0.227224303742
+</pre></div></div>
+</div>
+<p>These are a few examples, but just ask the Internet if there is anything
+you need and you’ll get an answer, even if that is to use
+<code class="docutils literal notranslate"><span class="pre">scipy.special</span></code> as we had to for <code class="docutils literal notranslate"><span class="pre">erfc</span></code>. Let’s focus on a particular
+kind of math NumPy knows well: linear algebra.</p>
+</div>
+</div>
+<div class="section" id="Linear-algebra">
+<h1>Linear algebra<a class="headerlink" href="#Linear-algebra" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Overview">
+<h2>Overview<a class="headerlink" href="#Overview" title="Permalink to this headline">¶</a></h2>
+<p><img alt="What is linear algebra" src="../_images/lect13_linear-alg.png" /> This and other comics from <a class="reference external" href="https://www.safaribooksonline.com/library/view/the-manga-guide/9781457166730/">The Manga Guide to
+Linear
+Algebra</a></p>
+<p>Importantly, they are great for solving linear equations, especially
+those with the same number unknowns and independent equations. They are
+great for turning problems into forms that are easily solved by
+computers!</p>
+<div class="figure" id="id12">
+<img alt="What is linear algebra" src="../_images/lect13_linear-alg-overview.png" />
+<p class="caption"><span class="caption-text">What is linear algebra</span></p>
+</div>
+</div>
+<div class="section" id="Fundamentals">
+<h2>Fundamentals<a class="headerlink" href="#Fundamentals" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Inverse-Functions">
+<h3>Inverse Functions<a class="headerlink" href="#Inverse-Functions" title="Permalink to this headline">¶</a></h3>
+<p><img alt="Functions" src="../_images/lect13_inverse.png" /> <img alt="Functions" src="../_images/lect13_inverse.png" /></p>
+</div>
+<div class="section" id="Linear-Transformations">
+<h3>Linear Transformations<a class="headerlink" href="#Linear-Transformations" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(x_i\)</span> and <span class="math notranslate nohighlight">\(x_j\)</span> be two arbitrary elements of the set
+<span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(c\)</span> be any real number, and <span class="math notranslate nohighlight">\(f\)</span> be a function
+from <span class="math notranslate nohighlight">\(X\)</span> to <span class="math notranslate nohighlight">\(Y\)</span>. <span class="math notranslate nohighlight">\(f\)</span> is called a <em>linear
+transformation</em> from <span class="math notranslate nohighlight">\(X\)</span> to <span class="math notranslate nohighlight">\(Y\)</span> if is satisfies both:</p>
+<ol class="arabic simple">
+<li><span class="math notranslate nohighlight">\(f(x_i) + f(x_j) = f(x_i + x_j)\)</span></li>
+<li><span class="math notranslate nohighlight">\(cf(x_i) = f(cx_i)\)</span></li>
+</ol>
+<div class="figure" id="id13">
+<img alt="Functions" src="../_images/lect13_linear-trans.png" />
+<p class="caption"><span class="caption-text">Functions</span></p>
+</div>
+</div>
+<div class="section" id="Permutations">
+<h3>Permutations<a class="headerlink" href="#Permutations" title="Permalink to this headline">¶</a></h3>
+<p>Choosing three from n items in a certain order creates a permutation of
+the chosen items. The number of possible permutations of k objects
+chosen among n objects is written as: $ _nP_k $ The number of ways k
+objects can be chosen among n possible ones is equal to:</p>
+<div class="math notranslate nohighlight">
+\[_nP_k = \frac{n!}{(n-k)!}\]</div>
+</div>
+<div class="section" id="Combinations">
+<h3>Combinations<a class="headerlink" href="#Combinations" title="Permalink to this headline">¶</a></h3>
+<p>Choosing k among n items without considering the order in which they are
+chosen is called a combination. The number of different ways this can be
+done is written by using the binomial coefficient notation: $
+{n:raw-latex:<cite>choose `k} $ or :math:`_nC_r</cite> which is read “n choose k.”</p>
+<div class="math notranslate nohighlight">
+\[{n\choose k} = \frac{n!}{k!(n-k)!} = \frac{_nP_k}{k!}\]</div>
+<p>When the order <em>doesn’t</em> matter, it is a Combination.</p>
+<p>When the order <em>does</em> matter it is a Permutation. <img alt="Basics" src="../_images/lect13_permutation.png" /> A Permutation
+is an ordered Combination.</p>
+</div>
+</div>
+</div>
+<div class="section" id="Matrices">
+<h1>Matrices<a class="headerlink" href="#Matrices" title="Permalink to this headline">¶</a></h1>
+<p><img alt="Matrices" src="../_images/lect13_matrix6.png" /> <img alt="Matrices" src="../_images/lect13_matrix6.png" /> <img alt="Matrices" src="../_images/lect13_matrix6.png" /> <img alt="Matrices" src="../_images/lect13_matrix6.png" /> <img alt="Matrices" src="../_images/lect13_matrix6.png" /> <img alt="Matrices" src="../_images/lect13_matrix6.png" />
+<img alt="Matrices" src="../_images/lect13_matrix6.png" /></p>
+<div class="section" id="Matrix-Addition">
+<h2>Matrix Addition<a class="headerlink" href="#Matrix-Addition" title="Permalink to this headline">¶</a></h2>
+<div class="figure" id="id14">
+<img alt="Matrices" src="../_images/lect13_matrix7.png" />
+<p class="caption"><span class="caption-text">Matrices</span></p>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[7 4]]
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Scalar-Multiplication">
+<h2>Scalar Multiplication<a class="headerlink" href="#Scalar-Multiplication" title="Permalink to this headline">¶</a></h2>
+<div class="figure" id="id15">
+<img alt="Matrices" src="../_images/lect13_matrix8.png" />
+<p class="caption"><span class="caption-text">Matrices</span></p>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[1 2]
+ [3 4]
+ [5 6]]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[10 20]
+ [30 40]
+ [50 60]]
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Matrix-Multiplication">
+<h2>Matrix Multiplication<a class="headerlink" href="#Matrix-Multiplication" title="Permalink to this headline">¶</a></h2>
+<div class="figure" id="id16">
+<img alt="Matrices" src="../_images/lect13_matrix9.png" />
+<p class="caption"><span class="caption-text">Matrices</span></p>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[ 8 -3]
+ [ 2  1]]
+[[3 1]
+ [1 2]]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">print</span><span class="p">(</span><span class="n">d</span> <span class="o">*</span> <span class="n">e</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">d</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[35]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[24, -3],
+       [ 2,  2]])
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[37]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[21,  2],
+       [ 7,  4]])
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[36]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[26, -8],
+       [12, -1]])
+</pre></div>
+</div>
+</div>
+<div class="figure" id="id17">
+<img alt="Matrices" src="../_images/lect13_matrix10.png" />
+<p class="caption"><span class="caption-text">Matrices</span></p>
+</div>
+</div>
+<div class="section" id="Special-Matrices">
+<h2>Special Matrices<a class="headerlink" href="#Special-Matrices" title="Permalink to this headline">¶</a></h2>
+<div class="figure" id="id18">
+<img alt="Matrices" src="../_images/lect13_matrix11.png" />
+<p class="caption"><span class="caption-text">Matrices</span></p>
+</div>
+<div class="figure" id="id19">
+<img alt="Matrices" src="../_images/lect13_matrix12.png" />
+<p class="caption"><span class="caption-text">Matrices</span></p>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [41]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[2 0]
+ [0 3]]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_power</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[43]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[ 8,  0],
+       [ 0, 27]])
+</pre></div>
+</div>
+</div>
+<div class="figure" id="id20">
+<img alt="Matrices" src="../_images/lect13_matrix13.png" />
+<p class="caption"><span class="caption-text">Matrices</span></p>
+</div>
+<div class="section" id="What-is-the-identity-matrix-and-why-is-it-called-that?">
+<h3>What is the identity matrix and why is it called that?<a class="headerlink" href="#What-is-the-identity-matrix-and-why-is-it-called-that?" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [49]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">eye</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">eye</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[ 8 -3]
+ [ 2  1]]
+[[1 0]
+ [0 1]]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [47]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">eye</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[47]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[ 8, -3],
+       [ 2,  1]])
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [48]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">eye</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[48]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[ 8, -3],
+       [ 2,  1]])
+</pre></div>
+</div>
+</div>
+<div class="figure" id="id21">
+<img alt="Matrices" src="../_images/lect13_matrix14.png" />
+<p class="caption"><span class="caption-text">Matrices</span></p>
+</div>
+<p>If the product of two square matrices is an identity matrix, then the
+two factor matrices are inverses of each other. This means that $
+<a href="#id1"><span class="problematic" id="id2">:raw-latex:`\left`( \\begin{array}{ccc} x_{11} &amp; x_{12} \\ x_{21} &amp;
+x_{22} \\end{array} :raw-latex:`</span></a>right`) $ is an inverse matrix to $
+:raw-latex:<a href="#id3"><span class="problematic" id="id4">`</span></a>left`(</p>
+<div class="math notranslate nohighlight">
+\begin{array}{ccc}
+1 &amp; 2 \\
+3 &amp; 4 \end{array}</div><p><a href="#id5"><span class="problematic" id="id6">:raw-latex:`\right`</span></a>) $ if</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \left( \begin{array}{ccc}
+1 &amp; 2 \\
+3 &amp; 4 \end{array} \right)
+\left( \begin{array}{ccc}
+x_{11} &amp; x_{12} \\
+x_{21} &amp; x_{22} \end{array} \right)
+= \left( \begin{array}{ccc}
+1 &amp; 0 \\
+0 &amp; 1 \end{array} \right)\end{split}\]</div>
+<div class="figure" id="id22">
+<img alt="Matrices" src="../_images/lect13_matrix15.png" />
+<p class="caption"><span class="caption-text">Matrices</span></p>
+</div>
+<div class="figure" id="id23">
+<img alt="Matrices" src="../_images/lect13_matrix16.png" />
+<p class="caption"><span class="caption-text">Matrices</span></p>
+</div>
+<div class="figure" id="id24">
+<img alt="Matrices" src="../_images/lect13_matrix17.png" />
+<p class="caption"><span class="caption-text">Matrices</span></p>
+</div>
+<p>Now, using Gaussian elimination (e.g.&nbsp;the sweeping method) find, the
+inverse matrix of $ :raw-latex:<a href="#id7"><span class="problematic" id="id8">`</span></a>left`(</p>
+<div class="math notranslate nohighlight">
+\begin{array}{ccc}
+3 &amp; 1 \\
+1 &amp; 2 \end{array}</div><p><a href="#id9"><span class="problematic" id="id10">:raw-latex:`\right`</span></a>) $</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [53]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[ 0.4 -0.2]
+ [-0.2  0.6]]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [55]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># checking our work</span>
+<span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[55]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[ 1.,  0.],
+       [ 0.,  1.]])
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [56]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[56]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[ 1.,  0.],
+       [ 0.,  1.]])
+</pre></div>
+</div>
+</div>
+<div class="figure" id="id25">
+<img alt="Matrices" src="../_images/lect13_matrix18.png" />
+<p class="caption"><span class="caption-text">Matrices</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Vectors">
+<h1>Vectors<a class="headerlink" href="#Vectors" title="Permalink to this headline">¶</a></h1>
+<p>Next up: Vectors! Eigenvectors and eigenvalues!</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: On-Ramp to Data Science 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Heather Mayes.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+    </div>
+  </body>
+</html>
