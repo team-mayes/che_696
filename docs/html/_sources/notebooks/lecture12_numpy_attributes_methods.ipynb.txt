@@ -44,18 +44,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 1,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "<class 'numpy.ndarray'> [1 2 3 4 5 6 7 8 9]\n",
-      "<class 'list'> [1, 2, 3, 4, 5, 6, 7, 8, 9]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "import numpy as np\n",
     "\n",
@@ -78,18 +69,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 2,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[ 1  4  9 16 25 36 49 64 81]\n",
-      "[1, 4, 9, 16, 25, 36, 49, 64, 81]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "x_squared = x**2\n",
     "print(x_squared)\n",
@@ -99,20 +81,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "matrix:\n",
-      "[[1 2 3]\n",
-      " [4 5 6]\n",
-      " [7 8 9]]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "m = x.reshape((3,3))  # This reshape command will only work if the total size remains the same\n",
     "print(\"matrix:\")\n",
@@ -132,19 +103,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 4,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[[1 4 7]\n",
-      " [2 5 8]\n",
-      " [3 6 9]]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "print(m.T)"
    ]
@@ -158,17 +119,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 5,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[ 3.14  4.    2.    3.  ] (4,)\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "# an array from a list\n",
     "a = np.array([3.14, 4, 2, 3])\n",
@@ -177,43 +130,18 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 6,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "array([[  2.5,   5. ,   7.5],\n",
-       "       [ 10. ,  12.5,  15. ],\n",
-       "       [ 17.5,  20. ,  22.5]])"
-      ]
-     },
-     "execution_count": 6,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
+   "outputs": [],
    "source": [
     "m * 2.5"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 7,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[[2, 3, 4], [4, 5, 6], [6, 7, 8], [8, 9, 10]]\n",
-      "[[ 2  3  4]\n",
-      " [ 4  5  6]\n",
-      " [ 6  7  8]\n",
-      " [ 8  9 10]] (4, 3)\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "# nested lists result in multi-dimensional arrays\n",
     "list_of_lists = [list(range(i, i + 3)) for i in [2, 4, 6, 8]]\n",
@@ -224,19 +152,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 8,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[[1 2]\n",
-      " [3 4]\n",
-      " [5 6]] (3, 2)\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "#  so do lists of lists\n",
     "c = np.array([[1, 2], [3, 4], [5, 6]])\n",
@@ -252,20 +170,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 9,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])"
-      ]
-     },
-     "execution_count": 9,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
+   "outputs": [],
    "source": [
     "# Create a length-10 integer array filled with zeros\n",
     "np.zeros(10, dtype=int)"
@@ -273,22 +180,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 10,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "array([[ 1.,  1.,  1.,  1.,  1.],\n",
-       "       [ 1.,  1.,  1.,  1.,  1.],\n",
-       "       [ 1.,  1.,  1.,  1.,  1.]])"
-      ]
-     },
-     "execution_count": 10,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
+   "outputs": [],
    "source": [
     "# Create a 3x5 floating-point (the default type) array filled with ones\n",
     "np.ones((3, 5))"
@@ -296,22 +190,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 11,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "array([[ nan,  nan,  nan,  nan,  nan],\n",
-       "       [ nan,  nan,  nan,  nan,  nan],\n",
-       "       [ nan,  nan,  nan,  nan,  nan]])"
-      ]
-     },
-     "execution_count": 11,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
+   "outputs": [],
    "source": [
     "# Create a 3x5 array filled with 3.14\n",
     "np.full((3, 5), np.nan)"
@@ -319,20 +200,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 12,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "array([ 0,  2,  4,  6,  8, 10, 12, 14, 16, 18])"
-      ]
-     },
-     "execution_count": 12,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
+   "outputs": [],
    "source": [
     "# Create an array filled with a linear sequence\n",
     "# Starting at 0, ending at 20, stepping by 2\n",
@@ -342,40 +212,18 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 13,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "array([0])"
-      ]
-     },
-     "execution_count": 13,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
+   "outputs": [],
    "source": [
     "np.arange(0, 1, 5)"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 14,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "array([ 0.  ,  0.25,  0.5 ,  0.75,  1.  ])"
-      ]
-     },
-     "execution_count": 14,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
+   "outputs": [],
    "source": [
     "# Create an array of five values evenly spaced between 0 and 1\n",
     "np.linspace(0, 1, 5)"
@@ -383,22 +231,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 15,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "array([[ 0.69977964,  0.30510692,  0.64553327],\n",
-       "       [ 0.93409653,  0.88457331,  0.45454636],\n",
-       "       [ 0.09662927,  0.05631415,  0.55081512]])"
-      ]
-     },
-     "execution_count": 15,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
+   "outputs": [],
    "source": [
     "# Create a 3x3 array of uniformly distributed\n",
     "# random values between 0 and 1\n",
@@ -407,22 +242,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 16,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "array([[ 0.60275066,  1.35715136,  0.59462332],\n",
-       "       [ 0.64274288,  1.21804775, -0.17556169],\n",
-       "       [-0.07475661, -0.26044158, -0.22408154]])"
-      ]
-     },
-     "execution_count": 16,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
+   "outputs": [],
    "source": [
     "# Create a 3x3 array of normally distributed random values\n",
     "# with mean 0 and standard deviation 1\n",
@@ -431,22 +253,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 17,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "array([[0, 6, 0],\n",
-       "       [1, 0, 9],\n",
-       "       [8, 8, 6]])"
-      ]
-     },
-     "execution_count": 17,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
+   "outputs": [],
    "source": [
     "# Create a 3x3 array of random integers in the interval [0, 10)\n",
     "np.random.randint(0, 10, (3, 3))"
@@ -454,23 +263,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 18,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "array([[ 1.,  0.,  0.,  0.],\n",
-       "       [ 0.,  1.,  0.,  0.],\n",
-       "       [ 0.,  0.,  1.,  0.],\n",
-       "       [ 0.,  0.,  0.,  1.]])"
-      ]
-     },
-     "execution_count": 18,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
+   "outputs": [],
    "source": [
     "# Create a 4x4 identity matrix\n",
     "np.eye(4)"
@@ -478,20 +273,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 19,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "array([  1.49166815e-154,  -4.33623533e-311,   1.49166815e-154])"
-      ]
-     },
-     "execution_count": 19,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
+   "outputs": [],
    "source": [
     "# Create an uninitialized array of three integers\n",
     "# The values will be whatever happens to already exist at that memory location\n",
@@ -507,22 +291,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 20,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "array([[ True,  True,  True,  True,  True],\n",
-       "       [ True,  True,  True,  True,  True],\n",
-       "       [ True,  True,  True,  True,  True]], dtype=bool)"
-      ]
-     },
-     "execution_count": 20,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
+   "outputs": [],
    "source": [
     "# The follow two commands are equivalent\n",
     "np.ones((3, 5), dtype=bool)\n",
@@ -531,22 +302,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 21,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "array([[ 0.+0.j,  0.+0.j,  0.+0.j,  0.+0.j,  0.+0.j],\n",
-       "       [ 0.+0.j,  0.+0.j,  0.+0.j,  0.+0.j,  0.+0.j],\n",
-       "       [ 0.+0.j,  0.+0.j,  0.+0.j,  0.+0.j,  0.+0.j]])"
-      ]
-     },
-     "execution_count": 21,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
+   "outputs": [],
    "source": [
     "np.zeros((3, 5), dtype=complex)"
    ]
@@ -562,7 +320,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 22,
+   "execution_count": null,
    "metadata": {
     "collapsed": true
    },
@@ -577,20 +335,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 23,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "x3 shape: (3, 4, 5)\n",
-      "x3 ndim:  3\n",
-      "x3 size:  60\n",
-      "dtype: int64\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "print(\"x3 shape:\", x3.shape) # shape\n",
     "print(\"x3 ndim: \", x3.ndim) # number of dimensions\n",
@@ -609,18 +356,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 24,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[5 0 3 3 7 9]\n",
-      "<class 'numpy.ndarray'>\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "x1\n",
     "print(x1)\n",
@@ -629,80 +367,36 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 25,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "7"
-      ]
-     },
-     "execution_count": 25,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
+   "outputs": [],
    "source": [
     "x1[4]"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 26,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "5"
-      ]
-     },
-     "execution_count": 26,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
+   "outputs": [],
    "source": [
     "x1[0]"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 27,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "7"
-      ]
-     },
-     "execution_count": 27,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
+   "outputs": [],
    "source": [
     "x1[-2]"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 28,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[[3, 5, 2, 4], [7, 6, 8, 8], [1, 6, 7, 7]]\n",
-      "[[3 5 2 4]\n",
-      " [7 6 8 8]\n",
-      " [1 6 7 7]]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "# Let's compare 2D indexing\n",
     "list2 = [[3, 5, 2, 4], [7, 6, 8, 8], [1, 6, 7, 7]]\n",
@@ -712,18 +406,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 29,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "1\n",
-      "1\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "print(list2[2][0])\n",
     "print(x2[2, 0])"
@@ -731,20 +416,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 30,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[[3, 12, 2, 4], [7, 6, 8, 8], [1, 6, 7, 7]]\n",
-      "[[ 3 12  2  4]\n",
-      " [ 7  6  8  8]\n",
-      " [ 1  6  7  7]]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "# And modification\n",
     "list2[0][1] = 12\n",
@@ -765,18 +439,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 31,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[0 1 2 3 4 5 6 7 8 9]\n",
-      "[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "z = np.arange(10)\n",
     "d = list(range(10))\n",
@@ -786,18 +451,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 32,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[0 1 2 3 4]\n",
-      "[0, 1, 2, 3, 4]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "print(z[:5])\n",
     "print(d[:5])"
@@ -805,18 +461,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 33,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[4 5 6]\n",
-      "[4, 5, 6]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "print(z[4:7])\n",
     "print(d[4:7])"
@@ -824,18 +471,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 34,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[0 2 4 6 8]\n",
-      "[0, 2, 4, 6, 8]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "print(z[::2])  # every other element\n",
     "print(d[::2])"
@@ -843,18 +481,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 35,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[3 5 7 9]\n",
-      "[3, 5, 7, 9]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "print(z[3::2])  # every other element, starting at 3\n",
     "print(d[3::2])"
@@ -862,18 +491,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 36,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[9 8 7 6 5 4 3 2 1 0]\n",
-      "[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "print(z[::-1])  # all elements, reversed\n",
     "print(d[::-1]) "
@@ -890,20 +510,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 37,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[[3, 8.4, 2, 4], [7, 6, 8, 8], [1, 6, 7, 7]]\n",
-      "[[3 8 2 4]\n",
-      " [7 6 8 8]\n",
-      " [1 6 7 7]]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "list2[0][1] = 8.4\n",
     "x2[0, 1] = 8.4\n",
@@ -913,19 +522,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 38,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[[7 6 8 8]\n",
-      " [7 6 8 8]\n",
-      " [1 6 7 7]]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "x2[0] = x2[1] * 1.1\n",
     "print(x2)"
@@ -940,20 +539,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 39,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[[3, 8.4, 2, 4], [7, 6, 8, 8], [1, 6, 7, 7]]\n",
-      "[[7 6 8 8]\n",
-      " [7 6 8 8]\n",
-      " [1 6 7 7]]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "print(list2)\n",
     "print(x2)"
@@ -961,20 +549,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 40,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[[3, 8.4, 2, 4]]\n",
-      "[[3, 8.4, 2, 4], [7, 6, 8, 8]]\n",
-      "[[7 6 8]\n",
-      " [7 6 8]]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "print(list2[:2][:1])\n",
     "print(list2[:2])\n",
@@ -983,35 +560,18 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 41,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[1, 6]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "print(list2[2][:2])"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 42,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[7 6 8 8]\n",
-      "[3, 8.4, 2, 4]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "print(x2[0])  # equivalent to x2[0, :], prints the first row\n",
     "print(list2[0])"
@@ -1026,21 +586,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 43,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[[7 6 8 8]\n",
-      " [7 6 8 8]\n",
-      " [1 6 7 7]]\n",
-      "[[7 6]\n",
-      " [7 6]]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "print(x2)\n",
     "x2_part = x2[:2, :2]\n",
@@ -1049,19 +597,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 44,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[[7 0 8 8]\n",
-      " [7 6 8 8]\n",
-      " [1 6 7 7]]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "x2_part[0,1] = 0\n",
     "print(x2)"
@@ -1076,19 +614,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 45,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[[7 0 8 8]\n",
-      " [7 6 8 8]\n",
-      " [1 6 7 7]]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "x2_part_copy = x2[:2, :2].copy()\n",
     "x2_part_copy[0, 0] = 42\n",
@@ -1113,17 +641,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 46,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[1 2 3 3 2 1]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "x = np.array([1, 2, 3])\n",
     "y = np.array([3, 2, 1])\n",
@@ -1133,19 +653,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 47,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[[1 2]\n",
-      " [3 4]\n",
-      " [5 6]]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "a = np.array([[1, 2], [3, 4]])\n",
     "b = np.array([[5, 6]])\n",
@@ -1155,18 +665,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 48,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[[1 2 5 7]\n",
-      " [3 4 6 8]]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "# multiple arrays can be concatenated at once\n",
     "d = np.array([[7, 8]])\n",
@@ -1183,19 +684,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 49,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[[1 2]\n",
-      " [3 4]]\n",
-      "[[5 6]]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "print(a)\n",
     "print(b)"
@@ -1203,19 +694,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 50,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[[1 2]\n",
-      " [3 4]\n",
-      " [5 6]]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "f = np.vstack([a, b])\n",
     "print(f)"
@@ -1223,18 +704,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 51,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[[1 2 5]\n",
-      " [3 4 6]]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "g = np.hstack([a, b.T])\n",
     "print(g)"
@@ -1249,17 +721,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 52,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[1 2 3] [99 99] [3] [2 1]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "x = [1, 2, 3, 99, 99, 3, 2, 1]\n",
     "x1, x2, x3, x4 = np.split(x, [3, 5, 6])  # the second argument gives the split points\n",
@@ -1268,21 +732,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 53,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[[ 0  1  2  3  4]\n",
-      " [ 5  6  7  8  9]\n",
-      " [10 11 12 13 14]\n",
-      " [15 16 17 18 19]\n",
-      " [20 21 22 23 24]]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "grid = np.arange(25).reshape((5, 5))\n",
     "print(grid)"
@@ -1290,21 +742,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 54,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[[0 1 2 3 4]\n",
-      " [5 6 7 8 9]]\n",
-      "[[10 11 12 13 14]\n",
-      " [15 16 17 18 19]\n",
-      " [20 21 22 23 24]]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "upper, lower = np.vsplit(grid, [2])\n",
     "print(upper)\n",
@@ -1313,26 +753,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 55,
+   "execution_count": null,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[[ 0  1]\n",
-      " [ 5  6]\n",
-      " [10 11]\n",
-      " [15 16]\n",
-      " [20 21]]\n",
-      "[[ 2  3  4]\n",
-      " [ 7  8  9]\n",
-      " [12 13 14]\n",
-      " [17 18 19]\n",
-      " [22 23 24]]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "left, right = np.hsplit(grid, [2])\n",
     "print(left)\n",

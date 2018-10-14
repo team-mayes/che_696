@@ -1,0 +1,157 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# HW6, Practice Working with Projects"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 1. Extending arthritis_proj_demo\n",
+    "\n",
+    "### i. Create your own branch\n",
+    "\n",
+    "If you have not done so yet, clone https://github.com/team-mayes/arthritis_proj_demo. If you have, do a `git pull` to make sure you have the latest version of this project.\n",
+    "\n",
+    "Make a new branch on which you will develop a new feature."
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ii. Add some functionality to the project\n",
+    "\n",
+    "For example, extend `data_proc.py` by allowing it to handle different numbers of data points per patient."
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### iii. Write tests for your new functionality\n",
+    "\n",
+    "`data_proc.py` should have at least 90% coverage."
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 2. Working with NumPy Arrays\n",
+    "\n",
+    "i. Create the matrix $$ a = \\left( \\begin{array}{cccc}\n",
+    "1 & 2 & 3 & 4\\\\\n",
+    "5 & 6 & 7 & 8\\\\\n",
+    "9 & 10 & 11 & 12\\\\\n",
+    "13 & 14 & 15 & 16\\end{array} \\right) $$"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "ii. From $a$, define the submatrix\n",
+    "$$ b = \\left( \\begin{array}{cc}\n",
+    "6 & 7 & \\\\\n",
+    "10 & 11 \\end{array} \\right) $$"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "iii. Create a NumPy array $c$ of all zeros that is 3 x 2, and an array $d$ of all ones that is 2 x 3. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "iv. Join $c$ and $d$ into one 3x4 array, transforming $d$ as necessary."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "v. Join $c$ and $d$ into one 6x2 array, transforming $d$ as necessary."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.1"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
