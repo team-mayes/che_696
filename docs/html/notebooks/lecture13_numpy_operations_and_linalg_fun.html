@@ -238,11 +238,18 @@ Learning</a></li>
 Algebra</a></li>
 <li><a class="reference external" href="http://math.mit.edu/~gs/linearalgebra/">Introduction to Linear Algebra by Gilbert
 Strang</a></li>
+<li><a class="reference external" href="https://search.lib.umich.edu/catalog/record/016256884">Advanced Engineering Mathematics by Erwin
+Kreyszig</a></li>
 </ul>
 </div>
-<div class="section" id="First,-let’s-discuss-the-individual-project">
-<h1>First, let’s discuss the individual project<a class="headerlink" href="#First,-let’s-discuss-the-individual-project" title="Permalink to this headline">¶</a></h1>
-<p>Details posted on Canvas and <a class="reference internal" href="project_instructions.html"><span class="doc">Github</span></a></p>
+<div class="section" id="First,-reminder-to-submit-evaluations">
+<h1>First, reminder to submit evaluations<a class="headerlink" href="#First,-reminder-to-submit-evaluations" title="Permalink to this headline">¶</a></h1>
+<p>You have until midnight tonight! As of Tuesday, 12/27 have completed the
+quiz I set up to self-report taking it, earning participation points.</p>
+</div>
+<div class="section" id="Second,-let’s-discuss-the-individual-project">
+<h1>Second, let’s discuss the individual project<a class="headerlink" href="#Second,-let’s-discuss-the-individual-project" title="Permalink to this headline">¶</a></h1>
+<p>Details posted on Canvas and <a class="reference internal" href="project_instructions.html"><span class="doc">Github</span></a>.</p>
 </div>
 <div class="section" id="The-simplicity-of-NumPy-math">
 <h1>The simplicity of NumPy math<a class="headerlink" href="#The-simplicity-of-NumPy-math" title="Permalink to this headline">¶</a></h1>
@@ -274,8 +281,8 @@ performed on an element-by-element basis:</p>
 [ 0  5 10]
 </pre></div></div>
 </div>
-<div class="section" id="Broadcasting">
-<h2>Broadcasting<a class="headerlink" href="#Broadcasting" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Broadcasting:-How-NumPy-will-make-compatible-arrays">
+<h2>Broadcasting: How NumPy will make compatible arrays<a class="headerlink" href="#Broadcasting:-How-NumPy-will-make-compatible-arrays" title="Permalink to this headline">¶</a></h2>
 <p>We can also perform these operations with a scalar; NumPy will
 “broadcast” it to the correct size for the binary operation. In the case
 below, it will treat <code class="docutils literal notranslate"><span class="pre">5</span></code> as the ndarray <code class="docutils literal notranslate"><span class="pre">[5,</span> <span class="pre">5,</span> <span class="pre">5]</span></code> while never
@@ -300,7 +307,16 @@ actually creating such an array.</p>
 [ 0  5 10]
 </pre></div></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">Broadcasting</span></code> can also be done in higher dimensions:</p>
+<p>A visual to describe broadcasting:</p>
+<div class="figure" id="id25">
+<img alt="From PythonDataScienceHandbook" src="../_images/lect13_broadcasting.png" />
+<p class="caption"><span class="caption-text">From PythonDataScienceHandbook</span></p>
+</div>
+<p>The light boxes represent the broadcasted values: again, this extra
+memory is not actually allocated in the course of the operation, but it
+can be useful conceptually to imagine that it is.</p>
+<p>As shown in the visual above, broadcasting can also be done in higher
+dimensions:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [3]:
@@ -368,14 +384,6 @@ actually creating such an array.</p>
 </pre></div>
 </div>
 </div>
-<p>A visual to describe broadcasting:</p>
-<div class="figure" id="id11">
-<img alt="From PythonDataScienceHandbook" src="../_images/lect13_broadcasting.png" />
-<p class="caption"><span class="caption-text">From PythonDataScienceHandbook</span></p>
-</div>
-<p>The light boxes represent the broadcasted values: again, this extra
-memory is not actually allocated in the course of the operation, but it
-can be useful conceptually to imagine that it is.</p>
 </div>
 <div class="section" id="More-examples-of-NumPy’s-math-knowledge">
 <h2>More examples of NumPy’s math knowledge<a class="headerlink" href="#More-examples-of-NumPy’s-math-knowledge" title="Permalink to this headline">¶</a></h2>
@@ -442,9 +450,9 @@ std(x)   = 3.49106001094
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[[ 0.54457006  0.44303281  0.47708121  0.01730859]
- [ 0.91708659  0.05299204  0.10201087  0.28833247]
- [ 0.60446226  0.65310197  0.68564973         nan]]
+[[ 0.25428535  0.71854879  0.34914824  0.66570755]
+ [ 0.99082804  0.36019373  0.189798    0.0180606 ]
+ [ 0.26913479  0.62554953  0.81734394         nan]]
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -463,9 +471,9 @@ std(x)   = 3.49106001094
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([[ 1.51825804,  0.96056587,  0.83346348,  0.16531705],
-       [ 0.94842523,  0.97218367,  0.30555023,  0.82256682],
-       [ 0.96843205,  0.73087078,  0.87598115,         nan]])
+<span></span>array([[ 0.41148294,  1.58677078,  0.42652007,  0.79140125],
+       [ 1.93790852,  0.9645072 ,  0.8894565 ,  0.90396041],
+       [ 0.99004754,  0.91704606,  1.1491225 ,         nan]])
 </pre></div>
 </div>
 </div>
@@ -485,9 +493,9 @@ std(x)   = 3.49106001094
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([[ 0.53024132,  0.22928412,  0.17002328,  0.00256182],
-       [ 0.02874025,  0.04870984,  0.02076323,  0.15403711],
-       [ 0.220006  ,  0.05079096,  0.13050069,         nan]])
+<span></span>array([[ 0.03997304,  0.62385986,  0.02701424,  0.08367524],
+       [ 0.93839389,  0.21766992,  0.13279379,  0.01599989],
+       [ 0.1940227 ,  0.18234552,  0.27117719,         nan]])
 </pre></div>
 </div>
 </div>
@@ -518,27 +526,27 @@ std(x)   = 3.49106001094
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-m     = [[ 0.54457006  0.44303281  0.47708121  0.01730859]
- [ 0.91708659  0.05299204  0.10201087  0.28833247]
- [ 0.60446226  0.65310197  0.68564973         nan]]
-e^m   = [[ 1.72386706  1.55742343  1.61136429  1.01745925]
- [ 2.50199044  1.05442126  1.10739551  1.33420081]
- [ 1.83026773  1.92149201  1.98506118         nan]]
-2^m   = [[ 1.4585856   1.35945915  1.39192474  1.01206966]
- [ 1.88829817  1.03741422  1.07326838  1.22122791]
- [ 1.52041194  1.57254573  1.60842619         nan]]
-3^m   = [[ 1.81897173  1.62697308  1.68898419  1.01919737]
- [ 2.73880748  1.05994573  1.11859161  1.37268077]
- [ 1.94268234  2.04931554  2.12391954         nan]]
-ln(m)    = [[-0.60775868 -0.81411146 -0.74006856 -4.05655252]
- [-0.08655338 -2.93761349 -2.28267587 -1.24364107]
- [-0.50341604 -0.426022   -0.37738837         nan]]
-log2(m)  = [[-0.87681044 -1.17451456 -1.06769324 -5.85236821]
- [-0.12487014 -4.23808042 -3.29320516 -1.7941948 ]
- [-0.72627583 -0.61461983 -0.54445634         nan]]
-log10(m) = [[-0.26394624 -0.35356411 -0.32140769 -1.76173838]
- [-0.03758966 -1.27578933 -0.99135354 -0.54010645]
- [-0.21863081 -0.185019   -0.16389769         nan]]
+m     = [[ 0.25428535  0.71854879  0.34914824  0.66570755]
+ [ 0.99082804  0.36019373  0.189798    0.0180606 ]
+ [ 0.26913479  0.62554953  0.81734394         nan]]
+e^m   = [[ 1.28953972  2.05145395  1.41785936  1.94586683]
+ [ 2.69346383  1.43360712  1.20900535  1.01822468]
+ [ 1.30883154  1.8692729   2.26447726         nan]]
+2^m   = [[ 1.19274476  1.64552596  1.27380836  1.58634608]
+ [ 1.98732529  1.28359825  1.140604    1.01259734]
+ [ 1.2050849   1.54279837  1.7621588          nan]]
+3^m   = [[ 1.32228462  2.20208916  1.46752682  2.0778932 ]
+ [ 2.96992249  1.48544332  1.23184669  1.02003976]
+ [ 1.34403298  1.98821331  2.4545516          nan]]
+ln(m)    = [[-1.36929822 -0.33052168 -1.05225869 -0.40690482]
+ [-0.00921429 -1.02111325 -1.66179493 -4.01402224]
+ [-1.31254296 -0.46912477 -0.20169529         nan]]
+log2(m)  = [[-1.97547975 -0.47684198 -1.51808839 -0.58703956]
+ [-0.01329341 -1.47315502 -2.3974633  -5.79100998]
+ [-1.89359922 -0.67680398 -0.2909848          nan]]
+log10(m) = [[-0.59467866 -0.14354374 -0.45699014 -0.17671652]
+ [-0.00400171 -0.44346385 -0.72170837 -1.74326771]
+ [-0.57003017 -0.2037383  -0.08759515         nan]]
 sum(m)   = nan
 min(m)   = nan
 max(m)   = nan
@@ -654,11 +662,11 @@ because these are not equal to zero.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-sum(m)   = 4.78562859597
-min(m)   = 0.0173085873131
-max(m)   = 0.917086591025
-mean(m)  = 0.435057145088
-std(m)   = 0.27603506567
+sum(m)   = 5.25859855513
+min(m)   = 0.0180606048999
+max(m)   = 0.990828035021
+mean(m)  = 0.478054414103
+std(m)   = 0.287903745497
 </pre></div></div>
 </div>
 <p>These are a few examples, but just ask the Internet if there is anything
@@ -678,7 +686,7 @@ Algebra</a></p>
 those with the same number unknowns and independent equations. They are
 great for turning problems into forms that are easily solved by
 computers!</p>
-<div class="figure" id="id12">
+<div class="figure" id="id26">
 <img alt="What is linear algebra" src="../_images/lect13_linear-alg-overview.png" />
 <p class="caption"><span class="caption-text">What is linear algebra</span></p>
 </div>
@@ -699,7 +707,7 @@ transformation</em> from <span class="math notranslate nohighlight">\(X\)</span>
 <li><span class="math notranslate nohighlight">\(f(x_i) + f(x_j) = f(x_i + x_j)\)</span></li>
 <li><span class="math notranslate nohighlight">\(cf(x_i) = f(cx_i)\)</span></li>
 </ol>
-<div class="figure" id="id13">
+<div class="figure" id="id27">
 <img alt="Functions" src="../_images/lect13_linear-trans.png" />
 <p class="caption"><span class="caption-text">Functions</span></p>
 </div>
@@ -733,7 +741,7 @@ is an ordered Combination.</p>
 <img alt="Matrices" src="../_images/lect13_matrix21.png" /></p>
 <div class="section" id="Matrix-Addition">
 <h2>Matrix Addition<a class="headerlink" href="#Matrix-Addition" title="Permalink to this headline">¶</a></h2>
-<div class="figure" id="id14">
+<div class="figure" id="id28">
 <img alt="Matrices" src="../_images/lect13_matrix7.png" />
 <p class="caption"><span class="caption-text">Matrices</span></p>
 </div>
@@ -778,7 +786,7 @@ is an ordered Combination.</p>
 </div>
 <div class="section" id="Scalar-Multiplication">
 <h2>Scalar Multiplication<a class="headerlink" href="#Scalar-Multiplication" title="Permalink to this headline">¶</a></h2>
-<div class="figure" id="id15">
+<div class="figure" id="id29">
 <img alt="Matrices" src="../_images/lect13_matrix8.png" />
 <p class="caption"><span class="caption-text">Matrices</span></p>
 </div>
@@ -826,8 +834,12 @@ is an ordered Combination.</p>
 </div>
 <div class="section" id="Matrix-Multiplication">
 <h2>Matrix Multiplication<a class="headerlink" href="#Matrix-Multiplication" title="Permalink to this headline">¶</a></h2>
-<div class="figure" id="id16">
-<img alt="Matrices" src="../_images/lect13_matrix9.png" />
+<div class="figure" id="id30">
+<img alt="Matrices" src="../_images/lect13_matrix9alt.png" />
+<p class="caption"><span class="caption-text">Matrices</span></p>
+</div>
+<div class="figure" id="id31">
+<img alt="Matrices" src="../_images/lect13_matrix10.png" />
 <p class="caption"><span class="caption-text">Matrices</span></p>
 </div>
 <div class="nbinput docutils container">
@@ -918,24 +930,186 @@ is an ordered Combination.</p>
 </pre></div>
 </div>
 </div>
-<div class="figure" id="id17">
-<img alt="Matrices" src="../_images/lect13_matrix10.png" />
-<p class="caption"><span class="caption-text">Matrices</span></p>
+<div class="section" id="Cautions">
+<h3>Cautions<a class="headerlink" href="#Cautions" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>In general $ <a href="#id1"><span class="problematic" id="id2">:raw-latex:`\mathbf{AB}`</span></a>
+<a href="#id3"><span class="problematic" id="id4">:raw-latex:`\neq `:raw-latex:`</span></a>mathbf{AB}`$</li>
+<li>$:raw-latex:<cite>mathbf{AB}</cite> = 0 $ does not necessarily imply that
+$:raw-latex:<cite>mathbf{A}</cite> = 0 $ or $:raw-latex:<cite>mathbf{B}</cite> = 0 $ or
+$:raw-latex:<cite>mathbf{BA}</cite> = 0 $</li>
+<li>$:raw-latex:<cite>mathbf{AC}</cite> = <a href="#id5"><span class="problematic" id="id6">:raw-latex:`\mathbf{AD}`</span></a> $ does not
+necessarily imply that $:raw-latex:<cite>mathbf{C}</cite> =
+<a href="#id7"><span class="problematic" id="id8">:raw-latex:`\mathbf{D}`</span></a> $, even when $:raw-latex:<cite>mathbf{A}</cite>
+:raw-latex:<a href="#id9"><span class="problematic" id="id10">`</span></a>neq <a href="#id11"><span class="problematic" id="id12">`</span></a>0 $</li>
+</ol>
+<p>(more about this later)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [20]:
+</pre></div>
 </div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[1 1]
+ [2 2]]
+[[-1  1]
+ [ 1 -1]]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[21]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[0, 0],
+       [0, 0]])
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[22]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([[ 1,  1],
+       [-1, -1]])
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[4 3]
+ [8 6]]
+[[4 3]
+ [8 6]]
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Multiplication-properties-of-numbers-that-do-hold-true-for-matrices">
+<h3>Multiplication properties of numbers that do hold true for matrices<a class="headerlink" href="#Multiplication-properties-of-numbers-that-do-hold-true-for-matrices" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><span class="math notranslate nohighlight">\(\mathbf{A}(\mathbf{BC}) = (\mathbf{AB})\mathbf{C} = \mathbf{ABC}\)</span></li>
+<li><span class="math notranslate nohighlight">\(k\mathbf{AB} = \mathbf{A}k\mathbf{B}\)</span></li>
+<li><span class="math notranslate nohighlight">\((\mathbf{A} + \mathbf{B})\mathbf{C} = \mathbf{AC} + \mathbf{BC}\)</span></li>
+<li><span class="math notranslate nohighlight">\(\mathbf{C}(\mathbf{A} + \mathbf{B}) = \mathbf{CA} + \mathbf{CB}\)</span></li>
+</ol>
+</div>
+</div>
+<div class="section" id="Inner-product-of-vectors">
+<h2>Inner product of vectors<a class="headerlink" href="#Inner-product-of-vectors" title="Permalink to this headline">¶</a></h2>
+<p>When an <span class="math notranslate nohighlight">\(m\times 1\)</span> matrix (aka a row vector) is multiplied by a $
+1 <a href="#id13"><span class="problematic" id="id14">:raw-latex:`\times `m$ matrix (aka a column vector), we get a
+:math:`1 \times 1`</span></a> product, called the <em>inner product</em> or <em>dot product</em>,
+denoted <span class="math notranslate nohighlight">\(\mathbf{a} \bullet \mathbf{b}\)</span>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[25]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>43
+</pre></div>
+</div>
+</div>
+<p>Every entry of <span class="math notranslate nohighlight">\(\mathbf{C} =\mathbf{AB}\)</span> is an inner product (dot
+product):</p>
+<div class="math notranslate nohighlight">
+\[c_{jk} = \mathbf{a}_j \bullet \mathbf{b}_k = (j\text{th row of }\mathbf{A}) \bullet (k\text{th column of }\mathbf{B})\]</div>
+<p>The power of matrix multiplication is in linear transformations. That
+topic will come after we finish matrices and talk about vectors.</p>
 </div>
 <div class="section" id="Special-Matrices">
 <h2>Special Matrices<a class="headerlink" href="#Special-Matrices" title="Permalink to this headline">¶</a></h2>
-<div class="figure" id="id18">
+<p>An <span class="math notranslate nohighlight">\(n \times n\)</span> matrix is called a square matrix. All others are
+rectangular matrices.</p>
+<div class="figure" id="id32">
 <img alt="Matrices" src="../_images/lect13_matrix11.png" />
 <p class="caption"><span class="caption-text">Matrices</span></p>
 </div>
-<div class="figure" id="id19">
+<p>We already covered 1 and 2. An interesting tidbit: the transpose of a
+product equals the product of the transposed factors, taken in reverse
+order:</p>
+<div class="math notranslate nohighlight">
+\[(\mathbf{A} \mathbf{B})^T = \mathbf{B}^T \mathbf{A}^T\]</div>
+<p>Would you wager a guess as to what a symmetric matrix is? A
+skew-symmetric matrix? What property must they have?</p>
+<p>How about upper and lower triangular matrices?</p>
+<div class="figure" id="id33">
 <img alt="Matrices" src="../_images/lect13_matrix12.png" />
 <p class="caption"><span class="caption-text">Matrices</span></p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [20]:
+<span></span>In [26]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -955,7 +1129,7 @@ is an ordered Combination.</p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [21]:
+<span></span>In [27]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -965,7 +1139,7 @@ is an ordered Combination.</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[21]:
+<span></span>Out[27]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -974,7 +1148,7 @@ is an ordered Combination.</p>
 </pre></div>
 </div>
 </div>
-<div class="figure" id="id20">
+<div class="figure" id="id34">
 <img alt="Matrices" src="../_images/lect13_matrix13.png" />
 <p class="caption"><span class="caption-text">Matrices</span></p>
 </div>
@@ -982,7 +1156,7 @@ is an ordered Combination.</p>
 <h3>What is the identity matrix and why is it called that?<a class="headerlink" href="#What-is-the-identity-matrix-and-why-is-it-called-that?" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [22]:
+<span></span>In [28]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1005,7 +1179,7 @@ is an ordered Combination.</p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [23]:
+<span></span>In [29]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1015,7 +1189,7 @@ is an ordered Combination.</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[23]:
+<span></span>Out[29]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -1026,7 +1200,7 @@ is an ordered Combination.</p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [24]:
+<span></span>In [30]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1036,7 +1210,7 @@ is an ordered Combination.</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[24]:
+<span></span>Out[30]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -1045,19 +1219,19 @@ is an ordered Combination.</p>
 </pre></div>
 </div>
 </div>
-<div class="figure" id="id21">
+<div class="figure" id="id35">
 <img alt="Matrices" src="../_images/lect13_matrix14.png" />
 <p class="caption"><span class="caption-text">Matrices</span></p>
 </div>
 <p>If the product of two square matrices is an identity matrix, then the
 two factor matrices are inverses of each other. This means that $
-<a href="#id1"><span class="problematic" id="id2">:raw-latex:`\left`( \\begin{array}{ccc} x_{11} &amp; x_{12} \\ x_{21} &amp;
+<a href="#id15"><span class="problematic" id="id16">:raw-latex:`\left`( \\begin{array}{ccc} x_{11} &amp; x_{12} \\ x_{21} &amp;
 x_{22} \\end{array} :raw-latex:`</span></a>right`) $ is an inverse matrix to $
-:raw-latex:<a href="#id3"><span class="problematic" id="id4">`</span></a>left`(</p>
+:raw-latex:<a href="#id17"><span class="problematic" id="id18">`</span></a>left`(</p>
 <div class="math notranslate nohighlight">
 \begin{array}{ccc}
 1 &amp; 2 \\
-3 &amp; 4 \end{array}</div><p><a href="#id5"><span class="problematic" id="id6">:raw-latex:`\right`</span></a>) $ if</p>
+3 &amp; 4 \end{array}</div><p><a href="#id19"><span class="problematic" id="id20">:raw-latex:`\right`</span></a>) $ if</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \left( \begin{array}{ccc}
 1 &amp; 2 \\
@@ -1068,27 +1242,33 @@ x_{21} &amp; x_{22} \end{array} \right)
 = \left( \begin{array}{ccc}
 1 &amp; 0 \\
 0 &amp; 1 \end{array} \right)\end{split}\]</div>
-<div class="figure" id="id22">
+<div class="figure" id="id36">
 <img alt="Matrices" src="../_images/lect13_matrix15.png" />
 <p class="caption"><span class="caption-text">Matrices</span></p>
 </div>
-<div class="figure" id="id23">
+<div class="figure" id="id37">
 <img alt="Matrices" src="../_images/lect13_matrix16.png" />
 <p class="caption"><span class="caption-text">Matrices</span></p>
 </div>
-<div class="figure" id="id24">
+<div class="figure" id="id38">
 <img alt="Matrices" src="../_images/lect13_matrix17.png" />
 <p class="caption"><span class="caption-text">Matrices</span></p>
 </div>
+<p><em>Note:</em> the example above has one solution. Singular cases (definition
+below) have none or infinite solutions.</p>
+<div class="figure" id="id39">
+<img alt="Matrices" src="../_images/lect13_singular.png" />
+<p class="caption"><span class="caption-text">Matrices</span></p>
+</div>
 <p>Now, using Gaussian elimination (e.g.&nbsp;the sweeping method) find, the
-inverse matrix of $ :raw-latex:<a href="#id7"><span class="problematic" id="id8">`</span></a>left`(</p>
+inverse matrix of $ :raw-latex:<a href="#id21"><span class="problematic" id="id22">`</span></a>left`(</p>
 <div class="math notranslate nohighlight">
 \begin{array}{ccc}
 3 &amp; 1 \\
-1 &amp; 2 \end{array}</div><p><a href="#id9"><span class="problematic" id="id10">:raw-latex:`\right`</span></a>) $</p>
+1 &amp; 2 \end{array}</div><p><a href="#id23"><span class="problematic" id="id24">:raw-latex:`\right`</span></a>) $</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [25]:
+<span></span>In [31]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1109,7 +1289,7 @@ inverse matrix of $ :raw-latex:<a href="#id7"><span class="problematic" id="id8"
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [26]:
+<span></span>In [32]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1120,7 +1300,7 @@ inverse matrix of $ :raw-latex:<a href="#id7"><span class="problematic" id="id8"
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[26]:
+<span></span>Out[32]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -1131,7 +1311,7 @@ inverse matrix of $ :raw-latex:<a href="#id7"><span class="problematic" id="id8"
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [27]:
+<span></span>In [33]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1141,7 +1321,7 @@ inverse matrix of $ :raw-latex:<a href="#id7"><span class="problematic" id="id8"
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[27]:
+<span></span>Out[33]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -1150,18 +1330,22 @@ inverse matrix of $ :raw-latex:<a href="#id7"><span class="problematic" id="id8"
 </pre></div>
 </div>
 </div>
-<div class="figure" id="id25">
+<div class="figure" id="id40">
 <img alt="Matrices" src="../_images/lect13_matrix18.png" />
 <p class="caption"><span class="caption-text">Matrices</span></p>
 </div>
-<div class="figure" id="id26">
+<div class="figure" id="id41">
 <img alt="Matrices" src="../_images/lect13_matrix19.png" />
 <p class="caption"><span class="caption-text">Matrices</span></p>
 </div>
-<div class="figure" id="id27">
+<div class="figure" id="id42">
 <img alt="Matrices" src="../_images/lect13_matrix20.png" />
 <p class="caption"><span class="caption-text">Matrices</span></p>
 </div>
+<p>If <strong>A</strong> has an inverse, than <strong>A</strong> is a <em>nonsingular matrix</em>.
+Similarly, if <strong>A</strong> has no inverse, then <strong>A</strong> is called a <em>singular
+matrix</em>.</p>
+<p>If <strong>A</strong> has an inverse, the inverse is unique.</p>
 </div>
 </div>
 <div class="section" id="Calculating-determinants">
@@ -1170,7 +1354,7 @@ inverse matrix of $ :raw-latex:<a href="#id7"><span class="problematic" id="id8"
 <img alt="Matrices" src="../_images/lect13_matrix21.png" /></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [28]:
+<span></span>In [34]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1181,7 +1365,7 @@ inverse matrix of $ :raw-latex:<a href="#id7"><span class="problematic" id="id8"
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[28]:
+<span></span>Out[34]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -1189,13 +1373,13 @@ inverse matrix of $ :raw-latex:<a href="#id7"><span class="problematic" id="id8"
 </pre></div>
 </div>
 </div>
-<div class="figure" id="id28">
+<div class="figure" id="id43">
 <img alt="Matrices" src="../_images/lect13_matrix22.png" />
 <p class="caption"><span class="caption-text">Matrices</span></p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [29]:
+<span></span>In [35]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1216,7 +1400,7 @@ inverse matrix of $ :raw-latex:<a href="#id7"><span class="problematic" id="id8"
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [30]:
+<span></span>In [36]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1226,7 +1410,7 @@ inverse matrix of $ :raw-latex:<a href="#id7"><span class="problematic" id="id8"
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[30]:
+<span></span>Out[36]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -1234,14 +1418,19 @@ inverse matrix of $ :raw-latex:<a href="#id7"><span class="problematic" id="id8"
 </pre></div>
 </div>
 </div>
-<div class="figure" id="id29">
+<div class="figure" id="id44">
 <img alt="Matrices" src="../_images/lect13_matrix23.png" />
 <p class="caption"><span class="caption-text">Matrices</span></p>
 </div>
+<div class="section" id="Fun-fact-about-determinants:">
+<h3>Fun fact about determinants:<a class="headerlink" href="#Fun-fact-about-determinants:" title="Permalink to this headline">¶</a></h3>
+<p>For any <span class="math notranslate nohighlight">\(n \times n\)</span> matrices <strong>A</strong> and <strong>B</strong>, det(<strong>AB</strong>) =
+det(<strong>BA</strong>) = det(<strong>A</strong>) det(<strong>B</strong>).</p>
 </div>
 </div>
-<div class="section" id="Next-up:-Vectors!">
-<h1>Next up: Vectors!<a class="headerlink" href="#Next-up:-Vectors!" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="Next-up:-Vectors-and-Linear-Transformations!">
+<h1>Next up: Vectors and Linear Transformations!<a class="headerlink" href="#Next-up:-Vectors-and-Linear-Transformations!" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
