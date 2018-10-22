@@ -1,0 +1,666 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>15) Eigenvectors and Eigenvalues &#8212; CHE 696: On-Ramp to Data Science 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: On-Ramp to Data Science 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #303F9F;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #D84315;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 9ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: #f7f7f7;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.pngmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+</style>
+<div class="section" id="15)-Eigenvectors-and-Eigenvalues">
+<h1>15) Eigenvectors and Eigenvalues<a class="headerlink" href="#15)-Eigenvectors-and-Eigenvalues" title="Permalink to this headline">¶</a></h1>
+<p>Related references:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://search.lib.umich.edu/catalog/record/016260792">Feature Engineering for Machine
+Learning</a></li>
+<li><a class="reference external" href="https://www.safaribooksonline.com/library/view/the-manga-guide/9781457166730/">The Manga Guide to Linear
+Algebra</a></li>
+<li><a class="reference external" href="http://math.mit.edu/~gs/linearalgebra/">Introduction to Linear Algebra by Gilbert
+Strang</a></li>
+<li><a class="reference external" href="https://search.lib.umich.edu/catalog/record/016256884">Advanced Engineering Mathematics by Erwin
+Kreyszig</a></li>
+</ul>
+</div>
+<div class="section" id="One-of-the-most-important-problems-in-linear-algebra:">
+<h1>One of the most important problems in linear algebra:<a class="headerlink" href="#One-of-the-most-important-problems-in-linear-algebra:" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\mathbf{Ax} = \lambda \mathbf{x}\\where **A** is a square matrix, :math:`\lambda` is an **eigenvalue**\end{aligned}\end{align} \]</div>
+<p>(also called a <strong>characteristic value</strong> or <em>latent root</em>), and <strong>x</strong> is
+the corresponding <strong>eigenvector</strong> or <strong>characteristic vector</strong>. We
+disregard the trivial solution of <strong>x</strong> = <strong>0</strong> and <span class="math notranslate nohighlight">\(\lambda = 0\)</span>.</p>
+<p>Thus, multiplying <strong>u</strong> by <strong>A</strong> scales <strong>u</strong> by <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+<p>The set of eigenvalues is called the <strong>spectrum</strong> of <strong>A</strong>. The largest
+of the absolute values of the eigenvalues of <strong>A</strong> is called the
+<strong>spectral radius</strong> of <strong>A</strong>.</p>
+<p>The set of all eigenvectors corresponding to an eigenvalue of <strong>A</strong>,
+together with <strong>0</strong>, forms a vector space called the <strong>eigenspace</strong> of
+<strong>A</strong> corresponding to this eigenvalue.</p>
+<p>The problem of determining eigenvalues and eigenvectors (called an
+<em>eigenvalue problem</em>) has many applications, some of which we will
+discuss after getting through some terminology and mechanics.</p>
+<p><img alt="Eigen" src="../_images/lect15_eigen1.png" /> This and other comics from <a class="reference external" href="https://www.safaribooksonline.com/library/view/the-manga-guide/9781457166730/">The Manga Guide to Linear
+Algebra</a></p>
+<div class="section" id="But-how-do-we-solve-these-equations?">
+<h2>But how do we solve these equations?<a class="headerlink" href="#But-how-do-we-solve-these-equations?" title="Permalink to this headline">¶</a></h2>
+<p>We rearrange our system of</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\mathbf{Ax}= \lambda \mathbf{x})\\to be:\end{aligned}\end{align} \]</div>
+<div class="math notranslate nohighlight">
+\[(\mathbf{A} - \lambda \mathbf{I})\mathbf{x} = \mathbf{0}\]</div>
+<p>And Cramer’s Theorem (covered last lecture) states that this homogeneous
+system of equations has a nontrivial solution if and only if the
+corresponding determinant of the coefficients is zero.</p>
+<p>This special determinent, <span class="math notranslate nohighlight">\(D(\lambda)\)</span>, is called the
+<strong>characteristic determinant</strong>:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}D(\lambda) = \text{det}(\mathbf{A} - \lambda \mathbf{I})\\which we set equal to zero to find the values of :math:`\lambda`.\end{aligned}\end{align} \]</div>
+<div class="figure" id="id5">
+<img alt="Eigen" src="../_images/lect15_eigen2.png" />
+<p class="caption"><span class="caption-text">Eigen</span></p>
+</div>
+<div class="figure" id="id6">
+<img alt="Eigen" src="../_images/lect15_eigen3.png" />
+<p class="caption"><span class="caption-text">Eigen</span></p>
+</div>
+<p>In this case, the characteristic determinant is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} D(\lambda) = \text{det}(\mathbf{A} - \lambda \mathbf{I}) = \left|
+\begin{array}{cc} 8-\lambda &amp; -3 \\ 2 &amp; 1-\lambda \end{array}
+\right|\end{split}\]</div>
+<p>After expanding, we get the <strong>characteristic equation</strong> or
+<strong>characterisic polynomial</strong>:</p>
+<div class="math notranslate nohighlight">
+\[D(\lambda) = \lambda^2 -9 \lambda + 14 =0\]</div>
+<p><strong>Theorem</strong>: The eigenvalues of a square matrix <strong>A</strong> are the roots of
+the characteristic equation of <strong>A</strong>. Hence an <span class="math notranslate nohighlight">\(n \times n\)</span> matrix
+has at least one eigenvalue and at most <span class="math notranslate nohighlight">\(n\)</span> numerically different
+eigenvalues.</p>
+<p>Eigenvalues are determined first. Then we find the eigenvectors.</p>
+<p><strong>Theorem</strong>: If <strong>x</strong> is an eigenvector of a matrix <strong>A</strong> corresponding
+to an eigenvalue <span class="math notranslate nohighlight">\(\lambda\)</span>, so is <span class="math notranslate nohighlight">\(k\)</span><strong>x</strong> with any
+<span class="math notranslate nohighlight">\(k \neq 0\)</span>.</p>
+<div class="figure" id="id7">
+<img alt="Eigen" src="../_images/lect15_eigen4.png" />
+<p class="caption"><span class="caption-text">Eigen</span></p>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Even easier: make the computer compute them!</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">print</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[ 7.  2.]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># eigenvectors are normalized (unit “length”) eigenvectors</span>
+<span class="k">print</span><span class="p">(</span><span class="n">eigenvectors</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[ 0.9486833   0.4472136 ]
+ [ 0.31622777  0.89442719]]
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">eigval1</span> <span class="o">=</span> <span class="n">eigenvalues</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">eigval2</span> <span class="o">=</span> <span class="n">eigenvalues</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="c1"># eigenvectors are displayed such that the column v[:,i] is</span>
+<span class="c1">#    the eigenvector corresponding to the eigenvalue w[i].</span>
+<span class="n">eigvec1</span> <span class="o">=</span> <span class="n">eigenvectors</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">eigvec2</span> <span class="o">=</span> <span class="n">eigenvectors</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Always a good idea to check our work:</span>
+<span class="n">left_check</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">eigvec1</span><span class="p">)</span>
+<span class="n">right_check</span> <span class="o">=</span> <span class="n">eigval1</span> <span class="o">*</span> <span class="n">eigvec1</span>
+<span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">left_check</span><span class="p">,</span> <span class="n">right_check</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;The first eigenvalue ({}) </span><span class="se">\n</span><span class="s2"> &quot;</span>
+          <span class="s2">&quot;pairs with eigenvector {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eigval1</span><span class="p">,</span> <span class="n">eigvec1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The first eigenvalue (7.0)
+ pairs with eigenvector [ 0.9486833   0.31622777]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">left_check</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">eigvec2</span><span class="p">)</span>
+<span class="n">right_check</span> <span class="o">=</span> <span class="n">eigval2</span> <span class="o">*</span> <span class="n">eigvec2</span>
+<span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">left_check</span><span class="p">,</span> <span class="n">right_check</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;The first eigenvalue ({}) </span><span class="se">\n</span><span class="s2"> &quot;</span>
+          <span class="s2">&quot;pairs with eigenvector {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eigval1</span><span class="p">,</span> <span class="n">eigvec1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The first eigenvalue (7.0)
+ pairs with eigenvector [ 0.9486833   0.31622777]
+</pre></div></div>
+</div>
+<p>All diagonalizable <span class="math notranslate nohighlight">\(n\times n\)</span> matrices always have <span class="math notranslate nohighlight">\(n\)</span>
+linearly independent eigenvectors. In other words, there is always a
+basis in <span class="math notranslate nohighlight">\(R^n\)</span> consisting solely of eigenvectors, called an
+eigenbasis.</p>
+<p><strong>However,</strong> there are not always <span class="math notranslate nohighlight">\(n\)</span> unique eigenvalues!</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [52]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[-3.  5. -3.]
+</pre></div></div>
+</div>
+<p>How does this happen?</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [48]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">mult_sol_d</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">mult_sol_d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[ 1.  2. -3.]
+ [ 2.  4. -6.]
+ [-1. -2.  3.]]
+</pre></div></div>
+</div>
+<p>Which reduces to:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}   \left[
+  \begin{array}{ccc} 1 &amp; 2 &amp; -3 \\ 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0\end{array}
+  \right]\end{split}\\which gives us a single equation with three unknowns:\end{aligned}\end{align} \]</div>
+<div class="math notranslate nohighlight">
+\[x_1 = -2x_2 + 3 x_3\]</div>
+<p>From this we can get 2 linearly independent eigenvectors if we use $x_2
+=1 $ and <span class="math notranslate nohighlight">\(x_3 = 1\)</span> for one eigenvector with eigenvalue of -3, and
+use <span class="math notranslate nohighlight">\(x_2 = 0\)</span> and <span class="math notranslate nohighlight">\(x_3 = 1\)</span> for the other. That is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{x}_1 = \left[ \begin{array}{ccc} -2 \\ 1 \\ 0\end{array}
+    \right] \quad \text{and} \quad \mathbf{x}_3 = \left[ \begin{array}{ccc} 3 \\ 0 \\ 1\end{array}
+\right]\end{split}\]</div>
+<p>Those are not the only bases that can be used. Let’s see what NumPy
+chose, and then validate the solutions.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [42]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">print</span><span class="p">(</span><span class="n">eigenvectors</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[-0.95257934  0.40824829 -0.05430304]
+ [ 0.27216553  0.81649658  0.83908241]
+ [-0.13608276 -0.40824829  0.54128726]]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [59]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">left_check</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">eigenvectors</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span>
+    <span class="n">right_check</span> <span class="o">=</span> <span class="n">eigenvalues</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">eigenvectors</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">left_check</span><span class="p">,</span> <span class="n">right_check</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;The eigenvalue {:.2f} </span><span class="se">\n</span><span class="s2">   &quot;</span>
+              <span class="s2">&quot;pairs with eigenvector {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                                 <span class="n">eigenvectors</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">left_check</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">right_check</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The eigenvalue -3.00
+ pairs with eigenvector [-0.95257934  0.27216553 -0.13608276]
+The eigenvalue 5.00
+ pairs with eigenvector [ 0.40824829  0.81649658 -0.40824829]
+The eigenvalue -3.00
+ pairs with eigenvector [-0.05430304  0.83908241  0.54128726]
+[[-2  2 -3]
+ [ 2  1 -6]
+ [-1 -2  0]]
+[-3.  5. -3.]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [65]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Now validating our hand solution:</span>
+<span class="n">x_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">x_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="n">left_check</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x_0</span><span class="p">)</span>
+<span class="n">right_check</span> <span class="o">=</span> <span class="n">eigenvalues</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">x_0</span>
+<span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">left_check</span><span class="p">,</span> <span class="n">right_check</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;The eigenvalue {:.2f} </span><span class="se">\n</span><span class="s2">   could alternately pair&quot;</span>
+          <span class="s2">&quot;with eigenvector {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x_0</span><span class="p">))</span>
+
+<span class="n">left_check</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x_2</span><span class="p">)</span>
+<span class="n">right_check</span> <span class="o">=</span> <span class="n">eigenvalues</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">x_2</span>
+<span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">left_check</span><span class="p">,</span> <span class="n">right_check</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;   and the orthogonal &quot;</span>
+          <span class="s2">&quot;eigenvector {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x_2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The eigenvalue -3.00
+   could alternately pairwith eigenvector [-2  1  0]
+   and the orthogonal eigenvector [3 0 1]
+</pre></div></div>
+</div>
+<p>The order <span class="math notranslate nohighlight">\(M_A\)</span> of an eigenvalue <span class="math notranslate nohighlight">\(\lambda\)</span> as a root of the
+characteristic polynomial is the <strong>algebraic multiplicity</strong> of
+<span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+<p>The number <span class="math notranslate nohighlight">\(m_{\lambda}\)</span> of linearly independent eigenvectors
+corresponding to <span class="math notranslate nohighlight">\(\lambda\)</span> is the <strong>geometric multiplicity</strong> of
+<span class="math notranslate nohighlight">\(\lambda\)</span>. Thus, <span class="math notranslate nohighlight">\(m_{\lambda}\)</span> is the dimension of the
+eigenspace corresponding to this <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+<p>Since the characteristic polynomial has degree <span class="math notranslate nohighlight">\(n\)</span>, the sum of all
+algebraic multiplicities must equal <span class="math notranslate nohighlight">\(n\)</span>.</p>
+</div>
+<div class="section" id="Can-real-matrices-get-complex?">
+<h2>Can real matrices get complex?<a class="headerlink" href="#Can-real-matrices-get-complex?" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [67]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[ 0.+1.j  0.-1.j]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [68]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">print</span><span class="p">(</span><span class="n">eigenvectors</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[ 0.70710678+0.j          0.70710678-0.j        ]
+ [ 0.00000000+0.70710678j  0.00000000-0.70710678j]]
+</pre></div></div>
+</div>
+<p>In general, for $ <a href="#id1"><span class="problematic" id="id2">:raw-latex:`\mathbf{A}`</span></a> =
+<a href="#id3"><span class="problematic" id="id4">:raw-latex:`\left[ \begin{array}{cc}
+a &amp; b \\
+-b &amp; a \end{array} \right] `$, $ :raw-latex:`</span></a>mathbf{A}`$ has
+eigenvectors <span class="math notranslate nohighlight">\(a +ib\)</span> and <span class="math notranslate nohighlight">\(a-ib\)</span>.</p>
+<p><strong>Next up:</strong> Basic stats and probability!</p>
+<div class="section" id="Permutations">
+<h3>Permutations<a class="headerlink" href="#Permutations" title="Permalink to this headline">¶</a></h3>
+<p>Choosing three from n items in a certain order creates a permutation of
+the chosen items. The number of possible permutations of k objects
+chosen among n objects is written as: $ _nP_k $ The number of ways k
+objects can be chosen among n possible ones is equal to:</p>
+<div class="math notranslate nohighlight">
+\[_nP_k = \frac{n!}{(n-k)!}\]</div>
+</div>
+<div class="section" id="Combinations">
+<h3>Combinations<a class="headerlink" href="#Combinations" title="Permalink to this headline">¶</a></h3>
+<p>Choosing k among n items without considering the order in which they are
+chosen is called a combination. The number of different ways this can be
+done is written by using the binomial coefficient notation: $
+{n:raw-latex:<cite>choose `k} $ or :math:`_nC_r</cite> which is read “n choose k.”</p>
+<div class="math notranslate nohighlight">
+\[{n\choose k} = \frac{n!}{k!(n-k)!} = \frac{_nP_k}{k!}\]</div>
+<p>When the order <em>doesn’t</em> matter, it is a Combination.</p>
+<p>When the order <em>does</em> matter it is a Permutation. <img alt="Basics" src="../_images/lect13_permutation.png" /> A Permutation
+is an ordered Combination.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: On-Ramp to Data Science 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Heather Mayes.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,445 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 14) NumPy with Vectors\n",
+    "\n",
+    "Related references:\n",
+    "\n",
+    "- [Feature Engineering for Machine Learning](https://search.lib.umich.edu/catalog/record/016260792) \n",
+    "- [The Manga Guide to Linear Algebra](https://www.safaribooksonline.com/library/view/the-manga-guide/9781457166730/)\n",
+    "- [Introduction to Linear Algebra by Gilbert Strang](http://math.mit.edu/~gs/linearalgebra/)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Vectors"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Overview\n",
+    "\n",
+    "![Vectors](images/lect14_vectors1.png)\n",
+    "This and other comics from [The Manga Guide to Linear Algebra](https://www.safaribooksonline.com/library/view/the-manga-guide/9781457166730/)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Vectors](images/lect14_vectors2.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Vectors](images/lect14_vectors3.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Vectors](images/lect14_vectors4.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Vectors](images/lect14_vectors5.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Vectors](images/lect14_vectors6.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Find the constants $c_1, c_2, c_3$, and $c_4$ that satisfy the equation:\n",
+    "$$\\left( \\begin{array}{ccc}\n",
+    "0 \\\\\n",
+    "0 \\end{array} \\right) = c_1 \\left( \\begin{array}{ccc}\n",
+    "1 \\\\\n",
+    "0 \\end{array} \\right)\n",
+    "+ c_2 \\left( \\begin{array}{ccc} 1 \\\\ 0 \\end{array} \\right) + \n",
+    "c_3 \\left( \\begin{array}{ccc} 3 \\\\ 1 \\end{array} \\right) + c_4 \\left( \\begin{array}{ccc} 1 \\\\ 2 \\end{array} \\right)$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Vectors](images/lect14_vectors7.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Vectors](images/lect14_vectors8.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Vectors](images/lect14_vectors9.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Vectors](images/lect14_vectors10.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Vectors](images/lect14_vectors11.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Vectors](images/lect14_vectors12.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Vectors](images/lect14_vectors13.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Vectors](images/lect14_vectors14.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": true
+   },
+   "source": [
+    "## What is a subspace?\n",
+    "\n",
+    "Let $c$ be an arbitrary real number and $W$ be a nonempty subset of $R^m$ satisfying these two conditions:\n",
+    "\n",
+    "1. An element in $W$ multiplied by $c$ is still an element in $W$. (Closed under scalar multiplication.)\n",
+    "\n",
+    "    If $\\left( \\begin{array}{c} a_{1i} \\\\ a_{2i} \\\\ \\vdots \\\\ a_{mi} \\end{array} \\right) \\in W $, then $c \\left( \\begin{array}{c} a_{1i} \\\\ a_{2i} \\\\ \\vdots \\\\ a_{mi} \\end{array} \\right) \\in W $\n",
+    "    \n",
+    "1. The sum of two arbitrary elements in W is still an element in W. (Closed under addition.)\n",
+    "\n",
+    "    If $\\left( \\begin{array}{c} a_{1i} \\\\ a_{2i} \\\\ \\vdots \\\\ a_{mi} \\end{array} \\right) \\in W $ and $\\left( \\begin{array}{c} a_{1j} \\\\ a_{2j} \\\\ \\vdots \\\\ a_{mj} \\end{array} \\right) \\in W $, then $ \\left( \\begin{array}{c} a_{1i} \\\\ a_{2i} \\\\ \\vdots \\\\ a_{mi} \\end{array} \\right) + \\left( \\begin{array}{c} a_{1j} \\\\ a_{2j} \\\\ \\vdots \\\\ a_{mj} \\end{array} \\right) \\in W $\n",
+    "    \n",
+    "If both of these conditions hold, then $W$ is a subspace of $R^m$."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Vectors](images/lect14_vectors15.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Another, more concrete way to look at one-dimensional subspaces is as lines through the origin. Two-dimensional subspaces are similarly planes through the origin. Other subspaces can also be visualized, but not as easily.\n",
+    "\n",
+    "![Vectors](images/lect14_vectors16.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Vectors](images/lect14_vectors17.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Vectors](images/lect14_vectors18.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Vectors](images/lect14_vectors19.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Vectors](images/lect14_vectors20.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Vectors](images/lect14_vectors19.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "np.matmul(d, e)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "np.matmul(e, d)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Matrices](images/lect13_matrix10.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Special Matrices\n",
+    "\n",
+    "![Matrices](images/lect13_matrix11.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Matrices](images/lect13_matrix12.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "f = np.array([[2, 0], [0, 3]])\n",
+    "print(f)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "np.linalg.matrix_power(f, 3)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Matrices](images/lect13_matrix13.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### What is the identity matrix and why is it called that?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "eye = np.eye(2, dtype=int)\n",
+    "print(d)\n",
+    "print(eye)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "np.matmul(d, eye)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "np.matmul(eye, d)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Matrices](images/lect13_matrix14.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "If the product of two square matrices is an identity matrix, then the two factor matrices are inverses of each other. This means that \n",
+    "$ \\left( \\begin{array}{ccc}\n",
+    "x_{11} & x_{12} \\\\\n",
+    "x_{21} & x_{22} \\end{array} \\right) $ is an inverse matrix to \n",
+    "$ \\left( \\begin{array}{ccc}\n",
+    "1 & 2 \\\\\n",
+    "3 & 4 \\end{array} \\right) $  if\n",
+    "\n",
+    "$$ \\left( \\begin{array}{ccc}\n",
+    "1 & 2 \\\\\n",
+    "3 & 4 \\end{array} \\right)\n",
+    "\\left( \\begin{array}{ccc}\n",
+    "x_{11} & x_{12} \\\\\n",
+    "x_{21} & x_{22} \\end{array} \\right)\n",
+    "= \\left( \\begin{array}{ccc}\n",
+    "1 & 0 \\\\\n",
+    "0 & 1 \\end{array} \\right) $$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Matrices](images/lect13_matrix15.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Matrices](images/lect13_matrix16.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Matrices](images/lect13_matrix17.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Matrices](images/lect13_matrix18.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "g = np.array([[3, 1], [1, 2]])\n",
+    "h = np.linalg.inv(g)\n",
+    "print(h)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 55,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 1.,  0.],\n",
+       "       [ 0.,  1.]])"
+      ]
+     },
+     "execution_count": 55,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# checking our work\n",
+    "np.matmul(g, h)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 56,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 1.,  0.],\n",
+       "       [ 0.,  1.]])"
+      ]
+     },
+     "execution_count": 56,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.matmul(h, g)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "![Matrices](images/lect13_matrix18.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Next up: Eigenvectors and eigenvalues!"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.1"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

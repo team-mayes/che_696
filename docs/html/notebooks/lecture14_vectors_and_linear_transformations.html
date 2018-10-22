@@ -1,0 +1,720 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>14) Vectors and Linear Transformations &#8212; CHE 696: On-Ramp to Data Science 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: On-Ramp to Data Science 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #303F9F;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #D84315;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 9ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: #f7f7f7;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.pngmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+</style>
+<div class="section" id="14)-Vectors-and-Linear-Transformations">
+<h1>14) Vectors and Linear Transformations<a class="headerlink" href="#14)-Vectors-and-Linear-Transformations" title="Permalink to this headline">¶</a></h1>
+<p>Related references:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://search.lib.umich.edu/catalog/record/016260792">Feature Engineering for Machine
+Learning</a></li>
+<li><a class="reference external" href="https://www.safaribooksonline.com/library/view/the-manga-guide/9781457166730/">The Manga Guide to Linear
+Algebra</a></li>
+<li><a class="reference external" href="http://math.mit.edu/~gs/linearalgebra/">Introduction to Linear Algebra by Gilbert
+Strang</a></li>
+<li><a class="reference external" href="https://search.lib.umich.edu/catalog/record/016256884">Advanced Engineering Mathematics by Erwin
+Kreyszig</a></li>
+</ul>
+</div>
+<div class="section" id="Vectors">
+<h1>Vectors<a class="headerlink" href="#Vectors" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Overview">
+<h2>Overview<a class="headerlink" href="#Overview" title="Permalink to this headline">¶</a></h2>
+<p><img alt="Vectors" src="../_images/lect14_vectors1.png" /> This and other comics from <a class="reference external" href="https://www.safaribooksonline.com/library/view/the-manga-guide/9781457166730/">The Manga Guide to Linear
+Algebra</a></p>
+<div class="figure" id="id41">
+<img alt="Vectors" src="../_images/lect14_vectors2.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<div class="figure" id="id42">
+<img alt="Vectors" src="../_images/lect14_vectors3.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<div class="figure" id="id43">
+<img alt="Vectors" src="../_images/lect14_vectors4.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<div class="figure" id="id44">
+<img alt="Vectors" src="../_images/lect14_vectors5.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+</div>
+<div class="section" id="Linear-Dependence-and-Bases">
+<h2>Linear Dependence and Bases<a class="headerlink" href="#Linear-Dependence-and-Bases" title="Permalink to this headline">¶</a></h2>
+<div class="figure" id="id45">
+<img alt="Vectors" src="../_images/lect14_vectors6.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<p>Find the constants <span class="math notranslate nohighlight">\(c_1, c_2, c_3\)</span>, and <span class="math notranslate nohighlight">\(c_4\)</span> that satisfy
+the equation:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left( \begin{array}{ccc}
+0 \\
+0 \end{array} \right) = c_1 \left( \begin{array}{ccc}
+1 \\
+0 \end{array} \right)
++ c_2 \left( \begin{array}{ccc} 1 \\ 0 \end{array} \right) +
+c_3 \left( \begin{array}{ccc} 3 \\ 1 \end{array} \right) + c_4 \left( \begin{array}{ccc} 1 \\ 2 \end{array} \right)\end{split}\]</div>
+<div class="figure" id="id46">
+<img alt="Vectors" src="../_images/lect14_vectors7.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<div class="figure" id="id47">
+<img alt="Vectors" src="../_images/lect14_vectors8.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<div class="figure" id="id48">
+<img alt="Vectors" src="../_images/lect14_vectors9.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<div class="figure" id="id49">
+<img alt="Vectors" src="../_images/lect14_vectors10.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<div class="figure" id="id50">
+<img alt="Vectors" src="../_images/lect14_vectors11.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<div class="figure" id="id51">
+<img alt="Vectors" src="../_images/lect14_vectors12.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<div class="figure" id="id52">
+<img alt="Vectors" src="../_images/lect14_vectors13.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+</div>
+<div class="section" id="Dimension">
+<h2>Dimension<a class="headerlink" href="#Dimension" title="Permalink to this headline">¶</a></h2>
+<div class="figure" id="id53">
+<img alt="Vectors" src="../_images/lect14_vectors14.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+</div>
+<div class="section" id="What-is-a-subspace?">
+<h2>What is a subspace?<a class="headerlink" href="#What-is-a-subspace?" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(c\)</span> be an arbitrary real number and <span class="math notranslate nohighlight">\(W\)</span> be a nonempty
+subset of <span class="math notranslate nohighlight">\(R^m\)</span> satisfying these two conditions:</p>
+<ol class="arabic">
+<li><p class="first">An element in <span class="math notranslate nohighlight">\(W\)</span> multiplied by <span class="math notranslate nohighlight">\(c\)</span> is still an element
+in <span class="math notranslate nohighlight">\(W\)</span>. (Closed under scalar multiplication.)</p>
+<p>If $:raw-latex:<cite>left`( \begin{array}{c} a_{1i} \ a_{2i} \
+:raw-latex:</cite>vdots <cite>\ a_{mi} \end{array} :raw-latex:</cite>right`)
+<a href="#id1"><span class="problematic" id="id2">:raw-latex:`\in `W $, then $c :raw-latex:`</span></a>left`( \begin{array}{c}
+a_{1i} \ a_{2i} \ <a href="#id3"><span class="problematic" id="id4">:raw-latex:`\vdots `\\ a_{mi} \\end{array}
+:raw-latex:`</span></a>right`) :raw-latex:<a href="#id5"><span class="problematic" id="id6">`</span></a>in <a href="#id7"><span class="problematic" id="id8">`</span></a>W $</p>
+</li>
+<li><p class="first">The sum of two arbitrary elements in W is still an element in W.
+(Closed under addition.)</p>
+<p>If $:raw-latex:<cite>left`( \begin{array}{c} a_{1i} \ a_{2i} \
+:raw-latex:</cite>vdots <cite>\ a_{mi} \end{array} :raw-latex:</cite>right`)
+<a href="#id9"><span class="problematic" id="id10">:raw-latex:`\in `W $ and $:raw-latex:`</span></a>left`( \begin{array}{c}
+a_{1j} \ a_{2j} \ <a href="#id11"><span class="problematic" id="id12">:raw-latex:`\vdots `\\ a_{mj} \\end{array}
+:raw-latex:`</span></a>right`) <a href="#id13"><span class="problematic" id="id14">:raw-latex:`\in `W $, then $ :raw-latex:`</span></a>left`(
+\begin{array}{c} a_{1i} \ a_{2i} \ <a href="#id15"><span class="problematic" id="id16">:raw-latex:`\vdots `\\ a_{mi}
+\\end{array} :raw-latex:`</span></a>right`) + <a href="#id17"><span class="problematic" id="id18">:raw-latex:`\left`(
+\\begin{array}{c} a_{1j} \\ a_{2j} \\ :raw-latex:`</span></a>vdots <cite>\ a_{mj}
+\end{array} :raw-latex:</cite>right`) :raw-latex:<a href="#id19"><span class="problematic" id="id20">`</span></a>in <a href="#id21"><span class="problematic" id="id22">`</span></a>W $</p>
+</li>
+</ol>
+<p>If both of these conditions hold, then <span class="math notranslate nohighlight">\(W\)</span> is a subspace of
+<span class="math notranslate nohighlight">\(R^m\)</span>.</p>
+<div class="figure" id="id54">
+<img alt="Vectors" src="../_images/lect14_vectors15.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<p>Another, more concrete way to look at one-dimensional subspaces is as
+lines through the origin. Two-dimensional subspaces are similarly planes
+through the origin. Other subspaces can also be visualized, but not as
+easily.</p>
+<div class="figure" id="id55">
+<img alt="Vectors" src="../_images/lect14_vectors16.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<div class="figure" id="id56">
+<img alt="Vectors" src="../_images/lect14_vectors17.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<div class="figure" id="id57">
+<img alt="Vectors" src="../_images/lect14_vectors18.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="Linear-Transformations">
+<h1>Linear Transformations<a class="headerlink" href="#Linear-Transformations" title="Permalink to this headline">¶</a></h1>
+<div class="figure" id="id58">
+<img alt="Vectors" src="../_images/lect14_vectors19.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<div class="figure" id="id59">
+<img alt="Vectors" src="../_images/lect14_vectors20.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<div class="figure" id="id60">
+<img alt="Vectors" src="../_images/lect14_vectors21.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<div class="figure" id="id61">
+<img alt="Vectors" src="../_images/lect14_vectors22.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<div class="figure" id="id62">
+<img alt="Vectors" src="../_images/lect14_vectors23.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<div class="figure" id="id63">
+<img alt="Vectors" src="../_images/lect14_vectors24.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<div class="figure" id="id64">
+<img alt="Vectors" src="../_images/lect14_vectors25.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<div class="figure" id="id65">
+<img alt="Vectors" src="../_images/lect14_vectors26.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<div class="figure" id="id66">
+<img alt="Vectors" src="../_images/lect14_vectors27.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<div class="figure" id="id67">
+<img alt="Vectors" src="../_images/lect14_vectors28.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<div class="figure" id="id68">
+<img alt="Vectors" src="../_images/lect14_vectors29.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<div class="figure" id="id69">
+<img alt="Vectors" src="../_images/lect14_vectors30.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<div class="figure" id="id70">
+<img alt="Vectors" src="../_images/lect14_vectors31.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<div class="section" id="Image">
+<h2>Image<a class="headerlink" href="#Image" title="Permalink to this headline">¶</a></h2>
+<p>The image of <span class="math notranslate nohighlight">\(f\)</span> (written Im <span class="math notranslate nohighlight">\(f\)</span>) is equal to the set of
+vectors that is made up of all of the possible output values of f, as
+you can see in the following relation:</p>
+<div class="figure" id="id71">
+<img alt="Vectors" src="../_images/lect14_vectors32.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+</div>
+<div class="section" id="Rank">
+<h2>Rank<a class="headerlink" href="#Rank" title="Permalink to this headline">¶</a></h2>
+<p>The number of linearly independent vectors among the columns of the
+matrix <span class="math notranslate nohighlight">\(M\)</span> (which is also the dimension of the <span class="math notranslate nohighlight">\(R^m\)</span>
+subspace Im <span class="math notranslate nohighlight">\(f\)</span>) is called the <em>rank</em> of <span class="math notranslate nohighlight">\(M\)</span>, and it is
+written: rank <span class="math notranslate nohighlight">\(M\)</span>.</p>
+<p>What is the rank of $ :raw-latex:<a href="#id23"><span class="problematic" id="id24">`</span></a>left`(</p>
+<div class="math notranslate nohighlight">
+\begin{array}{ccc}
+3 &amp; 1 \\
+1 &amp; 2 \end{array}</div><p><a href="#id25"><span class="problematic" id="id26">:raw-latex:`\right`</span></a>) $?</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_rank</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[1]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>2
+</pre></div>
+</div>
+</div>
+<p>Of $ :raw-latex:<a href="#id27"><span class="problematic" id="id28">`</span></a>left`(</p>
+<div class="math notranslate nohighlight">
+\begin{array}{ccc}
+3 &amp; 6 \\
+1 &amp; 2 \end{array}</div><p><a href="#id29"><span class="problematic" id="id30">:raw-latex:`\right`</span></a>) $?</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_rank</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[2]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>1
+</pre></div>
+</div>
+</div>
+<div class="figure" id="id72">
+<img alt="Vectors" src="../_images/lect14_vectors33.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<div class="figure" id="id73">
+<img alt="Vectors" src="../_images/lect14_vectors34.png" />
+<p class="caption"><span class="caption-text">Vectors</span></p>
+</div>
+<div class="section" id="Back-to-the-cautions-about-matrix-multiplication:">
+<h3>Back to the cautions about matrix multiplication:<a class="headerlink" href="#Back-to-the-cautions-about-matrix-multiplication:" title="Permalink to this headline">¶</a></h3>
+<p>Recall that:</p>
+<ol class="arabic simple">
+<li>$:raw-latex:<cite>mathbf{AC}</cite> = <a href="#id31"><span class="problematic" id="id32">:raw-latex:`\mathbf{AD}`</span></a> $ does not
+necessarily imply that $:raw-latex:<cite>mathbf{C}</cite> =
+<a href="#id33"><span class="problematic" id="id34">:raw-latex:`\mathbf{D}`</span></a> $, even when $:raw-latex:<cite>mathbf{A}</cite>
+:raw-latex:<a href="#id35"><span class="problematic" id="id36">`</span></a>neq <a href="#id37"><span class="problematic" id="id38">`</span></a>0 $</li>
+<li>$:raw-latex:<cite>mathbf{AB}</cite> = 0 $ does not necessarily imply that
+$:raw-latex:<cite>mathbf{A}</cite> = 0 $ or $:raw-latex:<cite>mathbf{B}</cite> = 0 $ or
+$:raw-latex:<cite>mathbf{BA}</cite> = 0 $</li>
+</ol>
+<p>We can be specific about when implications are true using the concept of
+rank.</p>
+<p>Let <strong>A, B, C</strong> be <span class="math notranslate nohighlight">\(n \times n\)</span> matrices. Then:</p>
+<ol class="arabic simple">
+<li>If rank <strong>A</strong> <span class="math notranslate nohighlight">\(= n\)</span> and <strong>AB = AC</strong>, then <strong>B = C</strong>.</li>
+<li>If rank <strong>A</strong> <span class="math notranslate nohighlight">\(= n\)</span>, then <strong>AB = 0</strong> implies <strong>B = 0</strong>.</li>
+<li>If <strong>AB = 0</strong> but <strong>A</strong> $:raw-latex:<cite>neq `$ **0** and **B**
+$:raw-latex:</cite>neq <a href="#id39"><span class="problematic" id="id40">`</span></a>$ <strong>0</strong>, then rank <strong>A</strong> $ &lt; n $ and rank <strong>B</strong> $
+&lt; n $.</li>
+<li>If <strong>A</strong> is singular, so are <strong>AB</strong> and <strong>BA</strong>.</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="Solutions-of-Linear-Equations">
+<h1>Solutions of Linear Equations<a class="headerlink" href="#Solutions-of-Linear-Equations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Fundamental-theorem-for-linear-systems">
+<h2>Fundamental theorem for linear systems<a class="headerlink" href="#Fundamental-theorem-for-linear-systems" title="Permalink to this headline">¶</a></h2>
+<ol class="loweralpha simple">
+<li><strong>Existence.</strong> A linear system of <span class="math notranslate nohighlight">\(m\)</span> equations and <span class="math notranslate nohighlight">\(n\)</span>
+unknowns <span class="math notranslate nohighlight">\(x_1, \cdots, x_n\)</span>:</li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}  \begin{array}{ccc}
+a_{11}x_1 &amp;+&amp; a_{12}x_2 &amp;+&amp; \cdots &amp;+&amp;  a_{1n}x_n = b_1 \\
+a_{21}x_1 &amp;+&amp; a_{22}x_2 &amp;+&amp; \cdots &amp;+&amp;  a_{2n}x_n = b_2 \\
+\vdots    &amp;+&amp; \vdots    &amp;+&amp; \ddots &amp;+&amp;  \vdots \\
+a_{m1}x_1 &amp;+&amp; a_{m2}x_2 &amp;+&amp; \cdots &amp;+&amp; a_{mn}x_n = b_m \end{array}\end{split}\]</div>
+<p>has solutions if and only if the coefficient matrix <strong>A</strong> and the
+augmented matrix <span class="math notranslate nohighlight">\(\mathbf{\tilde{A}}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \mathbf{A} = \left [\begin{array}{ccc}
+a_{11} &amp; a_{12} &amp;  \cdots  &amp; a_{1n}  \\
+a_{21} &amp; a_{22} &amp;  \cdots  &amp; a_{2n}  \\
+\vdots &amp; \vdots &amp;  \ddots  &amp; \vdots  \\
+a_{m1} &amp; a_{m2} &amp;  \cdots  &amp; a_{mn}  \end{array} \right] \quad and \quad
+\mathbf{\tilde{A}} = \left [\begin{array}{ccc}
+a_{11} &amp; a_{12} &amp;  \cdots  &amp; a_{1n} &amp; b_1 \\
+a_{21} &amp; a_{22} &amp;  \cdots  &amp; a_{2n} &amp; b_2 \\
+\vdots &amp; \vdots &amp;  \ddots  &amp; \vdots &amp; \vdots \\
+a_{m1} &amp; a_{m2} &amp;  \cdots  &amp; a_{mn} &amp; b_m \end{array} \right]\end{split}\]</div>
+<ol class="loweralpha simple" start="2">
+<li><strong>Uniqueness.</strong> The system has precisely one solution if and only if
+the common rank <span class="math notranslate nohighlight">\(r\)</span> of <strong>A</strong> and <span class="math notranslate nohighlight">\(\mathbf{\tilde{A}}\)</span>
+equals <span class="math notranslate nohighlight">\(n\)</span>.</li>
+<li><strong>Infinitely many solutions.</strong> If the common rank <span class="math notranslate nohighlight">\(r &lt; n\)</span>, the
+system has infinitely many solutions (underspecified). All of these
+are obtained by determining <span class="math notranslate nohighlight">\(r\)</span> suitable unknowns (whose
+submatrix of coefficients must have rank <span class="math notranslate nohighlight">\(r\)</span>) in terms of the
+remaining <span class="math notranslate nohighlight">\(n-r\)</span> unknowns, to which arbitrary values can be
+assigned.</li>
+<li><strong>Gaussian elimination.</strong> If solutions exist, they can all be
+obtained by Gaussian elimination. It may be started without first
+determining ranks, as it will automatically reveal if solutions exist
+or not.</li>
+</ol>
+<div class="section" id="Example:">
+<h3>Example:<a class="headerlink" href="#Example:" title="Permalink to this headline">¶</a></h3>
+<p>Solve the linear system of equations:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}  \begin{array}{ccc}
+3x_0 &amp;+&amp;  x_1 &amp;=&amp;  9 \\
+ x_0 &amp;+&amp; 2x_1 &amp;=&amp;  8 \end{array}\end{split}\]</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">]])</span>
+<span class="n">a_aug</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a_aug</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[3 1 9]
+ [1 2 8]]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_rank</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_rank</span><span class="p">(</span><span class="n">a_aug</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2
+2
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[ 2.]
+ [ 3.]]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Check solution</span>
+<span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[6]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="The-homogeneous-linear-system">
+<h2>The homogeneous linear system<a class="headerlink" href="#The-homogeneous-linear-system" title="Permalink to this headline">¶</a></h2>
+<p>The linear system of <span class="math notranslate nohighlight">\(m\)</span> equations and <span class="math notranslate nohighlight">\(n\)</span> unknowns
+<span class="math notranslate nohighlight">\(x_1, \cdots, x_n\)</span> is called <strong>homogeneous</strong> if all the
+<span class="math notranslate nohighlight">\(b_j\)</span>’s on the right side equal zero. Otherwise, the system is
+called <strong>nonhomogeneous</strong>.</p>
+<p>The homogenous linear system:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}  \begin{array}{ccc}
+a_{11}x_1 &amp;+&amp; a_{12}x_2 &amp;+&amp; \cdots &amp;+&amp;  a_{1n}x_n = 0 \\
+a_{21}x_1 &amp;+&amp; a_{22}x_2 &amp;+&amp; \cdots &amp;+&amp;  a_{2n}x_n = 0 \\
+\vdots    &amp;+&amp; \vdots    &amp;+&amp; \ddots &amp;+&amp;  \vdots \\
+a_{m1}x_1 &amp;+&amp; a_{m2}x_2 &amp;+&amp; \cdots &amp;+&amp; a_{mn}x_n = 0 \end{array}\end{split}\]</div>
+<p>always has the <strong>trivial solution</strong> <span class="math notranslate nohighlight">\(x_j = 0\)</span>. Nontrivial
+solutions exist if and only if rank <strong>A</strong> &lt; n. If rank <strong>A</strong> &lt; n, these
+solutions, together with <strong>x = 0</strong> form the <strong>solution space</strong> of the
+system of equations.</p>
+<p>If <strong>x</strong><span class="math notranslate nohighlight">\(_1\)</span> and <strong>x</strong><span class="math notranslate nohighlight">\(_2\)</span> are both solution vectors of
+a homogenous system of equations, then <strong>x</strong> =
+<span class="math notranslate nohighlight">\(c_1\)</span><strong>x</strong><span class="math notranslate nohighlight">\(_1\)</span> + <span class="math notranslate nohighlight">\(c_2\)</span><strong>x</strong><span class="math notranslate nohighlight">\(_2\)</span> is a
+solution vector of the system of equations (this does <em>not</em> hold for
+homogenous systems).</p>
+<p>Homogeneous equations with fewer equations than unknowns always has
+nontrivial solutions.</p>
+</div>
+<div class="section" id="The-nonhomogeneous-linear-system">
+<h2>The nonhomogeneous linear system<a class="headerlink" href="#The-nonhomogeneous-linear-system" title="Permalink to this headline">¶</a></h2>
+<p>If a nonhomogeneous linear system of equations has solutions, then all
+these solutions are of the form:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{x} = \mathbf{x}_0 + \mathbf{x}_h\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{x}_0\)</span> is any solution of the nonhomogenous system
+of equations, and <span class="math notranslate nohighlight">\(\mathbf{x}_h\)</span> runs through all the solutions of
+the corresponding homogeneous system.</p>
+</div>
+<div class="section" id="Cramer’s-Theorem">
+<h2>Cramer’s Theorem<a class="headerlink" href="#Cramer’s-Theorem" title="Permalink to this headline">¶</a></h2>
+<p>If a linear system of <span class="math notranslate nohighlight">\(n\)</span> equations and the same number of
+unknowns <span class="math notranslate nohighlight">\(x_1, \cdots, x_n\)</span>, has a nonzero coefficient determinant
+D = det <strong>A</strong>, then the system has precisely one solution.</p>
+<p>If the system is homogeneous and D <span class="math notranslate nohighlight">\(\neq\)</span> 0, it has only the
+trivial solution <strong>x = 0</strong>. If D = 0, the homogeneous system also has
+nontrivial solutions.</p>
+<p><strong>Next up:</strong> Eigenvectors and eigenvalues!</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: On-Ramp to Data Science 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Heather Mayes.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+    </div>
+  </body>
+</html>

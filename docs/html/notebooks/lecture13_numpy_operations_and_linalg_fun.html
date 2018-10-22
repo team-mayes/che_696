@@ -268,7 +268,6 @@ performed on an element-by-element basis:</p>
 <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -278,7 +277,6 @@ performed on an element-by-element basis:</p>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 [5 6 7]
-[ 0  5 10]
 </pre></div></div>
 </div>
 <div class="section" id="Broadcasting:-How-NumPy-will-make-compatible-arrays">
@@ -294,7 +292,6 @@ actually creating such an array.</p>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -304,7 +301,6 @@ actually creating such an array.</p>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 [5 6 7]
-[ 0  5 10]
 </pre></div></div>
 </div>
 <p>A visual to describe broadcasting:</p>
@@ -450,9 +446,9 @@ std(x)   = 3.49106001094
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[[ 0.50732848  0.93346226  0.28125999  0.54348336]
- [ 0.71381474  0.45098623  0.71918993  0.61497276]
- [ 0.02521262  0.53193546  0.39399616         nan]]
+[[ 0.26887269  0.33275166  0.96524089  0.29735753]
+ [ 0.02012296  0.79459261  0.11847682  0.68303547]
+ [ 0.00918291  0.76971847  0.48787877         nan]]
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -471,38 +467,16 @@ std(x)   = 3.49106001094
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([[ 0.95023582,  1.30467083,  1.08376058,  0.89305555],
-       [ 1.363307  ,  0.70494056,  1.12093132,  1.00692966],
-       [ 0.51431311,  0.60103538,  0.67914643,         nan]])
-</pre></div>
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [9]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">m</span> <span class="o">*</span> <span class="n">n</span><span class="o">.</span><span class="n">T</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[9]:
-</pre></div>
-</div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([[ 0.22469951,  0.34650919,  0.22571131,  0.18998667],
-       [ 0.46361715,  0.1145299 ,  0.28892836,  0.24104282],
-       [ 0.0123315 ,  0.0367567 ,  0.11234811,         nan]])
+<span></span>array([[ 1.21305849,  1.24995679,  1.6962906 ,  0.54222564],
+       [ 0.87246105,  1.55380684,  0.97084063,  1.04555003],
+       [ 0.94850082,  1.42965993,  1.28063743,         nan]])
 </pre></div>
 </div>
 </div>
 <p>Let’s check if these other functions work with <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [10]:
+<span></span>In [9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -526,27 +500,27 @@ std(x)   = 3.49106001094
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-m     = [[ 0.50732848  0.93346226  0.28125999  0.54348336]
- [ 0.71381474  0.45098623  0.71918993  0.61497276]
- [ 0.02521262  0.53193546  0.39399616         nan]]
-e^m   = [[ 1.66084828  2.54329951  1.32479799  1.72199476]
- [ 2.04176523  1.56985967  2.05276965  1.84960622]
- [ 1.02553314  1.70222371  1.48289485         nan]]
-2^m   = [[ 1.42141565  1.90985387  1.21525577  1.45748735]
- [ 1.6401352   1.36697441  1.64625741  1.53152908]
- [ 1.01762965  1.44586761  1.31402813         nan]]
-3^m   = [[ 1.74605212  2.78852591  1.36205648  1.81680144]
- [ 2.19066609  1.64125143  2.20364079  1.96524444]
- [ 1.02808607  1.79389787  1.54164345         nan]]
-ln(m)    = [[-0.67859659 -0.06885475 -1.26847581 -0.60975618]
- [-0.33713181 -0.79631846 -0.3296298  -0.4861773 ]
- [-3.6804108  -0.63123311 -0.93141412         nan]]
-log2(m)  = [[-0.97900793 -0.0993364  -1.83002377 -0.87969222]
- [-0.48637839 -1.1488447  -0.47555527 -0.70140558]
- [-5.3097104  -0.91067688 -1.34374653         nan]]
-log10(m) = [[-0.29471075 -0.02990324 -0.55089205 -0.26481374]
- [-0.14641449 -0.34583671 -0.1431564  -0.21114412]
- [-1.5983821  -0.27414106 -0.40450801         nan]]
+m     = [[ 0.26887269  0.33275166  0.96524089  0.29735753]
+ [ 0.02012296  0.79459261  0.11847682  0.68303547]
+ [ 0.00918291  0.76971847  0.48787877         nan]]
+e^m   = [[ 1.30848855  1.39480086  2.62542002  1.34629655]
+ [ 1.02032679  2.21353903  1.12578078  1.97987848]
+ [ 1.0092252   2.1591583   1.62885737         nan]]
+2^m   = [[ 1.20486599  1.25941317  1.95238949  1.22889149]
+ [ 1.0140459   1.73458748  1.08558811  1.60551425]
+ [ 1.00638541  1.70493705  1.4023814          nan]]
+3^m   = [[ 1.34364604  1.44132821  2.88759941  1.38635865]
+ [ 1.02235351  2.39396072  1.13901072  2.11782826]
+ [ 1.01013952  2.32942667  1.70913879         nan]]
+ln(m)    = [[-1.31351728 -1.10035885 -0.03537758 -1.21282006]
+ [-3.90589374 -0.22992574 -2.13303794 -0.38120849]
+ [-4.69041106 -0.26173045 -0.71768833         nan]]
+log2(m)  = [[-1.89500487 -1.58748225 -0.05103906 -1.74972949]
+ [-5.63501352 -0.33171273 -3.07732325 -0.5499676 ]
+ [-6.76683278 -0.37759722 -1.03540539         nan]]
+log10(m) = [[-0.57045331 -0.47787978 -0.01536429 -0.52672106]
+ [-1.6963081  -0.09985548 -0.92636661 -0.16555674]
+ [-2.03701964 -0.11366809 -0.31168808         nan]]
 sum(m)   = nan
 min(m)   = nan
 max(m)   = nan
@@ -645,7 +619,7 @@ a boolean array</td>
 because these are not equal to zero.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [11]:
+<span></span>In [10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -662,11 +636,11 @@ because these are not equal to zero.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-sum(m)   = 5.7156420006
-min(m)   = 0.02521261547
-max(m)   = 0.933462258661
-mean(m)  = 0.519603818237
-std(m)   = 0.2297262461
+sum(m)   = 4.74723077192
+min(m)   = 0.00918291065752
+max(m)   = 0.965240889783
+mean(m)  = 0.431566433811
+std(m)   = 0.315841632112
 </pre></div></div>
 </div>
 <p>These are a few examples, but just ask the Internet if there is anything
@@ -726,7 +700,7 @@ transformation</em> from <span class="math notranslate nohighlight">\(X\)</span>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [12]:
+<span></span>In [11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -746,7 +720,7 @@ transformation</em> from <span class="math notranslate nohighlight">\(X\)</span>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [13]:
+<span></span>In [12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -771,7 +745,7 @@ transformation</em> from <span class="math notranslate nohighlight">\(X\)</span>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [14]:
+<span></span>In [13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -792,7 +766,7 @@ transformation</em> from <span class="math notranslate nohighlight">\(X\)</span>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [15]:
+<span></span>In [14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -823,7 +797,7 @@ transformation</em> from <span class="math notranslate nohighlight">\(X\)</span>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [16]:
+<span></span>In [15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -847,7 +821,7 @@ transformation</em> from <span class="math notranslate nohighlight">\(X\)</span>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [17]:
+<span></span>In [16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -869,7 +843,7 @@ transformation</em> from <span class="math notranslate nohighlight">\(X\)</span>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [18]:
+<span></span>In [17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -879,7 +853,7 @@ transformation</em> from <span class="math notranslate nohighlight">\(X\)</span>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[18]:
+<span></span>Out[17]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -890,7 +864,7 @@ transformation</em> from <span class="math notranslate nohighlight">\(X\)</span>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [19]:
+<span></span>In [18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -900,7 +874,7 @@ transformation</em> from <span class="math notranslate nohighlight">\(X\)</span>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[19]:
+<span></span>Out[18]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -913,7 +887,7 @@ transformation</em> from <span class="math notranslate nohighlight">\(X\)</span>
 <h3>Cautions<a class="headerlink" href="#Cautions" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>In general $ <a href="#id1"><span class="problematic" id="id2">:raw-latex:`\mathbf{AB}`</span></a>
-<a href="#id3"><span class="problematic" id="id4">:raw-latex:`\neq `:raw-latex:`</span></a>mathbf{AB}`$</li>
+<a href="#id3"><span class="problematic" id="id4">:raw-latex:`\neq `:raw-latex:`</span></a>mathbf{BA}`$</li>
 <li>$:raw-latex:<cite>mathbf{AB}</cite> = 0 $ does not necessarily imply that
 $:raw-latex:<cite>mathbf{A}</cite> = 0 $ or $:raw-latex:<cite>mathbf{B}</cite> = 0 $ or
 $:raw-latex:<cite>mathbf{BA}</cite> = 0 $</li>
@@ -925,7 +899,7 @@ necessarily imply that $:raw-latex:<cite>mathbf{C}</cite> =
 <p>(more about this later)</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [20]:
+<span></span>In [19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -949,7 +923,7 @@ necessarily imply that $:raw-latex:<cite>mathbf{C}</cite> =
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [21]:
+<span></span>In [20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -959,7 +933,7 @@ necessarily imply that $:raw-latex:<cite>mathbf{C}</cite> =
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[21]:
+<span></span>Out[20]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -970,7 +944,7 @@ necessarily imply that $:raw-latex:<cite>mathbf{C}</cite> =
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [22]:
+<span></span>In [21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -980,7 +954,7 @@ necessarily imply that $:raw-latex:<cite>mathbf{C}</cite> =
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[22]:
+<span></span>Out[21]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -989,20 +963,36 @@ necessarily imply that $:raw-latex:<cite>mathbf{C}</cite> =
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [23]:
+<span></span>In [22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
 <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[1 1]
+ [2 2]]
+[[2 1]
+ [2 2]]
+[[3 0]
+ [1 3]]
+</pre></div></div>
+</div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [24]:
+<span></span>In [23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1041,7 +1031,7 @@ necessarily imply that $:raw-latex:<cite>mathbf{C}</cite> =
 denoted <span class="math notranslate nohighlight">\(\mathbf{a} \bullet \mathbf{b}\)</span>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [25]:
+<span></span>In [24]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1051,7 +1041,7 @@ denoted <span class="math notranslate nohighlight">\(\mathbf{a} \bullet \mathbf{
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[25]:
+<span></span>Out[24]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -1059,11 +1049,8 @@ denoted <span class="math notranslate nohighlight">\(\mathbf{a} \bullet \mathbf{
 </pre></div>
 </div>
 </div>
-<p>Every entry of <span class="math notranslate nohighlight">\(\mathbf{C} =\mathbf{AB}\)</span> is an inner product (dot
-product):</p>
-<div class="math notranslate nohighlight">
-\[c_{jk} = \mathbf{a}_j \bullet \mathbf{b}_k = (j\text{th row of }\mathbf{A}) \bullet (k\text{th column of }\mathbf{B})\]</div>
-<p>The power of matrix multiplication is in linear transformations. That
+Every entry of $\mathbf{C} =\mathbf{AB}$ is an inner product (dot product):
+$$c_{jk} = \mathbf{a}_j \bullet \mathbf{b}_k = (j\text{th row of }\mathbf{A}) \bullet (k\text{th column of }\mathbf{B})$$<p>The power of matrix multiplication is in linear transformations. That
 topic will come after we finish matrices and talk about vectors.</p>
 </div>
 <div class="section" id="Special-Matrices">
@@ -1079,20 +1066,34 @@ product equals the product of the transposed factors, taken in reverse
 order:</p>
 <div class="math notranslate nohighlight">
 \[(\mathbf{A} \mathbf{B})^T = \mathbf{B}^T \mathbf{A}^T\]</div>
-<p>Would you wager a guess as to what a symmetric matrix is? A
-skew-symmetric matrix? What property must they have?</p>
+<p>Would you wager a guess as to:</p>
+<ul class="simple">
+<li>What a symmetric matrix is?</li>
+<li>A skew-symmetric matrix?</li>
+<li>What property must they have?</li>
+</ul>
+<p><strong>Answers:</strong></p>
+<ul class="simple">
+<li><span class="math notranslate nohighlight">\(\mathbf{A}^T = \mathbf{A}\)</span></li>
+<li><span class="math notranslate nohighlight">\(\mathbf{A}^T = -\mathbf{A}\)</span></li>
+<li>They must be square matrices</li>
+</ul>
 <p>How about upper and lower triangular matrices?</p>
+<p>Upper triangular matrices have 0 for all elements below the diagonal,
+and lower triangular matrices have 0 for all elements above the
+diagonal.</p>
 <div class="figure" id="id33">
 <img alt="Matrices" src="../_images/lect13_matrix12.png" />
 <p class="caption"><span class="caption-text">Matrices</span></p>
 </div>
+<p>A nice shortcut available for diagonal matrices:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [26]:
+<span></span>In [25]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span></span><span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diagflat</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
 <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1108,7 +1109,7 @@ skew-symmetric matrix? What property must they have?</p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [27]:
+<span></span>In [26]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1118,7 +1119,7 @@ skew-symmetric matrix? What property must they have?</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[27]:
+<span></span>Out[26]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -1135,7 +1136,7 @@ skew-symmetric matrix? What property must they have?</p>
 <h3>What is the identity matrix and why is it called that?<a class="headerlink" href="#What-is-the-identity-matrix-and-why-is-it-called-that?" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [28]:
+<span></span>In [27]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1158,7 +1159,7 @@ skew-symmetric matrix? What property must they have?</p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [29]:
+<span></span>In [28]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1168,7 +1169,7 @@ skew-symmetric matrix? What property must they have?</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[29]:
+<span></span>Out[28]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -1179,7 +1180,7 @@ skew-symmetric matrix? What property must they have?</p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [30]:
+<span></span>In [29]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1189,7 +1190,7 @@ skew-symmetric matrix? What property must they have?</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[30]:
+<span></span>Out[29]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -1247,7 +1248,7 @@ inverse matrix of $ :raw-latex:<a href="#id21"><span class="problematic" id="id2
 1 &amp; 2 \end{array}</div><p><a href="#id23"><span class="problematic" id="id24">:raw-latex:`\right`</span></a>) $</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [31]:
+<span></span>In [30]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1268,7 +1269,7 @@ inverse matrix of $ :raw-latex:<a href="#id21"><span class="problematic" id="id2
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [32]:
+<span></span>In [31]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1279,7 +1280,7 @@ inverse matrix of $ :raw-latex:<a href="#id21"><span class="problematic" id="id2
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[32]:
+<span></span>Out[31]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -1290,7 +1291,7 @@ inverse matrix of $ :raw-latex:<a href="#id21"><span class="problematic" id="id2
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [33]:
+<span></span>In [32]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1300,7 +1301,7 @@ inverse matrix of $ :raw-latex:<a href="#id21"><span class="problematic" id="id2
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[33]:
+<span></span>Out[32]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -1333,7 +1334,7 @@ matrix</em>.</p>
 <img alt="Matrices" src="../_images/lect13_matrix21.png" /></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [34]:
+<span></span>In [33]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1344,7 +1345,7 @@ matrix</em>.</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[34]:
+<span></span>Out[33]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -1358,7 +1359,7 @@ matrix</em>.</p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [35]:
+<span></span>In [34]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1379,7 +1380,7 @@ matrix</em>.</p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [36]:
+<span></span>In [35]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1389,7 +1390,7 @@ matrix</em>.</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[36]:
+<span></span>Out[35]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
