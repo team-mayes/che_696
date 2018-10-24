@@ -54,5 +54,7 @@ CHE 696: On-Ramp to Data Science
 
    notebooks/lecture13_numpy_operations_and_linalg_fun.ipynb
 
+   notebooks/lecture16_databases.ipynb
+
     ..
    .. :caption: About Sphinx:
