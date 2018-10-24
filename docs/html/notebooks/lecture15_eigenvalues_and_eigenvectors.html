@@ -240,7 +240,7 @@ Kreyszig</a></li>
 <p>(also called a <strong>characteristic value</strong> or <em>latent root</em>), and <strong>x</strong> is
 the corresponding <strong>eigenvector</strong> or <strong>characteristic vector</strong>. We
 disregard the trivial solution of <strong>x</strong> = <strong>0</strong> and <span class="math notranslate nohighlight">\(\lambda = 0\)</span>.</p>
-<p>Thus, multiplying <strong>u</strong> by <strong>A</strong> scales <strong>u</strong> by <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+<p>Thus, multiplying <strong>x</strong> by <strong>A</strong> scales <strong>x</strong> by <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
 <p>The set of eigenvalues is called the <strong>spectrum</strong> of <strong>A</strong>. The largest
 of the absolute values of the eigenvalues of <strong>A</strong> is called the
 <strong>spectral radius</strong> of <strong>A</strong>.</p>
@@ -256,7 +256,7 @@ Algebra</a></p>
 <h2>But how do we solve these equations?<a class="headerlink" href="#But-how-do-we-solve-these-equations?" title="Permalink to this headline">¶</a></h2>
 <p>We rearrange our system of</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}\mathbf{Ax}= \lambda \mathbf{x})\\to be:\end{aligned}\end{align} \]</div>
+\[ \begin{align}\begin{aligned}\mathbf{Ax}= \lambda \mathbf{x}\\to be:\end{aligned}\end{align} \]</div>
 <div class="math notranslate nohighlight">
 \[(\mathbf{A} - \lambda \mathbf{I})\mathbf{x} = \mathbf{0}\]</div>
 <p>And Cramer’s Theorem (covered last lecture) states that this homogeneous
@@ -297,7 +297,7 @@ to an eigenvalue <span class="math notranslate nohighlight">\(\lambda\)</span>, 
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [19]:
+<span></span>In [1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -311,7 +311,7 @@ to an eigenvalue <span class="math notranslate nohighlight">\(\lambda\)</span>, 
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [20]:
+<span></span>In [2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -329,7 +329,7 @@ to an eigenvalue <span class="math notranslate nohighlight">\(\lambda\)</span>, 
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [21]:
+<span></span>In [3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -349,7 +349,7 @@ to an eigenvalue <span class="math notranslate nohighlight">\(\lambda\)</span>, 
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [27]:
+<span></span>In [4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -364,7 +364,7 @@ to an eigenvalue <span class="math notranslate nohighlight">\(\lambda\)</span>, 
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [37]:
+<span></span>In [5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -388,7 +388,7 @@ The first eigenvalue (7.0)
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [38]:
+<span></span>In [6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -396,7 +396,7 @@ The first eigenvalue (7.0)
 <span class="n">right_check</span> <span class="o">=</span> <span class="n">eigval2</span> <span class="o">*</span> <span class="n">eigvec2</span>
 <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">left_check</span><span class="p">,</span> <span class="n">right_check</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;The first eigenvalue ({}) </span><span class="se">\n</span><span class="s2"> &quot;</span>
-          <span class="s2">&quot;pairs with eigenvector {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eigval1</span><span class="p">,</span> <span class="n">eigvec1</span><span class="p">))</span>
+          <span class="s2">&quot;pairs with eigenvector {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eigval2</span><span class="p">,</span> <span class="n">eigvec2</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -405,8 +405,8 @@ The first eigenvalue (7.0)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-The first eigenvalue (7.0)
- pairs with eigenvector [ 0.9486833   0.31622777]
+The first eigenvalue (2.0)
+ pairs with eigenvector [ 0.4472136   0.89442719]
 </pre></div></div>
 </div>
 <p>All diagonalizable <span class="math notranslate nohighlight">\(n\times n\)</span> matrices always have <span class="math notranslate nohighlight">\(n\)</span>
@@ -416,7 +416,7 @@ eigenbasis.</p>
 <p><strong>However,</strong> there are not always <span class="math notranslate nohighlight">\(n\)</span> unique eigenvalues!</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [52]:
+<span></span>In [7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -437,7 +437,7 @@ eigenbasis.</p>
 <p>How does this happen?</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [48]:
+<span></span>In [8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -474,7 +474,7 @@ use <span class="math notranslate nohighlight">\(x_2 = 0\)</span> and <span clas
 chose, and then validate the solutions.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [42]:
+<span></span>In [9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -494,7 +494,7 @@ chose, and then validate the solutions.</p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [59]:
+<span></span>In [10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -517,20 +517,16 @@ chose, and then validate the solutions.</p>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 The eigenvalue -3.00
- pairs with eigenvector [-0.95257934  0.27216553 -0.13608276]
+   pairs with eigenvector [-0.95257934  0.27216553 -0.13608276]
 The eigenvalue 5.00
- pairs with eigenvector [ 0.40824829  0.81649658 -0.40824829]
+   pairs with eigenvector [ 0.40824829  0.81649658 -0.40824829]
 The eigenvalue -3.00
- pairs with eigenvector [-0.05430304  0.83908241  0.54128726]
-[[-2  2 -3]
- [ 2  1 -6]
- [-1 -2  0]]
-[-3.  5. -3.]
+   pairs with eigenvector [-0.05430304  0.83908241  0.54128726]
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [65]:
+<span></span>In [11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -576,7 +572,7 @@ algebraic multiplicities must equal <span class="math notranslate nohighlight">\
 <h2>Can real matrices get complex?<a class="headerlink" href="#Can-real-matrices-get-complex?" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [67]:
+<span></span>In [12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -596,7 +592,7 @@ algebraic multiplicities must equal <span class="math notranslate nohighlight">\
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [68]:
+<span></span>In [13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
