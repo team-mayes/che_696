@@ -23,7 +23,7 @@
     "$$\\mathbf{Ax} = \\lambda \\mathbf{x}$$\n",
     "where **A** is a square matrix, $\\lambda$ is an **eigenvalue** (also called a **characteristic value** or *latent root*), and **x** is the corresponding **eigenvector** or **characteristic vector**. We disregard the trivial solution of **x** = **0** and $\\lambda = 0$.\n",
     "\n",
-    "Thus, multiplying **u** by **A** scales **u** by $\\lambda$.\n",
+    "Thus, multiplying **x** by **A** scales **x** by $\\lambda$.\n",
     "\n",
     "The set of eigenvalues is called the **spectrum** of **A**. The largest of the absolute values of the eigenvalues of **A** is called the **spectral radius** of **A**.\n",
     "\n",
@@ -46,7 +46,7 @@
    "source": [
     "### But how do we solve these equations?\n",
     "\n",
-    "We rearrange our system of $$\\mathbf{Ax}= \\lambda \\mathbf{x})$$\n",
+    "We rearrange our system of $$\\mathbf{Ax}= \\lambda \\mathbf{x}$$\n",
     "to be:\n",
     "$$(\\mathbf{A} - \\lambda \\mathbf{I})\\mathbf{x} = \\mathbf{0}$$\n",
     "\n",
@@ -109,8 +109,10 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 19,
-   "metadata": {},
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "# Even easier: make the computer compute them!\n",
@@ -122,35 +124,22 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 20,
-   "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[ 7.  2.]\n"
-     ]
-    }
-   ],
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
    "source": [
     "print(eigenvalues)"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 21,
-   "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[[ 0.9486833   0.4472136 ]\n",
-      " [ 0.31622777  0.89442719]]\n"
-     ]
-    }
-   ],
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
    "source": [
     "# eigenvectors are normalized (unit “length”) eigenvectors\n",
     "print(eigenvectors)"
@@ -158,8 +147,10 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 27,
-   "metadata": {},
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "eigval1 = eigenvalues[0]\n",
@@ -172,18 +163,11 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 37,
-   "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "The first eigenvalue (7.0) \n",
-      " pairs with eigenvector [ 0.9486833   0.31622777]\n"
-     ]
-    }
-   ],
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
    "source": [
     "# Always a good idea to check our work:\n",
     "left_check = np.matmul(a, eigvec1)\n",
@@ -195,24 +179,17 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 38,
-   "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "The first eigenvalue (7.0) \n",
-      " pairs with eigenvector [ 0.9486833   0.31622777]\n"
-     ]
-    }
-   ],
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
    "source": [
     "left_check = np.matmul(a, eigvec2)\n",
     "right_check = eigval2 * eigvec2\n",
     "if np.allclose(left_check, right_check):\n",
     "    print(\"The first eigenvalue ({}) \\n \"\n",
-    "          \"pairs with eigenvector {}\".format(eigval1, eigvec1))"
+    "          \"pairs with eigenvector {}\".format(eigval2, eigvec2))"
    ]
   },
   {
@@ -226,17 +203,11 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 52,
-   "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[-3.  5. -3.]\n"
-     ]
-    }
-   ],
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
    "source": [
     "a = np.array([[-2, 2, -3], [2, 1, -6], [-1, -2, 0]])\n",
     "eigenvalues, eigenvectors = np.linalg.eig(a)\n",
@@ -252,19 +223,11 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 48,
-   "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[[ 1.  2. -3.]\n",
-      " [ 2.  4. -6.]\n",
-      " [-1. -2.  3.]]\n"
-     ]
-    }
-   ],
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
    "source": [
     "mult_sol_d = a + 3*np.eye(3)\n",
     "print(mult_sol_d)"
@@ -294,45 +257,22 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 42,
-   "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[[-0.95257934  0.40824829 -0.05430304]\n",
-      " [ 0.27216553  0.81649658  0.83908241]\n",
-      " [-0.13608276 -0.40824829  0.54128726]]\n"
-     ]
-    }
-   ],
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
    "source": [
     "print(eigenvectors)"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 59,
-   "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "The eigenvalue -3.00 \n",
-      " pairs with eigenvector [-0.95257934  0.27216553 -0.13608276]\n",
-      "The eigenvalue 5.00 \n",
-      " pairs with eigenvector [ 0.40824829  0.81649658 -0.40824829]\n",
-      "The eigenvalue -3.00 \n",
-      " pairs with eigenvector [-0.05430304  0.83908241  0.54128726]\n",
-      "[[-2  2 -3]\n",
-      " [ 2  1 -6]\n",
-      " [-1 -2  0]]\n",
-      "[-3.  5. -3.]\n"
-     ]
-    }
-   ],
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
    "source": [
     "for i in range(3):\n",
     "    left_check = np.matmul(a, eigenvectors[:, i])\n",
@@ -348,19 +288,11 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 65,
-   "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "The eigenvalue -3.00 \n",
-      "   could alternately pairwith eigenvector [-2  1  0]\n",
-      "   and the orthogonal eigenvector [3 0 1]\n"
-     ]
-    }
-   ],
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
    "source": [
     "# Now validating our hand solution:\n",
     "x_0 = np.array([-2, 1, 0])\n",
@@ -399,17 +331,11 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 67,
-   "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[ 0.+1.j  0.-1.j]\n"
-     ]
-    }
-   ],
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
    "source": [
     "a = np.array([[0, 1], [-1, 0]])\n",
     "eigenvalues, eigenvectors = np.linalg.eig(a)\n",
@@ -418,18 +344,11 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 68,
-   "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[[ 0.70710678+0.j          0.70710678-0.j        ]\n",
-      " [ 0.00000000+0.70710678j  0.00000000-0.70710678j]]\n"
-     ]
-    }
-   ],
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
    "source": [
     "print(eigenvectors)"
    ]
