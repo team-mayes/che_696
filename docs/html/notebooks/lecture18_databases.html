@@ -1,0 +1,3303 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Databases Pt. 2 &#8212; CHE 696: On-Ramp to Data Science 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Individual Project" href="project_instructions.html" />
+    <link rel="prev" title="Databases" href="lecture17_databases.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="project_instructions.html" title="Individual Project"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="lecture17_databases.html" title="Databases"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: On-Ramp to Data Science 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="lecture17_databases.html"
+                        title="previous chapter">Databases</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="project_instructions.html"
+                        title="next chapter">Individual Project</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #303F9F;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #D84315;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 9ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: #f7f7f7;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.pngmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+</style>
+<div class="section" id="Databases-Pt.-2">
+<h1>Databases Pt. 2<a class="headerlink" href="#Databases-Pt.-2" title="Permalink to this headline">¶</a></h1>
+<p>Guest lecture by Bradley Dice, [&#64;bdice](<a class="reference external" href="https://github.com/bdice/">https://github.com/bdice/</a>).</p>
+<div class="section" id="Example,-continued:-IMBD,-Index-of-Marvel-data-with-Bradley-Dice">
+<h2>Example, continued: <em>IMBD</em>, Index of Marvel data with Bradley Dice<a class="headerlink" href="#Example,-continued:-IMBD,-Index-of-Marvel-data-with-Bradley-Dice" title="Permalink to this headline">¶</a></h2>
+<p>The code below sets up the movie database that we created last time, all
+in one cell.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">database</span> <span class="o">=</span> <span class="s1">&#39;movie_ratings.sqlite&#39;</span>
+
+<span class="c1"># Removes the database if it already exists</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">database</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">database</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="c1"># Here we create a primary key, and use &quot;NOT NULL&quot; to prevent inserting invalid data</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="sd">&quot;&quot;&quot;CREATE TABLE Movies</span>
+<span class="sd">        (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, year INTEGER NOT NULL)&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span>
+        <span class="sd">&quot;&quot;&quot;INSERT INTO Movies (title, year) VALUES (?,?)&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">[(</span><span class="s1">&#39;Iron Man&#39;</span><span class="p">,</span> <span class="mi">2008</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;The Incredible Hulk&#39;</span><span class="p">,</span> <span class="mi">2008</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Iron Man 2&#39;</span><span class="p">,</span> <span class="mi">2010</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Thor&#39;</span><span class="p">,</span> <span class="mi">2011</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Captain America: The First Avenger&#39;</span><span class="p">,</span> <span class="mi">2011</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;The Avengers&#39;</span><span class="p">,</span> <span class="mi">2012</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Iron Man 3&#39;</span><span class="p">,</span> <span class="mi">2013</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Captain America: The Winter Soldier&#39;</span><span class="p">,</span> <span class="mi">2014</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Avengers: Age of Ultron&#39;</span><span class="p">,</span> <span class="mi">2015</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Captain America: Civil War&#39;</span><span class="p">,</span> <span class="mi">2016</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Doctor Strange&#39;</span><span class="p">,</span> <span class="mi">2016</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Black Panther&#39;</span><span class="p">,</span> <span class="mi">2018</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Avengers: Infinity War&#39;</span><span class="p">,</span> <span class="mi">2018</span><span class="p">),</span>
+        <span class="p">])</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="sd">&quot;&quot;&quot;CREATE TABLE Actors</span>
+<span class="sd">        (id INTEGER PRIMARY KEY AUTOINCREMENT,</span>
+<span class="sd">        first_name TEXT NOT NULL,</span>
+<span class="sd">        last_name TEXT NOT NULL,</span>
+<span class="sd">        character TEXT NOT NULL,</span>
+<span class="sd">        age REAL NOT NULL)&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span>
+        <span class="sd">&quot;&quot;&quot;INSERT INTO Actors (first_name, last_name, character, age) VALUES (?,?,?,?)&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">[(</span><span class="s1">&#39;Robert&#39;</span><span class="p">,</span> <span class="s1">&#39;Downey Jr.&#39;</span><span class="p">,</span> <span class="s1">&#39;Iron Man&#39;</span><span class="p">,</span> <span class="mi">53</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span> <span class="s1">&#39;Evans&#39;</span><span class="p">,</span> <span class="s1">&#39;Captain America&#39;</span><span class="p">,</span> <span class="mi">37</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Scarlett&#39;</span><span class="p">,</span> <span class="s1">&#39;Johansson&#39;</span><span class="p">,</span> <span class="s1">&#39;Black Widow&#39;</span><span class="p">,</span> <span class="mi">33</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Samuel L.&#39;</span><span class="p">,</span> <span class="s1">&#39;Jackson&#39;</span><span class="p">,</span> <span class="s1">&#39;Nick Fury&#39;</span><span class="p">,</span> <span class="mi">69</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Benedict&#39;</span><span class="p">,</span> <span class="s1">&#39;Cumberbatch&#39;</span><span class="p">,</span> <span class="s1">&#39;Dr. Strange&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Brie&#39;</span><span class="p">,</span> <span class="s1">&#39;Larson&#39;</span><span class="p">,</span> <span class="s1">&#39;Captain Marvel&#39;</span><span class="p">,</span> <span class="mi">29</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Chadwick&#39;</span><span class="p">,</span> <span class="s1">&#39;Boseman&#39;</span><span class="p">,</span> <span class="s1">&#39;Black Panther&#39;</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+        <span class="p">])</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="sd">&quot;&quot;&quot;CREATE TABLE MovieActors</span>
+<span class="sd">        (id INTEGER PRIMARY KEY AUTOINCREMENT, movie_id INTEGER NOT NULL, actor_id INTEGER NOT NULL)&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span>
+        <span class="sd">&quot;&quot;&quot;INSERT INTO MovieActors (movie_id, actor_id) VALUES (?,?)&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">7</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="JOINing-[STRIKEOUT:forces]-tables">
+<h2>JOINing [STRIKEOUT:forces] tables<a class="headerlink" href="#JOINing-[STRIKEOUT:forces]-tables" title="Permalink to this headline">¶</a></h2>
+<p>This demonstrates a <code class="docutils literal notranslate"><span class="pre">JOIN</span></code> operation. There are different kinds of
+JOINs, explained nicely in <a class="reference external" href="https://community.modeanalytics.com/sql/tutorial/sql-joins/">this
+resource</a>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="sd">&quot;&quot;&quot;SELECT * FROM MovieActors</span>
+<span class="sd">        JOIN Movies ON MovieActors.movie_id = Movies.id</span>
+<span class="sd">        JOIN Actors ON MovieActors.actor_id = Actors.id&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[(1, 1, 1, 1, &#39;Iron Man&#39;, 2008, 1, &#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (2, 2, 1, 2, &#39;The Incredible Hulk&#39;, 2008, 1, &#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (3, 3, 1, 3, &#39;Iron Man 2&#39;, 2010, 1, &#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (4, 6, 1, 6, &#39;The Avengers&#39;, 2012, 1, &#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (5, 7, 1, 7, &#39;Iron Man 3&#39;, 2013, 1, &#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (6, 9, 1, 9, &#39;Avengers: Age of Ultron&#39;, 2015, 1, &#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (7, 10, 1, 10, &#39;Captain America: Civil War&#39;, 2016, 1, &#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (8, 13, 1, 13, &#39;Avengers: Infinity War&#39;, 2018, 1, &#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (9, 5, 2, 5, &#39;Captain America: The First Avenger&#39;, 2011, 2, &#39;Chris&#39;, &#39;Evans&#39;, &#39;Captain America&#39;, 37.0), (10, 6, 2, 6, &#39;The Avengers&#39;, 2012, 2, &#39;Chris&#39;, &#39;Evans&#39;, &#39;Captain America&#39;, 37.0), (11, 8, 2, 8, &#39;Captain America: The Winter Soldier&#39;, 2014, 2, &#39;Chris&#39;, &#39;Evans&#39;, &#39;Captain America&#39;, 37.0), (12, 9, 2, 9, &#39;Avengers: Age of Ultron&#39;, 2015, 2, &#39;Chris&#39;, &#39;Evans&#39;, &#39;Captain America&#39;, 37.0), (13, 10, 2, 10, &#39;Captain America: Civil War&#39;, 2016, 2, &#39;Chris&#39;, &#39;Evans&#39;, &#39;Captain America&#39;, 37.0), (14, 13, 2, 13, &#39;Avengers: Infinity War&#39;, 2018, 2, &#39;Chris&#39;, &#39;Evans&#39;, &#39;Captain America&#39;, 37.0), (15, 3, 3, 3, &#39;Iron Man 2&#39;, 2010, 3, &#39;Scarlett&#39;, &#39;Johansson&#39;, &#39;Black Widow&#39;, 33.0), (16, 6, 3, 6, &#39;The Avengers&#39;, 2012, 3, &#39;Scarlett&#39;, &#39;Johansson&#39;, &#39;Black Widow&#39;, 33.0), (17, 8, 3, 8, &#39;Captain America: The Winter Soldier&#39;, 2014, 3, &#39;Scarlett&#39;, &#39;Johansson&#39;, &#39;Black Widow&#39;, 33.0), (18, 9, 3, 9, &#39;Avengers: Age of Ultron&#39;, 2015, 3, &#39;Scarlett&#39;, &#39;Johansson&#39;, &#39;Black Widow&#39;, 33.0), (19, 10, 3, 10, &#39;Captain America: Civil War&#39;, 2016, 3, &#39;Scarlett&#39;, &#39;Johansson&#39;, &#39;Black Widow&#39;, 33.0), (20, 13, 3, 13, &#39;Avengers: Infinity War&#39;, 2018, 3, &#39;Scarlett&#39;, &#39;Johansson&#39;, &#39;Black Widow&#39;, 33.0), (21, 1, 4, 1, &#39;Iron Man&#39;, 2008, 4, &#39;Samuel L.&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (22, 3, 4, 3, &#39;Iron Man 2&#39;, 2010, 4, &#39;Samuel L.&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (23, 4, 4, 4, &#39;Thor&#39;, 2011, 4, &#39;Samuel L.&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (24, 5, 4, 5, &#39;Captain America: The First Avenger&#39;, 2011, 4, &#39;Samuel L.&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (25, 6, 4, 6, &#39;The Avengers&#39;, 2012, 4, &#39;Samuel L.&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (26, 8, 4, 8, &#39;Captain America: The Winter Soldier&#39;, 2014, 4, &#39;Samuel L.&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (27, 9, 4, 9, &#39;Avengers: Age of Ultron&#39;, 2015, 4, &#39;Samuel L.&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (28, 13, 4, 13, &#39;Avengers: Infinity War&#39;, 2018, 4, &#39;Samuel L.&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (29, 11, 5, 11, &#39;Doctor Strange&#39;, 2016, 5, &#39;Benedict&#39;, &#39;Cumberbatch&#39;, &#39;Dr. Strange&#39;, 42.0), (30, 13, 5, 13, &#39;Avengers: Infinity War&#39;, 2018, 5, &#39;Benedict&#39;, &#39;Cumberbatch&#39;, &#39;Dr. Strange&#39;, 42.0), (31, 10, 7, 10, &#39;Captain America: Civil War&#39;, 2016, 7, &#39;Chadwick&#39;, &#39;Boseman&#39;, &#39;Black Panther&#39;, 40.0), (32, 12, 7, 12, &#39;Black Panther&#39;, 2018, 7, &#39;Chadwick&#39;, &#39;Boseman&#39;, &#39;Black Panther&#39;, 40.0), (33, 13, 7, 13, &#39;Avengers: Infinity War&#39;, 2018, 7, &#39;Chadwick&#39;, &#39;Boseman&#39;, &#39;Black Panther&#39;, 40.0)]
+</pre></div></div>
+</div>
+<div class="section" id="Using-pandas-🐼-to-help-us:">
+<h3>Using pandas 🐼 to help us:<a class="headerlink" href="#Using-pandas-🐼-to-help-us:" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM Movies&#39;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+    id                                title  year
+0    1                             Iron Man  2008
+1    2                  The Incredible Hulk  2008
+2    3                           Iron Man 2  2010
+3    4                                 Thor  2011
+4    5   Captain America: The First Avenger  2011
+5    6                         The Avengers  2012
+6    7                           Iron Man 3  2013
+7    8  Captain America: The Winter Soldier  2014
+8    9              Avengers: Age of Ultron  2015
+9   10           Captain America: Civil War  2016
+10  11                       Doctor Strange  2016
+11  12                        Black Panther  2018
+12  13               Avengers: Infinity War  2018
+</pre></div></div>
+</div>
+<p>So how long have these actors been doing Marvel movies, anyway?</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT MAX(Movies.year) - MIN(Movies.year) as years_of_service,</span>
+<span class="s2">    Actors.first_name || &quot; &quot; || Actors.last_name as name FROM MovieActors</span>
+<span class="s2">        JOIN Movies ON MovieActors.movie_id = Movies.id</span>
+<span class="s2">        JOIN Actors ON MovieActors.actor_id = Actors.id</span>
+<span class="s2">        GROUP BY name</span>
+<span class="s2">        ORDER BY years_of_service DESC&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;years_of_service&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_lecture18_databases_8_0.png" src="../_images/notebooks_lecture18_databases_8_0.png" />
+</div>
+</div>
+<p>And how old were they when they started?</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT Actors.age - (MAX(Movies.year) - MIN(Movies.year)) as first_movie_age,</span>
+<span class="s2">    Actors.first_name || &quot; &quot; || Actors.last_name as name FROM MovieActors</span>
+<span class="s2">        JOIN Movies ON MovieActors.movie_id = Movies.id</span>
+<span class="s2">        JOIN Actors ON MovieActors.actor_id = Actors.id</span>
+<span class="s2">        GROUP BY name</span>
+<span class="s2">        ORDER BY first_movie_age DESC&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;first_movie_age&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_lecture18_databases_10_0.png" src="../_images/notebooks_lecture18_databases_10_0.png" />
+</div>
+</div>
+<p>We can visualize this data in many ways, including this graph. (Note
+that Brie Larson appears, who was absent from our earlier plots because
+her movie, Captain Marvel, hasn’t been released yet.)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Fancy demo, requires networkx</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create a networkx Graph object</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+
+<span class="c1"># Fetch data and fill the graph</span>
+<span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">movies</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT title FROM Movies&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">([</span><span class="n">movie</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">movie</span> <span class="ow">in</span> <span class="n">movies</span><span class="p">],</span> <span class="n">bipartite</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">actors</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT first_name || &quot; &quot; || last_name FROM Actors&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">([</span><span class="n">actor</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">actor</span> <span class="ow">in</span> <span class="n">actors</span><span class="p">],</span> <span class="n">bipartite</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT Movies.title, Actors.first_name || &quot; &quot; || Actors.last_name FROM MovieActors</span>
+<span class="s2">        JOIN Movies ON MovieActors.movie_id = Movies.id</span>
+<span class="s2">        JOIN Actors ON MovieActors.actor_id = Actors.id&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
+
+<span class="c1"># Plot the graph</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;bipartite&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">],</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;gold&#39;</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;bipartite&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">],</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_lecture18_databases_12_0.png" src="../_images/notebooks_lecture18_databases_12_0.png" />
+</div>
+</div>
+<p>Observation: Avengers movies are near the center! What else could we
+learn from this data?</p>
+<p>What if we wanted to add ratings? What kind of mapping is needed? What
+table columns would we use?</p>
+</div>
+</div>
+<div class="section" id="Common-problems-in-designing-relational-databases">
+<h2>Common problems in designing relational databases<a class="headerlink" href="#Common-problems-in-designing-relational-databases" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Update-anomaly">
+<h3>Update anomaly<a class="headerlink" href="#Update-anomaly" title="Permalink to this headline">¶</a></h3>
+<p><img alt="758px-Update_anomaly.svg.png" src="notebooks/attachment:758px-Update_anomaly.svg.png" /> ### Insertion anomaly
+<img alt="Insertion_anomaly.png" src="notebooks/attachment:Insertion_anomaly.png" /> ### Deletion anomaly
+<img alt="776px-Deletion_anomaly.svg.png" src="notebooks/attachment:776px-Deletion_anomaly.svg.png" /></p>
+</div>
+</div>
+<div class="section" id="Normal-Form">
+<h2>Normal Form<a class="headerlink" href="#Normal-Form" title="Permalink to this headline">¶</a></h2>
+<p>There are rules to help us design relational databases! They’re called
+“<a class="reference external" href="https://en.wikipedia.org/wiki/Database_normalization">normal
+form</a>.”</p>
+</div>
+<div class="section" id="Chinook-Sample-Database">
+<h2>Chinook Sample Database<a class="headerlink" href="#Chinook-Sample-Database" title="Permalink to this headline">¶</a></h2>
+<p>This is a sample database <a class="reference external" href="https://github.com/lerocha/chinook-database">named after winds in
+Canada</a>, which is a joke
+from another sample database called Northwind. I picked this because
+it’s rich and demonstrates a professional, production-level database
+schema. <img alt="image.png" src="notebooks/attachment:image.png" /></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span><span class="nb">echo</span> <span class="s2">&quot;Removing previously downloaded database.&quot;</span> <span class="o">&amp;&amp;</span> rm -f Chinook.sqlite
+<span class="o">!</span><span class="nb">echo</span> <span class="s2">&quot;Downloading database.&quot;</span> <span class="o">&amp;&amp;</span> curl https://raw.githubusercontent.com/lerocha/chinook-database/master/ChinookDatabase/DataSources/Chinook_Sqlite.sqlite &gt; Chinook.sqlite
+<span class="o">!</span><span class="nb">echo</span> <span class="s2">&quot;Done. Check that the file exists:&quot;</span>
+<span class="o">!</span>ls <span class="s2">&quot;Chinook.sqlite&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Removing previously downloaded database.
+Downloading database.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1042k  100 1042k    0     0  1797k      0 --:--:-- --:--:-- --:--:-- 1973k
+Done. Check that the file exists:
+Chinook.sqlite
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">database</span> <span class="o">=</span> <span class="s1">&#39;Chinook.sqlite&#39;</span>
+
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+
+<span class="k">def</span> <span class="nf">get_results</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">conn</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="k">def</span> <span class="nf">show_results</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">get_results</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+
+<span class="n">show_results</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM sqlite_master&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>type</th>
+      <th>name</th>
+      <th>tbl_name</th>
+      <th>rootpage</th>
+      <th>sql</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>table</td>
+      <td>Album</td>
+      <td>Album</td>
+      <td>2</td>
+      <td>CREATE TABLE [Album]\n(\n    [AlbumId] INTEGER...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>table</td>
+      <td>Artist</td>
+      <td>Artist</td>
+      <td>3</td>
+      <td>CREATE TABLE [Artist]\n(\n    [ArtistId] INTEG...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>table</td>
+      <td>Customer</td>
+      <td>Customer</td>
+      <td>4</td>
+      <td>CREATE TABLE [Customer]\n(\n    [CustomerId] I...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>table</td>
+      <td>Employee</td>
+      <td>Employee</td>
+      <td>7</td>
+      <td>CREATE TABLE [Employee]\n(\n    [EmployeeId] I...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>table</td>
+      <td>Genre</td>
+      <td>Genre</td>
+      <td>9</td>
+      <td>CREATE TABLE [Genre]\n(\n    [GenreId] INTEGER...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>table</td>
+      <td>Invoice</td>
+      <td>Invoice</td>
+      <td>10</td>
+      <td>CREATE TABLE [Invoice]\n(\n    [InvoiceId] INT...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>table</td>
+      <td>InvoiceLine</td>
+      <td>InvoiceLine</td>
+      <td>12</td>
+      <td>CREATE TABLE [InvoiceLine]\n(\n    [InvoiceLin...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>table</td>
+      <td>MediaType</td>
+      <td>MediaType</td>
+      <td>14</td>
+      <td>CREATE TABLE [MediaType]\n(\n    [MediaTypeId]...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>table</td>
+      <td>Playlist</td>
+      <td>Playlist</td>
+      <td>15</td>
+      <td>CREATE TABLE [Playlist]\n(\n    [PlaylistId] I...</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>table</td>
+      <td>PlaylistTrack</td>
+      <td>PlaylistTrack</td>
+      <td>16</td>
+      <td>CREATE TABLE [PlaylistTrack]\n(\n    [Playlist...</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>index</td>
+      <td>sqlite_autoindex_PlaylistTrack_1</td>
+      <td>PlaylistTrack</td>
+      <td>17</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>table</td>
+      <td>Track</td>
+      <td>Track</td>
+      <td>19</td>
+      <td>CREATE TABLE [Track]\n(\n    [TrackId] INTEGER...</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>index</td>
+      <td>IPK_Album</td>
+      <td>Album</td>
+      <td>21</td>
+      <td>CREATE UNIQUE INDEX [IPK_Album] ON [Album]([Al...</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>index</td>
+      <td>IPK_Artist</td>
+      <td>Artist</td>
+      <td>22</td>
+      <td>CREATE UNIQUE INDEX [IPK_Artist] ON [Artist]([...</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>index</td>
+      <td>IPK_Customer</td>
+      <td>Customer</td>
+      <td>23</td>
+      <td>CREATE UNIQUE INDEX [IPK_Customer] ON [Custome...</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>index</td>
+      <td>IPK_Employee</td>
+      <td>Employee</td>
+      <td>24</td>
+      <td>CREATE UNIQUE INDEX [IPK_Employee] ON [Employe...</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>index</td>
+      <td>IPK_Genre</td>
+      <td>Genre</td>
+      <td>26</td>
+      <td>CREATE UNIQUE INDEX [IPK_Genre] ON [Genre]([Ge...</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>index</td>
+      <td>IPK_Invoice</td>
+      <td>Invoice</td>
+      <td>27</td>
+      <td>CREATE UNIQUE INDEX [IPK_Invoice] ON [Invoice]...</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>index</td>
+      <td>IPK_InvoiceLine</td>
+      <td>InvoiceLine</td>
+      <td>28</td>
+      <td>CREATE UNIQUE INDEX [IPK_InvoiceLine] ON [Invo...</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>index</td>
+      <td>IPK_MediaType</td>
+      <td>MediaType</td>
+      <td>29</td>
+      <td>CREATE UNIQUE INDEX [IPK_MediaType] ON [MediaT...</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>index</td>
+      <td>IPK_Playlist</td>
+      <td>Playlist</td>
+      <td>30</td>
+      <td>CREATE UNIQUE INDEX [IPK_Playlist] ON [Playlis...</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>index</td>
+      <td>IPK_PlaylistTrack</td>
+      <td>PlaylistTrack</td>
+      <td>31</td>
+      <td>CREATE UNIQUE INDEX [IPK_PlaylistTrack] ON [Pl...</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>index</td>
+      <td>IPK_Track</td>
+      <td>Track</td>
+      <td>32</td>
+      <td>CREATE UNIQUE INDEX [IPK_Track] ON [Track]([Tr...</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>index</td>
+      <td>IFK_AlbumArtistId</td>
+      <td>Album</td>
+      <td>33</td>
+      <td>CREATE INDEX [IFK_AlbumArtistId] ON [Album] ([...</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>index</td>
+      <td>IFK_CustomerSupportRepId</td>
+      <td>Customer</td>
+      <td>34</td>
+      <td>CREATE INDEX [IFK_CustomerSupportRepId] ON [Cu...</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>index</td>
+      <td>IFK_EmployeeReportsTo</td>
+      <td>Employee</td>
+      <td>36</td>
+      <td>CREATE INDEX [IFK_EmployeeReportsTo] ON [Emplo...</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>index</td>
+      <td>IFK_InvoiceCustomerId</td>
+      <td>Invoice</td>
+      <td>37</td>
+      <td>CREATE INDEX [IFK_InvoiceCustomerId] ON [Invoi...</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>index</td>
+      <td>IFK_InvoiceLineInvoiceId</td>
+      <td>InvoiceLine</td>
+      <td>38</td>
+      <td>CREATE INDEX [IFK_InvoiceLineInvoiceId] ON [In...</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>index</td>
+      <td>IFK_InvoiceLineTrackId</td>
+      <td>InvoiceLine</td>
+      <td>39</td>
+      <td>CREATE INDEX [IFK_InvoiceLineTrackId] ON [Invo...</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>index</td>
+      <td>IFK_PlaylistTrackTrackId</td>
+      <td>PlaylistTrack</td>
+      <td>40</td>
+      <td>CREATE INDEX [IFK_PlaylistTrackTrackId] ON [Pl...</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>index</td>
+      <td>IFK_TrackAlbumId</td>
+      <td>Track</td>
+      <td>41</td>
+      <td>CREATE INDEX [IFK_TrackAlbumId] ON [Track] ([A...</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>index</td>
+      <td>IFK_TrackGenreId</td>
+      <td>Track</td>
+      <td>42</td>
+      <td>CREATE INDEX [IFK_TrackGenreId] ON [Track] ([G...</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>index</td>
+      <td>IFK_TrackMediaTypeId</td>
+      <td>Track</td>
+      <td>43</td>
+      <td>CREATE INDEX [IFK_TrackMediaTypeId] ON [Track]...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">show_results</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;PRAGMA table_info(Track)&quot;&quot;&quot;</span><span class="p">)</span>  <span class="c1"># sqlite specific</span>
+<span class="n">show_results</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;PRAGMA table_info(Genre)&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="n">show_results</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;PRAGMA table_info(Album)&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="n">show_results</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;PRAGMA table_info(Artist)&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cid</th>
+      <th>name</th>
+      <th>type</th>
+      <th>notnull</th>
+      <th>dflt_value</th>
+      <th>pk</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>TrackId</td>
+      <td>INTEGER</td>
+      <td>1</td>
+      <td>None</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>Name</td>
+      <td>NVARCHAR(200)</td>
+      <td>1</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>AlbumId</td>
+      <td>INTEGER</td>
+      <td>0</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>MediaTypeId</td>
+      <td>INTEGER</td>
+      <td>1</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>GenreId</td>
+      <td>INTEGER</td>
+      <td>0</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5</td>
+      <td>Composer</td>
+      <td>NVARCHAR(220)</td>
+      <td>0</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>6</td>
+      <td>Milliseconds</td>
+      <td>INTEGER</td>
+      <td>1</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7</td>
+      <td>Bytes</td>
+      <td>INTEGER</td>
+      <td>0</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>8</td>
+      <td>UnitPrice</td>
+      <td>NUMERIC(10,2)</td>
+      <td>1</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cid</th>
+      <th>name</th>
+      <th>type</th>
+      <th>notnull</th>
+      <th>dflt_value</th>
+      <th>pk</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>GenreId</td>
+      <td>INTEGER</td>
+      <td>1</td>
+      <td>None</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>Name</td>
+      <td>NVARCHAR(120)</td>
+      <td>0</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cid</th>
+      <th>name</th>
+      <th>type</th>
+      <th>notnull</th>
+      <th>dflt_value</th>
+      <th>pk</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>AlbumId</td>
+      <td>INTEGER</td>
+      <td>1</td>
+      <td>None</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>Title</td>
+      <td>NVARCHAR(160)</td>
+      <td>1</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>ArtistId</td>
+      <td>INTEGER</td>
+      <td>1</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cid</th>
+      <th>name</th>
+      <th>type</th>
+      <th>notnull</th>
+      <th>dflt_value</th>
+      <th>pk</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>ArtistId</td>
+      <td>INTEGER</td>
+      <td>1</td>
+      <td>None</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>Name</td>
+      <td>NVARCHAR(120)</td>
+      <td>0</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">show_results</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT Track.Name, Album.Title, Artist.Name, Genre.Name FROM Track</span>
+<span class="s2">JOIN Genre on Track.GenreId = Genre.GenreId</span>
+<span class="s2">JOIN Album on Track.AlbumId = Album.AlbumId</span>
+<span class="s2">JOIN Artist on Album.ArtistId = Artist.ArtistId&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Title</th>
+      <th>Name</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>For Those About To Rock (We Salute You)</td>
+      <td>For Those About To Rock We Salute You</td>
+      <td>AC/DC</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Balls to the Wall</td>
+      <td>Balls to the Wall</td>
+      <td>Accept</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Fast As a Shark</td>
+      <td>Restless and Wild</td>
+      <td>Accept</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Restless and Wild</td>
+      <td>Restless and Wild</td>
+      <td>Accept</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Princess of the Dawn</td>
+      <td>Restless and Wild</td>
+      <td>Accept</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Put The Finger On You</td>
+      <td>For Those About To Rock We Salute You</td>
+      <td>AC/DC</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Let's Get It Up</td>
+      <td>For Those About To Rock We Salute You</td>
+      <td>AC/DC</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Inject The Venom</td>
+      <td>For Those About To Rock We Salute You</td>
+      <td>AC/DC</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Snowballed</td>
+      <td>For Those About To Rock We Salute You</td>
+      <td>AC/DC</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Evil Walks</td>
+      <td>For Those About To Rock We Salute You</td>
+      <td>AC/DC</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>C.O.D.</td>
+      <td>For Those About To Rock We Salute You</td>
+      <td>AC/DC</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Breaking The Rules</td>
+      <td>For Those About To Rock We Salute You</td>
+      <td>AC/DC</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Night Of The Long Knives</td>
+      <td>For Those About To Rock We Salute You</td>
+      <td>AC/DC</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Spellbound</td>
+      <td>For Those About To Rock We Salute You</td>
+      <td>AC/DC</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Go Down</td>
+      <td>Let There Be Rock</td>
+      <td>AC/DC</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Dog Eat Dog</td>
+      <td>Let There Be Rock</td>
+      <td>AC/DC</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Let There Be Rock</td>
+      <td>Let There Be Rock</td>
+      <td>AC/DC</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Bad Boy Boogie</td>
+      <td>Let There Be Rock</td>
+      <td>AC/DC</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Problem Child</td>
+      <td>Let There Be Rock</td>
+      <td>AC/DC</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Overdose</td>
+      <td>Let There Be Rock</td>
+      <td>AC/DC</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Hell Ain't A Bad Place To Be</td>
+      <td>Let There Be Rock</td>
+      <td>AC/DC</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Whole Lotta Rosie</td>
+      <td>Let There Be Rock</td>
+      <td>AC/DC</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Walk On Water</td>
+      <td>Big Ones</td>
+      <td>Aerosmith</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Love In An Elevator</td>
+      <td>Big Ones</td>
+      <td>Aerosmith</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Rag Doll</td>
+      <td>Big Ones</td>
+      <td>Aerosmith</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>What It Takes</td>
+      <td>Big Ones</td>
+      <td>Aerosmith</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Dude (Looks Like A Lady)</td>
+      <td>Big Ones</td>
+      <td>Aerosmith</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Janie's Got A Gun</td>
+      <td>Big Ones</td>
+      <td>Aerosmith</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Cryin'</td>
+      <td>Big Ones</td>
+      <td>Aerosmith</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Amazing</td>
+      <td>Big Ones</td>
+      <td>Aerosmith</td>
+      <td>Rock</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3473</th>
+      <td>October Song</td>
+      <td>Frank</td>
+      <td>Amy Winehouse</td>
+      <td>Pop</td>
+    </tr>
+    <tr>
+      <th>3474</th>
+      <td>What Is It About Men</td>
+      <td>Frank</td>
+      <td>Amy Winehouse</td>
+      <td>Pop</td>
+    </tr>
+    <tr>
+      <th>3475</th>
+      <td>Help Yourself</td>
+      <td>Frank</td>
+      <td>Amy Winehouse</td>
+      <td>Pop</td>
+    </tr>
+    <tr>
+      <th>3476</th>
+      <td>Amy Amy Amy (Outro)</td>
+      <td>Frank</td>
+      <td>Amy Winehouse</td>
+      <td>Pop</td>
+    </tr>
+    <tr>
+      <th>3477</th>
+      <td>Slowness</td>
+      <td>Carried to Dust (Bonus Track Version)</td>
+      <td>Calexico</td>
+      <td>Alternative</td>
+    </tr>
+    <tr>
+      <th>3478</th>
+      <td>Prometheus Overture, Op. 43</td>
+      <td>Beethoven: Symphony No. 6 'Pastoral' Etc.</td>
+      <td>Otto Klemperer &amp; Philharmonia Orchestra</td>
+      <td>Classical</td>
+    </tr>
+    <tr>
+      <th>3479</th>
+      <td>Sonata for Solo Violin: IV: Presto</td>
+      <td>Bartok: Violin &amp; Viola Concertos</td>
+      <td>Yehudi Menuhin</td>
+      <td>Classical</td>
+    </tr>
+    <tr>
+      <th>3480</th>
+      <td>A Midsummer Night's Dream, Op.61 Incidental Mu...</td>
+      <td>Mendelssohn: A Midsummer Night's Dream</td>
+      <td>Philharmonia Orchestra &amp; Sir Neville Marriner</td>
+      <td>Classical</td>
+    </tr>
+    <tr>
+      <th>3481</th>
+      <td>Suite No. 3 in D, BWV 1068: III. Gavotte I &amp; II</td>
+      <td>Bach: Orchestral Suites Nos. 1 - 4</td>
+      <td>Academy of St. Martin in the Fields, Sir Nevil...</td>
+      <td>Classical</td>
+    </tr>
+    <tr>
+      <th>3482</th>
+      <td>Concert pour 4 Parties de V**les, H. 545: I. P...</td>
+      <td>Charpentier: Divertissements, Airs &amp; Concerts</td>
+      <td>Les Arts Florissants &amp; William Christie</td>
+      <td>Classical</td>
+    </tr>
+    <tr>
+      <th>3483</th>
+      <td>Adios nonino</td>
+      <td>South American Getaway</td>
+      <td>The 12 Cellists of The Berlin Philharmonic</td>
+      <td>Classical</td>
+    </tr>
+    <tr>
+      <th>3484</th>
+      <td>Symphony No. 3 Op. 36 for Orchestra and Sopran...</td>
+      <td>Górecki: Symphony No. 3</td>
+      <td>Adrian Leaper &amp; Doreen de Feis</td>
+      <td>Classical</td>
+    </tr>
+    <tr>
+      <th>3485</th>
+      <td>Act IV, Symphony</td>
+      <td>Purcell: The Fairy Queen</td>
+      <td>Roger Norrington, London Classical Players</td>
+      <td>Classical</td>
+    </tr>
+    <tr>
+      <th>3486</th>
+      <td>3 Gymnopédies: No.1 - Lent Et Grave, No.3 - Le...</td>
+      <td>The Ultimate Relexation Album</td>
+      <td>Charles Dutoit &amp; L'Orchestre Symphonique de Mo...</td>
+      <td>Classical</td>
+    </tr>
+    <tr>
+      <th>3487</th>
+      <td>Music for the Funeral of Queen Mary: VI. "Thou...</td>
+      <td>Purcell: Music for the Queen Mary</td>
+      <td>Equale Brass Ensemble, John Eliot Gardiner &amp; M...</td>
+      <td>Classical</td>
+    </tr>
+    <tr>
+      <th>3488</th>
+      <td>Symphony No. 2: III. Allegro vivace</td>
+      <td>Weill: The Seven Deadly Sins</td>
+      <td>Kent Nagano and Orchestre de l'Opéra de Lyon</td>
+      <td>Classical</td>
+    </tr>
+    <tr>
+      <th>3489</th>
+      <td>Partita in E Major, BWV 1006A: I. Prelude</td>
+      <td>J.S. Bach: Chaconne, Suite in E Minor, Partita...</td>
+      <td>Julian Bream</td>
+      <td>Classical</td>
+    </tr>
+    <tr>
+      <th>3490</th>
+      <td>Le Sacre Du Printemps: I.iv. Spring Rounds</td>
+      <td>Prokofiev: Symphony No.5 &amp; Stravinksy: Le Sacr...</td>
+      <td>Berliner Philharmoniker &amp; Herbert Von Karajan</td>
+      <td>Classical</td>
+    </tr>
+    <tr>
+      <th>3491</th>
+      <td>Sing Joyfully</td>
+      <td>English Renaissance</td>
+      <td>The King's Singers</td>
+      <td>Classical</td>
+    </tr>
+    <tr>
+      <th>3492</th>
+      <td>Metopes, Op. 29: Calypso</td>
+      <td>Szymanowski: Piano Works, Vol. 1</td>
+      <td>Martin Roscoe</td>
+      <td>Classical</td>
+    </tr>
+    <tr>
+      <th>3493</th>
+      <td>Symphony No. 2, Op. 16 -  "The Four Temperamen...</td>
+      <td>Nielsen: The Six Symphonies</td>
+      <td>Göteborgs Symfoniker &amp; Neeme Järvi</td>
+      <td>Classical</td>
+    </tr>
+    <tr>
+      <th>3494</th>
+      <td>24 Caprices, Op. 1, No. 24, for Solo Violin, i...</td>
+      <td>Great Recordings of the Century: Paganini's 24...</td>
+      <td>Itzhak Perlman</td>
+      <td>Classical</td>
+    </tr>
+    <tr>
+      <th>3495</th>
+      <td>Étude 1, In C Major - Preludio (Presto) - Liszt</td>
+      <td>Liszt - 12 Études D'Execution Transcendante</td>
+      <td>Michele Campanella</td>
+      <td>Classical</td>
+    </tr>
+    <tr>
+      <th>3496</th>
+      <td>Erlkonig, D.328</td>
+      <td>Great Recordings of the Century - Shubert: Sch...</td>
+      <td>Gerald Moore</td>
+      <td>Classical</td>
+    </tr>
+    <tr>
+      <th>3497</th>
+      <td>Concerto for Violin, Strings and Continuo in G...</td>
+      <td>Locatelli: Concertos for Violin, Strings and C...</td>
+      <td>Mela Tenenbaum, Pro Musica Prague &amp; Richard Kapp</td>
+      <td>Classical</td>
+    </tr>
+    <tr>
+      <th>3498</th>
+      <td>Pini Di Roma (Pinien Von Rom) \ I Pini Della V...</td>
+      <td>Respighi:Pines of Rome</td>
+      <td>Eugene Ormandy</td>
+      <td>Classical</td>
+    </tr>
+    <tr>
+      <th>3499</th>
+      <td>String Quartet No. 12 in C Minor, D. 703 "Quar...</td>
+      <td>Schubert: The Late String Quartets &amp; String Qu...</td>
+      <td>Emerson String Quartet</td>
+      <td>Classical</td>
+    </tr>
+    <tr>
+      <th>3500</th>
+      <td>L'orfeo, Act 3, Sinfonia (Orchestra)</td>
+      <td>Monteverdi: L'Orfeo</td>
+      <td>C. Monteverdi, Nigel Rogers - Chiaroscuro; Lon...</td>
+      <td>Classical</td>
+    </tr>
+    <tr>
+      <th>3501</th>
+      <td>Quintet for Horn, Violin, 2 Violas, and Cello ...</td>
+      <td>Mozart: Chamber Music</td>
+      <td>Nash Ensemble</td>
+      <td>Classical</td>
+    </tr>
+    <tr>
+      <th>3502</th>
+      <td>Koyaanisqatsi</td>
+      <td>Koyaanisqatsi (Soundtrack from the Motion Pict...</td>
+      <td>Philip Glass Ensemble</td>
+      <td>Soundtrack</td>
+    </tr>
+  </tbody>
+</table>
+<p>3503 rows × 4 columns</p>
+</div></div>
+</div>
+<div class="section" id="Example-Query">
+<h3>Example Query<a class="headerlink" href="#Example-Query" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">get_results</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT COUNT(Track.Name) as NumTracks, Artist.Name FROM Track</span>
+<span class="s2">JOIN Album on Track.AlbumId = Album.AlbumId</span>
+<span class="s2">JOIN Artist on Album.ArtistId = Artist.ArtistId</span>
+<span class="s2">GROUP BY Artist.Name ORDER BY NumTracks DESC&quot;&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>NumTracks</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>213</td>
+      <td>Iron Maiden</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>135</td>
+      <td>U2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>114</td>
+      <td>Led Zeppelin</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>112</td>
+      <td>Metallica</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>92</td>
+      <td>Deep Purple</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>92</td>
+      <td>Lost</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>67</td>
+      <td>Pearl Jam</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>57</td>
+      <td>Lenny Kravitz</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>56</td>
+      <td>Various Artists</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>53</td>
+      <td>The Office</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">show_results</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;PRAGMA table_info(Customer)&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="n">show_results</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;PRAGMA table_info(Invoice)&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="n">show_results</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;PRAGMA table_info(InvoiceLine)&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cid</th>
+      <th>name</th>
+      <th>type</th>
+      <th>notnull</th>
+      <th>dflt_value</th>
+      <th>pk</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>CustomerId</td>
+      <td>INTEGER</td>
+      <td>1</td>
+      <td>None</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>FirstName</td>
+      <td>NVARCHAR(40)</td>
+      <td>1</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>LastName</td>
+      <td>NVARCHAR(20)</td>
+      <td>1</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>Company</td>
+      <td>NVARCHAR(80)</td>
+      <td>0</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>Address</td>
+      <td>NVARCHAR(70)</td>
+      <td>0</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5</td>
+      <td>City</td>
+      <td>NVARCHAR(40)</td>
+      <td>0</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>6</td>
+      <td>State</td>
+      <td>NVARCHAR(40)</td>
+      <td>0</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7</td>
+      <td>Country</td>
+      <td>NVARCHAR(40)</td>
+      <td>0</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>8</td>
+      <td>PostalCode</td>
+      <td>NVARCHAR(10)</td>
+      <td>0</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>9</td>
+      <td>Phone</td>
+      <td>NVARCHAR(24)</td>
+      <td>0</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>10</td>
+      <td>Fax</td>
+      <td>NVARCHAR(24)</td>
+      <td>0</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>11</td>
+      <td>Email</td>
+      <td>NVARCHAR(60)</td>
+      <td>1</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>12</td>
+      <td>SupportRepId</td>
+      <td>INTEGER</td>
+      <td>0</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cid</th>
+      <th>name</th>
+      <th>type</th>
+      <th>notnull</th>
+      <th>dflt_value</th>
+      <th>pk</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>InvoiceId</td>
+      <td>INTEGER</td>
+      <td>1</td>
+      <td>None</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>CustomerId</td>
+      <td>INTEGER</td>
+      <td>1</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>InvoiceDate</td>
+      <td>DATETIME</td>
+      <td>1</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>BillingAddress</td>
+      <td>NVARCHAR(70)</td>
+      <td>0</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>BillingCity</td>
+      <td>NVARCHAR(40)</td>
+      <td>0</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5</td>
+      <td>BillingState</td>
+      <td>NVARCHAR(40)</td>
+      <td>0</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>6</td>
+      <td>BillingCountry</td>
+      <td>NVARCHAR(40)</td>
+      <td>0</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7</td>
+      <td>BillingPostalCode</td>
+      <td>NVARCHAR(10)</td>
+      <td>0</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>8</td>
+      <td>Total</td>
+      <td>NUMERIC(10,2)</td>
+      <td>1</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cid</th>
+      <th>name</th>
+      <th>type</th>
+      <th>notnull</th>
+      <th>dflt_value</th>
+      <th>pk</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>InvoiceLineId</td>
+      <td>INTEGER</td>
+      <td>1</td>
+      <td>None</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>InvoiceId</td>
+      <td>INTEGER</td>
+      <td>1</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>TrackId</td>
+      <td>INTEGER</td>
+      <td>1</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>UnitPrice</td>
+      <td>NUMERIC(10,2)</td>
+      <td>1</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>Quantity</td>
+      <td>INTEGER</td>
+      <td>1</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="Total-Spending-by-State/Country">
+<h3>Total Spending by State/Country<a class="headerlink" href="#Total-Spending-by-State/Country" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">get_results</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT SUM(InvoiceLine.UnitPrice) AS Spending, Customer.State, Customer.Country AS Location</span>
+<span class="s2">FROM InvoiceLine</span>
+<span class="s2">JOIN Invoice ON InvoiceLine.InvoiceId = Invoice.InvoiceId</span>
+<span class="s2">JOIN Customer ON Invoice.CustomerId = Customer.CustomerId</span>
+<span class="s2">GROUP BY Customer.State ORDER BY Spending DESC&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Spending</th>
+      <th>State</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1150.00</td>
+      <td>None</td>
+      <td>Germany</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>115.86</td>
+      <td>CA</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>114.86</td>
+      <td>SP</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>75.24</td>
+      <td>ON</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>47.62</td>
+      <td>TX</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>45.62</td>
+      <td>Dublin</td>
+      <td>Ireland</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>43.62</td>
+      <td>IL</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>43.62</td>
+      <td>UT</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>42.62</td>
+      <td>WI</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>40.62</td>
+      <td>VV</td>
+      <td>Netherlands</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>39.62</td>
+      <td>FL</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>39.62</td>
+      <td>QC</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>39.62</td>
+      <td>WA</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>38.62</td>
+      <td>BC</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>37.62</td>
+      <td>AB</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>37.62</td>
+      <td>AZ</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>37.62</td>
+      <td>DF</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>37.62</td>
+      <td>MA</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>37.62</td>
+      <td>MB</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>37.62</td>
+      <td>NS</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>37.62</td>
+      <td>NSW</td>
+      <td>Australia</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>37.62</td>
+      <td>NT</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>37.62</td>
+      <td>NV</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>37.62</td>
+      <td>NY</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>37.62</td>
+      <td>RJ</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>37.62</td>
+      <td>RM</td>
+      <td>Italy</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Subqueries">
+<h2>Subqueries<a class="headerlink" href="#Subqueries" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">show_results</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT Subquery.* FROM (SELECT Artist.Name, COUNT(Artist.Name) as ArtistCount, Customer.State, Customer.Country</span>
+<span class="s2">FROM InvoiceLine</span>
+<span class="s2">JOIN Invoice ON InvoiceLine.InvoiceId = Invoice.InvoiceId</span>
+<span class="s2">JOIN Customer ON Invoice.CustomerId = Customer.CustomerId</span>
+<span class="s2">JOIN Track ON InvoiceLine.TrackId = Track.TrackId</span>
+<span class="s2">JOIN Album ON Track.TrackId = Album.AlbumId</span>
+<span class="s2">JOIN Artist ON Artist.ArtistId = Album.ArtistId</span>
+<span class="s2">GROUP BY Artist.Name, Customer.State, Customer.Country) AS Subquery</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>ArtistCount</th>
+      <th>State</th>
+      <th>Country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AC/DC</td>
+      <td>1</td>
+      <td>None</td>
+      <td>Germany</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AC/DC</td>
+      <td>1</td>
+      <td>RM</td>
+      <td>Italy</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Academy of St. Martin in the Fields &amp; Sir Nevi...</td>
+      <td>1</td>
+      <td>None</td>
+      <td>United Kingdom</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Academy of St. Martin in the Fields &amp; Sir Nevi...</td>
+      <td>1</td>
+      <td>SP</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Academy of St. Martin in the Fields Chamber En...</td>
+      <td>1</td>
+      <td>MB</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Accept</td>
+      <td>1</td>
+      <td>None</td>
+      <td>Germany</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Accept</td>
+      <td>1</td>
+      <td>DF</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Accept</td>
+      <td>1</td>
+      <td>NT</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Adrian Leaper &amp; Doreen de Feis</td>
+      <td>1</td>
+      <td>NV</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Aerosmith</td>
+      <td>1</td>
+      <td>RM</td>
+      <td>Italy</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Aisha Duo</td>
+      <td>1</td>
+      <td>SP</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Alanis Morissette</td>
+      <td>1</td>
+      <td>None</td>
+      <td>Norway</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Amy Winehouse</td>
+      <td>1</td>
+      <td>None</td>
+      <td>United Kingdom</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Amy Winehouse</td>
+      <td>1</td>
+      <td>NV</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Anne-Sophie Mutter, Herbert Von Karajan &amp; Wien...</td>
+      <td>1</td>
+      <td>MB</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Antal Doráti &amp; London Symphony Orchestra</td>
+      <td>1</td>
+      <td>None</td>
+      <td>France</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Antônio Carlos Jobim</td>
+      <td>1</td>
+      <td>None</td>
+      <td>Norway</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Antônio Carlos Jobim</td>
+      <td>1</td>
+      <td>NT</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Apocalyptica</td>
+      <td>1</td>
+      <td>DF</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Apocalyptica</td>
+      <td>1</td>
+      <td>RM</td>
+      <td>Italy</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Audioslave</td>
+      <td>1</td>
+      <td>None</td>
+      <td>Norway</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Audioslave</td>
+      <td>1</td>
+      <td>SP</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>BackBeat</td>
+      <td>1</td>
+      <td>None</td>
+      <td>Norway</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Battlestar Galactica (Classic)</td>
+      <td>1</td>
+      <td>None</td>
+      <td>Sweden</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Berliner Philharmoniker &amp; Hans Rosbaud</td>
+      <td>1</td>
+      <td>NV</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Berliner Philharmoniker &amp; Herbert Von Karajan</td>
+      <td>1</td>
+      <td>None</td>
+      <td>United Kingdom</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Berliner Philharmoniker &amp; Herbert Von Karajan</td>
+      <td>1</td>
+      <td>SP</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Billy Cobham</td>
+      <td>1</td>
+      <td>RM</td>
+      <td>Italy</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Black Label Society</td>
+      <td>1</td>
+      <td>DF</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Black Label Society</td>
+      <td>1</td>
+      <td>NT</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>171</th>
+      <td>The Clash</td>
+      <td>1</td>
+      <td>CA</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>172</th>
+      <td>The Cult</td>
+      <td>1</td>
+      <td>CA</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>173</th>
+      <td>The Doors</td>
+      <td>1</td>
+      <td>None</td>
+      <td>Czech Republic</td>
+    </tr>
+    <tr>
+      <th>174</th>
+      <td>The Office</td>
+      <td>1</td>
+      <td>MB</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>175</th>
+      <td>The Police</td>
+      <td>1</td>
+      <td>FL</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>176</th>
+      <td>The Rolling Stones</td>
+      <td>1</td>
+      <td>None</td>
+      <td>Czech Republic</td>
+    </tr>
+    <tr>
+      <th>177</th>
+      <td>The Rolling Stones</td>
+      <td>1</td>
+      <td>None</td>
+      <td>Sweden</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>The Rolling Stones</td>
+      <td>1</td>
+      <td>FL</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>179</th>
+      <td>The Rolling Stones</td>
+      <td>1</td>
+      <td>MA</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>180</th>
+      <td>The Tea Party</td>
+      <td>1</td>
+      <td>FL</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>181</th>
+      <td>The Who</td>
+      <td>1</td>
+      <td>FL</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>182</th>
+      <td>Tim Maia</td>
+      <td>1</td>
+      <td>None</td>
+      <td>Czech Republic</td>
+    </tr>
+    <tr>
+      <th>183</th>
+      <td>Tim Maia</td>
+      <td>1</td>
+      <td>None</td>
+      <td>Sweden</td>
+    </tr>
+    <tr>
+      <th>184</th>
+      <td>Titãs</td>
+      <td>1</td>
+      <td>TX</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>185</th>
+      <td>U2</td>
+      <td>4</td>
+      <td>None</td>
+      <td>France</td>
+    </tr>
+    <tr>
+      <th>186</th>
+      <td>U2</td>
+      <td>1</td>
+      <td>None</td>
+      <td>Germany</td>
+    </tr>
+    <tr>
+      <th>187</th>
+      <td>U2</td>
+      <td>1</td>
+      <td>None</td>
+      <td>Sweden</td>
+    </tr>
+    <tr>
+      <th>188</th>
+      <td>U2</td>
+      <td>2</td>
+      <td>RJ</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>189</th>
+      <td>U2</td>
+      <td>2</td>
+      <td>TX</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>190</th>
+      <td>UB40</td>
+      <td>1</td>
+      <td>None</td>
+      <td>Sweden</td>
+    </tr>
+    <tr>
+      <th>191</th>
+      <td>UB40</td>
+      <td>1</td>
+      <td>TX</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>192</th>
+      <td>Van Halen</td>
+      <td>2</td>
+      <td>None</td>
+      <td>France</td>
+    </tr>
+    <tr>
+      <th>193</th>
+      <td>Van Halen</td>
+      <td>1</td>
+      <td>TX</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>194</th>
+      <td>Various Artists</td>
+      <td>1</td>
+      <td>None</td>
+      <td>Belgium</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>Various Artists</td>
+      <td>1</td>
+      <td>None</td>
+      <td>France</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>Various Artists</td>
+      <td>1</td>
+      <td>NT</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>Velvet Revolver</td>
+      <td>1</td>
+      <td>RJ</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>198</th>
+      <td>Vinícius De Moraes</td>
+      <td>1</td>
+      <td>None</td>
+      <td>Sweden</td>
+    </tr>
+    <tr>
+      <th>199</th>
+      <td>Yehudi Menuhin</td>
+      <td>1</td>
+      <td>SP</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>200</th>
+      <td>Zeca Pagodinho</td>
+      <td>1</td>
+      <td>Dublin</td>
+      <td>Ireland</td>
+    </tr>
+  </tbody>
+</table>
+<p>201 rows × 4 columns</p>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">show_results</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT Artist.Name as ArtistName, SUM(TrackSales.Sales) AS ArtistSales FROM (</span>
+<span class="s2">SELECT Track.TrackId, Track.AlbumId, Track.Name, SUM(InvoiceLine.UnitPrice) AS Sales</span>
+<span class="s2">FROM Track JOIN InvoiceLine ON Track.TrackId = InvoiceLine.TrackId</span>
+<span class="s2">GROUP BY Track.TrackId</span>
+<span class="s2">) AS TrackSales</span>
+<span class="s2">JOIN Album on TrackSales.AlbumId = Album.AlbumId</span>
+<span class="s2">JOIN Artist on Album.ArtistId = Artist.ArtistId</span>
+<span class="s2">GROUP BY Artist.Name ORDER BY ArtistSales DESC</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ArtistName</th>
+      <th>ArtistSales</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Iron Maiden</td>
+      <td>138.60</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>U2</td>
+      <td>105.93</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Metallica</td>
+      <td>90.09</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Led Zeppelin</td>
+      <td>86.13</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Lost</td>
+      <td>81.59</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>The Office</td>
+      <td>49.75</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Os Paralamas Do Sucesso</td>
+      <td>44.55</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Deep Purple</td>
+      <td>43.56</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Faith No More</td>
+      <td>41.58</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Eric Clapton</td>
+      <td>39.60</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>R.E.M.</td>
+      <td>38.61</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Creedence Clearwater Revival</td>
+      <td>36.63</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Queen</td>
+      <td>36.63</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Battlestar Galactica (Classic)</td>
+      <td>35.82</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Guns N' Roses</td>
+      <td>35.64</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Titãs</td>
+      <td>33.66</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Green Day</td>
+      <td>32.67</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Pearl Jam</td>
+      <td>31.68</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Kiss</td>
+      <td>30.69</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Van Halen</td>
+      <td>28.71</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Various Artists</td>
+      <td>28.71</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Red Hot Chili Peppers</td>
+      <td>26.73</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Chico Buarque</td>
+      <td>26.73</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Heroes</td>
+      <td>25.87</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Lenny Kravitz</td>
+      <td>25.74</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Chico Science &amp; Nação Zumbi</td>
+      <td>24.75</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Battlestar Galactica</td>
+      <td>23.88</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Ozzy Osbourne</td>
+      <td>23.76</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Smashing Pumpkins</td>
+      <td>23.76</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Tim Maia</td>
+      <td>23.76</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>135</th>
+      <td>Academy of St. Martin in the Fields, John Birc...</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>136</th>
+      <td>Adrian Leaper &amp; Doreen de Feis</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>137</th>
+      <td>Antal Doráti &amp; London Symphony Orchestra</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>138</th>
+      <td>Berliner Philharmoniker &amp; Hans Rosbaud</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>139</th>
+      <td>Calexico</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>Dread Zeppelin</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>141</th>
+      <td>Edo de Waart &amp; San Francisco Symphony</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>142</th>
+      <td>Emanuel Ax, Eugene Ormandy &amp; Philadelphia Orch...</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>143</th>
+      <td>English Concert &amp; Trevor Pinnock</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>144</th>
+      <td>Felix Schmidt, London Symphony Orchestra &amp; Raf...</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>Göteborgs Symfoniker &amp; Neeme Järvi</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>Habib Koité and Bamada</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>Julian Bream</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>Kent Nagano and Orchestre de l'Opéra de Lyon</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>Luciana Souza/Romero Lubambo</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>150</th>
+      <td>Martin Roscoe</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>151</th>
+      <td>Maurizio Pollini</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>152</th>
+      <td>Michele Campanella</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>153</th>
+      <td>Orchestra of The Age of Enlightenment</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>154</th>
+      <td>Otto Klemperer &amp; Philharmonia Orchestra</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>155</th>
+      <td>Philharmonia Orchestra &amp; Sir Neville Marriner</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>156</th>
+      <td>Roger Norrington, London Classical Players</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>157</th>
+      <td>Royal Philharmonic Orchestra &amp; Sir Thomas Beecham</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>158</th>
+      <td>Scholars Baroque Ensemble</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>159</th>
+      <td>Sir Georg Solti &amp; Wiener Philharmoniker</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>160</th>
+      <td>The 12 Cellists of The Berlin Philharmonic</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>161</th>
+      <td>The King's Singers</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>162</th>
+      <td>The Posies</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>163</th>
+      <td>Yehudi Menuhin</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>164</th>
+      <td>Yo-Yo Ma</td>
+      <td>0.99</td>
+    </tr>
+  </tbody>
+</table>
+<p>165 rows × 2 columns</p>
+</div></div>
+</div>
+</div>
+<div class="section" id="Searching-Databases">
+<h2>Searching Databases<a class="headerlink" href="#Searching-Databases" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">show_results</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM Artist WHERE Name LIKE (?)&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%f</span><span class="s1">oo%&#39;</span><span class="p">,))</span>
+<span class="n">show_results</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM Artist WHERE Name LIKE (?)&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;%bar%&#39;</span><span class="p">,))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ArtistId</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>84</td>
+      <td>Foo Fighters</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ArtistId</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>48</td>
+      <td>Barão Vermelho</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>213</td>
+      <td>Scholars Baroque Ensemble</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>224</td>
+      <td>Barry Wordsworth &amp; BBC Concert Orchestra</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>273</td>
+      <td>C. Monteverdi, Nigel Rogers - Chiaroscuro; Lon...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="Scientific-databases">
+<h2>Scientific databases<a class="headerlink" href="#Scientific-databases" title="Permalink to this headline">¶</a></h2>
+<p>Acquiring quality data with the information you might need for
+particular research questions is still <em>very hard</em>. Many databases found
+online are of low quality, or small breadth / depth. Here are some
+databases of various kinds of materials and bioactive molecules. In many
+cases, domain scientists/engineers and data scientists must collaborate
+to make the most out of limited information.</p>
+<ul class="simple">
+<li><a class="reference external" href="https://materialsproject.org/">https://materialsproject.org/</a></li>
+<li><a class="reference external" href="http://pymatgen.org/">http://pymatgen.org/</a></li>
+<li><a class="reference external" href="https://www.ebi.ac.uk/chembl/">https://www.ebi.ac.uk/chembl/</a></li>
+<li><a class="reference external" href="https://omdb.diracmaterials.org/">https://omdb.diracmaterials.org/</a></li>
+</ul>
+</div>
+<div class="section" id="Hosting-a-production-database">
+<h2>Hosting a production database<a class="headerlink" href="#Hosting-a-production-database" title="Permalink to this headline">¶</a></h2>
+<p>If reliability is important and/or you have some money and want to get
+going quickly, use a cloud provider like Amazon Web Services or Google
+Cloud. - <a class="reference external" href="https://aws.amazon.com/products/databases/">https://aws.amazon.com/products/databases/</a> -
+<a class="reference external" href="https://cloud.google.com/sql/">https://cloud.google.com/sql/</a></p>
+</div>
+<div class="section" id="Exploring-more-on-your-own">
+<h2>Exploring more on your own<a class="headerlink" href="#Exploring-more-on-your-own" title="Permalink to this headline">¶</a></h2>
+<p>To learn how databases work on your own, install the <code class="docutils literal notranslate"><span class="pre">mysql-server</span></code>
+package on a server you have access to, or follow instructions for a
+LAMP (Linux, Apache, MySQL, PHP) server. The second link below has
+demonstrations for all kinds of other databases I mentioned previously,
+including several NoSQL databases. -
+<a class="reference external" href="https://www.linode.com/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/">https://www.linode.com/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/</a>
+- <a class="reference external" href="https://www.linode.com/docs/databases/">https://www.linode.com/docs/databases/</a></p>
+</div>
+<div class="section" id="Administrative-interfaces">
+<h2>Administrative interfaces<a class="headerlink" href="#Administrative-interfaces" title="Permalink to this headline">¶</a></h2>
+<p>To administer MySQL databases, I really like PHPMyAdmin. It’s how I
+learned to use databases, because its web interface shows the SQL
+commands when you click on the buttons. - <a class="reference external" href="https://www.phpmyadmin.net/">https://www.phpmyadmin.net/</a></p>
+<div class="section" id="Sources">
+<h3>Sources<a class="headerlink" href="#Sources" title="Permalink to this headline">¶</a></h3>
+<p>Database reference material: - <a class="reference external" href="https://en.wikipedia.org/wiki/NoSQL">https://en.wikipedia.org/wiki/NoSQL</a> -
+<a class="reference external" href="https://docs.python.org/3.7/library/sqlite3.html">https://docs.python.org/3.7/library/sqlite3.html</a> -
+<a class="reference external" href="https://community.modeanalytics.com/sql/tutorial/sql-joins/">https://community.modeanalytics.com/sql/tutorial/sql-joins/</a> -
+<a class="reference external" href="https://en.wikipedia.org/wiki/Database_normalization">https://en.wikipedia.org/wiki/Database_normalization</a> -
+<a class="reference external" href="http://www.sqlitetutorial.net/sqlite-sample-database/">http://www.sqlitetutorial.net/sqlite-sample-database/</a></p>
+<p>Other Python packages used: -
+<a class="reference external" href="https://networkx.github.io/documentation/stable/">https://networkx.github.io/documentation/stable/</a> -
+<a class="reference external" href="https://pandas.pydata.org/pandas-docs/version/0.22/generated/pandas.read_sql.html">https://pandas.pydata.org/pandas-docs/version/0.22/generated/pandas.read_sql.html</a></p>
+<p>Raw data: -
+<a class="reference external" href="https://en.wikipedia.org/wiki/List_of_Marvel_Cinematic_Universe_film_actors">https://en.wikipedia.org/wiki/List_of_Marvel_Cinematic_Universe_film_actors</a>
+- <a class="reference external" href="https://github.com/lerocha/chinook-database">https://github.com/lerocha/chinook-database</a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="project_instructions.html" title="Individual Project"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="lecture17_databases.html" title="Databases"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: On-Ramp to Data Science 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Heather Mayes.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+    </div>
+  </body>
+</html>

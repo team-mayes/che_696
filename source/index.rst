@@ -62,7 +62,7 @@ CHE 696: On-Ramp to Data Science
 
    notebooks/lecture17_databases.ipynb
 
-   notebooks/lecture17_databases.ipynb
+   notebooks/lecture18_databases.ipynb
 
    notebooks/project_instructions.ipynb
     ..

@@ -17,7 +17,7 @@
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Individual Project" href="project_instructions.html" />
+    <link rel="next" title="Databases Pt. 2" href="lecture18_databases.html" />
     <link rel="prev" title="HW7, Practice with NumPy and Linear Algebra" href="HW07.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
@@ -31,7 +31,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="project_instructions.html" title="Individual Project"
+          <a href="lecture18_databases.html" title="Databases Pt. 2"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="HW07.html" title="HW7, Practice with NumPy and Linear Algebra"
@@ -45,8 +45,8 @@
   <p class="topless"><a href="HW07.html"
                         title="previous chapter">HW7, Practice with NumPy and Linear Algebra</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="project_instructions.html"
-                        title="next chapter">Individual Project</a></p>
+  <p class="topless"><a href="lecture18_databases.html"
+                        title="next chapter">Databases Pt. 2</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <div class="searchformwrapper">
@@ -235,7 +235,7 @@ div.nboutput div.output_area.stderr {
 </style>
 <div class="section" id="Databases">
 <h1>Databases<a class="headerlink" href="#Databases" title="Permalink to this headline">¶</a></h1>
-<p>Guest lecture by <a class="reference external" href="https://github.com/bdice/">Bradley Dice</a>.</p>
+<p>Guest lecture by Bradley Dice, [&#64;bdice](<a class="reference external" href="https://github.com/bdice/">https://github.com/bdice/</a>).</p>
 <div class="section" id="Why-databases?">
 <h2>Why databases?<a class="headerlink" href="#Why-databases?" title="Permalink to this headline">¶</a></h2>
 <p>Tons of applications: managing digital content (websites), product
@@ -252,6 +252,10 @@ speed are all important.</p>
 </li>
 <li>Text files and spreadsheets can only do so much.</li>
 </ul>
+<p>Databases administrators have to think about software, hardware, data
+structures, permissions and roles, backups, reports, optimization, and
+migration. This lecture will focus on the “user” side, especially how to
+get information out of a SQL database for analysis.</p>
 <div class="section" id="What-can-we-expect-from-most-databases?-CRUD-+-ACID.">
 <h3>What can we expect from most databases? CRUD + ACID.<a class="headerlink" href="#What-can-we-expect-from-most-databases?-CRUD-+-ACID." title="Permalink to this headline">¶</a></h3>
 <p>Operations you can perform: <strong>CRUD.</strong> When interfacing with a database,
@@ -271,7 +275,7 @@ Transactions must be permanent (i.e.&nbsp;stored on a disk, not in memory).</p>
 <h2>Types of databases<a class="headerlink" href="#Types-of-databases" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Relational and non-relational.</li>
-<li>These generally correspond to “SQL-like” and “NoSQL-like”</li>
+<li>These generally correspond to “SQL-like” and “NoSQL-like.”</li>
 </ul>
 <div class="section" id="Relational-Databases">
 <h3>Relational Databases<a class="headerlink" href="#Relational-Databases" title="Permalink to this headline">¶</a></h3>
@@ -296,6 +300,9 @@ few types of non-relational databases including <em>column stores</em>
 Neo4j</p>
 <div class="section" id="Python-Example-with-sqlite3">
 <h3>Python Example with sqlite3<a class="headerlink" href="#Python-Example-with-sqlite3" title="Permalink to this headline">¶</a></h3>
+<p>Reminder: triple-double-quotes <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;like</span> <span class="pre">this&quot;&quot;&quot;</span></code> are just another form
+of Python string, and you can include single or double quotes inside.
+This is useful for complicated SQL statements.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [1]:
@@ -313,7 +320,10 @@ Neo4j</p>
 </pre></div>
 </div>
 </div>
-<p><strong>Create</strong> data with the <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span></code> and <code class="docutils literal notranslate"><span class="pre">INSERT</span></code> statements.</p>
+<p><strong>Create</strong> data with the <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span></code> and <code class="docutils literal notranslate"><span class="pre">INSERT</span></code> statements.
+There are many data types, including <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>,
+<code class="docutils literal notranslate"><span class="pre">BLOB</span></code>, and more. See this <a class="reference external" href="https://www.w3schools.com/sql/sql_datatypes.asp">reference list of common SQL data
+types</a>.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [2]:
@@ -323,20 +333,43 @@ Neo4j</p>
 <span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
     <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
     <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-        <span class="sd">&quot;&quot;&quot;CREATE TABLE people</span>
-<span class="sd">        (first_name text, last_name text, job text, age real)&quot;&quot;&quot;</span><span class="p">)</span>
+        <span class="sd">&quot;&quot;&quot;CREATE TABLE People</span>
+<span class="sd">        (first_name TEXT, last_name TEXT, job TEXT, age NUMERIC)&quot;&quot;&quot;</span><span class="p">)</span>
     <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-        <span class="sd">&quot;&quot;&quot;INSERT INTO people VALUES (?,?,?,?)&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="sd">&quot;&quot;&quot;INSERT INTO People VALUES (?,?,?,?)&quot;&quot;&quot;</span><span class="p">,</span>
         <span class="p">(</span><span class="s1">&#39;Bradley&#39;</span><span class="p">,</span> <span class="s1">&#39;Dice&#39;</span><span class="p">,</span> <span class="s1">&#39;Guest Lecturer&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM People&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[(&#39;Bradley&#39;, &#39;Dice&#39;, &#39;Guest Lecturer&#39;, 25)]
+</pre></div></div>
+</div>
+<p><strong>Note:</strong> We <em>always</em> use the “prepared statement” syntax <code class="docutils literal notranslate"><span class="pre">(?,?,?,?)</span></code>
+instead of formatting the string directly to avoid <a class="reference external" href="https://en.wikipedia.org/wiki/SQL_injection">SQL
+Injection</a>!</p>
 <p>We can also just use <code class="docutils literal notranslate"><span class="pre">conn</span></code> directly, with a shorter syntax that
 creates cursors automatically. Also, we use <code class="docutils literal notranslate"><span class="pre">executemany</span></code> with a list
 of tuples, to perform many actions at once.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [3]:
+<span></span>In [4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -352,21 +385,21 @@ of tuples, to perform many actions at once.</p>
 <span class="p">]</span>
 <span class="c1"># Yes, I&#39;m a Marvel fan</span>
 <span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
-    <span class="n">conn</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;INSERT INTO people VALUES (?,?,?,?)&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">famous_actors</span><span class="p">)</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;INSERT INTO People VALUES (?,?,?,?)&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">famous_actors</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <p><strong>Read</strong> data with the <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> statement.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [4]:
+<span></span>In [5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
     <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
     <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-        <span class="sd">&quot;&quot;&quot;SELECT * FROM people&quot;&quot;&quot;</span><span class="p">)</span>
+        <span class="sd">&quot;&quot;&quot;SELECT * FROM People&quot;&quot;&quot;</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -376,7 +409,7 @@ of tuples, to perform many actions at once.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[(&#39;Bradley&#39;, &#39;Dice&#39;, &#39;Guest Lecturer&#39;, 25.0), (&#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (&#39;Chris&#39;, &#39;Evans&#39;, &#39;Captain America&#39;, 37.0), (&#39;Scarlett&#39;, &#39;Johansson&#39;, &#39;Black Widow&#39;, 33.0), (&#39;Samuel&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (&#39;Benedict&#39;, &#39;Cumberbatch&#39;, &#39;Dr. Strange&#39;, 42.0), (&#39;Brie&#39;, &#39;Larson&#39;, &#39;Captain Marvel&#39;, 29.0), (&#39;Chadwick&#39;, &#39;Boseman&#39;, &#39;Black Panther&#39;, 40.0)]
+[(&#39;Bradley&#39;, &#39;Dice&#39;, &#39;Guest Lecturer&#39;, 25), (&#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53), (&#39;Chris&#39;, &#39;Evans&#39;, &#39;Captain America&#39;, 37), (&#39;Scarlett&#39;, &#39;Johansson&#39;, &#39;Black Widow&#39;, 33), (&#39;Samuel&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69), (&#39;Benedict&#39;, &#39;Cumberbatch&#39;, &#39;Dr. Strange&#39;, 42), (&#39;Brie&#39;, &#39;Larson&#39;, &#39;Captain Marvel&#39;, 29), (&#39;Chadwick&#39;, &#39;Boseman&#39;, &#39;Black Panther&#39;, 40)]
 </pre></div></div>
 </div>
 <p><strong>Update</strong> data with the <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> statement. We forgot a middle
@@ -384,27 +417,53 @@ initial! Here we use <code class="docutils literal notranslate"><span class="pre
 criteria.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [5]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
-    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-        <span class="sd">&quot;&quot;&quot;UPDATE people SET first_name = ? WHERE first_name = ? AND last_name = ?&quot;&quot;&quot;</span><span class="p">,</span>
-        <span class="p">(</span><span class="s2">&quot;Samuel L.&quot;</span><span class="p">,</span> <span class="s2">&quot;Samuel&quot;</span><span class="p">,</span> <span class="s2">&quot;Jackson&quot;</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<p>We can return specific columns by listing them after <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>, and
-filter the rows with <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
-    <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT first_name, last_name FROM people WHERE last_name = ?&quot;&quot;&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;Jackson&quot;</span><span class="p">,))</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="sd">&quot;&quot;&quot;UPDATE People SET first_name = ? WHERE first_name = ? AND last_name = ?&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">(</span><span class="s2">&quot;Samuel L.&quot;</span><span class="p">,</span> <span class="s2">&quot;Samuel&quot;</span><span class="p">,</span> <span class="s2">&quot;Jackson&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<p>We can also take user input and return dynamic data:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">age</span> <span class="o">=</span> <span class="mi">45</span> <span class="c1"># input(&#39;People older than:&#39;)</span>
+<span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="sd">&quot;&quot;&quot;SELECT first_name, age FROM People WHERE age &gt;= ?&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">age</span><span class="p">,))</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(&#39;Robert&#39;, 53)
+(&#39;Samuel L.&#39;, 69)
+</pre></div></div>
+</div>
+<p>We can return specific columns by listing them after <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>, and
+filter the rows with <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT first_name, last_name FROM People WHERE last_name = ?&quot;&quot;&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;Jackson&quot;</span><span class="p">,))</span>
     <span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -421,19 +480,19 @@ filter the rows with <code class="docutils literal notranslate"><span class="pre
 Here is an example.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [7]:
+<span></span>In [9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
-    <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT COUNT(*) FROM people&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT COUNT(*) FROM People&quot;&quot;&quot;</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Total count of people:&#39;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-        <span class="sd">&quot;&quot;&quot;SELECT SUBSTR(first_name, 1, 1) AS first_letter, COUNT(*) FROM people GROUP BY first_letter&quot;&quot;&quot;</span><span class="p">)</span>
+        <span class="sd">&quot;&quot;&quot;SELECT SUBSTR(first_name, 1, 1) AS first_letter, COUNT(*) FROM People GROUP BY first_letter&quot;&quot;&quot;</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Count by first letters of first names:&#39;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
-    <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT AVG(age) FROM people&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT AVG(age) FROM People&quot;&quot;&quot;</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Average age of people:&#39;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
-    <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT SUM(age) FROM people&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT SUM(age) FROM People&quot;&quot;&quot;</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Summed ages of people:&#39;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -446,7 +505,7 @@ Here is an example.</p>
 Total count of people: [(8,)]
 Count by first letters of first names: [(&#39;B&#39;, 3), (&#39;C&#39;, 2), (&#39;R&#39;, 1), (&#39;S&#39;, 2)]
 Average age of people: [(41.0,)]
-Summed ages of people: [(328.0,)]
+Summed ages of people: [(328,)]
 </pre></div></div>
 </div>
 <p>There are tons of functions for math, string manipulations, date/time
@@ -456,7 +515,7 @@ examples. The full reference manual for MySQL is here:
 <a class="reference external" href="https://dev.mysql.com/doc/refman/8.0/en/">https://dev.mysql.com/doc/refman/8.0/en/</a></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [8]:
+<span></span>In [10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -472,24 +531,24 @@ examples. The full reference manual for MySQL is here:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[(&#39;table&#39;, &#39;people&#39;, &#39;people&#39;, 2, &#39;CREATE TABLE people\n        (first_name text, last_name text, job text, age real)&#39;)]
+[(&#39;table&#39;, &#39;People&#39;, &#39;People&#39;, 2, &#39;CREATE TABLE People\n        (first_name TEXT, last_name TEXT, job TEXT, age NUMERIC)&#39;)]
 </pre></div></div>
 </div>
 <p>The last operation is <strong>delete</strong>. Here’s how we delete data, also called
 “dropping” rows/columns/tables.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [9]:
+<span></span>In [11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
-    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;DELETE FROM people WHERE first_name = ?&quot;&quot;&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;Bradley&quot;</span><span class="p">,))</span>
-    <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT COUNT(*) FROM people&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;DELETE FROM People WHERE first_name = ?&quot;&quot;&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;Bradley&quot;</span><span class="p">,))</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT COUNT(*) FROM People&quot;&quot;&quot;</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Total count of people after removing Bradley:&#39;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
     <span class="c1"># You can&#39;t rename or remove columns in sqlite, but this is how you would do it in most SQL databases:</span>
     <span class="c1">#conn.execute(&quot;&quot;&quot;ALTER TABLE people DROP COLUMN age&quot;&quot;&quot;)</span>
-    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;DROP TABLE people&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;DROP TABLE People&quot;&quot;&quot;</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;The table &quot;people&quot; has been dropped.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -503,37 +562,235 @@ Total count of people after removing Bradley: [(7,)]
 The table &#34;people&#34; has been dropped.
 </pre></div></div>
 </div>
-</div>
+<p><a class="reference external" href="http://bobby-tables.com/">The story of Bobby Tables</a>. <img alt="image.png" src="notebooks/attachment:image.png" /></p>
 </div>
 <div class="section" id="…so-what-does-it-mean-to-be-“relational”?">
-<h2>…so what does it mean to be “relational”?<a class="headerlink" href="#…so-what-does-it-mean-to-be-“relational”?" title="Permalink to this headline">¶</a></h2>
+<h3>…so what does it mean to be “relational”?<a class="headerlink" href="#…so-what-does-it-mean-to-be-“relational”?" title="Permalink to this headline">¶</a></h3>
 <p>Now we’re going to dive into some of the most important parts of SQL:
 keys and relationships. Think about your UMich ID card. It gives you a
 unique identifying number that isn’t your name (there could be many Jane
 Smiths). It is a permanent number and won’t ever change, and nobody else
 will ever have the same ID number. Similarly, most databases need a
 <strong>primary key</strong>.</p>
+<p>If we specified a name every time, it would be hard to find-and-replace.
+The database can guarantee that every row has an identifier for us,
+which improves searchability and ensures good performance for
+comparisons.</p>
+<p>We will create multiple tables and <code class="docutils literal notranslate"><span class="pre">JOIN</span></code> them to understand how one
+type of data (e.g.&nbsp;actors) is connected to another (e.g.&nbsp;movies). This
+is how huge social networks associate photos to your account, associate
+tagged friends to photos, track friend/follow relationships, and more.</p>
+<p><strong>Goal:</strong> We would like to know which actors have been in the most
+Marvel movies, and how long they’ve been acting in Marvel films. To do
+this, we need a way to connect <em>actors with movies</em>.</p>
+</div>
+<div class="section" id="Example:-IMBD,-Index-of-Marvel-data-with-Bradley-Dice">
+<h3>Example: <em>IMBD</em>, Index of Marvel data with Bradley Dice<a class="headerlink" href="#Example:-IMBD,-Index-of-Marvel-data-with-Bradley-Dice" title="Permalink to this headline">¶</a></h3>
+<p>First, we create a table <code class="docutils literal notranslate"><span class="pre">Movies</span></code> to store the movie titles and years.
+We will use a primary key <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [10]:
+<span></span>In [12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Demos of relational data</span>
+<span></span><span class="n">database</span> <span class="o">=</span> <span class="s1">&#39;movie_ratings.sqlite&#39;</span>
+
+<span class="c1"># Removes the database if it already exists</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">database</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">database</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="c1"># Here we create a primary key, and use &quot;NOT NULL&quot; to prevent inserting invalid data</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="sd">&quot;&quot;&quot;CREATE TABLE Movies</span>
+<span class="sd">        (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, year INTEGER NOT NULL)&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span>
+        <span class="sd">&quot;&quot;&quot;INSERT INTO Movies (title, year) VALUES (?,?)&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">[(</span><span class="s1">&#39;Iron Man&#39;</span><span class="p">,</span> <span class="mi">2008</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;The Incredible Hulk&#39;</span><span class="p">,</span> <span class="mi">2008</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Iron Man 2&#39;</span><span class="p">,</span> <span class="mi">2010</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Thor&#39;</span><span class="p">,</span> <span class="mi">2011</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Captain America: The First Avenger&#39;</span><span class="p">,</span> <span class="mi">2011</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;The Avengers&#39;</span><span class="p">,</span> <span class="mi">2012</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Iron Man 3&#39;</span><span class="p">,</span> <span class="mi">2013</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Captain America: The Winter Soldier&#39;</span><span class="p">,</span> <span class="mi">2014</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Avengers: Age of Ultron&#39;</span><span class="p">,</span> <span class="mi">2015</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Captain America: Civil War&#39;</span><span class="p">,</span> <span class="mi">2016</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Doctor Strange&#39;</span><span class="p">,</span> <span class="mi">2016</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Black Panther&#39;</span><span class="p">,</span> <span class="mi">2018</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Avengers: Infinity War&#39;</span><span class="p">,</span> <span class="mi">2018</span><span class="p">),</span>
+        <span class="p">])</span>
 </pre></div>
+</div>
+</div>
+<p>Let’s read back that data and make sure it worked as expected.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM Movies&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[(1, &#39;Iron Man&#39;, 2008), (2, &#39;The Incredible Hulk&#39;, 2008), (3, &#39;Iron Man 2&#39;, 2010), (4, &#39;Thor&#39;, 2011), (5, &#39;Captain America: The First Avenger&#39;, 2011), (6, &#39;The Avengers&#39;, 2012), (7, &#39;Iron Man 3&#39;, 2013), (8, &#39;Captain America: The Winter Soldier&#39;, 2014), (9, &#39;Avengers: Age of Ultron&#39;, 2015), (10, &#39;Captain America: Civil War&#39;, 2016), (11, &#39;Doctor Strange&#39;, 2016), (12, &#39;Black Panther&#39;, 2018), (13, &#39;Avengers: Infinity War&#39;, 2018)]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM Movies ORDER BY year DESC&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[(12, &#39;Black Panther&#39;, 2018), (13, &#39;Avengers: Infinity War&#39;, 2018), (10, &#39;Captain America: Civil War&#39;, 2016), (11, &#39;Doctor Strange&#39;, 2016), (9, &#39;Avengers: Age of Ultron&#39;, 2015), (8, &#39;Captain America: The Winter Soldier&#39;, 2014), (7, &#39;Iron Man 3&#39;, 2013), (6, &#39;The Avengers&#39;, 2012), (4, &#39;Thor&#39;, 2011), (5, &#39;Captain America: The First Avenger&#39;, 2011), (3, &#39;Iron Man 2&#39;, 2010), (1, &#39;Iron Man&#39;, 2008), (2, &#39;The Incredible Hulk&#39;, 2008)]
+</pre></div></div>
+</div>
+<p>Now we’ll make a table for <code class="docutils literal notranslate"><span class="pre">Actors</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="sd">&quot;&quot;&quot;CREATE TABLE Actors</span>
+<span class="sd">        (id INTEGER PRIMARY KEY AUTOINCREMENT,</span>
+<span class="sd">        first_name TEXT NOT NULL,</span>
+<span class="sd">        last_name TEXT NOT NULL,</span>
+<span class="sd">        character TEXT NOT NULL,</span>
+<span class="sd">        age REAL NOT NULL)&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span>
+        <span class="sd">&quot;&quot;&quot;INSERT INTO Actors (first_name, last_name, character, age) VALUES (?,?,?,?)&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">[(</span><span class="s1">&#39;Robert&#39;</span><span class="p">,</span> <span class="s1">&#39;Downey Jr.&#39;</span><span class="p">,</span> <span class="s1">&#39;Iron Man&#39;</span><span class="p">,</span> <span class="mi">53</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span> <span class="s1">&#39;Evans&#39;</span><span class="p">,</span> <span class="s1">&#39;Captain America&#39;</span><span class="p">,</span> <span class="mi">37</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Scarlett&#39;</span><span class="p">,</span> <span class="s1">&#39;Johansson&#39;</span><span class="p">,</span> <span class="s1">&#39;Black Widow&#39;</span><span class="p">,</span> <span class="mi">33</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Samuel L.&#39;</span><span class="p">,</span> <span class="s1">&#39;Jackson&#39;</span><span class="p">,</span> <span class="s1">&#39;Nick Fury&#39;</span><span class="p">,</span> <span class="mi">69</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Benedict&#39;</span><span class="p">,</span> <span class="s1">&#39;Cumberbatch&#39;</span><span class="p">,</span> <span class="s1">&#39;Dr. Strange&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Brie&#39;</span><span class="p">,</span> <span class="s1">&#39;Larson&#39;</span><span class="p">,</span> <span class="s1">&#39;Captain Marvel&#39;</span><span class="p">,</span> <span class="mi">29</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Chadwick&#39;</span><span class="p">,</span> <span class="s1">&#39;Boseman&#39;</span><span class="p">,</span> <span class="s1">&#39;Black Panther&#39;</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+        <span class="p">])</span>
+    <span class="c1"># ...and print the results</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM Actors&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[(1, &#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (2, &#39;Chris&#39;, &#39;Evans&#39;, &#39;Captain America&#39;, 37.0), (3, &#39;Scarlett&#39;, &#39;Johansson&#39;, &#39;Black Widow&#39;, 33.0), (4, &#39;Samuel L.&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (5, &#39;Benedict&#39;, &#39;Cumberbatch&#39;, &#39;Dr. Strange&#39;, 42.0), (6, &#39;Brie&#39;, &#39;Larson&#39;, &#39;Captain Marvel&#39;, 29.0), (7, &#39;Chadwick&#39;, &#39;Boseman&#39;, &#39;Black Panther&#39;, 40.0)]
+</pre></div></div>
+</div>
+<p>We need a name for the table mapping between these. This is a
+<strong>many-to-many</strong> mapping. Actors can star in multiple movies, and movies
+can have multiple actors. Other mappings could be <strong>one-to-one</strong>,
+<strong>one-to-many</strong>, etc.</p>
+<blockquote>
+<div>There are only two hard things in Computer Science: cache
+invalidation and naming things. – Phil Karlton</div></blockquote>
+<p>We shouldn’t name this table with the reserved word Cast (see
+<a class="reference external" href="https://dev.mysql.com/doc/refman/8.0/en/cast-functions.html#function_cast">CAST</a>).
+Another common naming scheme for these just concatenates the names:
+<code class="docutils literal notranslate"><span class="pre">MovieActors</span></code>, so we’ll use that instead.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="sd">&quot;&quot;&quot;CREATE TABLE MovieActors</span>
+<span class="sd">        (id INTEGER PRIMARY KEY AUTOINCREMENT, movie_id INTEGER NOT NULL, actor_id INTEGER NOT NULL)&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span>
+        <span class="sd">&quot;&quot;&quot;INSERT INTO MovieActors (movie_id, actor_id) VALUES (?,?)&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">7</span><span class="p">)])</span>
+    <span class="c1"># ...and print the results</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM MovieActors&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[(1, 1, 1), (2, 2, 1), (3, 3, 1), (4, 6, 1), (5, 7, 1), (6, 9, 1), (7, 10, 1), (8, 13, 1), (9, 5, 2), (10, 6, 2), (11, 8, 2), (12, 9, 2), (13, 10, 2), (14, 13, 2), (15, 3, 3), (16, 6, 3), (17, 8, 3), (18, 9, 3), (19, 10, 3), (20, 13, 3), (21, 1, 4), (22, 3, 4), (23, 4, 4), (24, 5, 4), (25, 6, 4), (26, 8, 4), (27, 9, 4), (28, 13, 4), (29, 11, 5), (30, 13, 5), (31, 10, 7), (32, 12, 7), (33, 13, 7)]
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="JOINing-[STRIKEOUT:forces]-tables">
+<h3>JOINing [STRIKEOUT:forces] tables<a class="headerlink" href="#JOINing-[STRIKEOUT:forces]-tables" title="Permalink to this headline">¶</a></h3>
+<p>This demonstrates a <code class="docutils literal notranslate"><span class="pre">JOIN</span></code> operation. There are different kinds of
+JOINs, explained nicely in <a class="reference external" href="https://community.modeanalytics.com/sql/tutorial/sql-joins/">this
+resource</a>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="sd">&quot;&quot;&quot;SELECT * FROM MovieActors</span>
+<span class="sd">        JOIN Movies ON MovieActors.movie_id = Movies.id</span>
+<span class="sd">        JOIN Actors ON MovieActors.actor_id = Actors.id&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[(1, 1, 1, 1, &#39;Iron Man&#39;, 2008, 1, &#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (2, 2, 1, 2, &#39;The Incredible Hulk&#39;, 2008, 1, &#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (3, 3, 1, 3, &#39;Iron Man 2&#39;, 2010, 1, &#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (4, 6, 1, 6, &#39;The Avengers&#39;, 2012, 1, &#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (5, 7, 1, 7, &#39;Iron Man 3&#39;, 2013, 1, &#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (6, 9, 1, 9, &#39;Avengers: Age of Ultron&#39;, 2015, 1, &#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (7, 10, 1, 10, &#39;Captain America: Civil War&#39;, 2016, 1, &#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (8, 13, 1, 13, &#39;Avengers: Infinity War&#39;, 2018, 1, &#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (9, 5, 2, 5, &#39;Captain America: The First Avenger&#39;, 2011, 2, &#39;Chris&#39;, &#39;Evans&#39;, &#39;Captain America&#39;, 37.0), (10, 6, 2, 6, &#39;The Avengers&#39;, 2012, 2, &#39;Chris&#39;, &#39;Evans&#39;, &#39;Captain America&#39;, 37.0), (11, 8, 2, 8, &#39;Captain America: The Winter Soldier&#39;, 2014, 2, &#39;Chris&#39;, &#39;Evans&#39;, &#39;Captain America&#39;, 37.0), (12, 9, 2, 9, &#39;Avengers: Age of Ultron&#39;, 2015, 2, &#39;Chris&#39;, &#39;Evans&#39;, &#39;Captain America&#39;, 37.0), (13, 10, 2, 10, &#39;Captain America: Civil War&#39;, 2016, 2, &#39;Chris&#39;, &#39;Evans&#39;, &#39;Captain America&#39;, 37.0), (14, 13, 2, 13, &#39;Avengers: Infinity War&#39;, 2018, 2, &#39;Chris&#39;, &#39;Evans&#39;, &#39;Captain America&#39;, 37.0), (15, 3, 3, 3, &#39;Iron Man 2&#39;, 2010, 3, &#39;Scarlett&#39;, &#39;Johansson&#39;, &#39;Black Widow&#39;, 33.0), (16, 6, 3, 6, &#39;The Avengers&#39;, 2012, 3, &#39;Scarlett&#39;, &#39;Johansson&#39;, &#39;Black Widow&#39;, 33.0), (17, 8, 3, 8, &#39;Captain America: The Winter Soldier&#39;, 2014, 3, &#39;Scarlett&#39;, &#39;Johansson&#39;, &#39;Black Widow&#39;, 33.0), (18, 9, 3, 9, &#39;Avengers: Age of Ultron&#39;, 2015, 3, &#39;Scarlett&#39;, &#39;Johansson&#39;, &#39;Black Widow&#39;, 33.0), (19, 10, 3, 10, &#39;Captain America: Civil War&#39;, 2016, 3, &#39;Scarlett&#39;, &#39;Johansson&#39;, &#39;Black Widow&#39;, 33.0), (20, 13, 3, 13, &#39;Avengers: Infinity War&#39;, 2018, 3, &#39;Scarlett&#39;, &#39;Johansson&#39;, &#39;Black Widow&#39;, 33.0), (21, 1, 4, 1, &#39;Iron Man&#39;, 2008, 4, &#39;Samuel L.&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (22, 3, 4, 3, &#39;Iron Man 2&#39;, 2010, 4, &#39;Samuel L.&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (23, 4, 4, 4, &#39;Thor&#39;, 2011, 4, &#39;Samuel L.&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (24, 5, 4, 5, &#39;Captain America: The First Avenger&#39;, 2011, 4, &#39;Samuel L.&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (25, 6, 4, 6, &#39;The Avengers&#39;, 2012, 4, &#39;Samuel L.&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (26, 8, 4, 8, &#39;Captain America: The Winter Soldier&#39;, 2014, 4, &#39;Samuel L.&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (27, 9, 4, 9, &#39;Avengers: Age of Ultron&#39;, 2015, 4, &#39;Samuel L.&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (28, 13, 4, 13, &#39;Avengers: Infinity War&#39;, 2018, 4, &#39;Samuel L.&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (29, 11, 5, 11, &#39;Doctor Strange&#39;, 2016, 5, &#39;Benedict&#39;, &#39;Cumberbatch&#39;, &#39;Dr. Strange&#39;, 42.0), (30, 13, 5, 13, &#39;Avengers: Infinity War&#39;, 2018, 5, &#39;Benedict&#39;, &#39;Cumberbatch&#39;, &#39;Dr. Strange&#39;, 42.0), (31, 10, 7, 10, &#39;Captain America: Civil War&#39;, 2016, 7, &#39;Chadwick&#39;, &#39;Boseman&#39;, &#39;Black Panther&#39;, 40.0), (32, 12, 7, 12, &#39;Black Panther&#39;, 2018, 7, &#39;Chadwick&#39;, &#39;Boseman&#39;, &#39;Black Panther&#39;, 40.0), (33, 13, 7, 13, &#39;Avengers: Infinity War&#39;, 2018, 7, &#39;Chadwick&#39;, &#39;Boseman&#39;, &#39;Black Panther&#39;, 40.0)]
+</pre></div></div>
 </div>
 </div>
 </div>
 <div class="section" id="Sources">
 <h2>Sources<a class="headerlink" href="#Sources" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><a class="reference external" href="https://www.alooma.com/blog/types-of-modern-databases">https://www.alooma.com/blog/types-of-modern-databases</a></li>
-<li><a class="reference external" href="https://en.wikipedia.org/wiki/Outline_of_databases">https://en.wikipedia.org/wiki/Outline_of_databases</a></li>
-<li><a class="reference external" href="https://www.jamesserra.com/archive/2015/08/relational-databases-vs-non-relational-databases/">https://www.jamesserra.com/archive/2015/08/relational-databases-vs-non-relational-databases/</a></li>
-<li><a class="reference external" href="https://www.sqlite.org/whentouse.html">https://www.sqlite.org/whentouse.html</a></li>
-<li><a class="reference external" href="https://en.wikipedia.org/wiki/NoSQL">https://en.wikipedia.org/wiki/NoSQL</a></li>
-<li><a class="reference external" href="https://docs.python.org/3.7/library/sqlite3.html">https://docs.python.org/3.7/library/sqlite3.html</a></li>
-</ul>
+<p>Database reference material: -
+<a class="reference external" href="https://www.alooma.com/blog/types-of-modern-databases">https://www.alooma.com/blog/types-of-modern-databases</a> -
+<a class="reference external" href="https://en.wikipedia.org/wiki/Outline_of_databases">https://en.wikipedia.org/wiki/Outline_of_databases</a> -
+<a class="reference external" href="https://www.jamesserra.com/archive/2015/08/relational-databases-vs-non-relational-databases/">https://www.jamesserra.com/archive/2015/08/relational-databases-vs-non-relational-databases/</a>
+-
+<a class="reference external" href="https://www.pluralsight.com/resource-center/guides/guide-to-becoming-a-database-admin">https://www.pluralsight.com/resource-center/guides/guide-to-becoming-a-database-admin</a>
+- <a class="reference external" href="https://www.sqlite.org/whentouse.html">https://www.sqlite.org/whentouse.html</a> -
+<a class="reference external" href="https://en.wikipedia.org/wiki/NoSQL">https://en.wikipedia.org/wiki/NoSQL</a> -
+<a class="reference external" href="https://docs.python.org/3.7/library/sqlite3.html">https://docs.python.org/3.7/library/sqlite3.html</a> -
+<a class="reference external" href="https://www.w3schools.com/sql/sql_datatypes.asp">https://www.w3schools.com/sql/sql_datatypes.asp</a> -
+<a class="reference external" href="https://community.modeanalytics.com/sql/tutorial/sql-joins/">https://community.modeanalytics.com/sql/tutorial/sql-joins/</a> -
+<a class="reference external" href="https://www.itprotoday.com/microsoft-sql-server/sql-design-how-choose-primary-key">https://www.itprotoday.com/microsoft-sql-server/sql-design-how-choose-primary-key</a></p>
+<p>Raw data: -
+<a class="reference external" href="https://en.wikipedia.org/wiki/List_of_Marvel_Cinematic_Universe_film_actors">https://en.wikipedia.org/wiki/List_of_Marvel_Cinematic_Universe_film_actors</a></p>
 </div>
 </div>
 
@@ -550,7 +807,7 @@ will ever have the same ID number. Similarly, most databases need a
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="project_instructions.html" title="Individual Project"
+          <a href="lecture18_databases.html" title="Databases Pt. 2"
              >next</a> |</li>
         <li class="right" >
           <a href="HW07.html" title="HW7, Practice with NumPy and Linear Algebra"
