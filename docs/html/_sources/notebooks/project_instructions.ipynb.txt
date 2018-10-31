@@ -31,9 +31,9 @@
     "The other scripts in che696_examples are longer and more complex than necessary; they are included in the examples because they functionality that may be of interest.\n",
     "\n",
     "\n",
-    "## Due date\n",
+    "## Due date and submission instructions\n",
     "\n",
-    "November 21. You are welcome to turn it in early; if I see that any criterion is not passed, I will let you know so you have time to fix this before the final due date."
+    "By November 21, use Canvas to submit a link to your github project. You are welcome to turn it in early; if I see that any criterion is not passed, I will let you know so you have time to fix this before the final due date."
    ]
   }
  ],

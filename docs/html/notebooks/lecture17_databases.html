@@ -1,0 +1,566 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Databases &#8212; CHE 696: On-Ramp to Data Science 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Individual Project" href="project_instructions.html" />
+    <link rel="prev" title="HW7, Practice with NumPy and Linear Algebra" href="HW07.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="project_instructions.html" title="Individual Project"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="HW07.html" title="HW7, Practice with NumPy and Linear Algebra"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: On-Ramp to Data Science 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="HW07.html"
+                        title="previous chapter">HW7, Practice with NumPy and Linear Algebra</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="project_instructions.html"
+                        title="next chapter">Individual Project</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #303F9F;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #D84315;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 9ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: #f7f7f7;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.pngmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+</style>
+<div class="section" id="Databases">
+<h1>Databases<a class="headerlink" href="#Databases" title="Permalink to this headline">¶</a></h1>
+<p>Guest lecture by <a class="reference external" href="https://github.com/bdice/">Bradley Dice</a>.</p>
+<div class="section" id="Why-databases?">
+<h2>Why databases?<a class="headerlink" href="#Why-databases?" title="Permalink to this headline">¶</a></h2>
+<p>Tons of applications: managing digital content (websites), product
+inventories, transactions, health records… structure, security, and
+speed are all important.</p>
+<ul class="simple">
+<li>What if the size of your data exceeds the memory of the system?<ul>
+<li>Out-of-core algorithms.</li>
+</ul>
+</li>
+<li>What if your data needs to be accessed by servers around the world?<ul>
+<li>Split it up by geography.</li>
+</ul>
+</li>
+<li>Text files and spreadsheets can only do so much.</li>
+</ul>
+<div class="section" id="What-can-we-expect-from-most-databases?-CRUD-+-ACID.">
+<h3>What can we expect from most databases? CRUD + ACID.<a class="headerlink" href="#What-can-we-expect-from-most-databases?-CRUD-+-ACID." title="Permalink to this headline">¶</a></h3>
+<p>Operations you can perform: <strong>CRUD.</strong> When interfacing with a database,
+you can expect to have these functions available. - <strong>Create:</strong> Add new
+data. - <strong>Read:</strong> Fetch existing data. - <strong>Update:</strong> Edit existing data.
+- <strong>Delete:</strong> Remove data.</p>
+<p>Guarantees for how the database will act: <strong>ACID.</strong> These properties
+ensure databases are protected against hardware failures and software
+errors. - <strong>Atomicity:</strong> Transactions will be completed fully, or not at
+all. - <strong>Consistency:</strong> Transactions must leave the database in a valid
+state. - <strong>Isolation:</strong> Transactions performed concurrently must act the
+same as transactions performed sequentially. - <strong>Durability:</strong>
+Transactions must be permanent (i.e.&nbsp;stored on a disk, not in memory).</p>
+</div>
+</div>
+<div class="section" id="Types-of-databases">
+<h2>Types of databases<a class="headerlink" href="#Types-of-databases" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Relational and non-relational.</li>
+<li>These generally correspond to “SQL-like” and “NoSQL-like”</li>
+</ul>
+<div class="section" id="Relational-Databases">
+<h3>Relational Databases<a class="headerlink" href="#Relational-Databases" title="Permalink to this headline">¶</a></h3>
+<p>Programmers interface with relational databases through Structured Query
+Language (SQL). ### Examples: Open Source: - MySQL - PostgreSQL (aka
+Postgres) - SQLite (for local, application-level storage)</p>
+<p>Commercial: - Oracle Database (aka Oracle) - Microsoft SQL Server - DB2
+(IBM) - Microsoft Access, though casual users might not even realize it</p>
+</div>
+<div class="section" id="Non-relational-Databases">
+<h3>Non-relational Databases<a class="headerlink" href="#Non-relational-Databases" title="Permalink to this headline">¶</a></h3>
+<p>Sometimes the structure of relational databases can be limiting. What if
+some properties are defined for one object but not another? There are a
+few types of non-relational databases including <em>column stores</em>
+(e.g.&nbsp;Cassandra), <em>document stores</em> (e.g.&nbsp;MongoDB), <em>key-value stores</em>
+(e.g.&nbsp;Redis), and <em>graph databases</em> (e.g.&nbsp;Neo4j).</p>
+</div>
+</div>
+<div class="section" id="Examples:">
+<h2>Examples:<a class="headerlink" href="#Examples:" title="Permalink to this headline">¶</a></h2>
+<p>Open Source: - MongoDB - Apache Cassandra - Redis - Apache CouchDB -
+Neo4j</p>
+<div class="section" id="Python-Example-with-sqlite3">
+<h3>Python Example with sqlite3<a class="headerlink" href="#Python-Example-with-sqlite3" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">database</span> <span class="o">=</span> <span class="s1">&#39;test.sqlite&#39;</span>
+
+<span class="c1"># Removes the database if it already exists</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">database</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">database</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Create</strong> data with the <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span></code> and <code class="docutils literal notranslate"><span class="pre">INSERT</span></code> statements.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="sd">&quot;&quot;&quot;CREATE TABLE people</span>
+<span class="sd">        (first_name text, last_name text, job text, age real)&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="sd">&quot;&quot;&quot;INSERT INTO people VALUES (?,?,?,?)&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">(</span><span class="s1">&#39;Bradley&#39;</span><span class="p">,</span> <span class="s1">&#39;Dice&#39;</span><span class="p">,</span> <span class="s1">&#39;Guest Lecturer&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<p>We can also just use <code class="docutils literal notranslate"><span class="pre">conn</span></code> directly, with a shorter syntax that
+creates cursors automatically. Also, we use <code class="docutils literal notranslate"><span class="pre">executemany</span></code> with a list
+of tuples, to perform many actions at once.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Let&#39;s add lots of people</span>
+<span class="n">famous_actors</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;Robert&#39;</span><span class="p">,</span> <span class="s1">&#39;Downey Jr.&#39;</span><span class="p">,</span> <span class="s1">&#39;Iron Man&#39;</span><span class="p">,</span> <span class="mi">53</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span> <span class="s1">&#39;Evans&#39;</span><span class="p">,</span> <span class="s1">&#39;Captain America&#39;</span><span class="p">,</span> <span class="mi">37</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Scarlett&#39;</span><span class="p">,</span> <span class="s1">&#39;Johansson&#39;</span><span class="p">,</span> <span class="s1">&#39;Black Widow&#39;</span><span class="p">,</span> <span class="mi">33</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Samuel&#39;</span><span class="p">,</span> <span class="s1">&#39;Jackson&#39;</span><span class="p">,</span> <span class="s1">&#39;Nick Fury&#39;</span><span class="p">,</span> <span class="mi">69</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Benedict&#39;</span><span class="p">,</span> <span class="s1">&#39;Cumberbatch&#39;</span><span class="p">,</span> <span class="s1">&#39;Dr. Strange&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Brie&#39;</span><span class="p">,</span> <span class="s1">&#39;Larson&#39;</span><span class="p">,</span> <span class="s1">&#39;Captain Marvel&#39;</span><span class="p">,</span> <span class="mi">29</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Chadwick&#39;</span><span class="p">,</span> <span class="s1">&#39;Boseman&#39;</span><span class="p">,</span> <span class="s1">&#39;Black Panther&#39;</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span>
+<span class="p">]</span>
+<span class="c1"># Yes, I&#39;m a Marvel fan</span>
+<span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;INSERT INTO people VALUES (?,?,?,?)&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">famous_actors</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Read</strong> data with the <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> statement.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="sd">&quot;&quot;&quot;SELECT * FROM people&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[(&#39;Bradley&#39;, &#39;Dice&#39;, &#39;Guest Lecturer&#39;, 25.0), (&#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (&#39;Chris&#39;, &#39;Evans&#39;, &#39;Captain America&#39;, 37.0), (&#39;Scarlett&#39;, &#39;Johansson&#39;, &#39;Black Widow&#39;, 33.0), (&#39;Samuel&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (&#39;Benedict&#39;, &#39;Cumberbatch&#39;, &#39;Dr. Strange&#39;, 42.0), (&#39;Brie&#39;, &#39;Larson&#39;, &#39;Captain Marvel&#39;, 29.0), (&#39;Chadwick&#39;, &#39;Boseman&#39;, &#39;Black Panther&#39;, 40.0)]
+</pre></div></div>
+</div>
+<p><strong>Update</strong> data with the <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> statement. We forgot a middle
+initial! Here we use <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> to identify rows that match a set of
+criteria.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="sd">&quot;&quot;&quot;UPDATE people SET first_name = ? WHERE first_name = ? AND last_name = ?&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">(</span><span class="s2">&quot;Samuel L.&quot;</span><span class="p">,</span> <span class="s2">&quot;Samuel&quot;</span><span class="p">,</span> <span class="s2">&quot;Jackson&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<p>We can return specific columns by listing them after <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>, and
+filter the rows with <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT first_name, last_name FROM people WHERE last_name = ?&quot;&quot;&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;Jackson&quot;</span><span class="p">,))</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[(&#39;Samuel L.&#39;, &#39;Jackson&#39;)]
+</pre></div></div>
+</div>
+<p>SQL also lets you make complex selections, groupings, and filterings.
+Here is an example.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT COUNT(*) FROM people&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Total count of people:&#39;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="sd">&quot;&quot;&quot;SELECT SUBSTR(first_name, 1, 1) AS first_letter, COUNT(*) FROM people GROUP BY first_letter&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Count by first letters of first names:&#39;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT AVG(age) FROM people&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Average age of people:&#39;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT SUM(age) FROM people&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Summed ages of people:&#39;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Total count of people: [(8,)]
+Count by first letters of first names: [(&#39;B&#39;, 3), (&#39;C&#39;, 2), (&#39;R&#39;, 1), (&#39;S&#39;, 2)]
+Average age of people: [(41.0,)]
+Summed ages of people: [(328.0,)]
+</pre></div></div>
+</div>
+<p>There are tons of functions for math, string manipulations, date/time
+manipulations, and more. If you want to learn to do something in
+particular, just Google it. StackExchange is a great place to find SQL
+examples. The full reference manual for MySQL is here:
+<a class="reference external" href="https://dev.mysql.com/doc/refman/8.0/en/">https://dev.mysql.com/doc/refman/8.0/en/</a></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Show us the guts of the database! This command is SQLite-specific.</span>
+<span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM sqlite_master WHERE type = &#39;table&#39;&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[(&#39;table&#39;, &#39;people&#39;, &#39;people&#39;, 2, &#39;CREATE TABLE people\n        (first_name text, last_name text, job text, age real)&#39;)]
+</pre></div></div>
+</div>
+<p>The last operation is <strong>delete</strong>. Here’s how we delete data, also called
+“dropping” rows/columns/tables.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;DELETE FROM people WHERE first_name = ?&quot;&quot;&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;Bradley&quot;</span><span class="p">,))</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT COUNT(*) FROM people&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Total count of people after removing Bradley:&#39;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+    <span class="c1"># You can&#39;t rename or remove columns in sqlite, but this is how you would do it in most SQL databases:</span>
+    <span class="c1">#conn.execute(&quot;&quot;&quot;ALTER TABLE people DROP COLUMN age&quot;&quot;&quot;)</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;DROP TABLE people&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;The table &quot;people&quot; has been dropped.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Total count of people after removing Bradley: [(7,)]
+The table &#34;people&#34; has been dropped.
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="…so-what-does-it-mean-to-be-“relational”?">
+<h2>…so what does it mean to be “relational”?<a class="headerlink" href="#…so-what-does-it-mean-to-be-“relational”?" title="Permalink to this headline">¶</a></h2>
+<p>Now we’re going to dive into some of the most important parts of SQL:
+keys and relationships. Think about your UMich ID card. It gives you a
+unique identifying number that isn’t your name (there could be many Jane
+Smiths). It is a permanent number and won’t ever change, and nobody else
+will ever have the same ID number. Similarly, most databases need a
+<strong>primary key</strong>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Demos of relational data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Sources">
+<h2>Sources<a class="headerlink" href="#Sources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://www.alooma.com/blog/types-of-modern-databases">https://www.alooma.com/blog/types-of-modern-databases</a></li>
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Outline_of_databases">https://en.wikipedia.org/wiki/Outline_of_databases</a></li>
+<li><a class="reference external" href="https://www.jamesserra.com/archive/2015/08/relational-databases-vs-non-relational-databases/">https://www.jamesserra.com/archive/2015/08/relational-databases-vs-non-relational-databases/</a></li>
+<li><a class="reference external" href="https://www.sqlite.org/whentouse.html">https://www.sqlite.org/whentouse.html</a></li>
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/NoSQL">https://en.wikipedia.org/wiki/NoSQL</a></li>
+<li><a class="reference external" href="https://docs.python.org/3.7/library/sqlite3.html">https://docs.python.org/3.7/library/sqlite3.html</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="project_instructions.html" title="Individual Project"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="HW07.html" title="HW7, Practice with NumPy and Linear Algebra"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">CHE 696: On-Ramp to Data Science 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Heather Mayes.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+    </div>
+  </body>
+</html>
