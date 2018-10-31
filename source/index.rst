@@ -54,7 +54,15 @@ CHE 696: On-Ramp to Data Science
 
    notebooks/lecture13_numpy_operations_and_linalg_fun.ipynb
 
-   notebooks/lecture16_databases.ipynb
+   notebooks/lecture14_vectors_and_linear_transformations.ipynb
+
+   notebooks/lecture15_eigenvalues_and_eigenvectors.ipynb
+
+   notebooks/lecture16_intro_to_pandas.ipynb
+
+   notebooks/lecture17_databases.ipynb
+
+   notebooks/lecture18_databases.ipynb
 
     ..
    .. :caption: About Sphinx:
