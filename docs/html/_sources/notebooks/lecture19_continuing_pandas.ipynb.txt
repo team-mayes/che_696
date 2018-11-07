@@ -1,0 +1,880 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 19) Learning more about Pandas\n",
+    "\n",
+    "Related references:\n",
+    "\n",
+    "- [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/index.html)\n",
+    "- [Python for Data Analysis, 2nd Edition](https://www.safaribooksonline.com/library/view/python-for-data/9781491957653/) "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Connecting the last few lectures\n",
+    "\n",
+    "The last lectures on databases have some commonalities with Pandas DataFrames. When would you prefer to use a database?\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Arithmetic and Data Alignment\n",
+    "\n",
+    "Arithmetic with Databases has some similar behavior to automatic outer join on the index labels. We did some work with this last Pandas lecture; let's have a little review before moving on."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "\n",
+    "df1 = pd.DataFrame(np.arange(12.).reshape((3, 4)),\n",
+    "                   columns=list('abcd'))\n",
+    "df2 = pd.DataFrame(np.arange(20.).reshape((4, 5)),\n",
+    "                   columns=list('abcde'))\n",
+    "df2.loc[1, 'b'] = np.nan\n",
+    "df1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df2"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df1 + df2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "If you want to add arguments, you'll need to use built-in methods, not just the character representation. For example:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df1.add(df2, fill_value=0)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Pandas DataFrame arithmatic\n",
+    "\n",
+    "The \"r\\*\" version of each method does the same action in reverse order. For example, \n",
+    "df1.rdiv(other, axis='index') is equivalent to other.div(df1, axis='index')\n",
+    "\n",
+    "| Method | Description |\n",
+    "|-----|-----|\n",
+    "| add, radd | Methods for addition (+) |\n",
+    "| sub, rsub | Methods for subtraction (-) |\n",
+    "| div, rdiv | Methods for division (/) |\n",
+    "| floordiv, rfloordiv | Methods for floor division (//) |\n",
+    "| mul, rmul | Methods for multiplication (\\*) |\n",
+    "| pow, rpow | Methods for exponentiation (\\*\\*) |"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Operations between series and dataframes: remember broadcasting!\n",
+    "\n",
+    "Let's look at an example:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "frame = pd.DataFrame(np.arange(12.).reshape((4, 3)),\n",
+    "                     columns=list('bde'),\n",
+    "                     index=['Utah', 'Ohio', 'Texas', 'Oregon'])\n",
+    "frame"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "series = frame.iloc[0]\n",
+    "series"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "What do you expect from the following?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "frame - series"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "series2 = pd.Series(range(3), index=['b', 'e', 'f'])\n",
+    "frame + series2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "By default, broadcasting is done over indices, matching on columns. If you want the opposite, specify so with an arithmetic method."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "series3 = frame['d']\n",
+    "frame"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "series3"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "frame.sub(series3, axis='index')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "There are many other functions that you might want to perform on dataframes, and quick Internet searches will give you the correct syntax. For example:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "frame.min()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "frame.min(axis=1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "frame"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "frame.sort_index()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "frame.sort_index(axis=1, ascending=False)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "obj = pd.Series([4, np.nan, 7, np.nan, -3, 2])\n",
+    "obj.sort_values()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Function Application and Mapping\n",
+    "\n",
+    "NumPy ufuncs (element-wise array methods) also work with pandas objects:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "frame = pd.DataFrame(np.random.randn(4, 3), columns=list('bde'),\n",
+    "                     index=['Utah', 'Ohio', 'Texas', 'Oregon'])\n",
+    "frame"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def f(x):\n",
+    "    return x.max() - x.min()\n",
+    "\n",
+    "frame.apply(f)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Here the function f, which computes the difference between the maximum and minimum of a Series, is invoked once on each column in 'frame'. The result is a Series having the columns of 'frame' as its index.\n",
+    "\n",
+    "If you pass `axis='columns'` to apply, the function will be invoked once per row instead:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "frame.apply(f, axis='columns')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The function passed to apply need not return a scalar value; it can also return a Series with multiple values:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def f(x):\n",
+    "    return pd.Series([x.min(), x.max()], index=['min', 'max'])\n",
+    "frame.apply(f)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**Note**: Many of the most common array statistics (like sum and mean) are DataFrame methods, so using apply is not necessary."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### A personal favorite DataFrame method:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "frame.describe()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "obj = pd.Series(['a', 'a', 'b', 'c'] * 4)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "obj.describe()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### A list of helpful built-in descriptive and summary statistic methods\n",
+    "\n",
+    "| Method | Description |\n",
+    "|-----|-----|\n",
+    "| count | Number of non-NA values |\n",
+    "| describe | Compute set of summary statistics for Series or each DataFrame column |\n",
+    "| min, max | Compute minimum and maximum values |\n",
+    "| argmin, argmax | Compute index locations (integers) at which minimum or maximum value obtained, respectively |\n",
+    "| idxmin, idxmax | Compute index labels at which minimum or maximum value obtained, respectively |\n",
+    "| quantile | Compute sample quantile ranging from 0 to 1 |\n",
+    "| sum | Sum of values |\n",
+    "| mean | Mean of values |\n",
+    "| median | Arithmetic median (50% quantile) of values |\n",
+    "| mad | Mean absolute deviation from mean value |\n",
+    "| prod | Product of all values |\n",
+    "| var | Sample variance of values |\n",
+    "| std | Sample standard deviation of values |\n",
+    "| skew | Sample skewness (third moment) of values |\n",
+    "| kurt | Sample kurtosis (fourth moment) of values |\n",
+    "| cumsum | Cumulative sum of values |\n",
+    "| cummin, cummax | Cumulative minimum or maximum of values, respectively |\n",
+    "| cumprod | Cumulative product of values |\n",
+    "| diff | Compute first arithmetic difference (useful for time series) |\n",
+    "| pct_change | Compute percent changes |\n",
+    "\n",
+    "These functions have built-in methods for handling missing data, so a different version of them is not needed when there are null (e.g. NaN) entries."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df = pd.DataFrame([[1.4, np.nan], [7.1, -4.5],\n",
+    "                   [np.nan, np.nan], [0.75, -1.3]],\n",
+    "                  index=['a', 'b', 'c', 'd'],\n",
+    "                  columns=['one', 'two'])\n",
+    "df"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Calling DataFrame’s sum method returns a Series containing column sums:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df.sum()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df.sum(axis='columns')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Note that NA values are excluded unless the entire slice (row or column in this case) is NA. This can be disabled with the skipna option:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df.mean(axis='columns', skipna=False)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Unique Values, Value Counts, and Membership\n",
+    "\n",
+    "Another class of related methods extracts information about the values contained in a one-dimensional Series. To illustrate these, consider this example:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "obj = pd.Series(['c', 'a', 'd', 'a', 'a', 'b', 'b', 'c', 'c'])\n",
+    "\n",
+    "uniques = obj.unique()\n",
+    "uniques "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The unique values are not necessarily returned in sorted order, but could be sorted after the fact if needed (uniques.sort()). Relatedly, value_counts computes a Series containing value frequencies:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "obj.value_counts()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The Series is sorted by value in descending order as a convenience. value_counts is also available as a top-level pandas method that can be used with any array or sequence:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "my_list = ['c', 'a', 'd', 'a', 'a', 'b', 'b', 'c', 'c']\n",
+    "pd.value_counts(my_list, sort=False)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "pd.value_counts(obj.values, sort=False)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Data Loading, Storage, and File Formats\n",
+    "\n",
+    "pandas features a number of functions for reading tabular data as a DataFrame object, summarized in the table below. `read_csv` and `read_table` are likely the ones you’ll use the most.\n",
+    "\n",
+    "| Function | Description\n",
+    "|----------| ----------\n",
+    "| read_csv | Load delimited data from a file, URL, or file-like object; use comma as default delimiter\n",
+    "| read_table | Load delimited data from a file, URL, or file-like object; use tab ('\\t') as default delimiter\n",
+    "| read_fwf | Read data in fixed-width column format (i.e., no delimiters)\n",
+    "| read_clipboard | Version of read_table that reads data from the clipboard; useful for converting tables from web pages\n",
+    "| read_excel | Read tabular data from an Excel XLS or XLSX file\n",
+    "| read_hdf | Read HDF5 files written by pandas\n",
+    "| read_html | Read all tables found in the given HTML document\n",
+    "| read_json | Read data from a JSON (JavaScript Object Notation) string representation\n",
+    "| read_msgpack | Read pandas data encoded using the MessagePack binary format\n",
+    "| read_pickle | Read an arbitrary object stored in Python pickle format\n",
+    "| read_sas | Read a SAS dataset stored in one of the SAS system’s custom storage formats\n",
+    "| read_sql | Read the results of a SQL query (using SQLAlchemy) as a pandas DataFrame\n",
+    "| read_stata | Read a dataset from Stata file format\n",
+    "| read_feather | Read the Feather binary\n",
+    "\n",
+    "To start practicing with this, make a file called ex1.csv in a folder \"examples\" with these lines:"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": [
+    "a,b,c,d,message\n",
+    "1,2,3,4,hello\n",
+    "5,6,7,8,world\n",
+    "9,10,11,12,foo"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df = pd.read_csv('examples/ex1.csv')\n",
+    "df"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We could also have used read_table and specified the delimiter:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "pd.read_table('examples/ex1.csv', sep=',')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "A file will not always have a header row. Consider this file, 'examples/ex2.csv':"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": [
+    "1,2,3,4,hello\n",
+    "5,6,7,8,world\n",
+    "9,10,11,12,foo"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "To read this file, you have a couple of options. You can allow pandas to assign default column names, or you can specify names yourself:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "pd.read_csv('examples/ex2.csv', header=None)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "pd.read_csv('examples/ex2.csv', names=['a', 'b', 'c', 'd', 'message'])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Suppose you wanted the message column to be the index of the returned DataFrame. You can either indicate you want the column at index 4 or named 'message' using the index_col argument:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "names = ['a', 'b', 'c', 'd', 'message']\n",
+    "pd.read_csv('examples/ex2.csv', names=names, index_col='message')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "What about a file with variable whitespace separating the columns, like examples/ex3.txt"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": [
+    "            A         B         C\n",
+    "aaa -0.264438 -1.026059 -0.619500\n",
+    "bbb  0.927272  0.302904 -0.032399\n",
+    "ccc -0.264273 -0.386314 -0.217601\n",
+    "ddd -0.871858 -0.348382  1.100491"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "You can pass a regular expression as a delimiter for read_table. This can be expressed by the regular expression \\s+, so we have then:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "result = pd.read_table('examples/ex3.txt', sep='\\s+')\n",
+    "result"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Because there was one fewer column name than the number of data rows, read_table infers that the first column should be the DataFrame’s index in this special case.\n",
+    "\n",
+    "What if you have comment lines, like in examples/ex4.csv?"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": [
+    "# hey!\n",
+    "a,b,c,d,message\n",
+    "# just wanted to make things more difficult for you\n",
+    "# who reads CSV files with computers, anyway?\n",
+    "1,2,3,4,hello\n",
+    "5,6,7,8,world\n",
+    "9,10,11,12,foo"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "pd.read_csv('examples/ex4.csv', skiprows=[0, 2, 3])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "pd.read_csv('examples/ex4.csv', comment='#')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Let's handle some missing data, like in examples/ex5.csv"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": [
+    "something,a,b,c,d,message\n",
+    "one,1,2,3,4,NA\n",
+    "two,5,6,,8,world\n",
+    "three,null,10,11,12,foo"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "result = pd.read_csv('examples/ex5.csv', na_values=['NULL'])\n",
+    "result"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Writing Data to Text Format\n",
+    "Data can also be exported to a delimited format. Let's use what we just read in."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "result.to_csv('examples/out.csv')"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": [
+    ",something,a,b,c,d,message\n",
+    "0,one,1.0,2,3.0,4,\n",
+    "1,two,5.0,6,,8,world\n",
+    "2,three,,10,11.0,12,foo"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Missing values appear as empty strings in the output. You might want to denote them by some other sentinel value:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "result.to_csv('examples/out2.csv', na_rep='NULL')"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": [
+    ",something,a,b,c,d,message\n",
+    "0,one,1.0,2,3.0,4,NULL\n",
+    "1,two,5.0,6,NULL,8,world\n",
+    "2,three,NULL,10,11.0,12,foo"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "With no other options specified, both the row and column labels are written. Both of these can be disabled:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "result.to_csv('examples/out3.csv', index=False, header=False)"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": [
+    "one,1.0,2,3.0,4,\n",
+    "two,5.0,6,,8,world\n",
+    "three,,10,11.0,12,foo"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "You can also write only a subset of the columns, and in an order of your choosing:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "result.to_csv('examples/out4.csv', index=False, columns=['a', 'b', 'c'])"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": [
+    "a,b,c\n",
+    "1.0,2,3.0\n",
+    "5.0,6,\n",
+    ",10,11.0"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**Up next**: Visualization!!"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.1"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
