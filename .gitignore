@@ -107,3 +107,4 @@ venv.bak/
 
 practice/*
 source/notebooks/examples/out*
+*checkpoint*

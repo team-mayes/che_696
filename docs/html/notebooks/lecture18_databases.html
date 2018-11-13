@@ -304,73 +304,252 @@ in one cell.</p>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="JOINing-[STRIKEOUT:forces]-tables">
-<h2>JOINing [STRIKEOUT:forces] tables<a class="headerlink" href="#JOINing-[STRIKEOUT:forces]-tables" title="Permalink to this headline">¶</a></h2>
-<p>This demonstrates a <code class="docutils literal notranslate"><span class="pre">JOIN</span></code> operation. There are different kinds of
-JOINs, explained nicely in <a class="reference external" href="https://community.modeanalytics.com/sql/tutorial/sql-joins/">this
-resource</a>.</p>
+<div class="section" id="Using-pandas-🐼-to-help-us:">
+<h3>Using pandas 🐼 to help us:<a class="headerlink" href="#Using-pandas-🐼-to-help-us:" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
-    <span class="n">results</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-        <span class="sd">&quot;&quot;&quot;SELECT * FROM MovieActors</span>
-<span class="sd">        JOIN Movies ON MovieActors.movie_id = Movies.id</span>
-<span class="sd">        JOIN Actors ON MovieActors.actor_id = Actors.id&quot;&quot;&quot;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM Movies&#39;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>title</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Iron Man</td>
+      <td>2008</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>The Incredible Hulk</td>
+      <td>2008</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Iron Man 2</td>
+      <td>2010</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Thor</td>
+      <td>2011</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Captain America: The First Avenger</td>
+      <td>2011</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>The Avengers</td>
+      <td>2012</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>Iron Man 3</td>
+      <td>2013</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>Captain America: The Winter Soldier</td>
+      <td>2014</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>Avengers: Age of Ultron</td>
+      <td>2015</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>Captain America: Civil War</td>
+      <td>2016</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>11</td>
+      <td>Doctor Strange</td>
+      <td>2016</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+      <td>Black Panther</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>13</td>
+      <td>Avengers: Infinity War</td>
+      <td>2018</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-[(1, 1, 1, 1, &#39;Iron Man&#39;, 2008, 1, &#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (2, 2, 1, 2, &#39;The Incredible Hulk&#39;, 2008, 1, &#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (3, 3, 1, 3, &#39;Iron Man 2&#39;, 2010, 1, &#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (4, 6, 1, 6, &#39;The Avengers&#39;, 2012, 1, &#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (5, 7, 1, 7, &#39;Iron Man 3&#39;, 2013, 1, &#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (6, 9, 1, 9, &#39;Avengers: Age of Ultron&#39;, 2015, 1, &#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (7, 10, 1, 10, &#39;Captain America: Civil War&#39;, 2016, 1, &#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (8, 13, 1, 13, &#39;Avengers: Infinity War&#39;, 2018, 1, &#39;Robert&#39;, &#39;Downey Jr.&#39;, &#39;Iron Man&#39;, 53.0), (9, 5, 2, 5, &#39;Captain America: The First Avenger&#39;, 2011, 2, &#39;Chris&#39;, &#39;Evans&#39;, &#39;Captain America&#39;, 37.0), (10, 6, 2, 6, &#39;The Avengers&#39;, 2012, 2, &#39;Chris&#39;, &#39;Evans&#39;, &#39;Captain America&#39;, 37.0), (11, 8, 2, 8, &#39;Captain America: The Winter Soldier&#39;, 2014, 2, &#39;Chris&#39;, &#39;Evans&#39;, &#39;Captain America&#39;, 37.0), (12, 9, 2, 9, &#39;Avengers: Age of Ultron&#39;, 2015, 2, &#39;Chris&#39;, &#39;Evans&#39;, &#39;Captain America&#39;, 37.0), (13, 10, 2, 10, &#39;Captain America: Civil War&#39;, 2016, 2, &#39;Chris&#39;, &#39;Evans&#39;, &#39;Captain America&#39;, 37.0), (14, 13, 2, 13, &#39;Avengers: Infinity War&#39;, 2018, 2, &#39;Chris&#39;, &#39;Evans&#39;, &#39;Captain America&#39;, 37.0), (15, 3, 3, 3, &#39;Iron Man 2&#39;, 2010, 3, &#39;Scarlett&#39;, &#39;Johansson&#39;, &#39;Black Widow&#39;, 33.0), (16, 6, 3, 6, &#39;The Avengers&#39;, 2012, 3, &#39;Scarlett&#39;, &#39;Johansson&#39;, &#39;Black Widow&#39;, 33.0), (17, 8, 3, 8, &#39;Captain America: The Winter Soldier&#39;, 2014, 3, &#39;Scarlett&#39;, &#39;Johansson&#39;, &#39;Black Widow&#39;, 33.0), (18, 9, 3, 9, &#39;Avengers: Age of Ultron&#39;, 2015, 3, &#39;Scarlett&#39;, &#39;Johansson&#39;, &#39;Black Widow&#39;, 33.0), (19, 10, 3, 10, &#39;Captain America: Civil War&#39;, 2016, 3, &#39;Scarlett&#39;, &#39;Johansson&#39;, &#39;Black Widow&#39;, 33.0), (20, 13, 3, 13, &#39;Avengers: Infinity War&#39;, 2018, 3, &#39;Scarlett&#39;, &#39;Johansson&#39;, &#39;Black Widow&#39;, 33.0), (21, 1, 4, 1, &#39;Iron Man&#39;, 2008, 4, &#39;Samuel L.&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (22, 3, 4, 3, &#39;Iron Man 2&#39;, 2010, 4, &#39;Samuel L.&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (23, 4, 4, 4, &#39;Thor&#39;, 2011, 4, &#39;Samuel L.&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (24, 5, 4, 5, &#39;Captain America: The First Avenger&#39;, 2011, 4, &#39;Samuel L.&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (25, 6, 4, 6, &#39;The Avengers&#39;, 2012, 4, &#39;Samuel L.&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (26, 8, 4, 8, &#39;Captain America: The Winter Soldier&#39;, 2014, 4, &#39;Samuel L.&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (27, 9, 4, 9, &#39;Avengers: Age of Ultron&#39;, 2015, 4, &#39;Samuel L.&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (28, 13, 4, 13, &#39;Avengers: Infinity War&#39;, 2018, 4, &#39;Samuel L.&#39;, &#39;Jackson&#39;, &#39;Nick Fury&#39;, 69.0), (29, 11, 5, 11, &#39;Doctor Strange&#39;, 2016, 5, &#39;Benedict&#39;, &#39;Cumberbatch&#39;, &#39;Dr. Strange&#39;, 42.0), (30, 13, 5, 13, &#39;Avengers: Infinity War&#39;, 2018, 5, &#39;Benedict&#39;, &#39;Cumberbatch&#39;, &#39;Dr. Strange&#39;, 42.0), (31, 10, 7, 10, &#39;Captain America: Civil War&#39;, 2016, 7, &#39;Chadwick&#39;, &#39;Boseman&#39;, &#39;Black Panther&#39;, 40.0), (32, 12, 7, 12, &#39;Black Panther&#39;, 2018, 7, &#39;Chadwick&#39;, &#39;Boseman&#39;, &#39;Black Panther&#39;, 40.0), (33, 13, 7, 13, &#39;Avengers: Infinity War&#39;, 2018, 7, &#39;Chadwick&#39;, &#39;Boseman&#39;, &#39;Black Panther&#39;, 40.0)]
-</pre></div></div>
+<img alt="../_images/notebooks_lecture18_databases_4_1.png" src="../_images/notebooks_lecture18_databases_4_1.png" />
 </div>
-<div class="section" id="Using-pandas-🐼-to-help-us:">
-<h3>Using pandas 🐼 to help us:<a class="headerlink" href="#Using-pandas-🐼-to-help-us:" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="Review-of-table-contents">
+<h3>Review of table contents<a class="headerlink" href="#Review-of-table-contents" title="Permalink to this headline">¶</a></h3>
+<p>The next three cells print the table content for <code class="docutils literal notranslate"><span class="pre">Movies</span></code>, <code class="docutils literal notranslate"><span class="pre">Actors</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">MovieActors</span></code>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-<span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM Movies&#39;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
+<span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM Actors&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[3]:
+</pre></div>
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-    id                                title  year
-0    1                             Iron Man  2008
-1    2                  The Incredible Hulk  2008
-2    3                           Iron Man 2  2010
-3    4                                 Thor  2011
-4    5   Captain America: The First Avenger  2011
-5    6                         The Avengers  2012
-6    7                           Iron Man 3  2013
-7    8  Captain America: The Winter Soldier  2014
-8    9              Avengers: Age of Ultron  2015
-9   10           Captain America: Civil War  2016
-10  11                       Doctor Strange  2016
-11  12                        Black Panther  2018
-12  13               Avengers: Infinity War  2018
-</pre></div></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>character</th>
+      <th>age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Robert</td>
+      <td>Downey Jr.</td>
+      <td>Iron Man</td>
+      <td>53.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Chris</td>
+      <td>Evans</td>
+      <td>Captain America</td>
+      <td>37.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Scarlett</td>
+      <td>Johansson</td>
+      <td>Black Widow</td>
+      <td>33.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Samuel L.</td>
+      <td>Jackson</td>
+      <td>Nick Fury</td>
+      <td>69.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Benedict</td>
+      <td>Cumberbatch</td>
+      <td>Dr. Strange</td>
+      <td>42.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>Brie</td>
+      <td>Larson</td>
+      <td>Captain Marvel</td>
+      <td>29.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>Chadwick</td>
+      <td>Boseman</td>
+      <td>Black Panther</td>
+      <td>40.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
 </div>
-<p>So how long have these actors been doing Marvel movies, anyway?</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [4]:
@@ -378,8 +557,1515 @@ resource</a>.</p>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT MAX(Movies.year) - MIN(Movies.year) as years_of_service,</span>
-<span class="s2">    Actors.first_name || &quot; &quot; || Actors.last_name as name FROM MovieActors</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM Movies&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>title</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Iron Man</td>
+      <td>2008</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>The Incredible Hulk</td>
+      <td>2008</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Iron Man 2</td>
+      <td>2010</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Thor</td>
+      <td>2011</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Captain America: The First Avenger</td>
+      <td>2011</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>The Avengers</td>
+      <td>2012</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>Iron Man 3</td>
+      <td>2013</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>Captain America: The Winter Soldier</td>
+      <td>2014</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>Avengers: Age of Ultron</td>
+      <td>2015</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>Captain America: Civil War</td>
+      <td>2016</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>11</td>
+      <td>Doctor Strange</td>
+      <td>2016</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+      <td>Black Panther</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>13</td>
+      <td>Avengers: Infinity War</td>
+      <td>2018</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM MovieActors&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>movie_id</th>
+      <th>actor_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>6</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>7</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>9</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>10</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>13</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>5</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>6</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>11</td>
+      <td>8</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+      <td>9</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>13</td>
+      <td>10</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>14</td>
+      <td>13</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>15</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>16</td>
+      <td>6</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>17</td>
+      <td>8</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>18</td>
+      <td>9</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>19</td>
+      <td>10</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>20</td>
+      <td>13</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>21</td>
+      <td>1</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>22</td>
+      <td>3</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>23</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>24</td>
+      <td>5</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>25</td>
+      <td>6</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>26</td>
+      <td>8</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>27</td>
+      <td>9</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>28</td>
+      <td>13</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>29</td>
+      <td>11</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>30</td>
+      <td>13</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>31</td>
+      <td>10</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>32</td>
+      <td>12</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>33</td>
+      <td>13</td>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+<div class="section" id="JOINing-[STRIKEOUT:forces]-tables">
+<h2>JOINing [STRIKEOUT:forces] tables<a class="headerlink" href="#JOINing-[STRIKEOUT:forces]-tables" title="Permalink to this headline">¶</a></h2>
+<p>This demonstrates a basic <code class="docutils literal notranslate"><span class="pre">JOIN</span></code> operation.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span>
+        <span class="sd">&quot;&quot;&quot;SELECT Movies.title, Actors.character FROM MovieActors</span>
+<span class="sd">        JOIN Movies ON MovieActors.movie_id = Movies.id</span>
+<span class="sd">        JOIN Actors ON MovieActors.actor_id = Actors.id&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>title</th>
+      <th>character</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Iron Man</td>
+      <td>Iron Man</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>The Incredible Hulk</td>
+      <td>Iron Man</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Iron Man 2</td>
+      <td>Iron Man</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>The Avengers</td>
+      <td>Iron Man</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Iron Man 3</td>
+      <td>Iron Man</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Avengers: Age of Ultron</td>
+      <td>Iron Man</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Captain America: Civil War</td>
+      <td>Iron Man</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Avengers: Infinity War</td>
+      <td>Iron Man</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Captain America: The First Avenger</td>
+      <td>Captain America</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>The Avengers</td>
+      <td>Captain America</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Captain America: The Winter Soldier</td>
+      <td>Captain America</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Avengers: Age of Ultron</td>
+      <td>Captain America</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Captain America: Civil War</td>
+      <td>Captain America</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Avengers: Infinity War</td>
+      <td>Captain America</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Iron Man 2</td>
+      <td>Black Widow</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>The Avengers</td>
+      <td>Black Widow</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Captain America: The Winter Soldier</td>
+      <td>Black Widow</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Avengers: Age of Ultron</td>
+      <td>Black Widow</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Captain America: Civil War</td>
+      <td>Black Widow</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Avengers: Infinity War</td>
+      <td>Black Widow</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Iron Man</td>
+      <td>Nick Fury</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Iron Man 2</td>
+      <td>Nick Fury</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Thor</td>
+      <td>Nick Fury</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Captain America: The First Avenger</td>
+      <td>Nick Fury</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>The Avengers</td>
+      <td>Nick Fury</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Captain America: The Winter Soldier</td>
+      <td>Nick Fury</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Avengers: Age of Ultron</td>
+      <td>Nick Fury</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Avengers: Infinity War</td>
+      <td>Nick Fury</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Doctor Strange</td>
+      <td>Dr. Strange</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Avengers: Infinity War</td>
+      <td>Dr. Strange</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>Captain America: Civil War</td>
+      <td>Black Panther</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Black Panther</td>
+      <td>Black Panther</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Avengers: Infinity War</td>
+      <td>Black Panther</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="Types-of-JOINs">
+<h2>Types of JOINs<a class="headerlink" href="#Types-of-JOINs" title="Permalink to this headline">¶</a></h2>
+<p>The default when you just write <code class="docutils literal notranslate"><span class="pre">JOIN</span></code> is also called <code class="docutils literal notranslate"><span class="pre">INNER</span> <span class="pre">JOIN</span></code>,
+but there are also <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code>, <code class="docutils literal notranslate"><span class="pre">RIGHT</span> <span class="pre">JOIN</span></code>, and <code class="docutils literal notranslate"><span class="pre">OUTER</span> <span class="pre">JOIN</span></code>.
+There are different kinds of <code class="docutils literal notranslate"><span class="pre">JOIN</span></code>s, explained nicely in <a class="reference external" href="https://community.modeanalytics.com/sql/tutorial/sql-joins/">this
+resource</a>.
+The types of <code class="docutils literal notranslate"><span class="pre">JOIN</span></code>s can be represented as Venn diagrams, visualized
+on <a class="reference external" href="http://joins.spathon.com/">this website</a>. <img alt="visual-join.png" src="notebooks/attachment:visual-join.png" /></p>
+<div class="section" id="LEFT-JOIN-example">
+<h3>LEFT JOIN example<a class="headerlink" href="#LEFT-JOIN-example" title="Permalink to this headline">¶</a></h3>
+<p>Note that this <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code> leaves us with a <code class="docutils literal notranslate"><span class="pre">NaN</span></code> for Brie Larson,
+whose movie <em>Captain Marvel</em> has not been released yet.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT Actors.first_name, Actors.last_name, MovieActors.movie_id</span>
+<span class="s2">    FROM Actors LEFT JOIN MovieActors ON Actors.id = MovieActors.actor_id&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>movie_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Robert</td>
+      <td>Downey Jr.</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Robert</td>
+      <td>Downey Jr.</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Robert</td>
+      <td>Downey Jr.</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Robert</td>
+      <td>Downey Jr.</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Robert</td>
+      <td>Downey Jr.</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Robert</td>
+      <td>Downey Jr.</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Robert</td>
+      <td>Downey Jr.</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Robert</td>
+      <td>Downey Jr.</td>
+      <td>13.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Chris</td>
+      <td>Evans</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Chris</td>
+      <td>Evans</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Chris</td>
+      <td>Evans</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Chris</td>
+      <td>Evans</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Chris</td>
+      <td>Evans</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Chris</td>
+      <td>Evans</td>
+      <td>13.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Scarlett</td>
+      <td>Johansson</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Scarlett</td>
+      <td>Johansson</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Scarlett</td>
+      <td>Johansson</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Scarlett</td>
+      <td>Johansson</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Scarlett</td>
+      <td>Johansson</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Scarlett</td>
+      <td>Johansson</td>
+      <td>13.0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Samuel L.</td>
+      <td>Jackson</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Samuel L.</td>
+      <td>Jackson</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Samuel L.</td>
+      <td>Jackson</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Samuel L.</td>
+      <td>Jackson</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Samuel L.</td>
+      <td>Jackson</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Samuel L.</td>
+      <td>Jackson</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Samuel L.</td>
+      <td>Jackson</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Samuel L.</td>
+      <td>Jackson</td>
+      <td>13.0</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Benedict</td>
+      <td>Cumberbatch</td>
+      <td>11.0</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Benedict</td>
+      <td>Cumberbatch</td>
+      <td>13.0</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>Brie</td>
+      <td>Larson</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Chadwick</td>
+      <td>Boseman</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Chadwick</td>
+      <td>Boseman</td>
+      <td>12.0</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>Chadwick</td>
+      <td>Boseman</td>
+      <td>13.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT Actors.first_name, Actors.last_name,</span>
+<span class="s2">    MAX(Movies.year) AS most_recent_release_year, Movies.title</span>
+<span class="s2">    FROM Actors JOIN MovieActors ON Actors.id = MovieActors.actor_id</span>
+<span class="s2">    JOIN Movies ON MovieActors.movie_id = Movies.id</span>
+<span class="s2">    GROUP BY Actors.last_name&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>most_recent_release_year</th>
+      <th>title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Chadwick</td>
+      <td>Boseman</td>
+      <td>2018</td>
+      <td>Black Panther</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Benedict</td>
+      <td>Cumberbatch</td>
+      <td>2018</td>
+      <td>Avengers: Infinity War</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Robert</td>
+      <td>Downey Jr.</td>
+      <td>2018</td>
+      <td>Avengers: Infinity War</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Chris</td>
+      <td>Evans</td>
+      <td>2018</td>
+      <td>Avengers: Infinity War</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Samuel L.</td>
+      <td>Jackson</td>
+      <td>2018</td>
+      <td>Avengers: Infinity War</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Scarlett</td>
+      <td>Johansson</td>
+      <td>2018</td>
+      <td>Avengers: Infinity War</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+<div class="section" id="More-Derived-Columns">
+<h2>More Derived Columns<a class="headerlink" href="#More-Derived-Columns" title="Permalink to this headline">¶</a></h2>
+<p>Here, we make a derived column <code class="docutils literal notranslate"><span class="pre">name</span></code> by concatenating <code class="docutils literal notranslate"><span class="pre">first_name</span></code>
+with a space and <code class="docutils literal notranslate"><span class="pre">last_name</span></code>. The syntax for other concatenation in
+other SQL databases can differ, e.g.&nbsp;with the function <code class="docutils literal notranslate"><span class="pre">CONCAT</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT *,</span>
+<span class="s2">    Actors.first_name || &quot; &quot; || Actors.last_name AS name FROM MovieActors</span>
+<span class="s2">    JOIN Movies ON MovieActors.movie_id = Movies.id</span>
+<span class="s2">    JOIN Actors ON MovieActors.actor_id = Actors.id&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>movie_id</th>
+      <th>actor_id</th>
+      <th>id</th>
+      <th>title</th>
+      <th>year</th>
+      <th>id</th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>character</th>
+      <th>age</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Iron Man</td>
+      <td>2008</td>
+      <td>1</td>
+      <td>Robert</td>
+      <td>Downey Jr.</td>
+      <td>Iron Man</td>
+      <td>53.0</td>
+      <td>Robert Downey Jr.</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>The Incredible Hulk</td>
+      <td>2008</td>
+      <td>1</td>
+      <td>Robert</td>
+      <td>Downey Jr.</td>
+      <td>Iron Man</td>
+      <td>53.0</td>
+      <td>Robert Downey Jr.</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+      <td>Iron Man 2</td>
+      <td>2010</td>
+      <td>1</td>
+      <td>Robert</td>
+      <td>Downey Jr.</td>
+      <td>Iron Man</td>
+      <td>53.0</td>
+      <td>Robert Downey Jr.</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>6</td>
+      <td>1</td>
+      <td>6</td>
+      <td>The Avengers</td>
+      <td>2012</td>
+      <td>1</td>
+      <td>Robert</td>
+      <td>Downey Jr.</td>
+      <td>Iron Man</td>
+      <td>53.0</td>
+      <td>Robert Downey Jr.</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>7</td>
+      <td>1</td>
+      <td>7</td>
+      <td>Iron Man 3</td>
+      <td>2013</td>
+      <td>1</td>
+      <td>Robert</td>
+      <td>Downey Jr.</td>
+      <td>Iron Man</td>
+      <td>53.0</td>
+      <td>Robert Downey Jr.</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>9</td>
+      <td>1</td>
+      <td>9</td>
+      <td>Avengers: Age of Ultron</td>
+      <td>2015</td>
+      <td>1</td>
+      <td>Robert</td>
+      <td>Downey Jr.</td>
+      <td>Iron Man</td>
+      <td>53.0</td>
+      <td>Robert Downey Jr.</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>10</td>
+      <td>1</td>
+      <td>10</td>
+      <td>Captain America: Civil War</td>
+      <td>2016</td>
+      <td>1</td>
+      <td>Robert</td>
+      <td>Downey Jr.</td>
+      <td>Iron Man</td>
+      <td>53.0</td>
+      <td>Robert Downey Jr.</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>13</td>
+      <td>1</td>
+      <td>13</td>
+      <td>Avengers: Infinity War</td>
+      <td>2018</td>
+      <td>1</td>
+      <td>Robert</td>
+      <td>Downey Jr.</td>
+      <td>Iron Man</td>
+      <td>53.0</td>
+      <td>Robert Downey Jr.</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>5</td>
+      <td>2</td>
+      <td>5</td>
+      <td>Captain America: The First Avenger</td>
+      <td>2011</td>
+      <td>2</td>
+      <td>Chris</td>
+      <td>Evans</td>
+      <td>Captain America</td>
+      <td>37.0</td>
+      <td>Chris Evans</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>6</td>
+      <td>2</td>
+      <td>6</td>
+      <td>The Avengers</td>
+      <td>2012</td>
+      <td>2</td>
+      <td>Chris</td>
+      <td>Evans</td>
+      <td>Captain America</td>
+      <td>37.0</td>
+      <td>Chris Evans</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>11</td>
+      <td>8</td>
+      <td>2</td>
+      <td>8</td>
+      <td>Captain America: The Winter Soldier</td>
+      <td>2014</td>
+      <td>2</td>
+      <td>Chris</td>
+      <td>Evans</td>
+      <td>Captain America</td>
+      <td>37.0</td>
+      <td>Chris Evans</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+      <td>9</td>
+      <td>2</td>
+      <td>9</td>
+      <td>Avengers: Age of Ultron</td>
+      <td>2015</td>
+      <td>2</td>
+      <td>Chris</td>
+      <td>Evans</td>
+      <td>Captain America</td>
+      <td>37.0</td>
+      <td>Chris Evans</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>13</td>
+      <td>10</td>
+      <td>2</td>
+      <td>10</td>
+      <td>Captain America: Civil War</td>
+      <td>2016</td>
+      <td>2</td>
+      <td>Chris</td>
+      <td>Evans</td>
+      <td>Captain America</td>
+      <td>37.0</td>
+      <td>Chris Evans</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>14</td>
+      <td>13</td>
+      <td>2</td>
+      <td>13</td>
+      <td>Avengers: Infinity War</td>
+      <td>2018</td>
+      <td>2</td>
+      <td>Chris</td>
+      <td>Evans</td>
+      <td>Captain America</td>
+      <td>37.0</td>
+      <td>Chris Evans</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>15</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>Iron Man 2</td>
+      <td>2010</td>
+      <td>3</td>
+      <td>Scarlett</td>
+      <td>Johansson</td>
+      <td>Black Widow</td>
+      <td>33.0</td>
+      <td>Scarlett Johansson</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>16</td>
+      <td>6</td>
+      <td>3</td>
+      <td>6</td>
+      <td>The Avengers</td>
+      <td>2012</td>
+      <td>3</td>
+      <td>Scarlett</td>
+      <td>Johansson</td>
+      <td>Black Widow</td>
+      <td>33.0</td>
+      <td>Scarlett Johansson</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>17</td>
+      <td>8</td>
+      <td>3</td>
+      <td>8</td>
+      <td>Captain America: The Winter Soldier</td>
+      <td>2014</td>
+      <td>3</td>
+      <td>Scarlett</td>
+      <td>Johansson</td>
+      <td>Black Widow</td>
+      <td>33.0</td>
+      <td>Scarlett Johansson</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>18</td>
+      <td>9</td>
+      <td>3</td>
+      <td>9</td>
+      <td>Avengers: Age of Ultron</td>
+      <td>2015</td>
+      <td>3</td>
+      <td>Scarlett</td>
+      <td>Johansson</td>
+      <td>Black Widow</td>
+      <td>33.0</td>
+      <td>Scarlett Johansson</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>19</td>
+      <td>10</td>
+      <td>3</td>
+      <td>10</td>
+      <td>Captain America: Civil War</td>
+      <td>2016</td>
+      <td>3</td>
+      <td>Scarlett</td>
+      <td>Johansson</td>
+      <td>Black Widow</td>
+      <td>33.0</td>
+      <td>Scarlett Johansson</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>20</td>
+      <td>13</td>
+      <td>3</td>
+      <td>13</td>
+      <td>Avengers: Infinity War</td>
+      <td>2018</td>
+      <td>3</td>
+      <td>Scarlett</td>
+      <td>Johansson</td>
+      <td>Black Widow</td>
+      <td>33.0</td>
+      <td>Scarlett Johansson</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>21</td>
+      <td>1</td>
+      <td>4</td>
+      <td>1</td>
+      <td>Iron Man</td>
+      <td>2008</td>
+      <td>4</td>
+      <td>Samuel L.</td>
+      <td>Jackson</td>
+      <td>Nick Fury</td>
+      <td>69.0</td>
+      <td>Samuel L. Jackson</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>22</td>
+      <td>3</td>
+      <td>4</td>
+      <td>3</td>
+      <td>Iron Man 2</td>
+      <td>2010</td>
+      <td>4</td>
+      <td>Samuel L.</td>
+      <td>Jackson</td>
+      <td>Nick Fury</td>
+      <td>69.0</td>
+      <td>Samuel L. Jackson</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>23</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>Thor</td>
+      <td>2011</td>
+      <td>4</td>
+      <td>Samuel L.</td>
+      <td>Jackson</td>
+      <td>Nick Fury</td>
+      <td>69.0</td>
+      <td>Samuel L. Jackson</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>24</td>
+      <td>5</td>
+      <td>4</td>
+      <td>5</td>
+      <td>Captain America: The First Avenger</td>
+      <td>2011</td>
+      <td>4</td>
+      <td>Samuel L.</td>
+      <td>Jackson</td>
+      <td>Nick Fury</td>
+      <td>69.0</td>
+      <td>Samuel L. Jackson</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>25</td>
+      <td>6</td>
+      <td>4</td>
+      <td>6</td>
+      <td>The Avengers</td>
+      <td>2012</td>
+      <td>4</td>
+      <td>Samuel L.</td>
+      <td>Jackson</td>
+      <td>Nick Fury</td>
+      <td>69.0</td>
+      <td>Samuel L. Jackson</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>26</td>
+      <td>8</td>
+      <td>4</td>
+      <td>8</td>
+      <td>Captain America: The Winter Soldier</td>
+      <td>2014</td>
+      <td>4</td>
+      <td>Samuel L.</td>
+      <td>Jackson</td>
+      <td>Nick Fury</td>
+      <td>69.0</td>
+      <td>Samuel L. Jackson</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>27</td>
+      <td>9</td>
+      <td>4</td>
+      <td>9</td>
+      <td>Avengers: Age of Ultron</td>
+      <td>2015</td>
+      <td>4</td>
+      <td>Samuel L.</td>
+      <td>Jackson</td>
+      <td>Nick Fury</td>
+      <td>69.0</td>
+      <td>Samuel L. Jackson</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>28</td>
+      <td>13</td>
+      <td>4</td>
+      <td>13</td>
+      <td>Avengers: Infinity War</td>
+      <td>2018</td>
+      <td>4</td>
+      <td>Samuel L.</td>
+      <td>Jackson</td>
+      <td>Nick Fury</td>
+      <td>69.0</td>
+      <td>Samuel L. Jackson</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>29</td>
+      <td>11</td>
+      <td>5</td>
+      <td>11</td>
+      <td>Doctor Strange</td>
+      <td>2016</td>
+      <td>5</td>
+      <td>Benedict</td>
+      <td>Cumberbatch</td>
+      <td>Dr. Strange</td>
+      <td>42.0</td>
+      <td>Benedict Cumberbatch</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>30</td>
+      <td>13</td>
+      <td>5</td>
+      <td>13</td>
+      <td>Avengers: Infinity War</td>
+      <td>2018</td>
+      <td>5</td>
+      <td>Benedict</td>
+      <td>Cumberbatch</td>
+      <td>Dr. Strange</td>
+      <td>42.0</td>
+      <td>Benedict Cumberbatch</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>31</td>
+      <td>10</td>
+      <td>7</td>
+      <td>10</td>
+      <td>Captain America: Civil War</td>
+      <td>2016</td>
+      <td>7</td>
+      <td>Chadwick</td>
+      <td>Boseman</td>
+      <td>Black Panther</td>
+      <td>40.0</td>
+      <td>Chadwick Boseman</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>32</td>
+      <td>12</td>
+      <td>7</td>
+      <td>12</td>
+      <td>Black Panther</td>
+      <td>2018</td>
+      <td>7</td>
+      <td>Chadwick</td>
+      <td>Boseman</td>
+      <td>Black Panther</td>
+      <td>40.0</td>
+      <td>Chadwick Boseman</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>33</td>
+      <td>13</td>
+      <td>7</td>
+      <td>13</td>
+      <td>Avengers: Infinity War</td>
+      <td>2018</td>
+      <td>7</td>
+      <td>Chadwick</td>
+      <td>Boseman</td>
+      <td>Black Panther</td>
+      <td>40.0</td>
+      <td>Chadwick Boseman</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="Visualizing-Data-with-Pandas">
+<h2>Visualizing Data with Pandas<a class="headerlink" href="#Visualizing-Data-with-Pandas" title="Permalink to this headline">¶</a></h2>
+<p>So how long have these actors been doing Marvel movies, anyway?</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT MAX(Movies.year) - MIN(Movies.year) AS years_of_service,</span>
+<span class="s2">    Actors.first_name || &quot; &quot; || Actors.last_name AS name FROM MovieActors</span>
 <span class="s2">        JOIN Movies ON MovieActors.movie_id = Movies.id</span>
 <span class="s2">        JOIN Actors ON MovieActors.actor_id = Actors.id</span>
 <span class="s2">        GROUP BY name</span>
@@ -392,13 +2078,13 @@ resource</a>.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/notebooks_lecture18_databases_8_0.png" src="../_images/notebooks_lecture18_databases_8_0.png" />
+<img alt="../_images/notebooks_lecture18_databases_18_0.png" src="../_images/notebooks_lecture18_databases_18_0.png" />
 </div>
 </div>
 <p>And how old were they when they started?</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [5]:
+<span></span>In [11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -417,7 +2103,7 @@ resource</a>.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/notebooks_lecture18_databases_10_0.png" src="../_images/notebooks_lecture18_databases_10_0.png" />
+<img alt="../_images/notebooks_lecture18_databases_20_0.png" src="../_images/notebooks_lecture18_databases_20_0.png" />
 </div>
 </div>
 <p>We can visualize this data in many ways, including this graph. (Note
@@ -425,7 +2111,7 @@ that Brie Larson appears, who was absent from our earlier plots because
 her movie, Captain Marvel, hasn’t been released yet.)</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [6]:
+<span></span>In [12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -466,14 +2152,13 @@ her movie, Captain Marvel, hasn’t been released yet.)</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/notebooks_lecture18_databases_12_0.png" src="../_images/notebooks_lecture18_databases_12_0.png" />
+<img alt="../_images/notebooks_lecture18_databases_22_0.png" src="../_images/notebooks_lecture18_databases_22_0.png" />
 </div>
 </div>
 <p>Observation: Avengers movies are near the center! What else could we
 learn from this data?</p>
 <p>What if we wanted to add ratings? What kind of mapping is needed? What
 table columns would we use?</p>
-</div>
 </div>
 <div class="section" id="Common-problems-in-designing-relational-databases">
 <h2>Common problems in designing relational databases<a class="headerlink" href="#Common-problems-in-designing-relational-databases" title="Permalink to this headline">¶</a></h2>
@@ -488,7 +2173,8 @@ table columns would we use?</p>
 <h2>Normal Form<a class="headerlink" href="#Normal-Form" title="Permalink to this headline">¶</a></h2>
 <p>There are rules to help us design relational databases! They’re called
 “<a class="reference external" href="https://en.wikipedia.org/wiki/Database_normalization">normal
-form</a>.”</p>
+form</a>.” This is
+a term worth looking up if you need to design a database.</p>
 </div>
 <div class="section" id="Chinook-Sample-Database">
 <h2>Chinook Sample Database<a class="headerlink" href="#Chinook-Sample-Database" title="Permalink to this headline">¶</a></h2>
@@ -499,7 +2185,7 @@ it’s rich and demonstrates a professional, production-level database
 schema. <img alt="image.png" src="notebooks/attachment:image.png" /></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [7]:
+<span></span>In [13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -519,20 +2205,18 @@ Removing previously downloaded database.
 Downloading database.
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100 1042k  100 1042k    0     0  1797k      0 --:--:-- --:--:-- --:--:-- 1973k
+100 1042k  100 1042k    0     0   176k      0  0:00:05  0:00:05 --:--:--  313k
 Done. Check that the file exists:
 Chinook.sqlite
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [8]:
+<span></span>In [14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">database</span> <span class="o">=</span> <span class="s1">&#39;Chinook.sqlite&#39;</span>
-
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
 
 <span class="k">def</span> <span class="nf">get_results</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
@@ -844,9 +2528,11 @@ Chinook.sqlite
 </table>
 </div></div>
 </div>
+<div class="section" id="Table-structures-for-music-data">
+<h3>Table structures for music data<a class="headerlink" href="#Table-structures-for-music-data" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [9]:
+<span></span>In [15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1141,9 +2827,12 @@ Chinook.sqlite
 </table>
 </div></div>
 </div>
+</div>
+<div class="section" id="Generating-a-typical-music-library-layout">
+<h3>Generating a typical music library layout<a class="headerlink" href="#Generating-a-typical-music-library-layout" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [10]:
+<span></span>In [16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1615,11 +3304,12 @@ Chinook.sqlite
 <p>3503 rows × 4 columns</p>
 </div></div>
 </div>
-<div class="section" id="Example-Query">
-<h3>Example Query<a class="headerlink" href="#Example-Query" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="Artists-with-the-most-tracks">
+<h3>Artists with the most tracks<a class="headerlink" href="#Artists-with-the-most-tracks" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [11]:
+<span></span>In [17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1632,7 +3322,7 @@ Chinook.sqlite
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[11]:
+<span></span>Out[17]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1713,9 +3403,12 @@ Chinook.sqlite
 </table>
 </div></div>
 </div>
+</div>
+<div class="section" id="More-table-structures-for-sales-data">
+<h3>More table structures for sales data<a class="headerlink" href="#More-table-structures-for-sales-data" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [12]:
+<span></span>In [18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2078,21 +3771,21 @@ Chinook.sqlite
 <h3>Total Spending by State/Country<a class="headerlink" href="#Total-Spending-by-State/Country" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [13]:
+<span></span>In [19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">get_results</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT SUM(InvoiceLine.UnitPrice) AS Spending, Customer.State, Customer.Country AS Location</span>
+<span></span><span class="n">get_results</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT SUM(InvoiceLine.UnitPrice * InvoiceLine.Quantity) AS Spending, Customer.State, Customer.Country</span>
 <span class="s2">FROM InvoiceLine</span>
 <span class="s2">JOIN Invoice ON InvoiceLine.InvoiceId = Invoice.InvoiceId</span>
 <span class="s2">JOIN Customer ON Invoice.CustomerId = Customer.CustomerId</span>
-<span class="s2">GROUP BY Customer.State ORDER BY Spending DESC&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="s2">GROUP BY Customer.State, Customer.Country ORDER BY Spending DESC&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[13]:
+<span></span>Out[19]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2116,162 +3809,258 @@ Chinook.sqlite
       <th></th>
       <th>Spending</th>
       <th>State</th>
-      <th>Location</th>
+      <th>Country</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1150.00</td>
+      <td>195.10</td>
+      <td>None</td>
+      <td>France</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>156.48</td>
       <td>None</td>
       <td>Germany</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>2</th>
       <td>115.86</td>
       <td>CA</td>
       <td>USA</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th>3</th>
       <td>114.86</td>
       <td>SP</td>
       <td>Brazil</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th>4</th>
+      <td>112.86</td>
+      <td>None</td>
+      <td>United Kingdom</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>90.24</td>
+      <td>None</td>
+      <td>Czech Republic</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>77.24</td>
+      <td>None</td>
+      <td>Portugal</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>75.26</td>
+      <td>None</td>
+      <td>India</td>
+    </tr>
+    <tr>
+      <th>8</th>
       <td>75.24</td>
       <td>ON</td>
       <td>Canada</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>9</th>
       <td>47.62</td>
       <td>TX</td>
       <td>USA</td>
     </tr>
     <tr>
-      <th>5</th>
+      <th>10</th>
+      <td>46.62</td>
+      <td>None</td>
+      <td>Chile</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>45.62</td>
+      <td>None</td>
+      <td>Hungary</td>
+    </tr>
+    <tr>
+      <th>12</th>
       <td>45.62</td>
       <td>Dublin</td>
       <td>Ireland</td>
     </tr>
     <tr>
-      <th>6</th>
+      <th>13</th>
       <td>43.62</td>
       <td>IL</td>
       <td>USA</td>
     </tr>
     <tr>
-      <th>7</th>
+      <th>14</th>
       <td>43.62</td>
       <td>UT</td>
       <td>USA</td>
     </tr>
     <tr>
-      <th>8</th>
+      <th>15</th>
       <td>42.62</td>
       <td>WI</td>
       <td>USA</td>
     </tr>
     <tr>
-      <th>9</th>
+      <th>16</th>
+      <td>42.62</td>
+      <td>None</td>
+      <td>Austria</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>41.62</td>
+      <td>None</td>
+      <td>Finland</td>
+    </tr>
+    <tr>
+      <th>18</th>
       <td>40.62</td>
       <td>VV</td>
       <td>Netherlands</td>
     </tr>
     <tr>
-      <th>10</th>
+      <th>19</th>
+      <td>39.62</td>
+      <td>None</td>
+      <td>Norway</td>
+    </tr>
+    <tr>
+      <th>20</th>
       <td>39.62</td>
       <td>FL</td>
       <td>USA</td>
     </tr>
     <tr>
-      <th>11</th>
+      <th>21</th>
       <td>39.62</td>
       <td>QC</td>
       <td>Canada</td>
     </tr>
     <tr>
-      <th>12</th>
+      <th>22</th>
       <td>39.62</td>
       <td>WA</td>
       <td>USA</td>
     </tr>
     <tr>
-      <th>13</th>
+      <th>23</th>
+      <td>38.62</td>
+      <td>None</td>
+      <td>Sweden</td>
+    </tr>
+    <tr>
+      <th>24</th>
       <td>38.62</td>
       <td>BC</td>
       <td>Canada</td>
     </tr>
     <tr>
-      <th>14</th>
+      <th>25</th>
+      <td>37.62</td>
+      <td>None</td>
+      <td>Argentina</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>37.62</td>
+      <td>None</td>
+      <td>Belgium</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>37.62</td>
+      <td>None</td>
+      <td>Denmark</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>37.62</td>
+      <td>None</td>
+      <td>Poland</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>37.62</td>
+      <td>None</td>
+      <td>Spain</td>
+    </tr>
+    <tr>
+      <th>30</th>
       <td>37.62</td>
       <td>AB</td>
       <td>Canada</td>
     </tr>
     <tr>
-      <th>15</th>
+      <th>31</th>
       <td>37.62</td>
       <td>AZ</td>
       <td>USA</td>
     </tr>
     <tr>
-      <th>16</th>
+      <th>32</th>
       <td>37.62</td>
       <td>DF</td>
       <td>Brazil</td>
     </tr>
     <tr>
-      <th>17</th>
+      <th>33</th>
       <td>37.62</td>
       <td>MA</td>
       <td>USA</td>
     </tr>
     <tr>
-      <th>18</th>
+      <th>34</th>
       <td>37.62</td>
       <td>MB</td>
       <td>Canada</td>
     </tr>
     <tr>
-      <th>19</th>
+      <th>35</th>
       <td>37.62</td>
       <td>NS</td>
       <td>Canada</td>
     </tr>
     <tr>
-      <th>20</th>
+      <th>36</th>
       <td>37.62</td>
       <td>NSW</td>
       <td>Australia</td>
     </tr>
     <tr>
-      <th>21</th>
+      <th>37</th>
       <td>37.62</td>
       <td>NT</td>
       <td>Canada</td>
     </tr>
     <tr>
-      <th>22</th>
+      <th>38</th>
       <td>37.62</td>
       <td>NV</td>
       <td>USA</td>
     </tr>
     <tr>
-      <th>23</th>
+      <th>39</th>
       <td>37.62</td>
       <td>NY</td>
       <td>USA</td>
     </tr>
     <tr>
-      <th>24</th>
+      <th>40</th>
       <td>37.62</td>
       <td>RJ</td>
       <td>Brazil</td>
     </tr>
     <tr>
-      <th>25</th>
+      <th>41</th>
       <td>37.62</td>
       <td>RM</td>
       <td>Italy</td>
@@ -2281,16 +4070,20 @@ Chinook.sqlite
 </div></div>
 </div>
 </div>
-</div>
 <div class="section" id="Subqueries">
-<h2>Subqueries<a class="headerlink" href="#Subqueries" title="Permalink to this headline">¶</a></h2>
+<h3>Subqueries<a class="headerlink" href="#Subqueries" title="Permalink to this headline">¶</a></h3>
+<p>This is a subquery, where we nest multiple <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> statements. We
+must name the parenthesized subquery, and here we call it <code class="docutils literal notranslate"><span class="pre">Subquery</span></code>.
+Then in the parent <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> statement, we can access all of the
+subquery columns via <code class="docutils literal notranslate"><span class="pre">Subquery.*</span></code>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [14]:
+<span></span>In [20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">show_results</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT Subquery.* FROM (SELECT Artist.Name, COUNT(Artist.Name) as ArtistCount, Customer.State, Customer.Country</span>
+<span></span><span class="n">show_results</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT Subquery.* FROM</span>
+<span class="s2">(SELECT Artist.Name, COUNT(Artist.Name) as ArtistCount, Customer.State, Customer.Country</span>
 <span class="s2">FROM InvoiceLine</span>
 <span class="s2">JOIN Invoice ON InvoiceLine.InvoiceId = Invoice.InvoiceId</span>
 <span class="s2">JOIN Customer ON Invoice.CustomerId = Customer.CustomerId</span>
@@ -2763,14 +4556,19 @@ Chinook.sqlite
 <p>201 rows × 4 columns</p>
 </div></div>
 </div>
+</div>
+<div class="section" id="Total-Spending-by-Artist">
+<h3>Total Spending by Artist<a class="headerlink" href="#Total-Spending-by-Artist" title="Permalink to this headline">¶</a></h3>
+<p>This uses a subquery to get the sales by track, and then joins that to
+the <code class="docutils literal notranslate"><span class="pre">Artists</span></code> table so we can see the total sales by artist.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [15]:
+<span></span>In [21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">show_results</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT Artist.Name as ArtistName, SUM(TrackSales.Sales) AS ArtistSales FROM (</span>
-<span class="s2">SELECT Track.TrackId, Track.AlbumId, Track.Name, SUM(InvoiceLine.UnitPrice) AS Sales</span>
+<span class="s2">SELECT Track.TrackId, Track.AlbumId, Track.Name, SUM(InvoiceLine.UnitPrice * InvoiceLine.Quantity) AS Sales</span>
 <span class="s2">FROM Track JOIN InvoiceLine ON Track.TrackId = InvoiceLine.TrackId</span>
 <span class="s2">GROUP BY Track.TrackId</span>
 <span class="s2">) AS TrackSales</span>
@@ -3120,15 +4918,18 @@ Chinook.sqlite
 </div>
 </div>
 <div class="section" id="Searching-Databases">
-<h2>Searching Databases<a class="headerlink" href="#Searching-Databases" title="Permalink to this headline">¶</a></h2>
+<h3>Searching Databases<a class="headerlink" href="#Searching-Databases" title="Permalink to this headline">¶</a></h3>
+<p>Using the keyword <code class="docutils literal notranslate"><span class="pre">LIKE</span></code>, we can search for strings that are partial
+matches. Using the percent sign <code class="docutils literal notranslate"><span class="pre">%</span></code> is kind of like using an asterisk
+<code class="docutils literal notranslate"><span class="pre">*</span></code> in the terminal, it just fills in one or more other characters.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [16]:
+<span></span>In [22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">show_results</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM Artist WHERE Name LIKE (?)&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%f</span><span class="s1">oo%&#39;</span><span class="p">,))</span>
-<span class="n">show_results</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM Artist WHERE Name LIKE (?)&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;%bar%&#39;</span><span class="p">,))</span>
+<span class="n">show_results</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT * FROM Artist WHERE Name LIKE (?)&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;bar%&#39;</span><span class="p">,))</span>
 </pre></div>
 </div>
 </div>
@@ -3202,18 +5003,8 @@ Chinook.sqlite
     </tr>
     <tr>
       <th>1</th>
-      <td>213</td>
-      <td>Scholars Baroque Ensemble</td>
-    </tr>
-    <tr>
-      <th>2</th>
       <td>224</td>
       <td>Barry Wordsworth &amp; BBC Concert Orchestra</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>273</td>
-      <td>C. Monteverdi, Nigel Rogers - Chiaroscuro; Lon...</td>
     </tr>
   </tbody>
 </table>
@@ -3221,7 +5012,7 @@ Chinook.sqlite
 </div>
 </div>
 <div class="section" id="Scientific-databases">
-<h2>Scientific databases<a class="headerlink" href="#Scientific-databases" title="Permalink to this headline">¶</a></h2>
+<h3>Scientific databases<a class="headerlink" href="#Scientific-databases" title="Permalink to this headline">¶</a></h3>
 <p>Acquiring quality data with the information you might need for
 particular research questions is still <em>very hard</em>. Many databases found
 online are of low quality, or small breadth / depth. Here are some
@@ -3236,14 +5027,14 @@ to make the most out of limited information.</p>
 </ul>
 </div>
 <div class="section" id="Hosting-a-production-database">
-<h2>Hosting a production database<a class="headerlink" href="#Hosting-a-production-database" title="Permalink to this headline">¶</a></h2>
+<h3>Hosting a production database<a class="headerlink" href="#Hosting-a-production-database" title="Permalink to this headline">¶</a></h3>
 <p>If reliability is important and/or you have some money and want to get
 going quickly, use a cloud provider like Amazon Web Services or Google
 Cloud. - <a class="reference external" href="https://aws.amazon.com/products/databases/">https://aws.amazon.com/products/databases/</a> -
 <a class="reference external" href="https://cloud.google.com/sql/">https://cloud.google.com/sql/</a></p>
 </div>
 <div class="section" id="Exploring-more-on-your-own">
-<h2>Exploring more on your own<a class="headerlink" href="#Exploring-more-on-your-own" title="Permalink to this headline">¶</a></h2>
+<h3>Exploring more on your own<a class="headerlink" href="#Exploring-more-on-your-own" title="Permalink to this headline">¶</a></h3>
 <p>To learn how databases work on your own, install the <code class="docutils literal notranslate"><span class="pre">mysql-server</span></code>
 package on a server you have access to, or follow instructions for a
 LAMP (Linux, Apache, MySQL, PHP) server. The second link below has
@@ -3253,15 +5044,17 @@ including several NoSQL databases. -
 - <a class="reference external" href="https://www.linode.com/docs/databases/">https://www.linode.com/docs/databases/</a></p>
 </div>
 <div class="section" id="Administrative-interfaces">
-<h2>Administrative interfaces<a class="headerlink" href="#Administrative-interfaces" title="Permalink to this headline">¶</a></h2>
+<h3>Administrative interfaces<a class="headerlink" href="#Administrative-interfaces" title="Permalink to this headline">¶</a></h3>
 <p>To administer MySQL databases, I really like PHPMyAdmin. It’s how I
 learned to use databases, because its web interface shows the SQL
 commands when you click on the buttons. - <a class="reference external" href="https://www.phpmyadmin.net/">https://www.phpmyadmin.net/</a></p>
+</div>
 <div class="section" id="Sources">
 <h3>Sources<a class="headerlink" href="#Sources" title="Permalink to this headline">¶</a></h3>
 <p>Database reference material: - <a class="reference external" href="https://en.wikipedia.org/wiki/NoSQL">https://en.wikipedia.org/wiki/NoSQL</a> -
 <a class="reference external" href="https://docs.python.org/3.7/library/sqlite3.html">https://docs.python.org/3.7/library/sqlite3.html</a> -
 <a class="reference external" href="https://community.modeanalytics.com/sql/tutorial/sql-joins/">https://community.modeanalytics.com/sql/tutorial/sql-joins/</a> -
+<a class="reference external" href="http://joins.spathon.com/">http://joins.spathon.com/</a> -
 <a class="reference external" href="https://en.wikipedia.org/wiki/Database_normalization">https://en.wikipedia.org/wiki/Database_normalization</a> -
 <a class="reference external" href="http://www.sqlitetutorial.net/sqlite-sample-database/">http://www.sqlitetutorial.net/sqlite-sample-database/</a></p>
 <p>Other Python packages used: -

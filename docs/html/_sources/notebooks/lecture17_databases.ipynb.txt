@@ -98,7 +98,9 @@
   {
    "cell_type": "code",
    "execution_count": 1,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "import sqlite3\n",
@@ -121,7 +123,9 @@
   {
    "cell_type": "code",
    "execution_count": 2,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "with sqlite3.connect(database) as conn:\n",
@@ -170,7 +174,9 @@
   {
    "cell_type": "code",
    "execution_count": 4,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "# Let's add lots of people\n",
@@ -226,7 +232,9 @@
   {
    "cell_type": "code",
    "execution_count": 6,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "with sqlite3.connect(database) as conn:\n",
@@ -425,7 +433,9 @@
   {
    "cell_type": "code",
    "execution_count": 12,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "database = 'movie_ratings.sqlite'\n",
@@ -654,7 +664,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.6.6"
+   "version": "3.6.1"
   }
  },
  "nbformat": 4,

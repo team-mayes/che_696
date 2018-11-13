@@ -760,13 +760,36 @@ Name: Utah, dtype: float64
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">series2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">])</span>
-<span class="n">frame</span> <span class="o">+</span> <span class="n">series2</span>
+<span class="n">series2</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>Out[8]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>b    0
+e    1
+f    2
+dtype: int64
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">frame</span> <span class="o">+</span> <span class="n">series2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[9]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -831,7 +854,7 @@ Name: Utah, dtype: float64
 you want the opposite, specify so with an arithmetic method.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [9]:
+<span></span>In [10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -842,7 +865,7 @@ you want the opposite, specify so with an arithmetic method.</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[9]:
+<span></span>Out[10]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -900,7 +923,7 @@ you want the opposite, specify so with an arithmetic method.</p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [10]:
+<span></span>In [11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -910,7 +933,7 @@ you want the opposite, specify so with an arithmetic method.</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[10]:
+<span></span>Out[11]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -924,7 +947,95 @@ Name: d, dtype: float64
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [11]:
+<span></span>In [12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">frame</span> <span class="o">-</span> <span class="n">series3</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Ohio</th>
+      <th>Oregon</th>
+      <th>Texas</th>
+      <th>Utah</th>
+      <th>b</th>
+      <th>d</th>
+      <th>e</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Utah</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Ohio</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Texas</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Oregon</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -934,7 +1045,7 @@ Name: d, dtype: float64
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[11]:
+<span></span>Out[13]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -995,7 +1106,7 @@ dataframes, and quick Internet searches will give you the correct
 syntax. For example:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [12]:
+<span></span>In [14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1005,7 +1116,7 @@ syntax. For example:</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[12]:
+<span></span>Out[14]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -1018,7 +1129,7 @@ dtype: float64
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [13]:
+<span></span>In [15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1028,7 +1139,7 @@ dtype: float64
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[13]:
+<span></span>Out[15]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -1042,147 +1153,11 @@ dtype: float64
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [14]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">frame</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[14]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>b</th>
-      <th>d</th>
-      <th>e</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Utah</th>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>Ohio</th>
-      <td>3.0</td>
-      <td>4.0</td>
-      <td>5.0</td>
-    </tr>
-    <tr>
-      <th>Texas</th>
-      <td>6.0</td>
-      <td>7.0</td>
-      <td>8.0</td>
-    </tr>
-    <tr>
-      <th>Oregon</th>
-      <td>9.0</td>
-      <td>10.0</td>
-      <td>11.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [15]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">frame</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[15]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>b</th>
-      <th>d</th>
-      <th>e</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Ohio</th>
-      <td>3.0</td>
-      <td>4.0</td>
-      <td>5.0</td>
-    </tr>
-    <tr>
-      <th>Oregon</th>
-      <td>9.0</td>
-      <td>10.0</td>
-      <td>11.0</td>
-    </tr>
-    <tr>
-      <th>Texas</th>
-      <td>6.0</td>
-      <td>7.0</td>
-      <td>8.0</td>
-    </tr>
-    <tr>
-      <th>Utah</th>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>2.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">frame</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span></span><span class="n">frame</span>
 </pre></div>
 </div>
 </div>
@@ -1210,6 +1185,142 @@ dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>b</th>
+      <th>d</th>
+      <th>e</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Utah</th>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>Ohio</th>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>Texas</th>
+      <td>6.0</td>
+      <td>7.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>Oregon</th>
+      <td>9.0</td>
+      <td>10.0</td>
+      <td>11.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">frame</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[17]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>b</th>
+      <th>d</th>
+      <th>e</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Ohio</th>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>Oregon</th>
+      <td>9.0</td>
+      <td>10.0</td>
+      <td>11.0</td>
+    </tr>
+    <tr>
+      <th>Texas</th>
+      <td>6.0</td>
+      <td>7.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>Utah</th>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">frame</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[18]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
       <th>e</th>
       <th>d</th>
       <th>b</th>
@@ -1246,7 +1357,7 @@ dtype: float64
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [17]:
+<span></span>In [19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1257,7 +1368,7 @@ dtype: float64
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[17]:
+<span></span>Out[19]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -1277,7 +1388,7 @@ dtype: float64
 <p>NumPy ufuncs (element-wise array methods) also work with pandas objects:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [18]:
+<span></span>In [20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1289,7 +1400,7 @@ dtype: float64
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[18]:
+<span></span>Out[20]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1319,27 +1430,27 @@ dtype: float64
   <tbody>
     <tr>
       <th>Utah</th>
-      <td>-0.268870</td>
-      <td>-0.067302</td>
-      <td>0.217327</td>
+      <td>0.410194</td>
+      <td>1.259284</td>
+      <td>0.428494</td>
     </tr>
     <tr>
       <th>Ohio</th>
-      <td>-0.817639</td>
-      <td>-1.496140</td>
-      <td>0.063051</td>
+      <td>0.320257</td>
+      <td>-0.931598</td>
+      <td>1.145809</td>
     </tr>
     <tr>
       <th>Texas</th>
-      <td>0.028423</td>
-      <td>-1.207456</td>
-      <td>-0.597202</td>
+      <td>0.155460</td>
+      <td>0.085593</td>
+      <td>0.033784</td>
     </tr>
     <tr>
       <th>Oregon</th>
-      <td>0.169555</td>
-      <td>1.179750</td>
-      <td>-0.472926</td>
+      <td>-0.301118</td>
+      <td>-0.250526</td>
+      <td>-1.332475</td>
     </tr>
   </tbody>
 </table>
@@ -1347,7 +1458,7 @@ dtype: float64
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [19]:
+<span></span>In [21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1360,13 +1471,13 @@ dtype: float64
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[19]:
+<span></span>Out[21]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>b    0.987194
-d    2.675890
-e    0.814529
+<span></span>b    0.711311
+d    2.190882
+e    2.478284
 dtype: float64
 </pre></div>
 </div>
@@ -1378,7 +1489,7 @@ result is a Series having the columns of ‘frame’ as its index.</p>
 once per row instead:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [20]:
+<span></span>In [22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1388,14 +1499,14 @@ once per row instead:</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[20]:
+<span></span>Out[22]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Utah      0.486197
-Ohio      1.559191
-Texas     1.235880
-Oregon    1.652676
+<span></span>Utah      0.849090
+Ohio      2.077407
+Texas     0.121676
+Oregon    1.081949
 dtype: float64
 </pre></div>
 </div>
@@ -1404,7 +1515,7 @@ dtype: float64
 return a Series with multiple values:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [21]:
+<span></span>In [23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1416,7 +1527,7 @@ return a Series with multiple values:</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[21]:
+<span></span>Out[23]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1446,15 +1557,15 @@ return a Series with multiple values:</p>
   <tbody>
     <tr>
       <th>min</th>
-      <td>-0.817639</td>
-      <td>-1.49614</td>
-      <td>-0.597202</td>
+      <td>-0.301118</td>
+      <td>-0.931598</td>
+      <td>-1.332475</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>0.169555</td>
-      <td>1.17975</td>
-      <td>0.217327</td>
+      <td>0.410194</td>
+      <td>1.259284</td>
+      <td>1.145809</td>
     </tr>
   </tbody>
 </table>
@@ -1467,17 +1578,18 @@ are DataFrame methods, so using apply is not necessary.</p>
 <h2>A personal favorite DataFrame method:<a class="headerlink" href="#A-personal-favorite-DataFrame-method:" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [22]:
+<span></span>In [24]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">frame</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<span></span><span class="n">frame2</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<span class="n">frame2</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[22]:
+<span></span>Out[24]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1513,63 +1625,90 @@ are DataFrame methods, so using apply is not necessary.</p>
     </tr>
     <tr>
       <th>mean</th>
-      <td>-0.222133</td>
-      <td>-0.397787</td>
-      <td>-0.197437</td>
+      <td>0.146198</td>
+      <td>0.040688</td>
+      <td>0.068903</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>0.437039</td>
-      <td>1.219260</td>
-      <td>0.398158</td>
+      <td>0.316316</td>
+      <td>0.915994</td>
+      <td>1.041493</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>-0.817639</td>
-      <td>-1.496140</td>
-      <td>-0.597202</td>
+      <td>-0.301118</td>
+      <td>-0.931598</td>
+      <td>-1.332475</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>-0.406062</td>
-      <td>-1.279627</td>
-      <td>-0.503995</td>
+      <td>0.041316</td>
+      <td>-0.420794</td>
+      <td>-0.307781</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>-0.120223</td>
-      <td>-0.637379</td>
-      <td>-0.204937</td>
+      <td>0.237859</td>
+      <td>-0.082467</td>
+      <td>0.231139</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>0.063706</td>
-      <td>0.244461</td>
-      <td>0.101620</td>
+      <td>0.342741</td>
+      <td>0.379015</td>
+      <td>0.607823</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>0.169555</td>
-      <td>1.179750</td>
-      <td>0.217327</td>
+      <td>0.410194</td>
+      <td>1.259284</td>
+      <td>1.145809</td>
     </tr>
   </tbody>
 </table>
 </div></div>
 </div>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [23]:
+<span></span>In [25]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">obj</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">obj</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[25]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>0     a
+1     a
+2     b
+3     c
+4     a
+5     a
+6     b
+7     c
+8     a
+9     a
+10    b
+11    c
+12    a
+13    a
+14    b
+15    c
+dtype: object
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [24]:
+<span></span>In [26]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1579,7 +1718,7 @@ are DataFrame methods, so using apply is not necessary.</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[24]:
+<span></span>Out[26]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -1689,7 +1828,7 @@ different version of them is not needed when there are null (e.g.&nbsp;NaN)
 entries.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [25]:
+<span></span>In [27]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1703,7 +1842,7 @@ entries.</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[25]:
+<span></span>Out[27]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1757,7 +1896,7 @@ entries.</p>
 <p>Calling DataFrame’s sum method returns a Series containing column sums:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [26]:
+<span></span>In [28]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1767,7 +1906,7 @@ entries.</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[26]:
+<span></span>Out[28]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -1779,7 +1918,7 @@ dtype: float64
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [27]:
+<span></span>In [29]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1789,7 +1928,7 @@ dtype: float64
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[27]:
+<span></span>Out[29]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -1805,7 +1944,7 @@ dtype: float64
 in this case) is NA. This can be disabled with the skipna option:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [28]:
+<span></span>In [30]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1815,7 +1954,7 @@ in this case) is NA. This can be disabled with the skipna option:</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[28]:
+<span></span>Out[30]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -1835,24 +1974,25 @@ contained in a one-dimensional Series. To illustrate these, consider
 this example:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [29]:
+<span></span>In [31]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">obj</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">])</span>
 
 <span class="n">uniques</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">uniques</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
 <span class="n">uniques</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[29]:
+<span></span>Out[31]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>array([&#39;c&#39;, &#39;a&#39;, &#39;d&#39;, &#39;b&#39;], dtype=object)
+<span></span>array([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -1861,7 +2001,7 @@ could be sorted after the fact if needed (uniques.sort()). Relatedly,
 value_counts computes a Series containing value frequencies:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [30]:
+<span></span>In [32]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1871,12 +2011,12 @@ value_counts computes a Series containing value frequencies:</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[30]:
+<span></span>Out[32]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>c    3
-a    3
+<span></span>a    3
+c    3
 b    2
 d    1
 dtype: int64
@@ -1888,7 +2028,7 @@ value_counts is also available as a top-level pandas method that can be
 used with any array or sequence:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [31]:
+<span></span>In [33]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1899,38 +2039,38 @@ used with any array or sequence:</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[31]:
+<span></span>Out[33]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>b    2
-a    3
+<span></span>c    3
 d    1
-c    3
+a    3
+b    2
 dtype: int64
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [32]:
+<span></span>In [34]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pd</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span></span><span class="n">pd</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[32]:
+<span></span>Out[34]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>b    2
-a    3
-d    1
+<span></span>a    3
 c    3
+b    2
+d    1
 dtype: int64
 </pre></div>
 </div>
@@ -2022,7 +2162,7 @@ a,b,c,d,message
 5,6,7,8,world
 9,10,11,12,foo<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [33]:
+<span></span>In [35]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2033,7 +2173,7 @@ a,b,c,d,message
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[33]:
+<span></span>Out[35]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2094,7 +2234,7 @@ a,b,c,d,message
 <p>We could also have used read_table and specified the delimiter:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [34]:
+<span></span>In [36]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2104,7 +2244,7 @@ a,b,c,d,message
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[34]:
+<span></span>Out[36]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2170,7 +2310,7 @@ a,b,c,d,message
 assign default column names, or you can specify names yourself:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [35]:
+<span></span>In [37]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2180,7 +2320,7 @@ assign default column names, or you can specify names yourself:</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[35]:
+<span></span>Out[37]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2240,7 +2380,7 @@ assign default column names, or you can specify names yourself:</p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [36]:
+<span></span>In [38]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2250,7 +2390,7 @@ assign default column names, or you can specify names yourself:</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[36]:
+<span></span>Out[38]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2313,7 +2453,7 @@ DataFrame. You can either indicate you want the column at index 4 or
 named ‘message’ using the index_col argument:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [37]:
+<span></span>In [39]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2324,7 +2464,7 @@ named ‘message’ using the index_col argument:</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[37]:
+<span></span>Out[39]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2396,7 +2536,7 @@ can be expressed by the regular expression :raw-latex:<a href="#id3"><span class
 then:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [38]:
+<span></span>In [40]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2407,7 +2547,7 @@ then:</p>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[38]:
+<span></span>Out[40]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2475,7 +2615,7 @@ a,b,c,d,message
 5,6,7,8,world
 9,10,11,12,foo<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [39]:
+<span></span>In [41]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2485,7 +2625,7 @@ a,b,c,d,message
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[39]:
+<span></span>Out[41]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2545,7 +2685,7 @@ a,b,c,d,message
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [40]:
+<span></span>In [42]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2555,7 +2695,7 @@ a,b,c,d,message
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[40]:
+<span></span>Out[42]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2619,7 +2759,7 @@ one,1,2,3,4,NA
 two,5,6,,8,world
 three,null,10,11,12,foo<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [41]:
+<span></span>In [43]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2630,7 +2770,7 @@ three,null,10,11,12,foo<div class="nbinput docutils container">
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[41]:
+<span></span>Out[43]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2700,7 +2840,7 @@ three,null,10,11,12,foo<div class="nbinput docutils container">
 read in.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [42]:
+<span></span>In [44]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2715,7 +2855,7 @@ read in.</p>
 denote them by some other sentinel value:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [43]:
+<span></span>In [45]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2730,7 +2870,7 @@ denote them by some other sentinel value:</p>
 written. Both of these can be disabled:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [44]:
+<span></span>In [46]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2744,7 +2884,7 @@ three,,10,11.0,12,foo<p>You can also write only a subset of the columns, and in 
 choosing:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [45]:
+<span></span>In [47]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>

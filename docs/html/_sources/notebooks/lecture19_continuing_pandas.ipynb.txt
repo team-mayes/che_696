@@ -154,6 +154,15 @@
    "outputs": [],
    "source": [
     "series2 = pd.Series(range(3), index=['b', 'e', 'f'])\n",
+    "series2"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
     "frame + series2"
    ]
   },
@@ -183,6 +192,15 @@
    "outputs": [],
    "source": [
     "series3"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "frame - series3"
    ]
   },
   {
@@ -344,18 +362,18 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "frame.describe()"
+    "frame2 = frame.describe()\n",
+    "frame2"
    ]
   },
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
+   "metadata": {},
    "outputs": [],
    "source": [
-    "obj = pd.Series(['a', 'a', 'b', 'c'] * 4)"
+    "obj = pd.Series(['a', 'a', 'b', 'c'] * 4)\n",
+    "obj"
    ]
   },
   {
@@ -471,7 +489,8 @@
     "obj = pd.Series(['c', 'a', 'd', 'a', 'a', 'b', 'b', 'c', 'c'])\n",
     "\n",
     "uniques = obj.unique()\n",
-    "uniques "
+    "uniques.sort()\n",
+    "uniques"
    ]
   },
   {
@@ -513,7 +532,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "pd.value_counts(obj.values, sort=False)"
+    "pd.value_counts(obj.values, sort=True)"
    ]
   },
   {
@@ -751,7 +770,9 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "result.to_csv('examples/out.csv')"
@@ -777,7 +798,9 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "collapsed": true
+   },
    "outputs": [],
    "source": [
     "result.to_csv('examples/out2.csv', na_rep='NULL')"
