@@ -5,3 +5,4 @@ numpydoc
 nbsphinx
 jupyter_client
 ipykernel
+seaborn
